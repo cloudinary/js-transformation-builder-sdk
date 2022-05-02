@@ -1,0 +1,132 @@
+{
+  "name": "@cloudinary/transformation-builder",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "test": "npm run test:types && npm run build && jest --coverage --reporters default &&  npm run test:size",
+    "test:size": "ts-node -O '{\"module\":\"CommonJS\"}' __TESTS_BUNDLE_SIZE__/bin/bin.ts",
+    "test:unit": "jest --reporters default",
+    "test:unit:watch": "jest --watch --reporters default",
+    "test:types": "tsc --project tsconfig.test.json",
+    "test:import:require": "cd testApps/testImportAndRequire && npm run test",
+    "test:model": "jest json.test.ts",
+    "build": "bash ./scripts/build.sh",
+    "build:ESM": "tsc --project tsconfig.json --outDir dist --declaration true",
+    "build:rollup": "rollup -c",
+    "build:docs": "bash ./scripts/buildDocs.sh",
+    "build:entryPoints": "ts-node ./scripts/createEntrypoints.ts",
+    "build:updatePackageExports": "ts-node scripts/updatePackageJsonExports.ts",
+    "lint": "npm run lint:src && npm run lint:test",
+    "lint:src": "eslint src --color --ext .ts",
+    "lint:test": "eslint __TESTS__ __TESTS_BUNDLE_SIZE__ --rule 'import/extensions: [0, \"never\"]' --color --ext .ts",
+    "start": "rollup -c rollup.dev.config.js -w",
+    "bundlewatch": "bundlewatch --config ./bundlewatch.config.js",
+    "release-dry-run": "npm run build && cp README.md LICENSE ./dist && cd ./dist && release-it --dry-run",
+    "release": "npm run build && cp README.md LICENSE ./dist && cd ./dist && release-it"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@release-it/bumper": "^2.0.0",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^21.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@rollup/plugin-replace": "^3.0.0",
+    "@rollup/plugin-typescript": "^8.2.5",
+    "@types/jest": "^25.2.3",
+    "@types/mock-fs": "^4.10.0",
+    "@types/node": "^15.14.2",
+    "@types/webpack": "^4.41.21",
+    "@typescript-eslint/eslint-plugin": "^3.0.2",
+    "@typescript-eslint/parser": "^3.0.2",
+    "better-docs": "2.3.2",
+    "bootstrap": "^3.3.7",
+    "bundlewatch": "^0.2.6",
+    "cheerio": "^0.22.0",
+    "clipboard": "2.0.1",
+    "cloudinary-core": "^2.11.4",
+    "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.24.2",
+    "extend": "^3.0.1",
+    "glob": "^7.2.0",
+    "grunt": "^1.0.2",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^2.2.1",
+    "grunt-contrib-handlebars": "^1.0.0",
+    "grunt-contrib-uglify": "^3.3.0",
+    "grunt-jsdoc": "2.4.1",
+    "handlebars": "^4.0.11",
+    "handlebars-layouts": "^3.1.4",
+    "jest": "^26.0.1",
+    "jest-html-reporters": "^1.2.1",
+    "jquery": "3.1.1",
+    "jsdoc": "3.6.4",
+    "jsdoc-plugin-typescript": "2.0.5",
+    "lunr": "^1.0.0",
+    "mock-fs": "^4.12.0",
+    "moment": "^2.22.1",
+    "prettier": "^2.3.1",
+    "prismjs": "^1.14.0",
+    "release-it": "^14.2.0",
+    "replace-in-file": "^6.2.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.57.0",
+    "rollup-plugin-multi-input": "^1.3.1",
+    "rollup-plugin-serve": "^1.0.1",
+    "sanitize-html": "^1.18.2",
+    "ts-jest": "^26.0.0",
+    "ts-node": "^8.10.2",
+    "tslib": "^2.0.0",
+    "typedoc": "^0.17.8",
+    "typescript": "^3.9.3",
+    "webpack": "^4.44.1"
+  },
+  "exports": {
+    "./bundles/umd/package.json": "./bundles/umd/package.json",
+    "./bundles/umd": {
+      "require": "./bundles/umd/base.js",
+      "import": "./bundles/umd/base.js"
+    },
+    "./package.json": "./package.json",
+    "./actions/*": {
+      "require": "./actions/*.cjs",
+      "import": "./actions/*.js"
+    },
+    "./backwards/*": {
+      "require": "./backwards/*.cjs",
+      "import": "./backwards/*.js"
+    },
+    "./bundles/*": {
+      "require": "./bundles/*.cjs",
+      "import": "./bundles/*.js"
+    },
+    "./qualifiers/*": {
+      "require": "./qualifiers/*.cjs",
+      "import": "./qualifiers/*.js"
+    },
+    "./transformation/*": {
+      "require": "./transformation/*.cjs",
+      "import": "./transformation/*.js"
+    },
+    "./types/*": {
+      "require": "./types/*.cjs",
+      "import": "./types/*.js"
+    },
+    "./*": {
+      "require": "./*.cjs",
+      "import": "./*.js"
+    },
+    ".": {
+      "require": "./index.cjs",
+      "import": "./index.js",
+      "node": "./index.js",
+      "default": "./index.js"
+    }
+  }
+}

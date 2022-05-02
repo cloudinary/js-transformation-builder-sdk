@@ -1,0 +1,16 @@
+consumer
+node_modules
+.idea
+dist
+coverage
+public
+playground/base.esm.js
+scripts/tmp.sh
+# This file is dynamically generated and should not be part of the repo
+__DOCS__/resources/injectVersionSemver.js
+__TESTS__/compilation.test.ts
+pcakage-lock.json
+.SIZE_TESTS
+__DOCS__/JSDocTemplate/examples
+devTools/sanity/results.json
+.DS_Store

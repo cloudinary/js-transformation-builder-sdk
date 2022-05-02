@@ -1,0 +1,39 @@
+{
+  "preset": "ts-jest",
+  "testEnvironment": "jsdom",
+  "bail": true,
+  "resolver": "<rootDir>/src/internal/utils/jest-ts-resolver.cjs",
+  "collectCoverageFrom": [
+    "<rootDir>/src/**/*.ts",
+    "<rootDir>/scripts/**/*.ts",
+    "!<rootDir>/scripts/createEntrypoints.ts",
+    "!<rootDir>/src/internal/utils/cloneDeep.ts",
+    "!<rootDir>/scripts/copyPackageJsonToSrc.ts.ts",
+    "!<rootDir>/src/backwards/**/*.ts"
+  ],
+  "modulePaths": [
+    "<rootDir>/src"
+  ],
+  "coverageThreshold": {
+    "global": {
+      "branches": 40,
+      "functions": 67,
+      "lines": 69,
+      "statements": 70
+    }
+  },
+  "globals": {
+    "ts-jest": {
+      "diagnostics": false
+    }
+  },
+    "reporters": [
+    "default",
+    ["jest-html-reporters", {
+      "publicPath" : "./public/progress/",
+      "filename": "cloudinary-base-progress-report.html",
+      "pageTitle": "Cloudinary JS v2 Progress Report",
+      "expand": true
+    }]
+  ]
+}
