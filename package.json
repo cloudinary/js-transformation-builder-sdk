@@ -5,6 +5,8 @@
   "scripts": {
     "test": "npm run test:types && npm run build && jest --coverage --reporters default &&  npm run test:size",
     "test:size": "ts-node -O '{\"module\":\"CommonJS\"}' __TESTS_BUNDLE_SIZE__/bin/bin.ts",
+    "test:comp": "node ./scripts/updateCompliationTests.js && jest __TESTS__/compilationsOutput.test.ts  --coverage",
+    "test:comp:service": "ts-node devTools/sanity/index.ts && jest __TESTS__/compilation.test.ts",
     "test:unit": "jest --reporters default",
     "test:unit:watch": "jest --watch --reporters default",
     "test:types": "tsc --project tsconfig.test.json",
@@ -128,5 +130,8 @@
       "node": "./index.js",
       "default": "./index.js"
     }
+  },
+  "dependencies": {
+    "@cloudinary/url-gen": "^1.7.0"
   }
 }

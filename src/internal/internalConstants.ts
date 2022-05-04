@@ -5,37 +5,6 @@
 
 import {objectFlip} from "./utils/objectFlip.js";
 
-/**
- * @private
- */
-export const ALLOWED_URL_CONFIG = [
-  'cname',
-  'secureDistribution',
-  'privateCdn',
-  'signUrl',
-  'longUrlSignature',
-  'shorten',
-  'useRootPath',
-  'secure',
-  'forceVersion',
-  'analytics'
-];
-
-/**
- * @private
- */
-export const ALLOWED_CLOUD_CONFIG = [
-  'cloudName',
-  'apiKey',
-  'apiSecret',
-  'authToken'
-];
-
-/**
- * @private
- */
-export const INVALID_TYPE_MESSAGE = 'Invalid Type or key received';
-
 export const CONDITIONAL_OPERATORS = {
   "=": "eq",
   "!=": "ne",
