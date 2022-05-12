@@ -1,5 +1,5 @@
 {
-  "name": "@cloudinary/transformation-builder",
+  "name": "@cloudinary/transformation-builder-sdk",
   "version": "0.0.0",
   "description": "",
   "scripts": {
@@ -17,6 +17,7 @@
     "build:rollup": "rollup -c",
     "build:docs": "bash ./scripts/buildDocs.sh",
     "build:entryPoints": "ts-node ./scripts/createEntrypoints.ts",
+    "build:injectPackageVersion": "ts-node ./scripts/injectPackageVersionToDistFiles.ts",
     "build:updatePackageExports": "ts-node scripts/updatePackageJsonExports.ts",
     "lint": "npm run lint:src && npm run lint:test",
     "lint:src": "eslint src --color --ext .ts",
