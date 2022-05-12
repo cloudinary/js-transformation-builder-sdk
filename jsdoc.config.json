@@ -32,7 +32,7 @@
     "systemColor": "#3448C5",
     "systemName": "Cloudinary Transformation Builder (JS)",
     "systemLogo": "./__DOCS__/resources/navLogo.png",
-    "systemSummary": "@cloudinary/transformation-builder",
+    "systemSummary": "@cloudinary/transformation-builder-sdk",
     "favicon": "./__DOCS__/resources/favico.png",
     "copyright": "Copyright © 2021 Cloudinary.com"
   },

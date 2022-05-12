@@ -1,4 +1,4 @@
-### Pull request for @cloudinary/transformation-builder
+### Pull request for @cloudinary/transformation-builder-sdk
 
 
 #### What does this PR solve?
