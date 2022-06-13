@@ -3,7 +3,7 @@
  *
  * <b>Learn more:</b>
  * {@link https://cloudinary.com/documentation/effects_and_artistic_enhancements#rounding_corners_and_creating_circular_images|Rounded images}
- * {@link https://cloudinary.com/documentation/video_manipulation_and_delivery#rounding_corners_and_creating_circular_videos|Rounded videos}
+ * {@link https://cloudinary.com/documentation/video_effects_and_enhancements#rounding|Rounded videos}
  * @memberOf Actions
  * @namespace RoundCorners
  * @example

@@ -19,7 +19,7 @@ import {PreviewAction} from "./videoEdit/PreviewAction.js";
  * @summary action
  * @description Concatenates another video.
  *
- * <b>Learn more</b>: {@link https://cloudinary.com/documentation/video_manipulation_and_delivery#concatenating_videos|Concatenating videos}
+ * <b>Learn more</b>: {@link https://cloudinary.com/documentation/video_trimming_and_concatenating#concatenating_media|Concatenating videos}
  *
  * @memberOf Actions.VideoEdit
  * @param {VideoSource} source The source to concatenate.
@@ -46,7 +46,7 @@ function concatenate(source:VideoSource):ConcatenateAction{
  * @summary action
  * @description Trims a video (and discards the rest).
  *
- * <b>Learn more</b>: {@link https://cloudinary.com/documentation/video_manipulation_and_delivery#trimming_videos|
+ * <b>Learn more</b>: {@link https://cloudinary.com/documentation/video_trimming_and_concatenating#trimming_videos|
   * Trimming videos}
  *
  * @memberOf Actions.VideoEdit
@@ -99,7 +99,7 @@ function volume(volumeValue: string | number): VolumeAction{
  * @summary action
  * @description A video preview is a short excerpt from a video that can be used to engage your audience and help them select the video content that interests them.
  *
- * <b>Learn more</b>: {@link https://cloudinary.com/documentation/video_manipulation_and_delivery#generate_an_ai_based_video_preview|
+ * <b>Learn more</b>: {@link https://cloudinary.com/documentation/video_effects_and_enhancements#ai_based_video_preview|
   * Create a video preview}
  *
  * @memberOf Actions.VideoEdit

@@ -12,7 +12,7 @@ import {createSourceFromModel} from "../../internal/models/createSourceFromModel
 /**
  * @description Class for Concatenating another video.
  *
- * <b>Learn more</b>: {@link https://cloudinary.com/documentation/video_manipulation_and_delivery#concatenating_videos|Concatenating videos}
+ * <b>Learn more</b>: {@link https://cloudinary.com/documentation/video_trimming_and_concatenating#concatenating_media|Concatenating videos}
  * @extends SDK.Action
  * @memberOf Actions.VideoEdit
  * @see Visit {@link Actions.VideoEdit|VideoEdit} for an example
