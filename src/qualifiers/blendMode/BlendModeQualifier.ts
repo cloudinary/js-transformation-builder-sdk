@@ -8,7 +8,7 @@ import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
  * Even though BlendMode is technically an actionQualifier, it implements exactly the same functionality as an action.
  * This is true because Position is actually compounded of multiple qualifiers
  *
- * <b>Learn more:</b> {@link https://cloudinary.com/documentation/image_transformations#overlay_blending_effects|Overlay blending effects}
+ * <b>Learn more:</b> {@link https://cloudinary.com/documentation/effects_and_artistic_enhancements#blending_and_masking_layers|Overlay blending effects}
  *
  * @memberOf Qualifiers.BlendMode
  * @extends SDK.Action

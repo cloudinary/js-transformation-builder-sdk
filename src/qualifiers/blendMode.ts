@@ -2,7 +2,7 @@ import {BlendModeQualifier} from "./blendMode/BlendModeQualifier.js";
 /**
  * @description Defines the mode of blending to use when overlaying an image.
  *
- * <b>Learn more:</b> {@link https://cloudinary.com/documentation/image_transformations#overlay_blending_effects|Overlay blending effects}
+ * <b>Learn more:</b> {@link https://cloudinary.com/documentation/effects_and_artistic_enhancements#blending_and_masking_layers|Overlay blending effects}
  * @namespace BlendMode
  * @memberOf Qualifiers
  * @see To be used with an {@link Actions.Overlay|Overlay}

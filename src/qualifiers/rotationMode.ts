@@ -1,7 +1,7 @@
 
 /**
  * @description Contains functions to select the rotation mode.
- * </br><b>Learn more</b>: {@link https://cloudinary.com/documentation/image_transformations#rotating_images|Rotating images}
+ * </br><b>Learn more</b>: {@link https://cloudinary.com/documentation/effects_and_artistic_enhancements#rotating_images|Rotating images}
  * </br><b>Learn more</b>: {@link https://cloudinary.com/documentation/video_manipulation_and_delivery#rotating_videos|Rotating videos}
  * @memberOf Qualifiers
  * @namespace RotationMode
