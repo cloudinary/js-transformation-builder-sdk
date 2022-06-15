@@ -11,8 +11,8 @@ import {isISolidStrokeModel} from "../internal/models/IStrokeModel.js";
 /**
  * @summary qualifier
  * @description Specifies how to style your layered text, controls the font, font size, line spacing and more.
- * </br><b>Learn more</b>: {@link https://cloudinary.com/documentation/image_transformations#adding_text_overlays|Adding text overlays to images}
- * </br><b>Learn more</b>: {@link https://cloudinary.com/documentation/video_manipulation_and_delivery#adding_text_captions|Adding text overlays to videos}
+ * </br><b>Learn more</b>: {@link https://cloudinary.com/documentation/layers#text_layer_options|Adding text overlays to images}
+ * </br><b>Learn more</b>: {@link https://cloudinary.com/documentation/video_layers#text_layer_options|Adding text overlays to videos}
  * @see {@link Actions.Overlay| The overlay action}
  * @see {@link Actions.Underlay| The underlay action}
  * @memberOf Qualifiers
@@ -61,7 +61,7 @@ class TextStyle extends QualifierModel {
 
   /**
    * The name of any universally available font or a custom font, specified as the public ID of a raw, authenticated font in your account.
-   * For details on custom fonts, see {@link https://cloudinary.com/documentation/image_transformations#using_custom_fonts_for_text_overlays|Using custom fonts for text overlays}.
+   * For details on custom fonts, see {@link https://cloudinary.com/documentation/layers#custom_fonts|Using custom fonts for text overlays}.
    * @param {string} fontFamilyName
    */
   fontFamily(fontFamilyName: string): this {

@@ -12,7 +12,7 @@ import {SystemColors} from "./color.js";
 /**
  * @description Defines the background color to use instead of transparent background areas or when resizing with padding.
  *
- * <b>Learn more:</b> {@link https://cloudinary.com/documentation/image_transformations#setting_background_color|Setting background for images} | {@link https://cloudinary.com/documentation/video_manipulation_and_delivery#background_color|Setting background for videos}
+ * <b>Learn more:</b> {@link https://cloudinary.com/documentation/effects_and_artistic_enhancements#setting_background_color|Setting background for images} | {@link https://cloudinary.com/documentation/video_effects_and_enhancements#background_color|Setting background for videos}
  *
  * @namespace Background
  * @memberOf Qualifiers
@@ -34,7 +34,7 @@ function border(): BackgroundAutoBorderQualifier{
  * @summary qualifier
  * @description Automatically determines the color to use for padding, if needed when resizing an asset.
  *
- * <b>Learn more:</b> {@link https://cloudinary.com/documentation/image_transformations#content_aware_padding|Content-aware padding}
+ * <b>Learn more:</b> {@link https://cloudinary.com/documentation/effects_and_artistic_enhancements#content_aware_padding|Content-aware padding}
  * @memberOf Qualifiers.Background
  * @return {Qualifiers.Background.BackgroundQualifier}
  */

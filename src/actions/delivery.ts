@@ -71,7 +71,7 @@ function dpr(dpr: string|number):DeliveryDPRAction {
  * @description Controls the quality of the delivered image or video.
  *
  * <b>Learn more:</b> {@link https://cloudinary.com/documentation/image_optimization#how_to_optimize_image_quality|Image quality}
- *  {@link https://cloudinary.com/documentation/video_manipulation_and_delivery#quality_control|Video quality}
+ *  {@link https://cloudinary.com/documentation/video_optimization#how_to_optimize_video_quality|Video quality}
  * @memberOf Actions.Delivery
  * @param {QualityTypes | string | number | Qualifiers.Quality} qualityType For a list of supported quality types see
  * {@link Qualifiers.Quality| quality types} for

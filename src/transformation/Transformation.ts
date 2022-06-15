@@ -112,7 +112,7 @@ class Transformation {
 
   /**
    * @description Adjusts the shape of the delivered image. </br>
-   * <b>Learn more:</b> {@link https://cloudinary.com/documentation/image_transformations#image_shape_changes_and_distortion_effects|Shape changes and distortion effects}
+   * <b>Learn more:</b> {@link https://cloudinary.com/documentation/effects_and_artistic_enhancements#distort|Shape changes and distortion effects}
    * @param {IReshape} reshapeAction
    * @return {this}
    */

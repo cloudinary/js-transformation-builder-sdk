@@ -8,8 +8,8 @@ import {XYCenterGravity} from "./gravity/xyCenterGravity/XYCenterGravity.js";
 
 /**
  * @description Defines the gravity based on directional values from a compass.
- * <b>Learn more:</b> {@link https://cloudinary.com/documentation/image_transformations#control_gravity|Control gravity for images}
- * <b>Learn more:</b> {@link https://cloudinary.com/documentation/image_transformations#control_gravity|Control gravity for videos}
+ * <b>Learn more:</b> {@link https://cloudinary.com/documentation/resizing_and_cropping#control_gravity|Control gravity for images}
+ * <b>Learn more:</b> {@link https://cloudinary.com/documentation/video_resizing_and_cropping#control_gravity|Control gravity for videos}
  * @param {Qualifiers.Compass | string} direction A compass Values
  * @memberOf Qualifiers.Gravity
  * @example
