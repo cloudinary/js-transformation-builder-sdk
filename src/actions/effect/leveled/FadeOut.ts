@@ -32,6 +32,10 @@ class FadeOutEffectAction extends Action {
   static fromJson(actionModel: IActionModel): FadeOutEffectAction {
     const {length} = (actionModel as IFadeOutEffectActionModel);
 
+    if (length === undefined) {
+      return new this(1000);
+    }
+
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
     // This allows the inheriting classes to determine the class to be created
     const result = new this(length);
