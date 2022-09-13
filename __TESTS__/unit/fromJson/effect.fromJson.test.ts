@@ -32,7 +32,9 @@ describe('effect.fromJson', () => {
       { actionType: 'pixelate', squareSize: 15, region: { RegionType: 'faces' }},
       { actionType: 'blur', strength: 5 },
       { actionType: 'fadeIn', length: 13 },
-      { actionType: 'fadeOut', length: 13 }
+      { actionType: 'fadeOut', length: 13 },
+      { actionType: 'fadeIn' },
+      { actionType: 'fadeOut' }
     ]});
 
     expect(transformation.toString()).toStrictEqual([
@@ -65,7 +67,9 @@ describe('effect.fromJson', () => {
       'e_pixelate_faces:15',
       'e_blur:5',
       'e_fade:13',
-      'e_fade:-13'
+      'e_fade:-13',
+      'e_fade:1000',
+      'e_fade:-1000'
     ].join('/'));
   });
 });
