@@ -2,6 +2,9 @@ import {Action} from "../../internal/Action.js";
 import {Qualifier} from "../../internal/qualifier/Qualifier.js";
 import {RotationModeQualifierValue} from "../../qualifiers/rotate/RotationModeQualifierValue.js";
 import {RotationModeType} from "../../types/types.js";
+import {IRotateByAngleActionModel} from "../../internal/models/IRotateActionModel";
+import {IActionModel} from "../../internal/models/IActionModel";
+import {ICartoonifyEffectModel} from "../../internal/models/IEffectActionModel";
 
 const QUALIFIER_KEY = 'a';
 
@@ -16,9 +19,15 @@ const QUALIFIER_KEY = 'a';
  * @see Visit {@link Actions.Rotate|Rotate} for an example
  */
 class RotateAction extends Action {
+  protected _actionModel: IRotateByAngleActionModel = {};
   constructor(angle?: number) {
     super();
     this.addQualifier(new Qualifier(QUALIFIER_KEY, angle));
+    this._actionModel.actionType = 'rotateByAngle';
+
+    if (angle) {
+      this._actionModel.angle = angle;
+    }
   }
 
   /**
@@ -38,7 +47,17 @@ class RotateAction extends Action {
    * @return {this}
    */
   angle(degrees: number): this {
+    this._actionModel.angle = degrees;
     return this.addValueToQualifier(QUALIFIER_KEY, degrees);
+  }
+
+  static fromJson(actionModel: IActionModel): RotateAction {
+    const {angle} = (actionModel as IRotateByAngleActionModel);
+
+    // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
+    // This allows the inheriting classes to determine the class to be created
+    const result = new this(angle);
+    return result;
   }
 }
 
