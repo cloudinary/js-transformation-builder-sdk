@@ -2,9 +2,8 @@ import {Action} from "../../internal/Action.js";
 import {Qualifier} from "../../internal/qualifier/Qualifier.js";
 import {RotationModeQualifierValue} from "../../qualifiers/rotate/RotationModeQualifierValue.js";
 import {RotationModeType} from "../../types/types.js";
-import {IRotateByAngleActionModel} from "../../internal/models/IRotateActionModel";
-import {IActionModel} from "../../internal/models/IActionModel";
-import {ICartoonifyEffectModel} from "../../internal/models/IEffectActionModel";
+import {IRotateByAngleActionModel} from "../../internal/models/IRotateActionModel.js";
+import {IActionModel} from "../../internal/models/IActionModel.js";
 
 const QUALIFIER_KEY = 'a';
 
