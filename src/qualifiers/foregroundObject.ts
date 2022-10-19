@@ -1,5 +1,3 @@
-import {Color} from "./color";
-
 /**
  * @memberOf Qualifiers
  * @description This namespace contains all the foreground objects used in the SDK

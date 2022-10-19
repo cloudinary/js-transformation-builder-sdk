@@ -1,5 +1,5 @@
 import {IActionModel} from "./IActionModel.js";
-import {ForegroundObjectValue} from "../../qualifiers/foregroundObject";
+import {ForegroundObjectValue} from "../../qualifiers/foregroundObject.js";
 
 interface IEffectActionWithLevelModel extends IActionModel{
   level?: number;

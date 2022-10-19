@@ -25,8 +25,7 @@ import {RemoveBackgroundAction} from "./effect/RemoveBackgroundAction.js";
 import {ThemeEffect} from "./effect/Theme.js";
 import {SystemColors} from "../qualifiers/color.js";
 import {ArtisticFilterType} from "../types/types.js";
-import {BackgroundRemoval} from "./effect/BackgroundRemoval";
-import {ForegroundObjectValue} from "../qualifiers/foregroundObject";
+import {BackgroundRemoval} from "./effect/BackgroundRemoval.js";
 
 
 /**

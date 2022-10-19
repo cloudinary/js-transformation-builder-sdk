@@ -58,7 +58,7 @@ import {FadeOutEffectAction} from "../actions/effect/leveled/FadeOut.js";
 import {VideoCodecAction} from "../actions/transcode/VideoCodecAction.js";
 import {ConditionalAction} from "../actions/conditional.js";
 import RotateAction from "../actions/rotate/RotateAction.js";
-import {BackgroundRemoval} from "../actions/effect/BackgroundRemoval";
+import {BackgroundRemoval} from "../actions/effect/BackgroundRemoval.js";
 
 const ActionModelMap: Record<string, IHasFromJson> = {
   scale: ResizeScaleAction,
