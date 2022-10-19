@@ -1,4 +1,5 @@
 import {IActionModel} from "./IActionModel.js";
+import {ForegroundObjects} from "../../qualifiers/foregroundObject";
 
 interface IEffectActionWithLevelModel extends IActionModel{
   level?: number;
@@ -22,6 +23,11 @@ interface IShadowEffectActionModel extends IActionModel{
 interface IColorizeModel extends IActionModel{
   level?: number;
   color?: string;
+}
+
+interface IBackgroundRemovalModel extends IActionModel{
+  fineEdges?: boolean;
+  hints?: Array<ForegroundObjects>;
 }
 
 interface ICartoonifyEffectModel extends IActionModel{
@@ -108,5 +114,6 @@ export {
   IBlurModel,
   IFadeInEffectActionModel,
   IFadeOutEffectActionModel,
-  IAccelerateActionModel
+  IAccelerateActionModel,
+  IBackgroundRemovalModel,
 };
