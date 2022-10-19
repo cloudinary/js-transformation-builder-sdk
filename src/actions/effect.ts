@@ -25,6 +25,7 @@ import {RemoveBackgroundAction} from "./effect/RemoveBackgroundAction.js";
 import {ThemeEffect} from "./effect/Theme.js";
 import {SystemColors} from "../qualifiers/color.js";
 import {ArtisticFilterType} from "../types/types.js";
+import {BackgroundRemoval} from "./effect/BackgroundRemoval.js";
 
 
 /**
@@ -438,6 +439,21 @@ function removeBackground(): RemoveBackgroundAction {
   return new RemoveBackgroundAction();
 }
 
+
+/**
+ * @summary action
+ * @description Uses the Cloudinary AI Background Removal add-on to make the background of an image transparent.</br>
+ *              When combined with other transformations, this effect must be specified in the first component.
+ *              {@link https://cloudinary.com/documentation/transformation_reference#e_background_removal|Background Removal}
+ *
+ * @memberOf Actions.Effect
+ * @return {Actions.Effect.BackgroundRemoval}
+ */
+function backgroundRemoval(): BackgroundRemoval {
+  return new BackgroundRemoval();
+}
+
+
 /**
  *
  * @description Changes the main background color to the one specified, as if a 'theme change' was applied (e.g. dark mode vs light mode).
@@ -500,6 +516,7 @@ function theme(color: SystemColors): ThemeEffect {
  * .effect(Effect.deshake(10))
  * .effect(Effect.artisticFilter(alDente())
  * .effect(Effect.deshake().shakeStrength(pixels16()))
+ * .effect(Effect.backgroundRemoval().fineEdges(true).hints([ForegroundObject.DOG, ForegroundObject.CAT])
  */
 const Effect = {
   pixelate: pixelate,
@@ -534,6 +551,7 @@ const Effect = {
   transition: transition,
   dither: dither,
   removeBackground,
+  backgroundRemoval,
   theme
 };
 
@@ -555,6 +573,7 @@ export declare type EffectActions =
   | FadeInEffectAction
   | FadeOutEffectAction
   | AccelerationEffectAction
+  | BackgroundRemoval;
 
 
 export {
@@ -591,5 +610,6 @@ export {
   transition,
   dither,
   removeBackground,
+  backgroundRemoval,
   theme
 };
