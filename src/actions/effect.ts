@@ -26,7 +26,7 @@ import {ThemeEffect} from "./effect/Theme.js";
 import {SystemColors} from "../qualifiers/color.js";
 import {ArtisticFilterType} from "../types/types.js";
 import {BackgroundRemoval} from "./effect/BackgroundRemoval";
-import {ForegroundObjects} from "../qualifiers/foregroundObject";
+import {ForegroundObjectValue} from "../qualifiers/foregroundObject";
 
 
 /**
@@ -450,8 +450,8 @@ function removeBackground(): RemoveBackgroundAction {
  * @memberOf Actions.Effect
  * @return {Actions.Effect.BackgroundRemoval}
  */
-function backgroundRemoval(fineEdges: boolean, hints: Array<ForegroundObjects>): BackgroundRemoval {
-  return new BackgroundRemoval(fineEdges, hints);
+function backgroundRemoval(): BackgroundRemoval {
+  return new BackgroundRemoval();
 }
 
 

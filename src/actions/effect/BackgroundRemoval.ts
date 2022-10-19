@@ -1,7 +1,7 @@
 import {Action} from "../../internal/Action.js";
 import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
 import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {ForegroundObjects} from "../../qualifiers/foregroundObject.js";
+import {ForegroundObjectValue} from "../../qualifiers/foregroundObject.js";
 import {IActionModel} from "../../internal/models/IActionModel.js";
 import {IBackgroundRemovalModel} from "../../internal/models/IEffectActionModel.js";
 
@@ -13,22 +13,29 @@ import {IBackgroundRemovalModel} from "../../internal/models/IEffectActionModel.
  */
 class BackgroundRemoval extends Action {
   private _fineEdges: boolean;
-  private _hints: Array<ForegroundObjects>;
+  private _hints: Array<ForegroundObjectValue>;
 
-  constructor(fineEdges: boolean, hints: Array<ForegroundObjects>) {
+  constructor() {
     super();
-
     this._actionModel.actionType = 'backgroundRemoval';
+  }
 
-    this._fineEdges = fineEdges;
-    this._hints = hints;
+  fineEdges(value: boolean) {
+    this._fineEdges = value;
+
+    if (this._fineEdges) {
+      this._actionModel.fineEdges = this._fineEdges;
+    }
+    return this;
+  }
+
+  hints(value: Array<ForegroundObjectValue>) {
+    this._hints = value;
 
     if (this._hints) {
       this._actionModel.hints = this._hints;
     }
-    if (this._fineEdges) {
-      this._actionModel.fineEdges = this._fineEdges;
-    }
+    return this;
   }
 
   protected prepareQualifiers(): void {
@@ -50,9 +57,7 @@ class BackgroundRemoval extends Action {
 
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
     // This allows the inheriting classes to determine the class to be created
-    const result = new this(fineEdges, hints);
-
-    return result;
+    return new this().fineEdges(fineEdges).hints(hints);
   }
 }
 

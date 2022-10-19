@@ -32,4 +32,4 @@ const ForegroundObject = {
 } as const;
 
 export {ForegroundObject};
-export type ForegroundObjects = typeof ForegroundObject[keyof typeof ForegroundObject];
+export type ForegroundObjectValue = typeof ForegroundObject[keyof typeof ForegroundObject];
