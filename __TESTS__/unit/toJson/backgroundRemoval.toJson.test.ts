@@ -2,8 +2,8 @@ import {Transformation} from "../../../src";
 import {ForegroundObject} from "../../../src/qualifiers/foregroundObject";
 import {Effect} from "../../../src/actions/effect";
 
-describe('Rotate toJson()', () => {
-  it('rotateByAngle', () => {
+describe('BackgroundRemoval toJson()', () => {
+  it('with fineEdges and hints', () => {
     const transformation = new Transformation()
       .addAction(Effect.backgroundRemoval(true, [ForegroundObject.CAT, ForegroundObject.DOG]));
     expect(transformation.toJson()).toStrictEqual({
