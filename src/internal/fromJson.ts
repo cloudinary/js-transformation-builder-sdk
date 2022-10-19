@@ -57,6 +57,7 @@ import {FadeInEffectAction} from "../actions/effect/leveled/FadeIn.js";
 import {FadeOutEffectAction} from "../actions/effect/leveled/FadeOut.js";
 import {VideoCodecAction} from "../actions/transcode/VideoCodecAction.js";
 import {ConditionalAction} from "../actions/conditional.js";
+import RotateAction from "../actions/rotate/RotateAction.js";
 import {BackgroundRemoval} from "../actions/effect/BackgroundRemoval";
 
 const ActionModelMap: Record<string, IHasFromJson> = {
@@ -126,6 +127,7 @@ const ActionModelMap: Record<string, IHasFromJson> = {
   fadeOut: FadeOutEffectAction,
   videoCodec: VideoCodecAction,
   ifCondition: ConditionalAction,
+  rotateByAngle: RotateAction,
   backgroundRemoval: BackgroundRemoval,
 };
 
