@@ -517,7 +517,7 @@ function theme(color: SystemColors): ThemeEffect {
  * .effect(Effect.deshake(10))
  * .effect(Effect.artisticFilter(alDente())
  * .effect(Effect.deshake().shakeStrength(pixels16()))
- * .effect(Effect.backgroundRemoval(true, [ForegroundObject.DOG, ForegroundObject.CAT]])
+ * .effect(Effect.backgroundRemoval().fineEdges(true).hints([ForegroundObject.DOG, ForegroundObject.CAT])
  */
 const Effect = {
   pixelate: pixelate,
