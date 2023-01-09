@@ -26,6 +26,7 @@ import {ThemeEffect} from "./effect/Theme.js";
 import {SystemColors} from "../qualifiers/color.js";
 import {ArtisticFilterType} from "../types/types.js";
 import {BackgroundRemoval} from "./effect/BackgroundRemoval.js";
+import {DropShadow} from "./effect/DropShadow.js";
 
 
 /**
@@ -455,6 +456,19 @@ function backgroundRemoval(): BackgroundRemoval {
 
 
 /**
+ * @summary action
+ * @description Adds a shadow to the object on an image.
+ *              {@link https://cloudinary.com/documentation/transformation_reference#e_background_removal|Background Removal}
+ *
+ * @memberOf Actions.Effect
+ * @return {Actions.Effect.BackgroundRemoval}
+ */
+function dropshadow(): DropShadow {
+  return new DropShadow();
+}
+
+
+/**
  *
  * @description Changes the main background color to the one specified, as if a 'theme change' was applied (e.g. dark mode vs light mode).
  * @param {SystemColors} color
@@ -552,6 +566,7 @@ const Effect = {
   dither: dither,
   removeBackground,
   backgroundRemoval,
+  dropshadow,
   theme
 };
 
@@ -573,7 +588,8 @@ export declare type EffectActions =
   | FadeInEffectAction
   | FadeOutEffectAction
   | AccelerationEffectAction
-  | BackgroundRemoval;
+  | BackgroundRemoval
+  | DropShadow;
 
 
 export {
@@ -611,5 +627,6 @@ export {
   dither,
   removeBackground,
   backgroundRemoval,
+  dropshadow,
   theme
 };

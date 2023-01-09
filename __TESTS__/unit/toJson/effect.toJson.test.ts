@@ -372,4 +372,19 @@ describe('Effect toJson()', () => {
       ]
     });
   });
+
+  it('effect.DropShadow', () => {
+    const transformation = new Transformation()
+      .addAction(Effect.dropshadow().spread(30).elevation(20).azimuth(60));
+    expect(transformation.toJson()).toStrictEqual({
+      actions: [
+        {
+          actionType: 'dropshadow',
+          spread: 30,
+          elevation: 20,
+          azimuth: 60,
+        }
+      ]
+    });
+  });
 });
