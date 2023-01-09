@@ -463,7 +463,7 @@ function backgroundRemoval(): BackgroundRemoval {
  * @memberOf Actions.Effect
  * @return {Actions.Effect.BackgroundRemoval}
  */
-function dropshadow(): DropShadow {
+function dropShadow(): DropShadow {
   return new DropShadow();
 }
 
@@ -566,7 +566,7 @@ const Effect = {
   dither: dither,
   removeBackground,
   backgroundRemoval,
-  dropshadow,
+  dropShadow,
   theme
 };
 
@@ -627,6 +627,6 @@ export {
   dither,
   removeBackground,
   backgroundRemoval,
-  dropshadow,
+  dropShadow,
   theme
 };
