@@ -458,10 +458,10 @@ function backgroundRemoval(): BackgroundRemoval {
 /**
  * @summary action
  * @description Adds a shadow to the object on an image.
- *              {@link https://cloudinary.com/documentation/transformation_reference#e_background_removal|Background Removal}
+ *              {@link https://cloudinary.com/documentation/transformation_reference#e_dropshadow|Drop Shadow}
  *
  * @memberOf Actions.Effect
- * @return {Actions.Effect.BackgroundRemoval}
+ * @return {Actions.Effect.DropShadow}
  */
 function dropShadow(): DropShadow {
   return new DropShadow();
