@@ -18,11 +18,11 @@ export const withCamelCaseKeys = function(source: {}) {
  * @return {string} in camelCase format
  */
 export const camelCase = function(source: string) {
-  const words = source.match(reWords);
-  const processedWords = words.map(word => word.charAt(0).toLocaleUpperCase() + word.slice(1).toLocaleLowerCase());
-  processedWords[0] = processedWords[0].toLocaleLowerCase();
+  var words = source.match(reWords);
+  words = words.map(word=> word.charAt(0).toLocaleUpperCase() + word.slice(1).toLocaleLowerCase());
+  words[0] = words[0].toLocaleLowerCase();
 
-  return processedWords.join('');
+  return words.join('');
 };
 
 
