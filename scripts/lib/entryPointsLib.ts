@@ -3,7 +3,7 @@
  * This file contains utility functions related to creating ./dist entry-points (such as @base/actions/adjust)
  */
 
-const fs = require('fs');
+import * as fs from 'fs';
 
 // All of our package.jsons need to contain this property to allow tree shaking
 const commonPackageProperties = {
@@ -39,14 +39,14 @@ function copyPackageJson(fileDestination = 'dist') {
   projectJson.main = './bundles/umd/base.js';
   projectJson.browser = './index.js';
   projectJson.module = './index.js';
-  projectJson.type = 'module',
+  projectJson.type = 'module';
 
   Object.assign(projectJson, commonPackageProperties);
   fs.writeFileSync(`./${fileDestination}/package.json`, JSON.stringify(projectJson, null, '\t'));
 }
 
 
-module.exports = {
+export {
   copyPackageJson,
   createUMDBundleEntryPoint
 };

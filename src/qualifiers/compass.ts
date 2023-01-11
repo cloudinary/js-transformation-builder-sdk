@@ -104,12 +104,12 @@ class Compass {
   static north = north;
   static west = west;
   static east = east;
-  static south =south;
-  static center = center
-  static northWest =northWest
-  static southEast =southEast;
+  static south = south;
+  static center = center;
+  static northWest = northWest;
+  static southEast = southEast;
   static southWest = southWest;
-  static northEast =northEast;
+  static northEast = northEast;
 }
 
 

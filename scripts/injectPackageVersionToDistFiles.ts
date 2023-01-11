@@ -3,9 +3,9 @@
 /**
  * This script goes over dist files and replaces the package version placeholder to be the actual package version.
  */
-const replace = require('replace-in-file');
-const {version} = require('../package.json');
-const {resolve} = require('path');
+import replace, {ReplaceResult} from 'replace-in-file';
+import {version} from '../package.json';
+import {resolve} from 'path';
 
 const distFolder = resolve('./dist');
 const options = {
@@ -17,8 +17,8 @@ const options = {
 // Internationally not catching errors so that build will fail on error
 const fileNamesReplaced = replace
   .sync(options)
-  .filter((fileData: typeof replace.ReplaceResult) => fileData.hasChanged)
-  .map((fileData: typeof replace.ReplaceResult) => fileData.file);
+  .filter((fileData: ReplaceResult) => fileData.hasChanged)
+  .map((fileData: ReplaceResult) => fileData.file);
 
 // files is not empty
 if (fileNamesReplaced.length) {

@@ -16,8 +16,8 @@ import {TextFitQualifier} from "../../textFit.js";
 class BaseTextSource extends BaseSource {
   private text: string;
   protected _textStyle: TextStyle | string;
-  protected _textColor: SystemColors
-  protected _backgroundColor: SystemColors
+  protected _textColor: SystemColors;
+  protected _backgroundColor: SystemColors;
   protected type = 'text';
   protected _qualifierModel: Partial<IBaseTextSourceModel>;
   protected _textFit: TextFitQualifier;

@@ -24,8 +24,8 @@ class VideoCodecType extends Qualifier {
  */
 class AdvVideoCodecType extends Qualifier{
   private _prof: string;
-  private _lvl: number | string
-  private readonly _type: string
+  private _lvl: number | string;
+  private readonly _type: string;
 
   constructor(type: string) {
     super('vc');

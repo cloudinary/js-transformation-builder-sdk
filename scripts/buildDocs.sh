@@ -1,6 +1,6 @@
 set -e;
 
-node ./scripts/updateInjectVersionSemver.js
+npm run build:updateInjectVersionSemver
 (cd ./__DOCS__/JSDocTemplate && grunt)
 jsdoc -u ./__DOCS__/examples --configure jsdoc.config.json --verbose --destination public/docs/
 cp __DOCS__/resources/customStyles.css public/docs/

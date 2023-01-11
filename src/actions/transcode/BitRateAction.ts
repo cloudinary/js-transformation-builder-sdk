@@ -15,7 +15,7 @@ import {IActionModel} from "../../internal/models/IActionModel.js";
 class BitRateAction extends Action {
   private bitRate: string|number;
   private isConstant = false;
-  protected _actionModel : IBitRateActionModel = {actionType: 'bitRate'}
+  protected _actionModel : IBitRateActionModel = {actionType: 'bitRate'};
 
   constructor(bitRate: string|number) {
     super();
