@@ -34,7 +34,10 @@ describe('effect.fromJson', () => {
       { actionType: 'fadeIn', length: 13 },
       { actionType: 'fadeOut', length: 13 },
       { actionType: 'fadeIn' },
-      { actionType: 'fadeOut' }
+      { actionType: 'fadeOut' },
+      { actionType: 'dropshadow' },
+      { actionType: 'dropshadow', azimuth: 20 },
+      { actionType: 'dropshadow', spread: 30, elevation: 20, azimuth: 60 }
     ]});
 
     expect(transformation.toString()).toStrictEqual([
@@ -69,7 +72,10 @@ describe('effect.fromJson', () => {
       'e_fade:13',
       'e_fade:-13',
       'e_fade:1000',
-      'e_fade:-1000'
+      'e_fade:-1000',
+      'e_dropshadow',
+      'e_dropshadow:azimuth_20',
+      'e_dropshadow:azimuth_60;elevation_20;spread_30',
     ].join('/'));
   });
 });

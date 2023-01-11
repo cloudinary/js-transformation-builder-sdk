@@ -43,6 +43,12 @@ interface IEffectOutlineModel extends IActionModel{
   blurLevel?: number;
 }
 
+interface IDropShadowModel extends IActionModel{
+  azimuth?: number;
+  elevation?: number;
+  spread?: number;
+}
+
 interface IMakeTransparentEffectModel extends IActionModel{
   tolerance?: number;
   color?: string;
@@ -116,4 +122,5 @@ export {
   IFadeOutEffectActionModel,
   IAccelerateActionModel,
   IBackgroundRemovalModel,
+  IDropShadowModel,
 };

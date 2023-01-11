@@ -59,6 +59,7 @@ import {VideoCodecAction} from "../actions/transcode/VideoCodecAction.js";
 import {ConditionalAction} from "../actions/conditional.js";
 import RotateAction from "../actions/rotate/RotateAction.js";
 import {BackgroundRemoval} from "../actions/effect/BackgroundRemoval.js";
+import {DropShadow} from "../actions/effect/DropShadow.js";
 
 const ActionModelMap: Record<string, IHasFromJson> = {
   scale: ResizeScaleAction,
@@ -129,6 +130,7 @@ const ActionModelMap: Record<string, IHasFromJson> = {
   ifCondition: ConditionalAction,
   rotateByAngle: RotateAction,
   backgroundRemoval: BackgroundRemoval,
+  dropshadow: DropShadow,
 };
 
 /**
