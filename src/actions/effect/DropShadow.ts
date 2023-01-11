@@ -5,7 +5,7 @@ import {IDropShadowModel} from "../../internal/models/IEffectActionModel.js";
 import {IActionModel} from "../../internal/models/IActionModel.js";
 
 /**
- * @description Adds a shadow to the object on an image.
+ * @description Adds a shadow to the object in an image.
  * @extends SDK.Action
  * @memberOf Actions.Effect
  * @see Visit {@link Actions.Effect|Effect} for an example
@@ -23,7 +23,7 @@ class DropShadow extends Action {
 
   /**
    * @description
-   * Shadow azimuth. (Range: 0 to 360, Server default: 100)
+   * The direction the light is coming from to cause the shadow effect. (Range: 0 to 360, Server default: 100)
    * @param {number} azimuth
    * @return {this}
    */
@@ -34,7 +34,8 @@ class DropShadow extends Action {
   }
 
   /**
-   * Shadow elevation. (Range: 0 to 90, Server default: 70)
+   * @description
+   * The height of the light source above the 'ground' to cause the shadow effect. (Range: 0 to 90, Server default: 70)
    * @param {number} elevation
    * @return {this}
    */
@@ -46,8 +47,8 @@ class DropShadow extends Action {
 
   /**
    * @description
-   * Shadow spread. (Range: 0 to 100, Server default: 50)
-   * @param {number | string} spread
+   * The spread of the light source. A small number means 'point' light. A larger number means 'area' light. (Range: 0 to 100, Server default: 50)
+   * @param {number} spread
    * @return {this}
    */
   spread(spread?: number): this {
