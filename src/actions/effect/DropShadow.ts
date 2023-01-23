@@ -23,7 +23,7 @@ class DropShadow extends Action {
 
   /**
    * @description
-   * The direction the light is coming from to cause the shadow effect. (Range: 0 to 360, Server default: 100)
+   * The direction the light is coming from to cause the shadow effect. (Range: 0 to 360, Server default: 215)
    * @param {number} azimuth
    * @return {this}
    */
@@ -35,7 +35,7 @@ class DropShadow extends Action {
 
   /**
    * @description
-   * The height of the light source above the 'ground' to cause the shadow effect. (Range: 0 to 90, Server default: 70)
+   * The height of the light source above the 'ground' to cause the shadow effect. (Range: 0 to 90, Server default: 45)
    * @param {number} elevation
    * @return {this}
    */
