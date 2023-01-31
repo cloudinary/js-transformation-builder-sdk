@@ -1,3 +1,8 @@
+1.2.1 / 2023-01-31
+==================
+
+- Updated default values of Drop Shadow action
+
 1.2.0 / 2023-01-11
 ==================
 
