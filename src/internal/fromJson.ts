@@ -9,6 +9,7 @@ import {createUnsupportedError} from "./utils/unsupportedError.js";
 import {IHasFromJson, ITransformationFromJson} from "./models/IHasFromJson.js";
 import {ResizeMinimumFitAction} from "../actions/resize/ResizeMinimumFitAction.js";
 import {ResizeCropAction} from "../actions/resize/ResizeCropAction.js";
+import {OpacityAdjustAction} from "../actions/adjust/OpacityAdjustAction.js";
 import {ResizeFillAction} from "../actions/resize/ResizeFillAction.js";
 import {ResizeLimitFillAction} from "../actions/resize/ResizeLimitFillAction.js";
 import {ThumbResizeAction} from "../actions/resize/ThumbnailAction.js";
@@ -116,6 +117,7 @@ const ActionModelMap: Record<string, IHasFromJson> = {
   trimVideo: TrimAction,
   volume: VolumeAction,
   overlay: LayerAction,
+  opacity: OpacityAdjustAction,
   underlay: LayerAction,
   keyframeInterval: KeyframeIntervalsAction,
   fps: FPSAction,
