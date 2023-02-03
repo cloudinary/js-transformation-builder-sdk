@@ -68,4 +68,15 @@ describe('Adjust toJson()', () => {
       }
     ]});
   });
+
+  it('adjust.opacity', () => {
+    const transformation = new Transformation()
+      .addAction(Adjust.opacity(45));
+    expect(transformation.toJson()).toStrictEqual({actions:[
+      {
+        actionType: 'opacity',
+        level: 45
+      }
+    ]});
+  });
 });
