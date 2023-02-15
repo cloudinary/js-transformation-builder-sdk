@@ -12,7 +12,7 @@ import {IActionModel} from "../../internal/models/IActionModel.js";
  */
 class RoundCornersAction extends Action {
   protected _actionModel: IRoundCornersActionModel = {};
-  private _radius: [number?, number?, number?, number?] | string;
+  private _radius: [number?, number?, number?, number?] | 'max';
 
   constructor() {
     super();
