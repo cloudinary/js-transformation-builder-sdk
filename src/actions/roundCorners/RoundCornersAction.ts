@@ -12,7 +12,7 @@ import {IActionModel} from "../../internal/models/IActionModel.js";
  */
 class RoundCornersAction extends Action {
   protected _actionModel: IRoundCornersActionModel = {};
-  private _radius: [number, number, number, number] | string;
+  private _radius: [number?, number?, number?, number?] | string;
 
   constructor() {
     super();
@@ -30,13 +30,14 @@ class RoundCornersAction extends Action {
     const qualifierValue = new QualifierValue();
 
     // In case a === 0, check typeof
-    typeof a !== undefined && qualifierValue.addValue(a);
-    typeof b !== undefined && qualifierValue.addValue(b);
-    typeof c !== undefined && qualifierValue.addValue(c);
-    typeof d !== undefined && qualifierValue.addValue(d);
+    a !== undefined && qualifierValue.addValue(a);
+    b !== undefined && qualifierValue.addValue(b);
+    c !== undefined && qualifierValue.addValue(c);
+    d !== undefined && qualifierValue.addValue(d);
 
-    this._radius = [a, b, c, d];
-    this._actionModel.radius = [a, b, c, d];
+    const definedRadiuses = ([a, b, c, d].filter((r) => r !== undefined) as [number?, number?, number?, number?]);
+    this._radius = definedRadiuses;
+    this._actionModel.radius = definedRadiuses;
 
     this.addQualifier(new Qualifier('r').addValue(qualifierValue));
     return this;

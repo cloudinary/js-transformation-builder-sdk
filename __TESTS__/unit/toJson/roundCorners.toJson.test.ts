@@ -12,7 +12,7 @@ describe('RoundCorners toJson()', () => {
       actions: [
         {
           actionType: 'roundCorners',
-          radius: [10, undefined, undefined, undefined]
+          radius: [10]
         },
         {
           actionType: 'roundCorners',
