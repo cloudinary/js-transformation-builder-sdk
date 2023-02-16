@@ -1,7 +1,9 @@
 import {IActionModel} from "./IActionModel.js";
 
+type CornerRadiusValueType = [number?, number?, number?, number?] | 'max';
+
 interface IRoundCornersActionModel extends IActionModel {
-  radius?: [number?, number?, number?, number?] | 'max';
+  radius?: CornerRadiusValueType;
 }
 
-export {IRoundCornersActionModel};
+export {IRoundCornersActionModel, CornerRadiusValueType};

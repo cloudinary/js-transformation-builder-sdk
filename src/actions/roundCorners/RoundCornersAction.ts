@@ -1,7 +1,7 @@
 import {Action} from "../../internal/Action.js";
 import {Qualifier} from "../../internal/qualifier/Qualifier.js";
 import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
-import {IRoundCornersActionModel} from "../../internal/models/IRoundCornersActionModel.js";
+import {IRoundCornersActionModel, CornerRadiusValueType} from "../../internal/models/IRoundCornersActionModel.js";
 import {IActionModel} from "../../internal/models/IActionModel.js";
 
 /**
@@ -12,7 +12,7 @@ import {IActionModel} from "../../internal/models/IActionModel.js";
  */
 class RoundCornersAction extends Action {
   protected _actionModel: IRoundCornersActionModel = {};
-  private _radius: [number?, number?, number?, number?] | 'max';
+  private _radius: CornerRadiusValueType;
 
   constructor() {
     super();
@@ -51,6 +51,10 @@ class RoundCornersAction extends Action {
     this._actionModel.radius = 'max';
 
     return this.addQualifier(new Qualifier('r', 'max'));
+  }
+
+  getRadius(): CornerRadiusValueType {
+    return this._radius;
   }
 
   static fromJson(actionModel: IActionModel): RoundCornersAction {

@@ -4,7 +4,8 @@ import {Qualifier} from "../internal/qualifier/Qualifier.js";
 import {prepareColor} from "../internal/utils/prepareColor.js";
 import {SystemColors} from "../qualifiers/color.js";
 import RoundCornersAction from "./roundCorners/RoundCornersAction.js";
-
+import {IBorderActionModel} from "../internal/models/IBorderActionModel.js";
+import {IActionModel} from "../internal/models/IActionModel.js";
 
 /**
  * @description Adds a solid border around an image or video.
@@ -49,8 +50,7 @@ class BorderAction extends Action {
   private borderColor: string;
   private borderType: string;
   private _roundCorners: RoundCornersAction;
-
-
+  protected _actionModel: IBorderActionModel = {};
 
   /**
    * @description Adds a border of the specified type around an image or video.
@@ -63,6 +63,13 @@ class BorderAction extends Action {
     this.borderType = borderType;
     this.borderColor = prepareColor(color);
     this.borderWidth = borderWidth;
+
+    this._actionModel = {
+      borderType,
+      borderColor: prepareColor(color),
+      borderWidth,
+      actionType: 'border',
+    };
   }
 
   /**
@@ -71,6 +78,7 @@ class BorderAction extends Action {
    */
   width(borderWidth: number | string): this {
     this.borderWidth = borderWidth;
+    this._actionModel.borderWidth = borderWidth;
     return this;
   }
 
@@ -80,6 +88,7 @@ class BorderAction extends Action {
    */
   color(borderColor: SystemColors): this {
     this.borderColor = prepareColor(borderColor);
+    this._actionModel.borderColor = prepareColor(borderColor);
     return this;
   }
 
@@ -90,6 +99,28 @@ class BorderAction extends Action {
    */
   roundCorners(roundCorners: RoundCornersAction): this {
     this._roundCorners = roundCorners;
+    this._actionModel.roundCorners = {
+      actionType: 'roundCorners',
+      radius: roundCorners.getRadius()
+    };
+    return this;
+  }
+
+  /**
+   * @description Sets the style of the border.
+   * @param {number | string} width The width in pixels.
+   * @param {string} color The color of the border, e.g 'green', 'yellow'.
+   * @return {this}
+   */
+  solid(width: number | string, color: SystemColors): BorderAction {
+    this.borderType = 'solid';
+    this.borderColor = prepareColor(color);
+    this.borderWidth = width;
+
+    this._actionModel.borderType = 'solid';
+    this._actionModel.borderColor = prepareColor(color);
+    this._actionModel.borderWidth = width;
+
     return this;
   }
 
@@ -100,6 +131,32 @@ class BorderAction extends Action {
     if (this._roundCorners) {
       this.addQualifier(this._roundCorners.qualifiers.get('r'));
     }
+  }
+
+  static fromJson(actionModel: IActionModel): BorderAction {
+    const { borderWidth, borderColor, borderType, roundCorners } = (actionModel as IBorderActionModel);
+
+    // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
+    // This allows the inheriting classes to determine the class to be created
+    const result = new this(borderType, borderColor, borderWidth);
+
+    if (roundCorners) {
+      const roundCornersAction = (() => {
+        if (roundCorners.radius === 'max') {
+          return new RoundCornersAction().max();
+        }
+        if (Array.isArray(roundCorners.radius)) {
+          return new RoundCornersAction().radius(...roundCorners.radius);
+        }
+        return undefined;
+      })();
+
+      if (roundCornersAction) {
+        result.roundCorners(roundCornersAction);
+      }
+    }
+
+    return result;
   }
 }
 
@@ -119,8 +176,22 @@ function solid(width: number | string, color: SystemColors): BorderAction {
 }
 
 
+/**
+ * @summary action
+ * @memberOf Actions.Border
+ * @description Sets the radius of the border.
+ * @param {Actions.RoundCorners.RoundCornersAction} roundCorners RoundCorners action.
+ * @return {Actions.Border.BorderAction}
+ */
+function roundCorners(roundCorners: RoundCornersAction): BorderAction {
+  const borderActionInstance = new BorderAction('solid', 'transparent', 0);
+  borderActionInstance.roundCorners(roundCorners);
+  return borderActionInstance;
+}
+
 const Border = {
-  solid
+  solid,
+  roundCorners,
 };
 
-export {BorderAction, Border, solid};
+export {BorderAction, Border, solid, roundCorners};

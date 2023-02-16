@@ -62,6 +62,7 @@ import RotateAction from "../actions/rotate/RotateAction.js";
 import {BackgroundRemoval} from "../actions/effect/BackgroundRemoval.js";
 import {DropShadow} from "../actions/effect/DropShadow.js";
 import RoundCornersAction from "../actions/roundCorners/RoundCornersAction.js";
+import {BorderAction} from "../actions/border.js";
 
 const ActionModelMap: Record<string, IHasFromJson> = {
   scale: ResizeScaleAction,
@@ -135,6 +136,7 @@ const ActionModelMap: Record<string, IHasFromJson> = {
   backgroundRemoval: BackgroundRemoval,
   dropshadow: DropShadow,
   roundCorners: RoundCornersAction,
+  border: BorderAction,
 };
 
 /**
