@@ -14,20 +14,14 @@ describe('border.fromJson', () => {
           borderType: 'solid',
           borderWidth: 5,
           borderColor: 'red',
-          roundCorners: {
-            actionType: 'roundCorners',
-            radius: [10, 20, 30, 40]
-          }
+          radius: [10, 20, 30, 40]
         },
         {
           actionType: 'border',
           borderType: 'solid',
           borderWidth: 10,
           borderColor: 'blue',
-          roundCorners: {
-            actionType: 'roundCorners',
-            radius: 'max'
-          }
+          radius: 'max'
         },
         ]}
     );

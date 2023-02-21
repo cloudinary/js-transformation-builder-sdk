@@ -99,10 +99,7 @@ class BorderAction extends Action {
    */
   roundCorners(roundCorners: RoundCornersAction): this {
     this._roundCorners = roundCorners;
-    this._actionModel.roundCorners = {
-      actionType: 'roundCorners',
-      radius: roundCorners.getRadius()
-    };
+    this._actionModel.radius = roundCorners.getRadius();
     return this;
   }
 
@@ -134,19 +131,19 @@ class BorderAction extends Action {
   }
 
   static fromJson(actionModel: IActionModel): BorderAction {
-    const { borderWidth, borderColor, borderType, roundCorners } = (actionModel as IBorderActionModel);
+    const { borderWidth, borderColor, borderType, radius } = (actionModel as IBorderActionModel);
 
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
     // This allows the inheriting classes to determine the class to be created
     const result = new this(borderType, borderColor, borderWidth);
 
-    if (roundCorners) {
+    if (radius) {
       const roundCornersAction = (() => {
-        if (roundCorners.radius === 'max') {
+        if (radius === 'max') {
           return new RoundCornersAction().max();
         }
-        if (Array.isArray(roundCorners.radius)) {
-          return new RoundCornersAction().radius(...roundCorners.radius);
+        if (Array.isArray(radius)) {
+          return new RoundCornersAction().radius(...radius);
         }
         return undefined;
       })();
