@@ -5,10 +5,7 @@ interface IBorderActionModel extends IActionModel {
   borderWidth?: number | string;
   borderColor?: string;
   borderType?: string;
-  roundCorners?: {
-    actionType: 'roundCorners';
-    radius: CornerRadiusValueType;
-  };
+  radius?: CornerRadiusValueType;
 }
 
 export {IBorderActionModel};

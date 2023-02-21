@@ -24,40 +24,28 @@ describe('RoundCorners toJson()', () => {
           borderWidth: 0,
           borderColor: 'transparent',
           borderType: 'solid',
-          roundCorners: {
-            actionType: 'roundCorners',
-            radius: 'max'
-          }
+          radius: 'max'
         },
         {
           actionType: 'border',
           borderWidth: 0,
           borderColor: 'transparent',
           borderType: 'solid',
-          roundCorners: {
-            actionType: 'roundCorners',
-            radius: [10, 20, 30]
-          }
+          radius: [10, 20, 30]
         },
         {
           actionType: 'border',
           borderWidth: 5,
           borderColor: 'black',
           borderType: 'solid',
-          roundCorners: {
-            actionType: 'roundCorners',
-            radius: 'max'
-          }
+          radius: 'max'
         },
         {
           actionType: 'border',
           borderWidth: 5,
           borderColor: 'black',
           borderType: 'solid',
-          roundCorners: {
-            actionType: 'roundCorners',
-            radius: 'max'
-          }
+          radius: 'max'
         },
       ]
     });
