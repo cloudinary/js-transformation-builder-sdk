@@ -2,8 +2,8 @@ import {Transformation} from "../../../src";
 import {RoundCorners} from "../../../src/actions";
 import {Border} from "../../../src/actions";
 
-describe('RoundCorners toJson()', () => {
-  it('roundCorners', () => {
+describe('Border toJson()', () => {
+  it('border', () => {
     const transformation = new Transformation()
       .addAction(Border.solid(5, 'black'))
       .addAction(Border.roundCorners(RoundCorners.max()))
@@ -15,36 +15,31 @@ describe('RoundCorners toJson()', () => {
       actions: [
         {
           actionType: 'border',
-          borderWidth: 5,
-          borderColor: 'black',
-          borderType: 'solid'
+          width: 5,
+          color: 'black',
         },
         {
           actionType: 'border',
-          borderWidth: 0,
-          borderColor: 'transparent',
-          borderType: 'solid',
+          width: 0,
+          color: 'transparent',
           radius: 'max'
         },
         {
           actionType: 'border',
-          borderWidth: 0,
-          borderColor: 'transparent',
-          borderType: 'solid',
+          width: 0,
+          color: 'transparent',
           radius: [10, 20, 30]
         },
         {
           actionType: 'border',
-          borderWidth: 5,
-          borderColor: 'black',
-          borderType: 'solid',
+          width: 5,
+          color: 'black',
           radius: 'max'
         },
         {
           actionType: 'border',
-          borderWidth: 5,
-          borderColor: 'black',
-          borderType: 'solid',
+          width: 5,
+          color: 'black',
           radius: 'max'
         },
       ]

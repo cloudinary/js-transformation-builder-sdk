@@ -65,9 +65,8 @@ class BorderAction extends Action {
     this.borderWidth = borderWidth;
 
     this._actionModel = {
-      borderType,
-      borderColor: prepareColor(color),
-      borderWidth,
+      color: prepareColor(color),
+      width: borderWidth,
       actionType: 'border',
     };
   }
@@ -78,7 +77,7 @@ class BorderAction extends Action {
    */
   width(borderWidth: number | string): this {
     this.borderWidth = borderWidth;
-    this._actionModel.borderWidth = borderWidth;
+    this._actionModel.width = borderWidth;
     return this;
   }
 
@@ -88,7 +87,7 @@ class BorderAction extends Action {
    */
   color(borderColor: SystemColors): this {
     this.borderColor = prepareColor(borderColor);
-    this._actionModel.borderColor = prepareColor(borderColor);
+    this._actionModel.color = prepareColor(borderColor);
     return this;
   }
 
@@ -114,9 +113,8 @@ class BorderAction extends Action {
     this.borderColor = prepareColor(color);
     this.borderWidth = width;
 
-    this._actionModel.borderType = 'solid';
-    this._actionModel.borderColor = prepareColor(color);
-    this._actionModel.borderWidth = width;
+    this._actionModel.color = prepareColor(color);
+    this._actionModel.width = width;
 
     return this;
   }
@@ -131,11 +129,11 @@ class BorderAction extends Action {
   }
 
   static fromJson(actionModel: IActionModel): BorderAction {
-    const { borderWidth, borderColor, borderType, radius } = (actionModel as IBorderActionModel);
+    const { width, color, radius } = (actionModel as IBorderActionModel);
 
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
     // This allows the inheriting classes to determine the class to be created
-    const result = new this(borderType, borderColor, borderWidth);
+    const result = new this('solid', color, width);
 
     if (radius) {
       const roundCornersAction = (() => {
