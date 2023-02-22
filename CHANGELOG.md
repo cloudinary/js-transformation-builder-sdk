@@ -1,3 +1,8 @@
+1.2.6 / 2023-02-22
+==================
+
+- Border actionModel params compliant with transformation-model 
+
 1.2.5 / 2023-02-21
 ==================
 
