@@ -5,22 +5,19 @@ describe('border.fromJson', () => {
     const transformation = fromJson({actions:
         [ {
           actionType: 'border',
-          borderType: 'solid',
-          borderWidth: 5,
-          borderColor: 'red',
+          width: 5,
+          color: 'red',
         },
         {
           actionType: 'border',
-          borderType: 'solid',
-          borderWidth: 5,
-          borderColor: 'red',
+          width: 5,
+          color: 'red',
           radius: [10, 20, 30, 40]
         },
         {
           actionType: 'border',
-          borderType: 'solid',
-          borderWidth: 10,
-          borderColor: 'blue',
+          width: 10,
+          color: 'blue',
           radius: 'max'
         },
         ]}
