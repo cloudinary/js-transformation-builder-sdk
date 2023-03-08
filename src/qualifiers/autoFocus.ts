@@ -96,8 +96,6 @@ class AutoFocus extends QualifierValue {
   }
 }
 
-const focusOn = (obj: FocusOnValue, weight?: number): AutoFocus => {
-  return new AutoFocus(obj, weight);
-};
+const focusOn = AutoFocus.focusOn;
 
 export {AutoFocus, focusOn};
