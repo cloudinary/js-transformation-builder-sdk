@@ -96,4 +96,6 @@ class AutoFocus extends QualifierValue {
   }
 }
 
-export {AutoFocus};
+const focusOn = AutoFocus.focusOn;
+
+export {AutoFocus, focusOn};
