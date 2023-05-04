@@ -18,6 +18,7 @@ import {BlendMode} from "../../../src/qualifiers/blendMode";
 import {TextStyle} from "../../../src/qualifiers/textStyle";
 import {FontAntialias} from "../../../src/qualifiers/FontAntialias";
 import {Underlay} from "../../../src/actions";
+import {UnsupportedError} from "../../../src/internal/utils/unsupportedError";
 
 describe('Overlay & Underlay toJson', () => {
   it('Should generate Overlay model for image source', () => {
@@ -261,5 +262,21 @@ describe('Overlay & Underlay toJson', () => {
         }
       ]
     });
+  });
+
+  it('Should return error when there is unsupported transformation inside', () => {
+    const transformation = new Transformation();
+    transformation.addAction(
+      Overlay.source(Source.image('sample').transformation(new Transformation()
+        .resize(scale(100).width(800))
+        .backgroundColor("red")
+      ))
+    );
+
+    expect(transformation.toJson()).toStrictEqual(
+      {
+        error: new UnsupportedError('unsupported action BackgroundColor')
+      }
+    );
   });
 });

@@ -8,6 +8,12 @@ export type IActionToJson = IActionModel | IErrorObject;
  */
 export function actionToJson(): IActionToJson {
   const actionModelIsNotEmpty = this._actionModel && Object.keys(this._actionModel).length;
+  const sourceTransformationError = this._actionModel?.source?.transformation?.error;
+
+  // Should return error when there is unsupported transformation inside
+  if (sourceTransformationError && sourceTransformationError instanceof Error) {
+    return { error: sourceTransformationError };
+  }
 
   if (actionModelIsNotEmpty) {
     return this._actionModel;
