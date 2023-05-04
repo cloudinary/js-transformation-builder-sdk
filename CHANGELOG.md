@@ -1,3 +1,8 @@
+1.2.8 / 2023-05-04
+==================
+
+- Return nested transformation errors at the layer action level
+
 1.2.7 / 2023-03-08
 ==================
 
