@@ -1,3 +1,8 @@
+1.2.9 / 2023-06-06
+==================
+
+- Default value for background removal fine edges option
+
 1.2.8 / 2023-05-04
 ==================
 
