@@ -20,12 +20,9 @@ class BackgroundRemoval extends Action {
     this._actionModel.actionType = 'backgroundRemoval';
   }
 
-  fineEdges(value: boolean) {
+  fineEdges(value = true) {
     this._fineEdges = value;
-
-    if (this._fineEdges) {
-      this._actionModel.fineEdges = this._fineEdges;
-    }
+    this._actionModel.fineEdges = this._fineEdges;
     return this;
   }
 
@@ -54,10 +51,14 @@ class BackgroundRemoval extends Action {
 
   static fromJson(actionModel: IActionModel): BackgroundRemoval {
     const {fineEdges, hints} = (actionModel as IBackgroundRemovalModel);
+    const result = new this();
 
-    // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
-    // This allows the inheriting classes to determine the class to be created
-    return new this().fineEdges(fineEdges).hints(hints);
+    if (fineEdges !== undefined) {
+      result.fineEdges(fineEdges);
+    }
+    result.hints(hints);
+
+    return result;
   }
 }
 
