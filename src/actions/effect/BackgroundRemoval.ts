@@ -26,8 +26,13 @@ class BackgroundRemoval extends Action {
     return this;
   }
 
-  hints(value: Array<ForegroundObjectValue>) {
-    this._hints = value;
+  hints(...values: ForegroundObjectValue[] | [ForegroundObjectValue[]]) {
+    if (values.length === 1 && Array.isArray(values[0])) {
+      // Handle the case of a single array argument
+      this._hints = values[0];
+    } else {
+      this._hints = values as ForegroundObjectValue[];
+    }
 
     if (this._hints) {
       this._actionModel.hints = this._hints;
