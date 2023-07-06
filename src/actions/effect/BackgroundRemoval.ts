@@ -30,7 +30,7 @@ class BackgroundRemoval extends Action {
     if (values.length === 1 && Array.isArray(values[0])) {
       // Handle the case of a single array argument
       this._hints = values[0];
-    } else {
+    } else if (values.length) {
       this._hints = values as ForegroundObjectValue[];
     }
 
@@ -61,7 +61,9 @@ class BackgroundRemoval extends Action {
     if (fineEdges !== undefined) {
       result.fineEdges(fineEdges);
     }
-    result.hints(hints);
+    if (hints?.length) {
+      result.hints(hints);
+    }
 
     return result;
   }
