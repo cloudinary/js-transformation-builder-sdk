@@ -54,6 +54,11 @@ interface IPredominantGradientBackgroundModel extends IBaseGradientBackgroundMod
   backgroundType: 'predominantGradient';
 }
 
+interface IGenerativeFillBackgroundModel {
+  backgroundType: 'generativeFill';
+  prompt?: string;
+}
+
 /**
  * Get the value of given background
  * @param background
@@ -193,6 +198,18 @@ function createPredominantGradientBackgroundModel(background: BackgroundPredomin
 }
 
 /**
+ * Create an IGenerativeFillBackgroundModel from given background
+ * @param urlValue
+ */
+function createGenerativeFillBackgroundModel(urlValue: string): IGenerativeFillBackgroundModel {
+  const prompt = urlValue.split(':prompt_')[1];
+  return {
+    backgroundType: "generativeFill",
+    ...(prompt ? { prompt } : {})
+  };
+}
+
+/**
  * Create an IBackgroundModel from given background
  * @param background
  */
@@ -221,6 +238,10 @@ function createBackgroundModel(background: unknown): IBackgroundModel {
     return createPredominantGradientBackgroundModel(background);
   }
 
+  if (getBackgroundValue(background).startsWith('gen_fill')) {
+    return createGenerativeFillBackgroundModel(getBackgroundValue(background));
+  }
+
   return createColorBackgroundModel(background as BackgroundColor);
 }
 
@@ -233,5 +254,6 @@ export {
   IColorBackgroundModel,
   IPredominantBackgroundModel,
   IPredominantGradientBackgroundModel,
+  IGenerativeFillBackgroundModel,
   createBackgroundModel
 };

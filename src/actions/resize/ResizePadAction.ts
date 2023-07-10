@@ -19,8 +19,12 @@ class ResizePadAction<GravityType extends IGravity> extends ResizeAdvancedAction
    * @param {Qualifiers.Background} backgroundQualifier Defines the background color to use instead of
    * transparent background areas or when resizing with padding.
    */
-  background(backgroundQualifier: BackgroundQualifier): this {
+  background(backgroundQualifier: BackgroundQualifier | string): this {
     this._actionModel.background = createBackgroundModel(backgroundQualifier);
+
+    if (typeof backgroundQualifier === 'string' && backgroundQualifier.startsWith('gen_fill')) {
+      return this.addQualifier(new Qualifier('b', backgroundQualifier));
+    }
     return this.addQualifier(backgroundQualifier);
   }
 
