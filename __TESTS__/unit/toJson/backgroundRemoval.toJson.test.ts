@@ -1,5 +1,5 @@
 import {Transformation} from "../../../src";
-import {ForegroundObject} from "../../../src/qualifiers/foregroundObject";
+import {ForegroundObject, cat, bus, diningTable} from "../../../src/qualifiers/foregroundObject";
 import {Effect} from "../../../src/actions/effect";
 
 describe('BackgroundRemoval toJson()', () => {
@@ -12,6 +12,19 @@ describe('BackgroundRemoval toJson()', () => {
           actionType: 'backgroundRemoval',
           fineEdges: true,
           hints: [ForegroundObject.CAT, ForegroundObject.DOG]
+        }
+      ]
+    });
+  });
+  it('with functional hints as spread arg', () => {
+    const transformation = new Transformation()
+      .addAction(Effect.backgroundRemoval().fineEdges(true).hints(cat(), bus(), diningTable()));
+    expect(transformation.toJson()).toStrictEqual({
+      actions: [
+        {
+          actionType: 'backgroundRemoval',
+          fineEdges: true,
+          hints: [ForegroundObject.CAT, ForegroundObject.BUS, ForegroundObject.DINING_TABLE]
         }
       ]
     });
