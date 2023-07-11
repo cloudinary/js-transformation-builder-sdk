@@ -13,7 +13,10 @@ import {Background} from "../../qualifiers.js";
 import {BackgroundBorderGradientQualifier} from "../../qualifiers/background/shared/gradient/BackgroundBorderGradientQualifier.js";
 import {auto, border, borderGradient, color, predominant, predominantGradient} from "../../qualifiers/background.js";
 import {BackgroundAutoPredominantQualifier} from "../../qualifiers/background/shared/auto/BackgroundAutoPredominantQualifier.js";
-import {Qualifier} from "../qualifier/Qualifier.js";
+import {
+  BackgroundGenerativeFillQualifier,
+  getValueFromGenerativeFillBackgroundModel
+} from "../../qualifiers/background/shared/BackgroundGenerativeFillQualifier.js";
 
 /**
  * Create BackgroundQualifier from IBlurredBackgroundModel
@@ -85,7 +88,9 @@ function createContrastPaletteBackground(background: BackgroundAutoPredominantQu
  * @param backgroundModel
  */
 function createGenerativeFillBackground(backgroundModel: IGenerativeFillBackgroundModel) {
-  return new Qualifier('b', `gen_fill${backgroundModel.prompt ? `:prompt_${backgroundModel.prompt}` : ''}`);
+  return new BackgroundGenerativeFillQualifier(
+    getValueFromGenerativeFillBackgroundModel(backgroundModel)
+  );
 }
 
 /**

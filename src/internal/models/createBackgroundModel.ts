@@ -6,6 +6,7 @@ import {GradientDirectionType} from "../../types/types.js";
 import {BackgroundColor} from "../../actions/background/actions/BackgroundColor.js";
 import {BackgroundPredominantGradientQualifier} from "../../qualifiers/background/shared/gradient/BackgroundPredominantGradientQualifier.js";
 import {BackgroundAutoPredominantQualifier} from "../../qualifiers/background/shared/auto/BackgroundAutoPredominantQualifier.js";
+import {BackgroundGenerativeFillQualifier} from "../../qualifiers/background/shared/BackgroundGenerativeFillQualifier.js";
 
 type IGradientColors = number | string;
 
@@ -201,11 +202,10 @@ function createPredominantGradientBackgroundModel(background: BackgroundPredomin
  * Create an IGenerativeFillBackgroundModel from given background
  * @param urlValue
  */
-function createGenerativeFillBackgroundModel(urlValue: string): IGenerativeFillBackgroundModel {
-  const prompt = urlValue.split(':prompt_')[1];
+function createGenerativeFillBackgroundModel(background: BackgroundGenerativeFillQualifier): IGenerativeFillBackgroundModel {
   return {
-    backgroundType: "generativeFill",
-    ...(prompt ? { prompt } : {})
+    backgroundType: background.backgroundType,
+    ...(background.prompt ? { prompt: background.prompt } : {})
   };
 }
 
@@ -238,8 +238,8 @@ function createBackgroundModel(background: unknown): IBackgroundModel {
     return createPredominantGradientBackgroundModel(background);
   }
 
-  if (getBackgroundValue(background).startsWith('gen_fill')) {
-    return createGenerativeFillBackgroundModel(getBackgroundValue(background));
+  if (background instanceof BackgroundGenerativeFillQualifier) {
+    return createGenerativeFillBackgroundModel(background);
   }
 
   return createColorBackgroundModel(background as BackgroundColor);
