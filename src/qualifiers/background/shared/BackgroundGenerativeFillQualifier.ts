@@ -17,10 +17,10 @@ class BackgroundGenerativeFillQualifier extends BackgroundQualifier {
     this._backgroundType = 'generativeFill';
   }
 
-  get prompt(): string | undefined {
+  getPrompt(): string | undefined {
     return this._prompt;
   }
-  get backgroundType(): 'generativeFill' {
+  getBackgroundType(): 'generativeFill' {
     return this._backgroundType;
   }
 

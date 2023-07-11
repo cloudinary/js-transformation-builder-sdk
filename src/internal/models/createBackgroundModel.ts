@@ -204,8 +204,8 @@ function createPredominantGradientBackgroundModel(background: BackgroundPredomin
  */
 function createGenerativeFillBackgroundModel(background: BackgroundGenerativeFillQualifier): IGenerativeFillBackgroundModel {
   return {
-    backgroundType: background.backgroundType,
-    ...(background.prompt ? { prompt: background.prompt } : {})
+    backgroundType: background.getBackgroundType(),
+    ...(background.getPrompt() ? { prompt: background.getPrompt() } : {})
   };
 }
 
