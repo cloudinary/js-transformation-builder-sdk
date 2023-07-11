@@ -1,3 +1,9 @@
+1.2.10 / 2023-07-11
+==================
+
+- Add support for Generative Fill background
+- Adjust allowed Background Removal hints syntax
+
 1.2.9 / 2023-06-06
 ==================
 
