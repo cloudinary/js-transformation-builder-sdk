@@ -445,4 +445,36 @@ describe('resize.toJson()', () => {
       ]
     });
   });
+
+  it('should generate a Generative Fill background', () => {
+    const transformation = new Transformation()
+      .addAction(Resize.pad(400).background('gen_fill'))
+      .addAction(Resize.pad(200).background('gen_fill:prompt_strawberry donuts'));
+
+    const model = transformation.toJson();
+
+    expect(model).toStrictEqual({
+      actions: [
+        {
+          actionType: 'pad',
+          dimensions: {
+            width: 400
+          },
+          background: {
+            backgroundType: 'generativeFill'
+          }
+        },
+        {
+          actionType: 'pad',
+          dimensions: {
+            width: 200
+          },
+          background: {
+            backgroundType: 'generativeFill',
+            prompt: 'strawberry donuts'
+          }
+        },
+      ]
+    });
+  });
 });

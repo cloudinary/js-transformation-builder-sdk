@@ -43,6 +43,21 @@ describe('resize.fromJson', () => {
             ]
           }
         }
+      },
+      {
+        actionType: 'pad',
+        dimensions: {width: 200},
+        background: {
+          backgroundType: 'generativeFill',
+          prompt: 'hello'
+        }
+      },
+      {
+        actionType: 'minimumPad',
+        dimensions: {width: 200, aspectRatio: 7},
+        background: {
+          backgroundType: 'generativeFill'
+        }
       }
     ]});
 
@@ -60,6 +75,8 @@ describe('resize.fromJson', () => {
       'b_white,c_mpad,fl_relative,g_south,w_100,x_3,y_4',
       'c_crop,g_auto:person_100:cat_avoid,w_200',
       'c_crop,g_dog:auto:bird_30:cat_avoid,w_200',
+      'b_gen_fill:prompt_hello,c_pad,w_200',
+      'ar_7.0,b_gen_fill,c_mpad,w_200'
     ].join('/'));
   });
 

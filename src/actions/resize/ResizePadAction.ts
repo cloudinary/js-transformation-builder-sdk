@@ -6,6 +6,7 @@ import {IActionModel} from "../../internal/models/IActionModel.js";
 import {CompassGravity} from "../../qualifiers/gravity/compassGravity/CompassGravity.js";
 import {createBackgroundModel, IBackgroundModel} from "../../internal/models/createBackgroundModel.js";
 import {createBackgroundFromModel} from "../../internal/models/createBackgroundFromModel.js";
+import {BackgroundGenerativeFillQualifier, isGenerativeFillBackgroundValue} from "../../qualifiers/background/shared/BackgroundGenerativeFillQualifier.js";
 
 /**
  * @description Defines an advanced resize with padding.
@@ -19,9 +20,16 @@ class ResizePadAction<GravityType extends IGravity> extends ResizeAdvancedAction
    * @param {Qualifiers.Background} backgroundQualifier Defines the background color to use instead of
    * transparent background areas or when resizing with padding.
    */
-  background(backgroundQualifier: BackgroundQualifier): this {
-    this._actionModel.background = createBackgroundModel(backgroundQualifier);
-    return this.addQualifier(backgroundQualifier);
+  background(backgroundQualifier: BackgroundQualifier | string): this {
+    let parsedBackgroundQualifier = backgroundQualifier;
+
+    // Support for Generative Fill explicit string syntax: `background("gen_fill:prompt_hello world")`.
+    if (isGenerativeFillBackgroundValue(backgroundQualifier)) {
+      parsedBackgroundQualifier = new BackgroundGenerativeFillQualifier(backgroundQualifier as string);
+    }
+
+    this._actionModel.background = createBackgroundModel(parsedBackgroundQualifier);
+    return this.addQualifier(parsedBackgroundQualifier);
   }
 
   /**

@@ -6,6 +6,7 @@ import {GradientDirectionType} from "../../types/types.js";
 import {BackgroundColor} from "../../actions/background/actions/BackgroundColor.js";
 import {BackgroundPredominantGradientQualifier} from "../../qualifiers/background/shared/gradient/BackgroundPredominantGradientQualifier.js";
 import {BackgroundAutoPredominantQualifier} from "../../qualifiers/background/shared/auto/BackgroundAutoPredominantQualifier.js";
+import {BackgroundGenerativeFillQualifier} from "../../qualifiers/background/shared/BackgroundGenerativeFillQualifier.js";
 
 type IGradientColors = number | string;
 
@@ -52,6 +53,11 @@ interface IPredominantBackgroundModel extends IContrastPaletteBackgroundModel {
 
 interface IPredominantGradientBackgroundModel extends IBaseGradientBackgroundModel {
   backgroundType: 'predominantGradient';
+}
+
+interface IGenerativeFillBackgroundModel {
+  backgroundType: 'generativeFill';
+  prompt?: string;
 }
 
 /**
@@ -193,6 +199,17 @@ function createPredominantGradientBackgroundModel(background: BackgroundPredomin
 }
 
 /**
+ * Create an IGenerativeFillBackgroundModel from given background
+ * @param urlValue
+ */
+function createGenerativeFillBackgroundModel(background: BackgroundGenerativeFillQualifier): IGenerativeFillBackgroundModel {
+  return {
+    backgroundType: background.getBackgroundType(),
+    ...(background.getPrompt() ? { prompt: background.getPrompt() } : {})
+  };
+}
+
+/**
  * Create an IBackgroundModel from given background
  * @param background
  */
@@ -221,6 +238,10 @@ function createBackgroundModel(background: unknown): IBackgroundModel {
     return createPredominantGradientBackgroundModel(background);
   }
 
+  if (background instanceof BackgroundGenerativeFillQualifier) {
+    return createGenerativeFillBackgroundModel(background);
+  }
+
   return createColorBackgroundModel(background as BackgroundColor);
 }
 
@@ -233,5 +254,6 @@ export {
   IColorBackgroundModel,
   IPredominantBackgroundModel,
   IPredominantGradientBackgroundModel,
+  IGenerativeFillBackgroundModel,
   createBackgroundModel
 };

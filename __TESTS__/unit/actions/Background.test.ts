@@ -150,4 +150,25 @@ describe('Tests for Transformation Action -- Background', () => {
 
     expect(tx).toContain('b_blurred:100:100');
   });
+
+  describe('Test generative fill background', () => {
+    it('without prompt', () => {
+      const tx = new Transformation()
+        .resize(Resize.pad(250, 250)
+          .background("gen_fill")
+        )
+        .toString();
+
+      expect(tx).toContain('b_gen_fill');
+    });
+    it('with prompt', () => {
+      const tx = new Transformation()
+        .resize(Resize.pad(250, 250)
+          .background("gen_fill:prompt_turtles in the sea")
+        )
+        .toString();
+
+      expect(tx).toContain('b_gen_fill:prompt_turtles in the sea');
+    });
+  });
 });
