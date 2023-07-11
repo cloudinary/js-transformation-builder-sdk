@@ -6,7 +6,7 @@
  * import {ForegroundObject} from '@cloudinary/url-gen/qualifiers/foregroundObject'
  */
 
-const ForegroundObject = {
+const FOREGROUND_OBJECT = {
   AIRPLANE: 'airplane',
   BUS: 'bus',
   DINING_TABLE: 'dining_table',
@@ -29,8 +29,7 @@ const ForegroundObject = {
   MOTORBIKE: 'motorbike',
 } as const;
 
-export {ForegroundObject};
-export type ForegroundObjectValue = typeof ForegroundObject[keyof typeof ForegroundObject];
+export type ForegroundObjectValue = typeof FOREGROUND_OBJECT[keyof typeof FOREGROUND_OBJECT];
 
 /**
  * @summary qualifier
@@ -38,7 +37,7 @@ export type ForegroundObjectValue = typeof ForegroundObject[keyof typeof Foregro
  * @memberOf Qualifiers.ForegroundObject
  * @return {Qualifiers.ForegroundObject}
  */
-export const airplane = (): ForegroundObjectValue => ForegroundObject.AIRPLANE;
+export const airplane = (): ForegroundObjectValue => FOREGROUND_OBJECT.AIRPLANE;
 
 /**
  * @summary qualifier
@@ -46,7 +45,7 @@ export const airplane = (): ForegroundObjectValue => ForegroundObject.AIRPLANE;
  * @memberOf Qualifiers.ForegroundObject
  * @return {Qualifiers.ForegroundObject}
  */
-export const bus = (): ForegroundObjectValue => ForegroundObject.BUS;
+export const bus = (): ForegroundObjectValue => FOREGROUND_OBJECT.BUS;
 
 /**
  * @summary qualifier
@@ -54,7 +53,7 @@ export const bus = (): ForegroundObjectValue => ForegroundObject.BUS;
  * @memberOf Qualifiers.ForegroundObject
  * @return {Qualifiers.ForegroundObject}
  */
-export const diningTable = (): ForegroundObjectValue => ForegroundObject.DINING_TABLE;
+export const diningTable = (): ForegroundObjectValue => FOREGROUND_OBJECT.DINING_TABLE;
 
 /**
  * @summary qualifier
@@ -62,7 +61,7 @@ export const diningTable = (): ForegroundObjectValue => ForegroundObject.DINING_
  * @memberOf Qualifiers.ForegroundObject
  * @return {Qualifiers.ForegroundObject}
  */
-export const sheep = (): ForegroundObjectValue => ForegroundObject.SHEEP;
+export const sheep = (): ForegroundObjectValue => FOREGROUND_OBJECT.SHEEP;
 
 /**
  * @summary qualifier
@@ -70,7 +69,7 @@ export const sheep = (): ForegroundObjectValue => ForegroundObject.SHEEP;
  * @memberOf Qualifiers.ForegroundObject
  * @return {Qualifiers.ForegroundObject}
  */
-export const bicycle = (): ForegroundObjectValue => ForegroundObject.BICYCLE;
+export const bicycle = (): ForegroundObjectValue => FOREGROUND_OBJECT.BICYCLE;
 
 /**
  * @summary qualifier
@@ -78,7 +77,7 @@ export const bicycle = (): ForegroundObjectValue => ForegroundObject.BICYCLE;
  * @memberOf Qualifiers.ForegroundObject
  * @return {Qualifiers.ForegroundObject}
  */
-export const car = (): ForegroundObjectValue => ForegroundObject.CAR;
+export const car = (): ForegroundObjectValue => FOREGROUND_OBJECT.CAR;
 
 /**
  * @summary qualifier
@@ -86,7 +85,7 @@ export const car = (): ForegroundObjectValue => ForegroundObject.CAR;
  * @memberOf Qualifiers.ForegroundObject
  * @return {Qualifiers.ForegroundObject}
  */
-export const dog = (): ForegroundObjectValue => ForegroundObject.DOG;
+export const dog = (): ForegroundObjectValue => FOREGROUND_OBJECT.DOG;
 
 /**
  * @summary qualifier
@@ -94,7 +93,7 @@ export const dog = (): ForegroundObjectValue => ForegroundObject.DOG;
  * @memberOf Qualifiers.ForegroundObject
  * @return {Qualifiers.ForegroundObject}
  */
-export const sofa = (): ForegroundObjectValue => ForegroundObject.SOFA;
+export const sofa = (): ForegroundObjectValue => FOREGROUND_OBJECT.SOFA;
 
 /**
  * @summary qualifier
@@ -102,7 +101,7 @@ export const sofa = (): ForegroundObjectValue => ForegroundObject.SOFA;
  * @memberOf Qualifiers.ForegroundObject
  * @return {Qualifiers.ForegroundObject}
  */
-export const bird = (): ForegroundObjectValue => ForegroundObject.BIRD;
+export const bird = (): ForegroundObjectValue => FOREGROUND_OBJECT.BIRD;
 
 /**
  * @summary qualifier
@@ -110,7 +109,7 @@ export const bird = (): ForegroundObjectValue => ForegroundObject.BIRD;
  * @memberOf Qualifiers.ForegroundObject
  * @return {Qualifiers.ForegroundObject}
  */
-export const cat = (): ForegroundObjectValue => ForegroundObject.CAT;
+export const cat = (): ForegroundObjectValue => FOREGROUND_OBJECT.CAT;
 
 /**
  * @summary qualifier
@@ -118,7 +117,7 @@ export const cat = (): ForegroundObjectValue => ForegroundObject.CAT;
  * @memberOf Qualifiers.ForegroundObject
  * @return {Qualifiers.ForegroundObject}
  */
-export const horse = (): ForegroundObjectValue => ForegroundObject.HORSE;
+export const horse = (): ForegroundObjectValue => FOREGROUND_OBJECT.HORSE;
 
 /**
  * @summary qualifier
@@ -126,7 +125,7 @@ export const horse = (): ForegroundObjectValue => ForegroundObject.HORSE;
  * @memberOf Qualifiers.ForegroundObject
  * @return {Qualifiers.ForegroundObject}
  */
-export const train = (): ForegroundObjectValue => ForegroundObject.TRAIN;
+export const train = (): ForegroundObjectValue => FOREGROUND_OBJECT.TRAIN;
 
 /**
  * @summary qualifier
@@ -134,7 +133,7 @@ export const train = (): ForegroundObjectValue => ForegroundObject.TRAIN;
  * @memberOf Qualifiers.ForegroundObject
  * @return {Qualifiers.ForegroundObject}
  */
-export const boat = (): ForegroundObjectValue => ForegroundObject.BOAT;
+export const boat = (): ForegroundObjectValue => FOREGROUND_OBJECT.BOAT;
 
 /**
  * @summary qualifier
@@ -142,7 +141,7 @@ export const boat = (): ForegroundObjectValue => ForegroundObject.BOAT;
  * @memberOf Qualifiers.ForegroundObject
  * @return {Qualifiers.ForegroundObject}
  */
-export const chair = (): ForegroundObjectValue => ForegroundObject.CHAIR;
+export const chair = (): ForegroundObjectValue => FOREGROUND_OBJECT.CHAIR;
 
 /**
  * @summary qualifier
@@ -150,7 +149,7 @@ export const chair = (): ForegroundObjectValue => ForegroundObject.CHAIR;
  * @memberOf Qualifiers.ForegroundObject
  * @return {Qualifiers.ForegroundObject}
  */
-export const person = (): ForegroundObjectValue => ForegroundObject.PERSON;
+export const person = (): ForegroundObjectValue => FOREGROUND_OBJECT.PERSON;
 
 /**
  * @summary qualifier
@@ -158,7 +157,7 @@ export const person = (): ForegroundObjectValue => ForegroundObject.PERSON;
  * @memberOf Qualifiers.ForegroundObject
  * @return {Qualifiers.ForegroundObject}
  */
-export const tv = (): ForegroundObjectValue => ForegroundObject.TV;
+export const tv = (): ForegroundObjectValue => FOREGROUND_OBJECT.TV;
 
 /**
  * @summary qualifier
@@ -166,7 +165,7 @@ export const tv = (): ForegroundObjectValue => ForegroundObject.TV;
  * @memberOf Qualifiers.ForegroundObject
  * @return {Qualifiers.ForegroundObject}
  */
-export const bottle = (): ForegroundObjectValue => ForegroundObject.BOTTLE;
+export const bottle = (): ForegroundObjectValue => FOREGROUND_OBJECT.BOTTLE;
 
 /**
  * @summary qualifier
@@ -174,7 +173,7 @@ export const bottle = (): ForegroundObjectValue => ForegroundObject.BOTTLE;
  * @memberOf Qualifiers.ForegroundObject
  * @return {Qualifiers.ForegroundObject}
  */
-export const cow = (): ForegroundObjectValue => ForegroundObject.COW;
+export const cow = (): ForegroundObjectValue => FOREGROUND_OBJECT.COW;
 
 /**
  * @summary qualifier
@@ -182,7 +181,7 @@ export const cow = (): ForegroundObjectValue => ForegroundObject.COW;
  * @memberOf Qualifiers.ForegroundObject
  * @return {Qualifiers.ForegroundObject}
  */
-export const pottedPlant = (): ForegroundObjectValue => ForegroundObject.POTTED_PLANT;
+export const pottedPlant = (): ForegroundObjectValue => FOREGROUND_OBJECT.POTTED_PLANT;
 
 /**
  * @summary qualifier
@@ -190,4 +189,28 @@ export const pottedPlant = (): ForegroundObjectValue => ForegroundObject.POTTED_
  * @memberOf Qualifiers.ForegroundObject
  * @return {Qualifiers.ForegroundObject}
  */
-export const motorbike = (): ForegroundObjectValue => ForegroundObject.MOTORBIKE;
+export const motorbike = (): ForegroundObjectValue => FOREGROUND_OBJECT.MOTORBIKE;
+
+export const ForegroundObject = {
+  ...FOREGROUND_OBJECT,
+  airplane,
+  bus,
+  diningTable,
+  sheep,
+  bicycle,
+  car,
+  dog,
+  sofa,
+  bird,
+  cat,
+  horse,
+  train,
+  boat,
+  chair,
+  person,
+  tv,
+  bottle,
+  cow,
+  pottedPlant,
+  motorbike
+};
