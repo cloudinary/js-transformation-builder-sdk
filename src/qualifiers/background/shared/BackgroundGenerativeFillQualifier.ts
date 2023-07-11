@@ -31,6 +31,11 @@ class BackgroundGenerativeFillQualifier extends BackgroundQualifier {
   toString(): string {
     return `b_gen_fill${this._prompt ? `:prompt_${this._prompt}` : ''}`;
   }
+
+  static createInstanceFromModel(backgroundModel: IGenerativeFillBackgroundModel): BackgroundGenerativeFillQualifier {
+    const backgroundValue = `gen_fill${backgroundModel.prompt ? `:prompt_${backgroundModel.prompt}` : ''}`;
+    return new BackgroundGenerativeFillQualifier(backgroundValue);
+  }
 }
 
 /**
@@ -47,16 +52,8 @@ function getPromptFromBackgroundValue(backgroundValue: string): string | undefin
   return backgroundValue.split(':prompt_')[1];
 }
 
-/**
- * @description Helper for getting Generative Fill background value from the Generative Fill background model.
- */
-function getValueFromGenerativeFillBackgroundModel(backgroundModel: IGenerativeFillBackgroundModel): string {
-  return `gen_fill${backgroundModel.prompt ? `:prompt_${backgroundModel.prompt}` : ''}`;
-}
-
 export {
   BackgroundGenerativeFillQualifier,
   isGenerativeFillBackgroundValue,
-  getPromptFromBackgroundValue,
-  getValueFromGenerativeFillBackgroundModel
+  getPromptFromBackgroundValue
 };
