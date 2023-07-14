@@ -1,3 +1,8 @@
+1.2.11 / 2023-07-14
+==================
+
+- Fix alternative syntax for ForegroundObject
+
 1.2.10 / 2023-07-11
 ==================
 
