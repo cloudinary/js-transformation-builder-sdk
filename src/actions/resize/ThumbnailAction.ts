@@ -1,6 +1,6 @@
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {ResizeAdvancedAction} from "./ResizeAdvancedAction.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
+import { ResizeAdvancedAction } from "./ResizeAdvancedAction.js";
+import { IActionModel } from "../../internal/models/IActionModel.js";
 
 /**
  * @description Defines a thumbnail resize action.
@@ -15,7 +15,7 @@ class ThumbResizeAction extends ResizeAdvancedAction {
    */
   zoom(z: number | string): this {
     this._actionModel.zoom = z;
-    return this.addQualifier(new Qualifier('z', z));
+    return this.addQualifier(new Qualifier("z", z));
   }
 
   static fromJson(actionModel: IActionModel): ThumbResizeAction {
@@ -26,5 +26,4 @@ class ThumbResizeAction extends ResizeAdvancedAction {
   }
 }
 
-
-export {ThumbResizeAction};
+export { ThumbResizeAction };

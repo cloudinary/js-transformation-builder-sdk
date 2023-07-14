@@ -1,4 +1,4 @@
-import {FocusOnValue} from "./gravity/qualifiers/focusOn/FocusOnValue.js";
+import { FocusOnValue } from "./gravity/qualifiers/focusOn/FocusOnValue.js";
 
 /**
  * @summary qualifier
@@ -7,7 +7,7 @@ import {FocusOnValue} from "./gravity/qualifiers/focusOn/FocusOnValue.js";
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function bird(): FocusOnValue {
-  return new FocusOnValue('bird');
+  return new FocusOnValue("bird");
 }
 
 /**
@@ -16,7 +16,7 @@ function bird(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function dog(): FocusOnValue {
-  return new FocusOnValue('dog');
+  return new FocusOnValue("dog");
 }
 
 /**
@@ -26,7 +26,7 @@ function dog(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function cat(): FocusOnValue {
-  return new FocusOnValue('cat');
+  return new FocusOnValue("cat");
 }
 
 /**
@@ -36,7 +36,7 @@ function cat(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function microwave(): FocusOnValue {
-  return new FocusOnValue('microwave');
+  return new FocusOnValue("microwave");
 }
 
 /**
@@ -46,7 +46,7 @@ function microwave(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function refrigerator(): FocusOnValue {
-  return new FocusOnValue('refrigerator');
+  return new FocusOnValue("refrigerator");
 }
 
 /**
@@ -56,7 +56,7 @@ function refrigerator(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function bottle(): FocusOnValue {
-  return new FocusOnValue('bottle');
+  return new FocusOnValue("bottle");
 }
 
 /**
@@ -66,7 +66,7 @@ function bottle(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function sink(): FocusOnValue {
-  return new FocusOnValue('sink');
+  return new FocusOnValue("sink");
 }
 
 /**
@@ -76,7 +76,7 @@ function sink(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function skateboard(): FocusOnValue {
-  return new FocusOnValue('skateboard');
+  return new FocusOnValue("skateboard");
 }
 
 /**
@@ -86,9 +86,8 @@ function skateboard(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function person(): FocusOnValue {
-  return new FocusOnValue('person');
+  return new FocusOnValue("person");
 }
-
 
 /**
  * @summary qualifier
@@ -97,7 +96,7 @@ function person(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function advancedFace(): FocusOnValue {
-  return new FocusOnValue('adv_face');
+  return new FocusOnValue("adv_face");
 }
 
 /**
@@ -107,7 +106,7 @@ function advancedFace(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function advancedFaces(): FocusOnValue {
-  return new FocusOnValue('adv_faces');
+  return new FocusOnValue("adv_faces");
 }
 
 /**
@@ -117,7 +116,7 @@ function advancedFaces(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function advancedEyes(): FocusOnValue {
-  return new FocusOnValue('adv_eyes');
+  return new FocusOnValue("adv_eyes");
 }
 
 /**
@@ -127,7 +126,7 @@ function advancedEyes(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function face(): FocusOnValue {
-  return new FocusOnValue('face');
+  return new FocusOnValue("face");
 }
 
 /**
@@ -137,7 +136,7 @@ function face(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function faces(): FocusOnValue {
-  return new FocusOnValue('faces');
+  return new FocusOnValue("faces");
 }
 
 /**
@@ -147,7 +146,7 @@ function faces(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function background(): FocusOnValue {
-  return new FocusOnValue('background');
+  return new FocusOnValue("background");
 }
 
 /**
@@ -157,7 +156,7 @@ function background(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function aeroplane(): FocusOnValue {
-  return new FocusOnValue('aeroplane');
+  return new FocusOnValue("aeroplane");
 }
 
 /**
@@ -167,7 +166,7 @@ function aeroplane(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function bicycle(): FocusOnValue {
-  return new FocusOnValue('bicycle');
+  return new FocusOnValue("bicycle");
 }
 
 /**
@@ -177,7 +176,7 @@ function bicycle(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function boat(): FocusOnValue {
-  return new FocusOnValue('boat');
+  return new FocusOnValue("boat");
 }
 
 /**
@@ -187,7 +186,7 @@ function boat(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function bus(): FocusOnValue {
-  return new FocusOnValue('bus');
+  return new FocusOnValue("bus");
 }
 
 /**
@@ -197,7 +196,7 @@ function bus(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function car(): FocusOnValue {
-  return new FocusOnValue('car');
+  return new FocusOnValue("car");
 }
 
 /**
@@ -207,9 +206,8 @@ function car(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function chair(): FocusOnValue {
-  return new FocusOnValue('chair');
+  return new FocusOnValue("chair");
 }
-
 
 /**
  * @summary qualifier
@@ -218,7 +216,7 @@ function chair(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function cow(): FocusOnValue {
-  return new FocusOnValue('cow');
+  return new FocusOnValue("cow");
 }
 
 /**
@@ -228,7 +226,7 @@ function cow(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function diningtable(): FocusOnValue {
-  return new FocusOnValue('diningtable');
+  return new FocusOnValue("diningtable");
 }
 
 /**
@@ -238,7 +236,7 @@ function diningtable(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function horse(): FocusOnValue {
-  return new FocusOnValue('horse');
+  return new FocusOnValue("horse");
 }
 
 /**
@@ -248,7 +246,7 @@ function horse(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function motorbike(): FocusOnValue {
-  return new FocusOnValue('motorbike');
+  return new FocusOnValue("motorbike");
 }
 
 /**
@@ -258,7 +256,7 @@ function motorbike(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function pottedplant(): FocusOnValue {
-  return new FocusOnValue('pottedplant');
+  return new FocusOnValue("pottedplant");
 }
 
 /**
@@ -268,7 +266,7 @@ function pottedplant(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function sheep(): FocusOnValue {
-  return new FocusOnValue('sheep');
+  return new FocusOnValue("sheep");
 }
 
 /**
@@ -278,7 +276,7 @@ function sheep(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function sofa(): FocusOnValue {
-  return new FocusOnValue('sofa');
+  return new FocusOnValue("sofa");
 }
 
 /**
@@ -288,7 +286,7 @@ function sofa(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function train(): FocusOnValue {
-  return new FocusOnValue('train');
+  return new FocusOnValue("train");
 }
 
 /**
@@ -298,7 +296,7 @@ function train(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function tvmonitor(): FocusOnValue {
-  return new FocusOnValue('tvmonitor');
+  return new FocusOnValue("tvmonitor");
 }
 
 /**
@@ -308,11 +306,8 @@ function tvmonitor(): FocusOnValue {
  * @return {Qualifiers.FocusOn.FocusOnValue} FocusOnValue
  */
 function ocr(): FocusOnValue {
-  return new FocusOnValue('ocr_text');
+  return new FocusOnValue("ocr_text");
 }
-
-
-
 
 /**
  * @memberOf Qualifiers
@@ -350,9 +345,8 @@ const FocusOn = {
   diningtable,
   tvmonitor,
   motorbike,
-  ocr
+  ocr,
 };
-
 
 export {
   FocusOnValue,
@@ -387,5 +381,5 @@ export {
   diningtable,
   tvmonitor,
   motorbike,
-  ocr
+  ocr,
 };

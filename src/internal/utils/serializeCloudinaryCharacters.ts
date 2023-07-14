@@ -4,12 +4,8 @@
  * @param {string} str
  * @private
  */
-function serializeCloudinaryCharacters(str = ''): string {
-  return str
-    .replace(/,/g, '%2C')
-    .replace(/\//g, '%2F');
+function serializeCloudinaryCharacters(str = ""): string {
+  return str.replace(/,/g, "%2C").replace(/\//g, "%2F");
 }
 
-export {
-  serializeCloudinaryCharacters
-};
+export { serializeCloudinaryCharacters };

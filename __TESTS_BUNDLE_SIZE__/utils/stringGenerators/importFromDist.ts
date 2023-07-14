@@ -5,13 +5,11 @@
  * @returns string
  */
 function importFromDist(pathInDist: string, namedVariableName: string): string {
-
   return `
     import {${namedVariableName}} from '${process.cwd()}/dist/${pathInDist}';
     // we console log to force the bundle not to tree shake
     console.log(${namedVariableName});
   `;
 }
-
 
 export default importFromDist;

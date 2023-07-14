@@ -1,6 +1,6 @@
-import {BaseSource} from "../BaseSource.js";
-import {IVideoSourceModel} from "../../../internal/models/IVideoSourceModel.js";
-import {ITransformationFromJson} from "../../../internal/models/IHasFromJson.js";
+import { BaseSource } from "../BaseSource.js";
+import { IVideoSourceModel } from "../../../internal/models/IVideoSourceModel.js";
+import { ITransformationFromJson } from "../../../internal/models/IHasFromJson.js";
 
 /**
  * @memberOf Qualifiers.Source
@@ -26,7 +26,7 @@ class VideoSource extends BaseSource {
     this._publicID = publicID;
     this._qualifierModel = {
       publicId: publicID,
-      sourceType: 'video'
+      sourceType: "video",
     };
   }
 
@@ -36,14 +36,14 @@ class VideoSource extends BaseSource {
    * This method is used internally within {@link SDK.LayerAction|LayerAction}
    * @returns {string}
    */
-  getOpenSourceString(layerType: 'u' | 'l'): string {
+  getOpenSourceString(layerType: "u" | "l"): string {
     const encodedPublicID = this.encodeAssetPublicID(this._publicID);
 
     return `${layerType}_video:${encodedPublicID}`;
   }
 
   static fromJson(qualifierModel: IVideoSourceModel, transformationFromJson: ITransformationFromJson): VideoSource {
-    const {publicId, transformation} = qualifierModel;
+    const { publicId, transformation } = qualifierModel;
 
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [qualifierModel])
     // This allows the inheriting classes to determine the class to be created
@@ -57,4 +57,4 @@ class VideoSource extends BaseSource {
   }
 }
 
-export {VideoSource};
+export { VideoSource };

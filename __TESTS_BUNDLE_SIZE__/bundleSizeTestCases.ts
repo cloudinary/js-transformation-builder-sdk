@@ -4,7 +4,7 @@
  */
 
 import importFromDist from "./utils/stringGenerators/importFromDist";
-import {ITestCase} from "./interfaces/ITestCase";
+import { ITestCase } from "./interfaces/ITestCase";
 import importFromPackage from "./utils/stringGenerators/importFromPackage";
 
 /**
@@ -12,60 +12,50 @@ import importFromPackage from "./utils/stringGenerators/importFromPackage";
  *                Each element in the array is string, an import statement: `import resize from '...'; console.log(resize)`
  *                Before we export, we combine all those strings into one long string, contained within importString;
  */
-const bundleSizeTestCases:ITestCase[] = [
+const bundleSizeTestCases: ITestCase[] = [
   {
-    name: 'Tests Overlay imports',
+    name: "Tests Overlay imports",
     sizeLimitInKB: 29,
     importsArray: [
-      importFromDist('actions/overlay', 'Overlay'),
-      importFromDist('qualifiers/source', 'Source'),
-      importFromDist('transformation/Transformation', 'Transformation'),
-      importFromDist('actions/resize', 'crop')
-    ]
+      importFromDist("actions/overlay", "Overlay"),
+      importFromDist("qualifiers/source", "Source"),
+      importFromDist("transformation/Transformation", "Transformation"),
+      importFromDist("actions/resize", "crop"),
+    ],
   },
   {
-    name: 'Import backwards compatibility function',
+    name: "Import backwards compatibility function",
     sizeLimitInKB: 45,
-    importsArray: [
-      importFromPackage('createCloudinaryLegacyURL')
-    ]
+    importsArray: [importFromPackage("createCloudinaryLegacyURL")],
   },
   {
-    name: 'Import all of the SDK',
+    name: "Import all of the SDK",
     sizeLimitInKB: 128,
-    importsArray: [
-      importFromPackage('* as CloudinaryURLGEN')
-    ]
+    importsArray: [importFromPackage("* as CloudinaryURLGEN")],
   },
   {
-    name: 'Import a Transformation Object',
+    name: "Import a Transformation Object",
     sizeLimitInKB: 7,
-    importsArray: [
-      importFromPackage('Transformation')
-    ]
+    importsArray: [importFromPackage("Transformation")],
   },
   {
-    name: 'Import All Actions',
+    name: "Import All Actions",
     sizeLimitInKB: 60,
-    importsArray: [
-      importFromPackage('Actions')
-    ]
+    importsArray: [importFromPackage("Actions")],
   },
   {
-    name: 'Import All Qualifiers',
+    name: "Import All Qualifiers",
     sizeLimitInKB: 40,
-    importsArray: [
-      importFromPackage('Qualifiers')
-    ]
-  }
+    importsArray: [importFromPackage("Qualifiers")],
+  },
 ];
 
 /**
  * Each case is an array of strings,
  * Before we export, we make sure we combine them so that `importString` contains a single long string
  */
-export default <ITestCase[]> bundleSizeTestCases.map((testCase): ITestCase => {
+export default <ITestCase[]>bundleSizeTestCases.map((testCase): ITestCase => {
   // Join all the strings into one long string, so we can write it to a file
-  testCase.importString = testCase.importsArray.join('');
+  testCase.importString = testCase.importsArray.join("");
   return testCase;
 });

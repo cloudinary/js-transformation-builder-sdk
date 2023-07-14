@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable require-jsdoc */
 
+import { IFrameworkResponse } from "sdk-sanity-generator/dist/interfaces";
+const prettier = require("prettier");
 
-import {IFrameworkResponse} from "sdk-sanity-generator/dist/interfaces";
-const prettier = require('prettier');
-
-function createTestFile(txs: IFrameworkResponse[]){
+function createTestFile(txs: IFrameworkResponse[]) {
   let file = `
   // In the future, we'll support HOTER tests without name duplication issues, for now it's commented out
   // It's stored here since this is built manually, and it's best to keep the work :)
@@ -156,48 +155,52 @@ import {CloudinaryImage, CloudinaryVideo, } from "@cloduinary-url-gen";
 
   file += `describe("Testing", () => {\n`;
 
-  file += txs.map((txResult) => {
-    let test = `it("${txResult.transformation}", () => {`;
-    // If the SDK does not support the transformation, we comment out the test
+  file += txs
+    .map((txResult) => {
+      let test = `it("${txResult.transformation}", () => {`;
+      // If the SDK does not support the transformation, we comment out the test
 
-    if (txResult.status === 11) {
-      test += txResult.status === 11 ? '/* SUCCESS, BUT NO GENERATED CODE - THE SDK DOES NOT SUPPORT THIS TRANSFORMATION' : '';
-    }
-
-    if (txResult.status !== 11) {
-      test += `const tAsset = ${txResult.codeSnippet}`;
-
-      if (txResult.transformation.startsWith('http')) {
-
-        // For URLS, If not a demo cloud, we do not support the compilation test.
-        if (!txResult.transformation.includes('/demo/')) {
-          throw `Unsupported URL: ${txResult.transformation}`;
-        }
-
-        test += `tAsset.setCloudConfig({cloudName: 'demo'});`;
-        test += `tAsset.setURLConfig({analytics:false});`;
-        test += `expect(tAsset.toString()).toBe('${txResult.transformation}');`;
-      } else {
-        test += `const parts = '${txResult.transformation}'.replace(/\\//g, ',').split(',');\n\n`;
-        test += `parts.forEach((part) => { expect(tAsset.toString()).toContain(part)})`;
+      if (txResult.status === 11) {
+        test +=
+          txResult.status === 11
+            ? "/* SUCCESS, BUT NO GENERATED CODE - THE SDK DOES NOT SUPPORT THIS TRANSFORMATION"
+            : "";
       }
-    }
 
-    // If the SDK does not support the transformation, we close the comment that was opened above
-    test += txResult.status === 11 ? '*/' : '';
-    test += '\n})\n'; // Close it test
+      if (txResult.status !== 11) {
+        test += `const tAsset = ${txResult.codeSnippet}`;
 
-    try {
-      return prettier.format(test, {parser:'babel'});
-    } catch (e) {
-      return test;
-    }
-  }).join('\n');
+        if (txResult.transformation.startsWith("http")) {
+          // For URLS, If not a demo cloud, we do not support the compilation test.
+          if (!txResult.transformation.includes("/demo/")) {
+            throw `Unsupported URL: ${txResult.transformation}`;
+          }
+
+          test += `tAsset.setCloudConfig({cloudName: 'demo'});`;
+          test += `tAsset.setURLConfig({analytics:false});`;
+          test += `expect(tAsset.toString()).toBe('${txResult.transformation}');`;
+        } else {
+          test += `const parts = '${txResult.transformation}'.replace(/\\//g, ',').split(',');\n\n`;
+          test += `parts.forEach((part) => { expect(tAsset.toString()).toContain(part)})`;
+        }
+      }
+
+      // If the SDK does not support the transformation, we close the comment that was opened above
+      test += txResult.status === 11 ? "*/" : "";
+      test += "\n})\n"; // Close it test
+
+      try {
+        return prettier.format(test, { parser: "babel" });
+      } catch (e) {
+        return test;
+      }
+    })
+    .join("\n");
 
   file += `\n})\n`;
 
   try {
-    return prettier.format(file, {parser:'babel'});
+    return prettier.format(file, { parser: "babel" });
   } catch (e) {
     return file;
   }

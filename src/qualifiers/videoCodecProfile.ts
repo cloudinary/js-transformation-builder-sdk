@@ -6,14 +6,13 @@
  * @see Visit {@link Actions.Transcode|Transcode} for an example
  */
 
-
 /**
  * @summary qualifier
  * @memberOf Qualifiers.VideoCodecProfile
  * @return {string}
  */
-function high():string {
-  return 'high';
+function high(): string {
+  return "high";
 }
 
 /**
@@ -21,8 +20,8 @@ function high():string {
  * @memberOf Qualifiers.VideoCodecProfile
  * @return {string}
  */
-function main():string {
-  return 'main';
+function main(): string {
+  return "main";
 }
 
 /**
@@ -30,19 +29,14 @@ function main():string {
  * @memberOf Qualifiers.VideoCodecProfile
  * @return {string}
  */
-function baseline():string {
-  return 'baseline';
+function baseline(): string {
+  return "baseline";
 }
 
 const VideoCodecProfile = {
   baseline,
   main,
-  high
+  high,
 };
 
-export {
-  VideoCodecProfile,
-  baseline,
-  main,
-  high
-};
+export { VideoCodecProfile, baseline, main, high };

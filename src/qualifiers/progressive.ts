@@ -13,36 +13,33 @@
  * const image = yourCldInstance.image('woman');
  * image.delivery(format(jpg()).progressive(steep()))
  */
-import {FlagQualifier} from "./flag/FlagQualifier.js";
-
-
+import { FlagQualifier } from "./flag/FlagQualifier.js";
 
 class ProgressiveQualifier extends FlagQualifier {
   constructor(mode?: string) {
-    super('progressive', mode);
+    super("progressive", mode);
   }
 }
-
 
 /**
  * @memberOf Qualifiers.Progressive
  */
 function none(): FlagQualifier {
-  return new ProgressiveQualifier('none');
+  return new ProgressiveQualifier("none");
 }
 
 /**
  * @memberOf Qualifiers.Progressive
  */
 function semi(): FlagQualifier {
-  return new ProgressiveQualifier('semi');
+  return new ProgressiveQualifier("semi");
 }
 
 /**
  * @memberOf Qualifiers.Progressive
  */
 function steep(): FlagQualifier {
-  return new ProgressiveQualifier('steep');
+  return new ProgressiveQualifier("steep");
 }
 
 /**
@@ -52,23 +49,12 @@ function progressive(): FlagQualifier {
   return new ProgressiveQualifier();
 }
 
-
-
 const Progressive = {
   semi,
   none,
   steep,
   progressive,
-  ProgressiveQualifier
+  ProgressiveQualifier,
 };
 
-export {
-  Progressive,
-  semi,
-  none,
-  steep,
-  progressive,
-  ProgressiveQualifier
-};
-
-
+export { Progressive, semi, none, steep, progressive, ProgressiveQualifier };

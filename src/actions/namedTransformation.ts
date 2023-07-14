@@ -1,4 +1,4 @@
-import {NamedTransformationAction} from "./namedTransformation/NamedTransformationAction.js";
+import { NamedTransformationAction } from "./namedTransformation/NamedTransformationAction.js";
 
 /**
  * Applies a pre-defined named transformation of the given name.
@@ -22,11 +22,10 @@ import {NamedTransformationAction} from "./namedTransformation/NamedTransformati
  * @memberOf Actions.NamedTransformation
  * @return {Actions.NamedTransformation.NamedTransformationAction}
  */
-function name(name:string): NamedTransformationAction {
+function name(name: string): NamedTransformationAction {
   return new NamedTransformationAction(name);
 }
 
+const NamedTransformation = { name };
 
-const NamedTransformation = {name};
-
-export {NamedTransformation, name};
+export { NamedTransformation, name };

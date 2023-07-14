@@ -1,4 +1,4 @@
-import Expression from './expression.js';
+import Expression from "./expression.js";
 
 /**
  * Represents a transformation condition.
@@ -24,7 +24,7 @@ import Expression from './expression.js';
  *
  */
 class Condition extends Expression {
-  constructor(conditionStr:string) {
+  constructor(conditionStr: string) {
     super(conditionStr);
   }
 
@@ -34,7 +34,7 @@ class Condition extends Expression {
    * @param {string|number} value the right hand side value
    * @return {Condition} this condition
    */
-  height(operator: string, value: string|number) {
+  height(operator: string, value: string | number) {
     return this.predicate("h", operator, value);
   }
 
@@ -44,7 +44,7 @@ class Condition extends Expression {
    * @param {string|number} value the right hand side value
    * @return {Condition} this condition
    */
-  width(operator: string, value: string|number) {
+  width(operator: string, value: string | number) {
     return this.predicate("w", operator, value);
   }
 
@@ -54,7 +54,7 @@ class Condition extends Expression {
    * @param {string|number} value the right hand side value
    * @return {Condition} this condition
    */
-  aspectRatio(operator: string, value: string|number) {
+  aspectRatio(operator: string, value: string | number) {
     return this.predicate("ar", operator, value);
   }
 
@@ -64,7 +64,7 @@ class Condition extends Expression {
    * @param {string|number} value the right hand side value
    * @return {Condition} this condition
    */
-  pageCount(operator: string, value: string|number) {
+  pageCount(operator: string, value: string | number) {
     return this.predicate("pc", operator, value);
   }
 
@@ -74,7 +74,7 @@ class Condition extends Expression {
    * @param {string|number} value the right hand side value
    * @return {Condition} this condition
    */
-  faceCount(operator: string, value: string|number) {
+  faceCount(operator: string, value: string | number) {
     return this.predicate("fc", operator, value);
   }
 
@@ -84,7 +84,7 @@ class Condition extends Expression {
    * @param {string|number} value the right hand side value
    * @return {Condition} this condition
    */
-  duration(operator: string, value: string|number) {
+  duration(operator: string, value: string | number) {
     return this.predicate("du", operator, value);
   }
 
@@ -94,7 +94,7 @@ class Condition extends Expression {
    * @param {string|number} value the right hand side value
    * @return {Condition} this condition
    */
-  initialDuration(operator: string, value: string|number) {
+  initialDuration(operator: string, value: string | number) {
     return this.predicate("idu", operator, value);
   }
 }

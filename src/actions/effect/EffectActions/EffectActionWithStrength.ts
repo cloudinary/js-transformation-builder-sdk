@@ -1,4 +1,4 @@
-import {LeveledEffectAction} from "./LeveledEffectAction.js";
+import { LeveledEffectAction } from "./LeveledEffectAction.js";
 
 /**
  * @description A class for all effects that include a strength method
@@ -7,11 +7,11 @@ import {LeveledEffectAction} from "./LeveledEffectAction.js";
  * @see Visit {@link Actions.Effect|Effect} for an example
  */
 class EffectActionWithStrength extends LeveledEffectAction {
-  LEVEL_NAME = 'strength';
+  LEVEL_NAME = "strength";
 
   strength(value: number | string): this {
     return this.setLevel(value);
   }
 }
 
-export {EffectActionWithStrength};
+export { EffectActionWithStrength };

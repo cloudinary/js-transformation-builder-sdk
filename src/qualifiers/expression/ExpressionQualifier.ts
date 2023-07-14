@@ -1,4 +1,4 @@
-import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
+import { QualifierValue } from "../../internal/qualifier/QualifierValue.js";
 
 /**
  * @namespace Expression
@@ -18,4 +18,4 @@ class ExpressionQualifier extends QualifierValue {
   }
 }
 
-export { ExpressionQualifier} ;
+export { ExpressionQualifier };

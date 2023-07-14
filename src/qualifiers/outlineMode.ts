@@ -10,7 +10,7 @@
  * @memberOf Qualifiers.Outline
  */
 function fill(): string {
-  return 'fill';
+  return "fill";
 }
 
 /**
@@ -18,7 +18,7 @@ function fill(): string {
  * @memberOf Qualifiers.Outline
  */
 function inner(): string {
-  return 'inner';
+  return "inner";
 }
 
 /**
@@ -26,7 +26,7 @@ function inner(): string {
  * @memberOf Qualifiers.Outline
  */
 function innerFill(): string {
-  return 'inner_fill';
+  return "inner_fill";
 }
 
 /**
@@ -34,20 +34,14 @@ function innerFill(): string {
  * @memberOf Qualifiers.Outline
  */
 function outer(): string {
-  return 'outer';
+  return "outer";
 }
 
 const OutlineMode = {
   outer,
   inner,
   innerFill,
-  fill
+  fill,
 };
 
-export {
-  OutlineMode,
-  outer,
-  inner,
-  innerFill,
-  fill
-};
+export { OutlineMode, outer, inner, innerFill, fill };

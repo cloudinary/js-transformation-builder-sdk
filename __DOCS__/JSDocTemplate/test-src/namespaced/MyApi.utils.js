@@ -16,6 +16,4 @@ MyApi.utils = {};
  * @example {@caption Basic usage:}
  * var result = MyApi.utils.format( "Hello {0}! My name is {1}.", "Jill", "Jack" ); // => "Hello Jill! My name is Jack."
  */
-MyApi.utils.format = function(str, arg, argN){
-
-};
+MyApi.utils.format = function (str, arg, argN) {};

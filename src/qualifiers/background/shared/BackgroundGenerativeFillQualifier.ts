@@ -1,5 +1,5 @@
-import {BackgroundQualifier} from "./base/BackgroundQualifier.js";
-import {IGenerativeFillBackgroundModel} from "../../../internal/models/createBackgroundModel.js";
+import { BackgroundQualifier } from "./base/BackgroundQualifier.js";
+import { IGenerativeFillBackgroundModel } from "../../../internal/models/createBackgroundModel.js";
 
 /**
  * @description Automatically fills the padded area using generative AI to extend the image seamlessly.
@@ -8,19 +8,19 @@ import {IGenerativeFillBackgroundModel} from "../../../internal/models/createBac
  */
 class BackgroundGenerativeFillQualifier extends BackgroundQualifier {
   protected _prompt: string | undefined;
-  protected _backgroundType: 'generativeFill';
+  protected _backgroundType: "generativeFill";
 
   constructor(backgroundValue: string) {
     super(backgroundValue);
 
     this._prompt = getPromptFromBackgroundValue(backgroundValue);
-    this._backgroundType = 'generativeFill';
+    this._backgroundType = "generativeFill";
   }
 
   getPrompt(): string | undefined {
     return this._prompt;
   }
-  getBackgroundType(): 'generativeFill' {
+  getBackgroundType(): "generativeFill" {
     return this._backgroundType;
   }
 
@@ -29,11 +29,11 @@ class BackgroundGenerativeFillQualifier extends BackgroundQualifier {
    * Override the toString() function to explicitly stringify the qualifier.
    */
   toString(): string {
-    return `b_gen_fill${this._prompt ? `:prompt_${this._prompt}` : ''}`;
+    return `b_gen_fill${this._prompt ? `:prompt_${this._prompt}` : ""}`;
   }
 
   static createInstanceFromModel(backgroundModel: IGenerativeFillBackgroundModel): BackgroundGenerativeFillQualifier {
-    const backgroundValue = `gen_fill${backgroundModel.prompt ? `:prompt_${backgroundModel.prompt}` : ''}`;
+    const backgroundValue = `gen_fill${backgroundModel.prompt ? `:prompt_${backgroundModel.prompt}` : ""}`;
     return new BackgroundGenerativeFillQualifier(backgroundValue);
   }
 }
@@ -42,18 +42,14 @@ class BackgroundGenerativeFillQualifier extends BackgroundQualifier {
  * @description Helper for checking if the background value is type of Generative Fill.
  */
 function isGenerativeFillBackgroundValue(backgroundValue: unknown): boolean {
-  return typeof backgroundValue === 'string' && backgroundValue.startsWith('gen_fill');
+  return typeof backgroundValue === "string" && backgroundValue.startsWith("gen_fill");
 }
 
 /**
  * @description Helper for getting prompt from the Generative Fill background value.
  */
 function getPromptFromBackgroundValue(backgroundValue: string): string | undefined {
-  return backgroundValue.split(':prompt_')[1];
+  return backgroundValue.split(":prompt_")[1];
 }
 
-export {
-  BackgroundGenerativeFillQualifier,
-  isGenerativeFillBackgroundValue,
-  getPromptFromBackgroundValue
-};
+export { BackgroundGenerativeFillQualifier, isGenerativeFillBackgroundValue, getPromptFromBackgroundValue };

@@ -4,12 +4,11 @@
  * @return {Object} a new object
  * @param source
  */
-import {isEmpty} from "./isEmpty.js";
+import { isEmpty } from "./isEmpty.js";
 
-export const withCamelCaseKeys = function(source: {}) {
+export const withCamelCaseKeys = function (source: {}) {
   return convertKeys(source, camelCase);
 };
-
 
 /**
  * Convert string to camelCase
@@ -17,14 +16,13 @@ export const withCamelCaseKeys = function(source: {}) {
  * @param {string} source - the string to convert
  * @return {string} in camelCase format
  */
-export const camelCase = function(source: string) {
+export const camelCase = function (source: string) {
   var words = source.match(reWords);
-  words = words.map(word=> word.charAt(0).toLocaleUpperCase() + word.slice(1).toLocaleLowerCase());
+  words = words.map((word) => word.charAt(0).toLocaleUpperCase() + word.slice(1).toLocaleLowerCase());
   words[0] = words[0].toLocaleLowerCase();
 
-  return words.join('');
+  return words.join("");
 };
-
 
 /**
  * Creates a new object from source, with the keys transformed using the converter.
@@ -32,12 +30,15 @@ export const camelCase = function(source: string) {
  * @param {function|null} converter
  * @returns {object}
  */
-export var convertKeys = function(source: { [x: string]: any; }, converter: { (source: string): string; (arg0: string): string; }) {
+export var convertKeys = function (
+  source: { [x: string]: any },
+  converter: { (source: string): string; (arg0: string): string }
+) {
   var result, value;
   result = {};
   for (let key in source) {
     value = source[key];
-    if(converter) {
+    if (converter) {
       key = converter(key);
     }
     if (!isEmpty(key)) {
@@ -48,14 +49,14 @@ export var convertKeys = function(source: { [x: string]: any; }, converter: { (s
   return result;
 };
 
-export var reWords = (function() {
+export var reWords = (function () {
   var lower, upper;
-  upper = '[A-Z]';
-  lower = '[a-z]+';
-  return RegExp(upper + '+(?=' + upper + lower + ')|' + upper + '?' + lower + '|' + upper + '+|[0-9]+', 'g');
+  upper = "[A-Z]";
+  lower = "[a-z]+";
+  return RegExp(upper + "+(?=" + upper + lower + ")|" + upper + "?" + lower + "|" + upper + "+|[0-9]+", "g");
 })();
 
-export function identity(x:any) {
+export function identity(x: any) {
   return x;
 }
 
@@ -68,7 +69,6 @@ export function contains(a: string | any[], obj: any) {
   return false;
 }
 
-export function difference(arr1:any[], arr2:any[]){
-  return arr1.filter(x => !arr2.includes(x));
+export function difference(arr1: any[], arr2: any[]) {
+  return arr1.filter((x) => !arr2.includes(x));
 }
-

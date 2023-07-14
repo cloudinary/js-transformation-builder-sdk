@@ -1,5 +1,5 @@
 import fs from "fs";
-import {TMP_FOLDER} from "../consts";
+import { TMP_FOLDER } from "../consts";
 
 /**
  * Gets file information (like size, and blocks) given a path

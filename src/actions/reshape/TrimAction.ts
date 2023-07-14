@@ -1,5 +1,5 @@
-import {Action} from "../../internal/Action.js";
-import {SystemColors} from "../../qualifiers/color.js";
+import { Action } from "../../internal/Action.js";
+import { SystemColors } from "../../qualifiers/color.js";
 
 /**
  * @description Removes the edges of the image based on the color of the corner pixels.
@@ -32,13 +32,8 @@ class TrimAction extends Action {
     // image.reshape(Reshape.trim()->colorSimilarity(50)->colorOverride(Color.YELLOW));
     // e_trim:50:yellow
 
-    return [
-      'e_trim',
-      this._tolerance,
-      this._color
-    ].filter((a) => a).join(':');
+    return ["e_trim", this._tolerance, this._color].filter((a) => a).join(":");
   }
 }
 
-
-export {TrimAction};
+export { TrimAction };

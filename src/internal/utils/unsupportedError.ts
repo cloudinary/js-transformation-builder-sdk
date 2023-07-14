@@ -1,5 +1,5 @@
 class UnsupportedError extends Error {
-  constructor(message = 'Unsupported') {
+  constructor(message = "Unsupported") {
     super(message);
   }
 }
@@ -8,7 +8,7 @@ class UnsupportedError extends Error {
  * Creates a new UnsupportedError
  * @param message
  */
-function createUnsupportedError(message: string): UnsupportedError{
+function createUnsupportedError(message: string): UnsupportedError {
   return new UnsupportedError(message);
 }
 export { UnsupportedError, createUnsupportedError };

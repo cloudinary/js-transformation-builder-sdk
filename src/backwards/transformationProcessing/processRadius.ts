@@ -1,5 +1,4 @@
-import {legacyNormalizeExpression} from "../utils/legacyNormalizeExpression.js";
-
+import { legacyNormalizeExpression } from "../utils/legacyNormalizeExpression.js";
 
 /**
  * Parse radius options
@@ -18,12 +17,11 @@ export function processRadius(_radius: any) {
     radius = [radius];
   }
 
-
   if (radius.length === 0 || radius.length > 4) {
     throw new Error("Radius array should contain between 1 and 4 values");
   }
   if (radius.findIndex((x: any) => x === null) >= 0) {
     throw new Error("Corner: Cannot be null");
   }
-  return radius.map(legacyNormalizeExpression).join(':');
+  return radius.map(legacyNormalizeExpression).join(":");
 }

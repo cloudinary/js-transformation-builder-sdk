@@ -1,4 +1,4 @@
-import {Qualifier} from "../internal/qualifier/Qualifier.js";
+import { Qualifier } from "../internal/qualifier/Qualifier.js";
 
 /**
  * @description Contains functions that Applies automatic multi-line text wrap.
@@ -17,12 +17,12 @@ class TextFitQualifier extends Qualifier {
     this._height = height;
   }
 
-  height(height: number){
+  height(height: number) {
     this._height = height;
     return this;
   }
 
-  toString(){
+  toString() {
     return this._height ? `c_fit,w_${this._width},h_${this._height}` : `c_fit,w_${this._width}`;
   }
 }
@@ -33,10 +33,10 @@ class TextFitQualifier extends Qualifier {
  * @param {number} width The width in pixels.
  * @param {number} height The height in pixels.
  */
-function size(width: number, height?: number){
+function size(width: number, height?: number) {
   return new TextFitQualifier(width, height);
 }
 
-const TextFit = {size};
+const TextFit = { size };
 
-export {TextFit, size, TextFitQualifier};
+export { TextFit, size, TextFitQualifier };

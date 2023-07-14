@@ -5,7 +5,6 @@
  * @see Visit {@link Actions.Effect.dither|Dither Effect} for an example
  */
 
-
 /**
  * @summary qualifier
  * @memberOf Qualifiers.Dither
@@ -158,7 +157,6 @@ function circles7x7White(): number {
   return 18;
 }
 
-
 const Dither = {
   checkerboard2x1Dither,
   circles5x5Black,
@@ -178,9 +176,8 @@ const Dither = {
   ordered3x3Dispersed,
   ordered4x4Dispersed,
   ordered8x8Dispersed,
-  threshold1x1Nondither
+  threshold1x1Nondither,
 };
-
 
 export {
   Dither,
@@ -202,5 +199,5 @@ export {
   ordered3x3Dispersed,
   ordered4x4Dispersed,
   ordered8x8Dispersed,
-  threshold1x1Nondither
+  threshold1x1Nondither,
 };

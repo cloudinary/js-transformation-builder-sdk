@@ -1,4 +1,4 @@
-import {processCustomFunction} from "./processCustomFunction.js";
+import { processCustomFunction } from "./processCustomFunction.js";
 
 /**
  * Parse custom_pre_function options
@@ -8,5 +8,5 @@ import {processCustomFunction} from "./processCustomFunction.js";
  */
 export function processCustomPreFunction(customPreFunction: any) {
   const result = processCustomFunction(customPreFunction);
-  return typeof result === 'string' ? `pre:${result}` : null;
+  return typeof result === "string" ? `pre:${result}` : null;
 }

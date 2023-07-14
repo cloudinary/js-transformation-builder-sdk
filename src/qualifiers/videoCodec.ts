@@ -1,11 +1,10 @@
-import {AdvVideoCodecType, VideoCodecType} from "./videoCodecType/VideoCodecType.js";
+import { AdvVideoCodecType, VideoCodecType } from "./videoCodecType/VideoCodecType.js";
 /**
  * @description Determines the video codec to use.
  * @memberOf Qualifiers
  * @namespace VideoCodec
  * @see Visit {@link Actions.Transcode|Transcode} for an example
  */
-
 
 /**
  * @summary qualifier
@@ -14,7 +13,7 @@ import {AdvVideoCodecType, VideoCodecType} from "./videoCodecType/VideoCodecType
  * @returns {Qualifiers.VideoCodec.VideoCodecType}
  */
 function auto(): VideoCodecType {
-  return new VideoCodecType('auto');
+  return new VideoCodecType("auto");
 }
 
 /**
@@ -24,7 +23,7 @@ function auto(): VideoCodecType {
  * @returns {Qualifiers.VideoCodec.AdvVideoCodecType}
  */
 function h264(): AdvVideoCodecType {
-  return new AdvVideoCodecType('h264');
+  return new AdvVideoCodecType("h264");
 }
 
 /**
@@ -34,7 +33,7 @@ function h264(): AdvVideoCodecType {
  * @returns {Qualifiers.VideoCodec.VideoCodecType}
  */
 function h265(): VideoCodecType {
-  return new VideoCodecType('h265');
+  return new VideoCodecType("h265");
 }
 
 /**
@@ -44,7 +43,7 @@ function h265(): VideoCodecType {
  * @returns {Qualifiers.VideoCodec.VideoCodecType}
  */
 function proRes(): VideoCodecType {
-  return new VideoCodecType('prores');
+  return new VideoCodecType("prores");
 }
 
 /**
@@ -54,7 +53,7 @@ function proRes(): VideoCodecType {
  * @returns {Qualifiers.VideoCodec.VideoCodecType}
  */
 function theora(): VideoCodecType {
-  return new VideoCodecType('theora');
+  return new VideoCodecType("theora");
 }
 
 /**
@@ -64,7 +63,7 @@ function theora(): VideoCodecType {
  * @returns {Qualifiers.VideoCodec.VideoCodecType}
  */
 function vp8(): VideoCodecType {
-  return new VideoCodecType('vp8');
+  return new VideoCodecType("vp8");
 }
 
 /**
@@ -73,19 +72,19 @@ function vp8(): VideoCodecType {
  * @memberOf Qualifiers.VideoCodec
  * @returns {Qualifiers.VideoCodec.VideoCodecType}
  */
-function vp9():VideoCodecType {
-  return new VideoCodecType('vp9');
+function vp9(): VideoCodecType {
+  return new VideoCodecType("vp9");
 }
 
 export const VIDEO_CODEC_TO_TRANSFORMATION: Record<string, VideoCodecType | AdvVideoCodecType> = {
-  'auto': auto(),
-  'h264': h264(),
-  'h265': h265(),
-  'prores': proRes(),
-  'theora': theora(),
-  'vp8': vp8(),
-  'vp9': vp9()
+  auto: auto(),
+  h264: h264(),
+  h265: h265(),
+  prores: proRes(),
+  theora: theora(),
+  vp8: vp8(),
+  vp9: vp9(),
 };
 
-const VideoCodec = { auto, h264, h265, proRes, theora, vp8, vp9};
-export {VideoCodec, auto, h264, h265, proRes, theora, vp8, vp9};
+const VideoCodec = { auto, h264, h265, proRes, theora, vp8, vp9 };
+export { VideoCodec, auto, h264, h265, proRes, theora, vp8, vp9 };

@@ -12,7 +12,7 @@
  * @memberOf Qualifiers.FontStyle
  */
 function normal(): string {
-  return 'normal';
+  return "normal";
 }
 
 /**
@@ -20,14 +20,9 @@ function normal(): string {
  * @memberOf Qualifiers.FontStyle
  */
 function italic(): string {
-  return 'italic';
+  return "italic";
 }
 
-const FontStyle = {normal, italic};
+const FontStyle = { normal, italic };
 
-export {
-  FontStyle,
-  italic,
-  normal
-};
-
+export { FontStyle, italic, normal };

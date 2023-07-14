@@ -1,4 +1,4 @@
-import {FlagQualifier} from "../../qualifiers/flag/FlagQualifier.js";
+import { FlagQualifier } from "../../qualifiers/flag/FlagQualifier.js";
 
 /**
  * Sort a map by key
@@ -14,7 +14,7 @@ function mapToSortedArray<T>(map: Map<string, T | FlagQualifier>, flags: FlagQua
   // Flags is an array of FlagQualifierObj
   // We need to convert it to the same form: [flagQualifier] =>  ['fl', flagQualifier]
   flags.forEach((flag) => {
-    array.push(['fl', flag]); // push ['fl', flagQualifier]
+    array.push(["fl", flag]); // push ['fl', flagQualifier]
   });
 
   return array.sort().map((v) => v[1]);
@@ -27,10 +27,7 @@ function mapToSortedArray<T>(map: Map<string, T | FlagQualifier>, flags: FlagQua
  * @return {boolean} `true` if `value` is a string, else `false`.
  */
 function isString(value: any): value is string {
-  return (typeof value === 'string' || value instanceof String);
+  return typeof value === "string" || value instanceof String;
 }
 
-export {
-  isString,
-  mapToSortedArray
-};
+export { isString, mapToSortedArray };

@@ -4,7 +4,7 @@
       "out": ["package.json", "../package.json"]
     }
   },
-  "hooks" :{
-    "after:bump" : "git add .. -u"
+  "hooks": {
+    "after:bump": "git add .. -u"
   }
 }

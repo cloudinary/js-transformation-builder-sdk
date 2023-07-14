@@ -1,6 +1,6 @@
-import {BaseCommonBackground} from "./BaseCommonBackground.js";
-import {GradientDirectionQualifierValue} from "../../../gradientDirection/GradientDirectionQualifierValue.js";
-import {GradientDirectionType} from "../../../../types/types.js";
+import { BaseCommonBackground } from "./BaseCommonBackground.js";
+import { GradientDirectionQualifierValue } from "../../../gradientDirection/GradientDirectionQualifierValue.js";
+import { GradientDirectionType } from "../../../../types/types.js";
 
 /**
  * @description Defines the gradient fade effect to use for the background when resizing with padding.
@@ -9,7 +9,7 @@ import {GradientDirectionType} from "../../../../types/types.js";
  */
 class BaseGradientBackground extends BaseCommonBackground {
   protected _gradientColors: number;
-  protected _gradientDirection: GradientDirectionType|GradientDirectionQualifierValue;
+  protected _gradientDirection: GradientDirectionType | GradientDirectionQualifierValue;
   /**
    *
    * @description Sets the number of predominant colors to use (2 or 4).
@@ -33,4 +33,4 @@ class BaseGradientBackground extends BaseCommonBackground {
   }
 }
 
-export {BaseGradientBackground};
+export { BaseGradientBackground };

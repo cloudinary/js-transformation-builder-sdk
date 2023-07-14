@@ -1,6 +1,6 @@
-import {ClipAction} from "./psdTools/ClipAction.js";
-import {GetLayerAction} from "./psdTools/GetLayerAction.js";
-import {SmartObjectAction} from "./psdTools/SmartObjectAction.js";
+import { ClipAction } from "./psdTools/ClipAction.js";
+import { GetLayerAction } from "./psdTools/GetLayerAction.js";
+import { SmartObjectAction } from "./psdTools/SmartObjectAction.js";
 
 /**
  * @namespace PSDTools
@@ -10,7 +10,6 @@ import {SmartObjectAction} from "./psdTools/SmartObjectAction.js";
  * @example
  * // See examples under each method
  */
-
 
 /**
  * @summary action
@@ -82,6 +81,5 @@ function smartObject(): SmartObjectAction {
   return new SmartObjectAction();
 }
 
-
-const PSDTools = {clip, getLayer, smartObject};
-export {PSDTools, clip, getLayer, smartObject};
+const PSDTools = { clip, getLayer, smartObject };
+export { PSDTools, clip, getLayer, smartObject };

@@ -7,7 +7,7 @@ class RemoteAction extends CustomFunctionAction {
     super(fn);
   }
   preprocess(): this {
-    this.pre = 'pre';
+    this.pre = "pre";
     return this;
   }
 }

@@ -11,4 +11,4 @@ function objectFlip(obj: Record<string, string>): Record<string, string> {
   return result;
 }
 
-export {objectFlip};
+export { objectFlip };

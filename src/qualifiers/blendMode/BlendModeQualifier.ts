@@ -1,6 +1,6 @@
-import {Action} from "../../internal/Action.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
+import { Action } from "../../internal/Action.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
+import { QualifierValue } from "../../internal/qualifier/QualifierValue.js";
 
 /**
  * @description
@@ -14,11 +14,10 @@ import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
  * @extends SDK.Action
  */
 class BlendModeQualifier extends Action {
-  constructor(blendMode:string, level?:number) {
+  constructor(blendMode: string, level?: number) {
     super();
-    this.addQualifier(new Qualifier('e', new QualifierValue([blendMode, level])));
+    this.addQualifier(new Qualifier("e", new QualifierValue([blendMode, level])));
   }
 }
 
-
-export {BlendModeQualifier};
+export { BlendModeQualifier };

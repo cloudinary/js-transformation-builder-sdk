@@ -1,5 +1,4 @@
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
 
 /**
  * @description A VideoCodec class, this class has no methods, and just sets the codec type (vp9, vp8, etc.)
@@ -8,7 +7,7 @@ import {Qualifier} from "../../internal/qualifier/Qualifier.js";
 class VideoCodecType extends Qualifier {
   private _type: string;
   constructor(type: string) {
-    super('vc');
+    super("vc");
     this._type = type;
     this.addValue(type);
   }
@@ -22,17 +21,17 @@ class VideoCodecType extends Qualifier {
  * @description An Advanced VideoCodec class with Profile and Level methods
  * @memberOf Qualifiers.VideoCodec
  */
-class AdvVideoCodecType extends Qualifier{
+class AdvVideoCodecType extends Qualifier {
   private _prof: string;
-  private _lvl: number | string
-  private readonly _type: string
+  private _lvl: number | string;
+  private readonly _type: string;
 
   constructor(type: string) {
-    super('vc');
+    super("vc");
     this._type = type;
   }
 
-  getType(): string{
+  getType(): string {
     return this._type;
   }
 
@@ -75,5 +74,4 @@ class AdvVideoCodecType extends Qualifier{
   }
 }
 
-
-export {VideoCodecType, AdvVideoCodecType};
+export { VideoCodecType, AdvVideoCodecType };

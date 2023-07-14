@@ -1,6 +1,5 @@
-import {CONDITIONAL_OPERATORS, RESERVED_NAMES} from "../internal/internalConstants.js";
-import {ExpressionQualifier} from "./expression/ExpressionQualifier.js";
-
+import { CONDITIONAL_OPERATORS, RESERVED_NAMES } from "../internal/internalConstants.js";
+import { ExpressionQualifier } from "./expression/ExpressionQualifier.js";
 
 /**
  * @description
@@ -9,7 +8,6 @@ import {ExpressionQualifier} from "./expression/ExpressionQualifier.js";
  * @namespace Expression
  * @memberOf Qualifiers
  */
-
 
 /**
  * @summary qualifier
@@ -23,27 +21,25 @@ function expression(exp: string): ExpressionQualifier {
   // $foo * $bar is replaced to $foo_mul_$bar
   // $foo*bar is treated AS-IS.
   const reservedOperatorList = Object.keys(CONDITIONAL_OPERATORS).map((key) => {
-    return `\\s${key.replace(/(\*|\+|\^|\|)/g, '\\$1')}\\s`;
+    return `\\s${key.replace(/(\*|\+|\^|\|)/g, "\\$1")}\\s`;
   });
 
   // reservedOperatorList is now an array of values, joining with | creates the regex list
-  const regexSafeOperatorList = reservedOperatorList.join('|');
+  const regexSafeOperatorList = reservedOperatorList.join("|");
   const operatorsReplaceRE = new RegExp(`(${regexSafeOperatorList})`, "g");
 
   // First, we replace all the operators
   // Notice how we pad the matched operators with `_`, this is following the step above.
   // This turns $foo * $bar into $foo_mul_$bar (notice how the spaces were replaced with an underscore
-  const stringWithOperators = exp.toString()
-    .replace(operatorsReplaceRE, (match: string) => {
-      // match contains spaces around the expression, we need to trim it as the original list
-      // does not contain spaces.
-      return `_${CONDITIONAL_OPERATORS[match.trim() as keyof typeof CONDITIONAL_OPERATORS]}_`;
-    });
-
+  const stringWithOperators = exp.toString().replace(operatorsReplaceRE, (match: string) => {
+    // match contains spaces around the expression, we need to trim it as the original list
+    // does not contain spaces.
+    return `_${CONDITIONAL_OPERATORS[match.trim() as keyof typeof CONDITIONAL_OPERATORS]}_`;
+  });
 
   // Handle reserved names (width, height, etc.)
   const ReservedNames = Object.keys(RESERVED_NAMES);
-  const regexSafeReservedNameList = ReservedNames.join('|');
+  const regexSafeReservedNameList = ReservedNames.join("|");
   // Gather all statements that begin with a dollar sign, underscore or a space
   // Gather all RESERVED NAMES
   // $foo_bar is matched
@@ -53,7 +49,7 @@ function expression(exp: string): ExpressionQualifier {
   // Since this regex captures both user variables and our reserved keywords, we need to add some logic in the replacer
   const stringWithVariables = stringWithOperators.replace(reservedNamesRE, (match) => {
     // Do not do anything to user variables (anything starting with $)
-    if (match.startsWith('$')) {
+    if (match.startsWith("$")) {
       return match;
     } else {
       return RESERVED_NAMES[match as keyof typeof RESERVED_NAMES] || match;
@@ -61,17 +57,14 @@ function expression(exp: string): ExpressionQualifier {
   });
 
   // Serialize remaining spaces with an underscore
-  const finalExpressionString = stringWithVariables.replace(/\s/g, '_');
+  const finalExpressionString = stringWithVariables.replace(/\s/g, "_");
 
   return new ExpressionQualifier(finalExpressionString);
 }
 
 // as a namespace
 const Expression = {
-  expression
+  expression,
 };
 
-export {
-  Expression,
-  expression
-};
+export { Expression, expression };

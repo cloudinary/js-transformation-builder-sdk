@@ -1,4 +1,3 @@
-
 /**
  * @description Contains functions to select the rotation mode.
  * </br><b>Learn more</b>: {@link https://cloudinary.com/documentation/effects_and_artistic_enhancements#rotating_images|Rotating images}
@@ -8,9 +7,7 @@
  * @see Visit {@link Actions.Rotate|Rotate Action} for an example
  */
 
-
-
-import {RotationModeQualifierValue} from "./rotate/RotationModeQualifierValue.js";
+import { RotationModeQualifierValue } from "./rotate/RotationModeQualifierValue.js";
 
 /**
  * @summary qualifier
@@ -19,7 +16,7 @@ import {RotationModeQualifierValue} from "./rotate/RotationModeQualifierValue.js
  * @return {Qualifiers.RotationMode.RotationModeQualifierValue}
  */
 function autoRight(): RotationModeQualifierValue {
-  return new RotationModeQualifierValue('auto_right');
+  return new RotationModeQualifierValue("auto_right");
 }
 
 /**
@@ -29,7 +26,7 @@ function autoRight(): RotationModeQualifierValue {
  * @return {Qualifiers.RotationMode.RotationModeQualifierValue}
  */
 function autoLeft(): RotationModeQualifierValue {
-  return new RotationModeQualifierValue('auto_left');
+  return new RotationModeQualifierValue("auto_left");
 }
 
 /**
@@ -39,7 +36,7 @@ function autoLeft(): RotationModeQualifierValue {
  * @return {Qualifiers.RotationMode.RotationModeQualifierValue}
  */
 function verticalFlip(): RotationModeQualifierValue {
-  return new RotationModeQualifierValue('vflip');
+  return new RotationModeQualifierValue("vflip");
 }
 
 /**
@@ -49,9 +46,8 @@ function verticalFlip(): RotationModeQualifierValue {
  * @return {Qualifiers.RotationMode.RotationModeQualifierValue}
  */
 function horizontalFlip(): RotationModeQualifierValue {
-  return new RotationModeQualifierValue('hflip');
+  return new RotationModeQualifierValue("hflip");
 }
-
 
 /**
  * @summary qualifier
@@ -61,16 +57,14 @@ function horizontalFlip(): RotationModeQualifierValue {
  * @return {Qualifiers.RotationMode.RotationModeQualifierValue}
  */
 function ignore(): RotationModeQualifierValue {
-  return new RotationModeQualifierValue('ignore');
+  return new RotationModeQualifierValue("ignore");
 }
 
-
-const RotationMode = {autoLeft, autoRight, horizontalFlip, ignore, verticalFlip};
-export {
-  RotationMode,
+const RotationMode = {
   autoLeft,
   autoRight,
   horizontalFlip,
   ignore,
-  verticalFlip
+  verticalFlip,
 };
+export { RotationMode, autoLeft, autoRight, horizontalFlip, ignore, verticalFlip };

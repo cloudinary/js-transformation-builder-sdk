@@ -1,5 +1,5 @@
-import {IActionModel} from "./IActionModel.js";
+import { IActionModel } from "./IActionModel.js";
 
-export interface ITransformationModel{
+export interface ITransformationModel {
   actions: IActionModel[];
 }

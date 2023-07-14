@@ -1,12 +1,10 @@
-import {Transformation} from "./Transformation.js";
+import { Transformation } from "./Transformation.js";
 
 /**
  * @summary SDK
  * @extends {SDK.Transformation}
  * @memberOf SDK
  */
-class ImageTransformation extends Transformation {
+class ImageTransformation extends Transformation {}
 
-}
-
-export {ImageTransformation};
+export { ImageTransformation };

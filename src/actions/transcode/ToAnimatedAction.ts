@@ -1,10 +1,10 @@
-import {Action} from "../../internal/Action.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {AnimatedFormatQualifierValue} from "../../qualifiers/animatedFormat/AnimatedFormatQualifierValue.js";
-import {animatedWebP} from "../../qualifiers/flag.js";
-import {animated} from "../../qualifiers/flag.js";
-import {IToAnimatedActionModel} from "../../internal/models/ITranscodeActionModel.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
+import { Action } from "../../internal/Action.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
+import { AnimatedFormatQualifierValue } from "../../qualifiers/animatedFormat/AnimatedFormatQualifierValue.js";
+import { animatedWebP } from "../../qualifiers/flag.js";
+import { animated } from "../../qualifiers/flag.js";
+import { IToAnimatedActionModel } from "../../internal/models/ITranscodeActionModel.js";
+import { IActionModel } from "../../internal/models/IActionModel.js";
 
 /**
  * @extends SDK.Action
@@ -15,15 +15,15 @@ import {IActionModel} from "../../internal/models/IActionModel.js";
  * @see Visit {@link Actions.Transcode|Transcode} for an example
  */
 class ToAnimatedAction extends Action {
-  protected _actionModel : IToAnimatedActionModel = {actionType: 'toAnimated'};
-  constructor(animatedFormat: AnimatedFormatQualifierValue | string = '') {
+  protected _actionModel: IToAnimatedActionModel = { actionType: "toAnimated" };
+  constructor(animatedFormat: AnimatedFormatQualifierValue | string = "") {
     super();
-    if (animatedFormat.toString() === 'webp'){
+    if (animatedFormat.toString() === "webp") {
       this.addFlag(animatedWebP());
     }
     this.addFlag(animated());
     if (animatedFormat) {
-      this.addQualifier(new Qualifier('f', animatedFormat));
+      this.addQualifier(new Qualifier("f", animatedFormat));
     }
     this._actionModel.animatedFormat = animatedFormat as string;
   }
@@ -33,7 +33,7 @@ class ToAnimatedAction extends Action {
    * @param delayValue The time in milliseconds.
    */
   delay(delayValue: number): this {
-    this.addQualifier(new Qualifier('dl', delayValue));
+    this.addQualifier(new Qualifier("dl", delayValue));
     this._actionModel.delay = delayValue;
     return this;
   }
@@ -43,14 +43,14 @@ class ToAnimatedAction extends Action {
    * @param sampling As a string (e.g. '2.3s'), samples one frame every 2.3 seconds.<br>As a number (e.g. 20),
    * samples that many equally spaced frames over the duration of the video.
    */
-  sampling(sampling: string|number): this {
-    this.addQualifier(new Qualifier('vs', sampling));
+  sampling(sampling: string | number): this {
+    this.addQualifier(new Qualifier("vs", sampling));
     this._actionModel.sampling = sampling;
     return this;
   }
 
   static fromJson(actionModel: IActionModel): ToAnimatedAction {
-    const {animatedFormat, sampling, delay} = (actionModel as IToAnimatedActionModel);
+    const { animatedFormat, sampling, delay } = actionModel as IToAnimatedActionModel;
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
     // This allows the inheriting classes to determine the class to be created
     const result = new this(animatedFormat);

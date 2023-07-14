@@ -1,5 +1,5 @@
-import {QualifierValue} from "../internal/qualifier/QualifierValue.js";
-import {FocusOnValue} from "./focusOn.js";
+import { QualifierValue } from "../internal/qualifier/QualifierValue.js";
+import { FocusOnValue } from "./focusOn.js";
 
 /**
  * @summary qualifier
@@ -7,7 +7,6 @@ import {FocusOnValue} from "./focusOn.js";
  * @memberOf Qualifiers
  * @see Visit {@link Qualifiers.Gravity|Gravity} for an example
  */
-
 
 /**
  * @memberOf Qualifiers.AutoFocus
@@ -38,7 +37,7 @@ class AutoFocus extends QualifierValue {
   }
 
   private shouldAddWeight() {
-    return typeof this._weight === 'number' || typeof this._weight === 'string' || this.shouldAvoid;
+    return typeof this._weight === "number" || typeof this._weight === "string" || this.shouldAvoid;
   }
 
   /**
@@ -55,7 +54,7 @@ class AutoFocus extends QualifierValue {
    */
   private getWeight(): number | string {
     if (this.shouldAvoid) {
-      return 'avoid';
+      return "avoid";
     } else {
       return this._weight;
     }
@@ -98,4 +97,4 @@ class AutoFocus extends QualifierValue {
 
 const focusOn = AutoFocus.focusOn;
 
-export {AutoFocus, focusOn};
+export { AutoFocus, focusOn };

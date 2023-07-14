@@ -1,4 +1,4 @@
-import {TimelinePosition} from "./video/TimelinePosition.js";
+import { TimelinePosition } from "./video/TimelinePosition.js";
 
 /**
  * @memberOf Qualifiers
@@ -12,13 +12,12 @@ import {TimelinePosition} from "./video/TimelinePosition.js";
  * @memberOf Qualifiers.TimelinePosition
  * @return {Qualifiers.TimelinePosition.TimelinePosition}
  */
-function position():TimelinePosition {
+function position(): TimelinePosition {
   return new TimelinePosition();
 }
 
 const Timeline = {
-  position
+  position,
 };
 
-export {Timeline, position};
-
+export { Timeline, position };

@@ -1,7 +1,7 @@
-import {Action} from "../../internal/Action.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {IAudioFrequencyActionModel} from "../../internal/models/ITranscodeActionModel.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
+import { Action } from "../../internal/Action.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
+import { IAudioFrequencyActionModel } from "../../internal/models/ITranscodeActionModel.js";
+import { IActionModel } from "../../internal/models/IActionModel.js";
 
 /**
  * @extends SDK.Action
@@ -12,19 +12,21 @@ import {IActionModel} from "../../internal/models/IActionModel.js";
  * @see Visit {@link Actions.Transcode|Transcode} for an example
  */
 class AudioFrequencyAction extends Action {
-  protected _actionModel : IAudioFrequencyActionModel = {actionType: 'audioFrequency'};
-  constructor(freq: string|number) {
+  protected _actionModel: IAudioFrequencyActionModel = {
+    actionType: "audioFrequency",
+  };
+  constructor(freq: string | number) {
     super();
-    this.addQualifier(new Qualifier('af', freq));
+    this.addQualifier(new Qualifier("af", freq));
     this._actionModel.audioFrequencyType = freq as string;
   }
 
   static fromJson(actionModel: IActionModel): AudioFrequencyAction {
-    const {audioFrequencyType} = (actionModel as IAudioFrequencyActionModel);
+    const { audioFrequencyType } = actionModel as IAudioFrequencyActionModel;
 
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
     // This allows the inheriting classes to determine the class to be created
-    const result = new this(audioFrequencyType.replace('freq', ''));
+    const result = new this(audioFrequencyType.replace("freq", ""));
 
     return result;
   }

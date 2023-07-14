@@ -1,5 +1,5 @@
-import {IActionModel} from "./IActionModel.js";
-import {CornerRadiusValueType} from "./IRoundCornersActionModel.js";
+import { IActionModel } from "./IActionModel.js";
+import { CornerRadiusValueType } from "./IRoundCornersActionModel.js";
 
 interface IBorderActionModel extends IActionModel {
   width?: number | string;
@@ -7,4 +7,4 @@ interface IBorderActionModel extends IActionModel {
   radius?: CornerRadiusValueType;
 }
 
-export {IBorderActionModel};
+export { IBorderActionModel };

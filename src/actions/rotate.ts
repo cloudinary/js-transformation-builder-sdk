@@ -21,10 +21,9 @@
  * image.toString();
  */
 
-import {RotationModeQualifierValue} from "../qualifiers/rotate/RotationModeQualifierValue.js";
-import {RotationModeType} from "../types/types.js";
+import { RotationModeQualifierValue } from "../qualifiers/rotate/RotationModeQualifierValue.js";
+import { RotationModeType } from "../types/types.js";
 import RotateAction from "./rotate/RotateAction.js";
-
 
 /**
  * @summary action
@@ -35,7 +34,7 @@ import RotateAction from "./rotate/RotateAction.js";
  * @memberOf Actions.Rotate
  * @return {Actions.Rotate.RotateAction}
  */
-function mode(rotationMode: RotationModeQualifierValue | RotationModeType | string) :RotateAction {
+function mode(rotationMode: RotationModeQualifierValue | RotationModeType | string): RotateAction {
   return new RotateAction().mode(rotationMode);
 }
 
@@ -46,10 +45,9 @@ function mode(rotationMode: RotationModeQualifierValue | RotationModeType | stri
  * @return {Actions.Rotate.RotateAction}
  * @memberOf Actions.Rotate
  */
-function byAngle(angle: number) :RotateAction {
+function byAngle(angle: number): RotateAction {
   return new RotateAction(angle);
 }
 
-
-const Rotate = {byAngle, mode};
-export {Rotate, byAngle, mode};
+const Rotate = { byAngle, mode };
+export { Rotate, byAngle, mode };

@@ -9,9 +9,5 @@
     "resolveJsonModule": true,
     "skipLibCheck": true
   },
-  "include": [
-    "src",
-    "__TESTS__",
-    "__TESTS_BUNDLE_SIZE__"
-  ]
+  "include": ["src", "__TESTS__", "__TESTS_BUNDLE_SIZE__"]
 }

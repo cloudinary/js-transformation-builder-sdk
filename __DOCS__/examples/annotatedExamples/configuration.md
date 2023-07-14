@@ -2,15 +2,15 @@
 
 ```javascript
 // Import the cloudinary class
-import {Cloudinary} from "@cloudinary/url-gen/instance/Cloudinary";
+import { Cloudinary } from "@cloudinary/url-gen/instance/Cloudinary";
 
 // Create your instance
 const cld = new Cloudinary({
-    cloud: {
-        cloudName: 'demo'
-    },
-    url: {
-        secure: true // force https, set to false to force http
-    }
+  cloud: {
+    cloudName: "demo",
+  },
+  url: {
+    secure: true, // force https, set to false to force http
+  },
 });
 ```

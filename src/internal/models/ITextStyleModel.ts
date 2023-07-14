@@ -1,5 +1,5 @@
-import {IQualifierModel} from "./IQualifierModel.js";
-import {IStrokeModel} from "./IStrokeModel.js";
+import { IQualifierModel } from "./IQualifierModel.js";
+import { IStrokeModel } from "./IStrokeModel.js";
 
 export interface ITextStyleModel extends IQualifierModel {
   fontFamily: string;

@@ -1,7 +1,7 @@
-import {Action} from "../../internal/Action.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {ITrimActionModel} from "../../internal/models/ITrimActionModel.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
+import { Action } from "../../internal/Action.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
+import { ITrimActionModel } from "../../internal/models/ITrimActionModel.js";
+import { IActionModel } from "../../internal/models/IActionModel.js";
 
 /**
  * @description Class for shortening a video to the specified range.
@@ -15,7 +15,7 @@ class TrimAction extends Action {
   constructor() {
     super();
     this._actionModel = {
-      actionType: 'trimVideo'
+      actionType: "trimVideo",
     };
   }
 
@@ -26,8 +26,8 @@ class TrimAction extends Action {
    * @private
    * @return {string}
    */
-  private parseVal(val: string|number): string | number {
-    return typeof val === 'number' ? val : val.replace('%', 'p');
+  private parseVal(val: string | number): string | number {
+    return typeof val === "number" ? val : val.replace("%", "p");
   }
 
   /**
@@ -38,9 +38,9 @@ class TrimAction extends Action {
    *                           video length (for example, "30%" or "30p").
    * @return {this}
    */
-  startOffset(offset: string|number): this {
+  startOffset(offset: string | number): this {
     this._actionModel.startOffset = +offset;
-    return this.addQualifier(new Qualifier('so', this.parseVal(offset)));
+    return this.addQualifier(new Qualifier("so", this.parseVal(offset)));
   }
 
   /**
@@ -51,9 +51,9 @@ class TrimAction extends Action {
    *                         video length (for example, "30%" or "30p").
    * @return {this}
    */
-  endOffset(offset: string|number): this {
+  endOffset(offset: string | number): this {
     this._actionModel.endOffset = +offset;
-    return this.addQualifier(new Qualifier('eo', this.parseVal(offset)));
+    return this.addQualifier(new Qualifier("eo", this.parseVal(offset)));
   }
 
   /**
@@ -64,25 +64,25 @@ class TrimAction extends Action {
    *                        video length (for example, "30%" or "30p").
    * @return {this}
    */
-  duration(duration: string|number): this {
+  duration(duration: string | number): this {
     this._actionModel.duration = duration;
-    return this.addQualifier(new Qualifier('du', this.parseVal(duration)));
+    return this.addQualifier(new Qualifier("du", this.parseVal(duration)));
   }
 
   static fromJson(actionModel: IActionModel): TrimAction {
-    const {duration, startOffset, endOffset} = (actionModel as ITrimActionModel);
+    const { duration, startOffset, endOffset } = actionModel as ITrimActionModel;
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
     // This allows the inheriting classes to determine the class to be created
     const result = new this();
-    if (duration != null){
+    if (duration != null) {
       result.duration(duration);
     }
 
-    if (startOffset != null){
+    if (startOffset != null) {
       result.startOffset(startOffset);
     }
 
-    if (endOffset != null){
+    if (endOffset != null) {
       result.endOffset(endOffset);
     }
 

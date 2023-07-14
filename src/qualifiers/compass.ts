@@ -1,5 +1,4 @@
-import {CompassQualifier} from "./gravity/qualifiers/compass/CompassQualifier.js";
-
+import { CompassQualifier } from "./gravity/qualifiers/compass/CompassQualifier.js";
 
 /**
  * @summary qualifier
@@ -8,7 +7,7 @@ import {CompassQualifier} from "./gravity/qualifiers/compass/CompassQualifier.js
  * @return {Qualifiers.Compass.CompassQualifier} Compass
  */
 function south(): CompassQualifier {
-  return new CompassQualifier('south');
+  return new CompassQualifier("south");
 }
 
 /**
@@ -18,7 +17,7 @@ function south(): CompassQualifier {
  * @return {Qualifiers.Compass.CompassQualifier} Compass
  */
 function north(): CompassQualifier {
-  return new CompassQualifier('north');
+  return new CompassQualifier("north");
 }
 
 /**
@@ -28,7 +27,7 @@ function north(): CompassQualifier {
  * @return {Qualifiers.Compass.CompassQualifier} Compass
  */
 function east(): CompassQualifier {
-  return new CompassQualifier('east');
+  return new CompassQualifier("east");
 }
 
 /**
@@ -38,7 +37,7 @@ function east(): CompassQualifier {
  * @return {Qualifiers.Compass.CompassQualifier} Compass
  */
 function west(): CompassQualifier {
-  return new CompassQualifier('west');
+  return new CompassQualifier("west");
 }
 
 /**
@@ -48,7 +47,7 @@ function west(): CompassQualifier {
  * @return {Qualifiers.Compass.CompassQualifier} Compass
  */
 function northWest(): CompassQualifier {
-  return new CompassQualifier('north_west');
+  return new CompassQualifier("north_west");
 }
 
 /**
@@ -58,7 +57,7 @@ function northWest(): CompassQualifier {
  * @return {Qualifiers.Compass.CompassQualifier} Compass
  */
 function northEast(): CompassQualifier {
-  return new CompassQualifier('north_east');
+  return new CompassQualifier("north_east");
 }
 
 /**
@@ -68,7 +67,7 @@ function northEast(): CompassQualifier {
  * @return {Qualifiers.Compass.CompassQualifier} Compass
  */
 function southWest(): CompassQualifier {
-  return new CompassQualifier('south_west');
+  return new CompassQualifier("south_west");
 }
 
 /**
@@ -78,7 +77,7 @@ function southWest(): CompassQualifier {
  * @return {Qualifiers.Compass.CompassQualifier} Compass
  */
 function southEast(): CompassQualifier {
-  return new CompassQualifier('south_east');
+  return new CompassQualifier("south_east");
 }
 
 /**
@@ -88,11 +87,8 @@ function southEast(): CompassQualifier {
  * @return {Qualifiers.Compass.CompassQualifier} Compass
  */
 function center(): CompassQualifier {
-  return new CompassQualifier('center');
+  return new CompassQualifier("center");
 }
-
-
-
 
 /**
  * @description Defines the focal Compass for certain methods of cropping.
@@ -104,24 +100,12 @@ class Compass {
   static north = north;
   static west = west;
   static east = east;
-  static south =south;
-  static center = center
-  static northWest =northWest
-  static southEast =southEast;
+  static south = south;
+  static center = center;
+  static northWest = northWest;
+  static southEast = southEast;
   static southWest = southWest;
-  static northEast =northEast;
+  static northEast = northEast;
 }
 
-
-export {
-  Compass,
-  north,
-  west,
-  east,
-  south,
-  center,
-  northWest,
-  southEast,
-  southWest,
-  northEast
-};
+export { Compass, north, west, east, south, center, northWest, southEast, southWest, northEast };

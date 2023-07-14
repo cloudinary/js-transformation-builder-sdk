@@ -1,9 +1,9 @@
-import {VideoSource} from "./source/sourceTypes/VideoSource.js";
-import {ImageSource} from "./source/sourceTypes/ImageSource.js";
-import {TextStyle} from "./textStyle.js";
-import {SubtitlesSource} from "./source/sourceTypes/SubtitlesSource.js";
-import {FetchSource} from "./source/sourceTypes/FetchSource.js";
-import {TextSource} from "./source/sourceTypes/TextSource.js";
+import { VideoSource } from "./source/sourceTypes/VideoSource.js";
+import { ImageSource } from "./source/sourceTypes/ImageSource.js";
+import { TextStyle } from "./textStyle.js";
+import { SubtitlesSource } from "./source/sourceTypes/SubtitlesSource.js";
+import { FetchSource } from "./source/sourceTypes/FetchSource.js";
+import { TextSource } from "./source/sourceTypes/TextSource.js";
 
 /**
  * @description This namespace contains different sources that can be used in overlays and underlays
@@ -12,7 +12,6 @@ import {TextSource} from "./source/sourceTypes/TextSource.js";
  * @see {@link Actions.Overlay| The overlay action}
  * @see {@link Actions.Underlay| The underlay action}
  */
-
 
 /**
  * @summary qualifier
@@ -70,6 +69,5 @@ function fetch(remoteURL: string): FetchSource {
   return new FetchSource(remoteURL);
 }
 
-
-const Source = {image, text, video, subtitles, fetch};
-export {Source, image, text, video, subtitles, fetch};
+const Source = { image, text, video, subtitles, fetch };
+export { Source, image, text, video, subtitles, fetch };

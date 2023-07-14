@@ -1,9 +1,9 @@
-import {IActionModel} from "./IActionModel.js";
+import { IActionModel } from "./IActionModel.js";
 
-type CornerRadiusValueType = [number?, number?, number?, number?] | 'max';
+type CornerRadiusValueType = [number?, number?, number?, number?] | "max";
 
 interface IRoundCornersActionModel extends IActionModel {
   radius?: CornerRadiusValueType;
 }
 
-export {IRoundCornersActionModel, CornerRadiusValueType};
+export { IRoundCornersActionModel, CornerRadiusValueType };

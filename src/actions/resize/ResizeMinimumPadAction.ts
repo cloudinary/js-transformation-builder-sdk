@@ -1,5 +1,5 @@
-import {IGravity} from "../../qualifiers/gravity/GravityQualifier.js";
-import {ResizePadAction} from "./ResizePadAction.js";
+import { IGravity } from "../../qualifiers/gravity/GravityQualifier.js";
+import { ResizePadAction } from "./ResizePadAction.js";
 
 /**
  * @description Defines an advanced resize with minimum padding.
@@ -9,4 +9,4 @@ import {ResizePadAction} from "./ResizePadAction.js";
  */
 class ResizeMinimumPadAction<GravityType extends IGravity> extends ResizePadAction<GravityType> {}
 
-export {ResizeMinimumPadAction};
+export { ResizeMinimumPadAction };

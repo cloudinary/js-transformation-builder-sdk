@@ -7,7 +7,7 @@
  * @example {@caption Use this class like any standard error object.}
  * throw new CustomError("Oh no! It broke :(");
  */
-function CustomError(message){
-	this.name = "CustomError";
-	this.message = message;
+function CustomError(message) {
+  this.name = "CustomError";
+  this.message = message;
 }

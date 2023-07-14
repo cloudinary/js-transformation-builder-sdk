@@ -1,6 +1,6 @@
-import {IActionModel} from "./IActionModel.js";
-import {IErrorObject} from "./IErrorObject.js";
-import {createUnsupportedError} from "../utils/unsupportedError.js";
+import { IActionModel } from "./IActionModel.js";
+import { IErrorObject } from "./IErrorObject.js";
+import { createUnsupportedError } from "../utils/unsupportedError.js";
 
 export type IActionToJson = IActionModel | IErrorObject;
 /**
@@ -19,5 +19,7 @@ export function actionToJson(): IActionToJson {
     return this._actionModel;
   }
 
-  return {error: createUnsupportedError(`unsupported action ${this.constructor.name}`)};
+  return {
+    error: createUnsupportedError(`unsupported action ${this.constructor.name}`),
+  };
 }

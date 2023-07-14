@@ -1,7 +1,7 @@
-const DEBUG_COLOR = '\x1b[36m%s\x1b[0m'; // cyan
-const ERROR_COLOR = '\x1b[31m'; // red
-const SUCCESS_COLOR = '\x1b[32m';
-const INFO_COLOR = '\x1b[37m';
+const DEBUG_COLOR = "\x1b[36m%s\x1b[0m"; // cyan
+const ERROR_COLOR = "\x1b[31m"; // red
+const SUCCESS_COLOR = "\x1b[32m";
+const INFO_COLOR = "\x1b[37m";
 
 class Log {
   info(str: string) {

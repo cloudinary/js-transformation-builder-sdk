@@ -1,8 +1,8 @@
-import {BaseSource} from "../BaseSource.js";
-import {FormatQualifier} from "../../format/FormatQualifier.js";
-import {IImageSourceModel} from "../../../internal/models/IImageSourceModel.js";
-import {IQualifierToJson} from "../../../internal/models/qualifierToJson.js";
-import {ITransformationFromJson} from "../../../internal/models/IHasFromJson.js";
+import { BaseSource } from "../BaseSource.js";
+import { FormatQualifier } from "../../format/FormatQualifier.js";
+import { IImageSourceModel } from "../../../internal/models/IImageSourceModel.js";
+import { IQualifierToJson } from "../../../internal/models/qualifierToJson.js";
+import { ITransformationFromJson } from "../../../internal/models/IHasFromJson.js";
 
 /**
  * @memberOf Qualifiers.Source
@@ -29,7 +29,7 @@ class ImageSource extends BaseSource {
     this._publicID = publicID;
     this._qualifierModel = {
       publicId: publicID,
-      sourceType: 'image'
+      sourceType: "image",
     };
   }
 
@@ -39,7 +39,7 @@ class ImageSource extends BaseSource {
    * This method is used internally within {@link SDK.LayerAction|LayerAction}
    * @returns {string}
    */
-  getOpenSourceString(layerType: 'u' | 'l'): string {
+  getOpenSourceString(layerType: "u" | "l"): string {
     const encodedPublicID = this.encodeAssetPublicID(this._publicID);
 
     if (this._format) {
@@ -60,9 +60,9 @@ class ImageSource extends BaseSource {
     return this;
   }
 
-  toJson(): IQualifierToJson{
+  toJson(): IQualifierToJson {
     const result = super.toJson() as unknown as IImageSourceModel;
-    if (result.publicId && this._format){
+    if (result.publicId && this._format) {
       result.publicId = `${result.publicId}.${this._format.toString()}`;
     }
 
@@ -70,7 +70,7 @@ class ImageSource extends BaseSource {
   }
 
   static fromJson(qualifierModel: IImageSourceModel, transformationFromJson: ITransformationFromJson): ImageSource {
-    const {publicId, transformation} = qualifierModel;
+    const { publicId, transformation } = qualifierModel;
 
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [qualifierModel])
     // This allows the inheriting classes to determine the class to be created
@@ -84,4 +84,4 @@ class ImageSource extends BaseSource {
   }
 }
 
-export {ImageSource};
+export { ImageSource };

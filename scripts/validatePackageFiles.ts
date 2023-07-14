@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 // Since interfaces are not real objects, we can't use require, but instead we use import
-import {IFileStructureLevel, IFlatFileStructureLevel} from "./lib/interfaces/IFileStructure";
+import { IFileStructureLevel, IFlatFileStructureLevel } from "./lib/interfaces/IFileStructure";
 
-const fs = require('fs');
-const path = require('path');
-const MissingRequiredFile = require('./errors/MissingRequiredFile');
-const FoundNonRequiredFile = require('./errors/FoundNonRequiredFile');
+const fs = require("fs");
+const path = require("path");
+const MissingRequiredFile = require("./errors/MissingRequiredFile");
+const FoundNonRequiredFile = require("./errors/FoundNonRequiredFile");
 
 /**
  *
@@ -21,7 +21,7 @@ function ensureNoUnwantedFiles(tree: IFlatFileStructureLevel, currentPath: strin
   const filesInCurrentFolder = fs.readdirSync(currentPath);
 
   // Loop over the real files
-  filesInCurrentFolder.forEach((fileInCurrentFolder:string) => {
+  filesInCurrentFolder.forEach((fileInCurrentFolder: string) => {
     // If tree[fileName] is set to false, we skip to the next file
     const ignoreFile = tree[fileInCurrentFolder] === false;
     if (ignoreFile) {
@@ -29,7 +29,7 @@ function ensureNoUnwantedFiles(tree: IFlatFileStructureLevel, currentPath: strin
     }
 
     // If the file does not exist in the tree
-    const fileNotSpecified = typeof tree[fileInCurrentFolder] === 'undefined';
+    const fileNotSpecified = typeof tree[fileInCurrentFolder] === "undefined";
 
     // We found a file that exists in the file system but not specified in the Tree
     if (fileNotSpecified) {
@@ -44,7 +44,7 @@ function ensureNoUnwantedFiles(tree: IFlatFileStructureLevel, currentPath: strin
  */
 function isFileStructure(obj: any): obj is IFileStructureLevel {
   // Typeof object is good enough
-  return typeof obj === 'object';
+  return typeof obj === "object";
 }
 
 /**
@@ -70,13 +70,10 @@ function isFileStructure(obj: any): obj is IFileStructureLevel {
  * @param treeWithFlags
  * @param currentPath
  */
-function validatePackageFiles(treeWithFlags: IFileStructureLevel, currentPath = './dist') {
+function validatePackageFiles(treeWithFlags: IFileStructureLevel, currentPath = "./dist") {
   // Our input represents a file structure level that might have flags.
   // We need to extract flags that might exist in this level
-  const {
-    $suppressNonRequiredFilesError,
-    ...tree
-  } = treeWithFlags;
+  const { $suppressNonRequiredFilesError, ...tree } = treeWithFlags;
 
   // Ensure no unwanted files exist in the current directory level
   if (!$suppressNonRequiredFilesError) {
@@ -84,16 +81,16 @@ function validatePackageFiles(treeWithFlags: IFileStructureLevel, currentPath = 
   }
 
   // Ensure all tree files exist in the file system
-  Object.keys(tree).forEach((fileSymbol:keyof typeof tree) => {
+  Object.keys(tree).forEach((fileSymbol: keyof typeof tree) => {
     const fullFileSystemPath = path.join(currentPath, fileSymbol);
     const requiredFileInTree = tree[fileSymbol];
 
     // The required file can be either a string, or nested object.
     // If string, we can validate immediately
-    if (typeof requiredFileInTree === 'string') {
-      const existsInFileSystem = fs.existsSync(fullFileSystemPath, 'utf-8');
+    if (typeof requiredFileInTree === "string") {
+      const existsInFileSystem = fs.existsSync(fullFileSystemPath, "utf-8");
 
-      if(!existsInFileSystem) {
+      if (!existsInFileSystem) {
         throw new MissingRequiredFile(fullFileSystemPath);
       }
     }

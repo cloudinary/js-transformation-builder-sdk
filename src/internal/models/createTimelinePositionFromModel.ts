@@ -1,23 +1,23 @@
-import {ITimelinePositionModel} from "./ITimelinePositionModel.js";
-import {TimelinePosition} from "../../qualifiers/video/TimelinePosition.js";
+import { ITimelinePositionModel } from "./ITimelinePositionModel.js";
+import { TimelinePosition } from "../../qualifiers/video/TimelinePosition.js";
 
 /**
  * Create TimelinePosition from given ITimelinePositionModel
  * @param timelinePosition
  */
 export function createTimelinePositionFromModel(timelinePosition: ITimelinePositionModel): TimelinePosition {
-  const {startOffset, endOffset, duration} = timelinePosition;
+  const { startOffset, endOffset, duration } = timelinePosition;
   const result = new TimelinePosition();
 
-  if (startOffset){
+  if (startOffset) {
     result.startOffset(startOffset);
   }
 
-  if (endOffset){
+  if (endOffset) {
     result.endOffset(endOffset);
   }
 
-  if (duration){
+  if (duration) {
     result.duration(duration);
   }
 

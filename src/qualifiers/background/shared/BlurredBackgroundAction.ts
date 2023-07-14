@@ -1,4 +1,4 @@
-import {BackgroundQualifier} from "./base/BackgroundQualifier.js";
+import { BackgroundQualifier } from "./base/BackgroundQualifier.js";
 
 /**
  * @description A class for blurred background transformations.
@@ -6,14 +6,14 @@ import {BackgroundQualifier} from "./base/BackgroundQualifier.js";
  * @extends {Qualifiers.Background.BackgroundQualifier}
  */
 class BlurredBackgroundAction extends BackgroundQualifier {
-  private intensityLevel:number;
-  private brightnessLevel:number;
+  private intensityLevel: number;
+  private brightnessLevel: number;
 
   /**
    * @description Sets the intensity of the blur.
    * @param {number} value - The intensity of the blur.
    */
-  intensity(value:number): this {
+  intensity(value: number): this {
     this.intensityLevel = value;
     return this;
   }
@@ -22,7 +22,7 @@ class BlurredBackgroundAction extends BackgroundQualifier {
    * @description Sets the brightness of the background.
    * @param {number} value - The brightness of the background.
    */
-  brightness(value:number): this {
+  brightness(value: number): this {
     this.brightnessLevel = value;
     return this;
   }
@@ -36,9 +36,9 @@ class BlurredBackgroundAction extends BackgroundQualifier {
     // b_blurred:{intensity}:{brightness}
     return `
     b_blurred
-    ${this.intensityLevel ? `:${this.intensityLevel}` : ''}
-    ${this.brightnessLevel ? `:${this.brightnessLevel}` : ''}
-    `.replace(/\s+/g, '');
+    ${this.intensityLevel ? `:${this.intensityLevel}` : ""}
+    ${this.brightnessLevel ? `:${this.brightnessLevel}` : ""}
+    `.replace(/\s+/g, "");
   }
 }
 

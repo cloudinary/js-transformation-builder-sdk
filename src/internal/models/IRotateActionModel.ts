@@ -1,7 +1,7 @@
-import {IActionModel} from "./IActionModel.js";
+import { IActionModel } from "./IActionModel.js";
 
 interface IRotateByAngleActionModel extends IActionModel {
-  angle?: number
+  angle?: number;
 }
 
-export {IRotateByAngleActionModel};
+export { IRotateByAngleActionModel };

@@ -5,11 +5,11 @@
  */
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const {resolve} = require('path');
+const { resolve } = require("path");
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const {writeFile, readdirSync} = require('fs');
+const { writeFile, readdirSync } = require("fs");
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const packageJson = require('../package.json');
+const packageJson = require("../package.json");
 
 interface Dirent {
   isDirectory: () => boolean;
@@ -17,21 +17,20 @@ interface Dirent {
 }
 
 // List of sub-directories under ./dist
-const distSubDirectoriesArray: string[] = readdirSync(resolve('./dist'), {withFileTypes: true})
+const distSubDirectoriesArray: string[] = readdirSync(resolve("./dist"), {
+  withFileTypes: true,
+})
   // Filter out files
   .filter((dirent: Dirent) => dirent.isDirectory())
   // Get directory name
   .map((dirent: Dirent) => `./${dirent.name}`)
   // Exclude /internal
-  .filter((dir: string) => !dir.toLowerCase().includes('/internal'))
+  .filter((dir: string) => !dir.toLowerCase().includes("/internal"))
   // Sort alphabetically
   .sort();
 
 // Convert directory string to object of {[./directory/*]: { require: "directory/*.mjs", import: "directory/*.js" }}
-const distSubDirectoriesObj: Record<
-  string,
-  Record<string, string>
-> = distSubDirectoriesArray.reduce(
+const distSubDirectoriesObj: Record<string, Record<string, string>> = distSubDirectoriesArray.reduce(
   (obj, dir) => ({
     ...obj,
     ...{ [`${dir}/*`]: { require: `${dir}/*.cjs`, import: `${dir}/*.js` } },
@@ -40,33 +39,37 @@ const distSubDirectoriesObj: Record<
 );
 
 // Generate updated package json object
-const resultPackageJson = JSON.stringify({
-  ...packageJson,
-  exports: {
-    "./bundles/umd/package.json": "./bundles/umd/package.json",
-    "./bundles/umd": {
-      "require": "./bundles/umd/base.js",
-      "import": "./bundles/umd/base.js"
+const resultPackageJson = JSON.stringify(
+  {
+    ...packageJson,
+    exports: {
+      "./bundles/umd/package.json": "./bundles/umd/package.json",
+      "./bundles/umd": {
+        require: "./bundles/umd/base.js",
+        import: "./bundles/umd/base.js",
+      },
+      "./package.json": "./package.json",
+      ...distSubDirectoriesObj,
+      "./*": {
+        require: "./*.cjs",
+        import: "./*.js",
+      },
+      ".": {
+        require: "./index.cjs",
+        import: "./index.js",
+        node: "./index.js",
+        default: "./index.js",
+      },
     },
-    "./package.json": "./package.json",
-    ...distSubDirectoriesObj,
-    "./*": {
-      "require": "./*.cjs",
-      "import": "./*.js"
-    },
-    ".": {
-      "require": "./index.cjs",
-      "import": "./index.js",
-      "node": "./index.js",
-      "default": "./index.js"
-    }
-  }
-}, null, 2);
+  },
+  null,
+  2
+);
 
 // Update (overwrite) package.json
-writeFile(resolve('./package.json'), resultPackageJson, (err: Error) => {
+writeFile(resolve("./package.json"), resultPackageJson, (err: Error) => {
   if (!err) {
-    console.log('Successfully updated package.json exports field');
+    console.log("Successfully updated package.json exports field");
   } else {
     throw `Failed to updated package.json exports field: ${err}`;
   }

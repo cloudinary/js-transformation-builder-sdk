@@ -1,6 +1,6 @@
-import {QualifierValue} from "../internal/qualifier/QualifierValue.js";
-import {Qualifier} from "../internal/qualifier/Qualifier.js";
-import {Action} from "../internal/Action.js";
+import { QualifierValue } from "../internal/qualifier/QualifierValue.js";
+import { Qualifier } from "../internal/qualifier/Qualifier.js";
+import { Action } from "../internal/Action.js";
 
 /**
  * @description Extracts an image or a page using an index, a range, or a name from a layered media asset.
@@ -28,7 +28,6 @@ import {Action} from "../internal/Action.js";
  *
  */
 
-
 /**
  * @description Extracts an image or a page using an index, a range, or a name from a layered media asset.
  * @extends SDK.Action
@@ -40,14 +39,14 @@ class ExtractAction extends Action {
 
   constructor() {
     super();
-    this.qualifierValue.delimiter = ';';
+    this.qualifierValue.delimiter = ";";
   }
 
   /**
    * @description Extract an image containing only specified layer of an asset
    * @param {string|number} from The layer number
    */
-  byNumber(from: string|number): this{
+  byNumber(from: string | number): this {
     this.qualifierValue.addValue(from);
     return this;
   }
@@ -57,21 +56,20 @@ class ExtractAction extends Action {
    * @param {string|number} from The layer number
    * @param {string|number} to The layer number
    */
-  byRange(from: string|number, to: string|number): this{
+  byRange(from: string | number, to: string | number): this {
     const range = new QualifierValue(from);
     range.addValue(to);
-    range.delimiter = '-';
+    range.delimiter = "-";
 
     this.qualifierValue.addValue(range);
     return this;
   }
 
   protected prepareQualifiers(): this {
-    this.addQualifier(new Qualifier('pg', this.qualifierValue));
+    this.addQualifier(new Qualifier("pg", this.qualifierValue));
     return this;
   }
 }
-
 
 /**
  * @summary action
@@ -95,7 +93,9 @@ function getPage(): ExtractAction {
 }
 
 const Extract = {
-  getFrame, getPage, ExtractAction
+  getFrame,
+  getPage,
+  ExtractAction,
 };
 
-export {getFrame, getPage, ExtractAction, Extract};
+export { getFrame, getPage, ExtractAction, Extract };

@@ -1,7 +1,7 @@
-import {ISourceModel} from "./ISourceModel.js";
-import {ITextStyleModel} from "./ITextStyleModel.js";
-import {IColorModel} from "./IColorModel.js";
-import {ITransformationModel} from "./ITransformationModel.js";
+import { ISourceModel } from "./ISourceModel.js";
+import { ITextStyleModel } from "./ITextStyleModel.js";
+import { IColorModel } from "./IColorModel.js";
+import { ITransformationModel } from "./ITransformationModel.js";
 
 export interface IBaseTextSourceModel extends ISourceModel {
   textColor?: IColorModel;
@@ -9,9 +9,9 @@ export interface IBaseTextSourceModel extends ISourceModel {
   transformation?: ITransformationModel;
 }
 
-export interface ITextSourceModel extends IBaseTextSourceModel{
+export interface ITextSourceModel extends IBaseTextSourceModel {
   textStyle: ITextStyleModel;
-  sourceType: 'text';
+  sourceType: "text";
   text: string;
 }
 
@@ -20,5 +20,5 @@ export interface ITextSourceModel extends IBaseTextSourceModel{
  * @param obj
  */
 export function isITextSourceModel(obj: unknown): obj is ITextSourceModel {
-  return obj && (obj as ITextSourceModel).sourceType === 'text';
+  return obj && (obj as ITextSourceModel).sourceType === "text";
 }

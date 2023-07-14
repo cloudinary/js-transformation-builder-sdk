@@ -9,6 +9,6 @@
  *    Util.isNumber("") // false
  *    Util.isNumber(undefined) // false
  */
-export const isNumberLike = function(value: any) {
-  return (value != null) && !isNaN(parseFloat(value));
+export const isNumberLike = function (value: any) {
+  return value != null && !isNaN(parseFloat(value));
 };

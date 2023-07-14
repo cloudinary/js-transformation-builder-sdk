@@ -1,12 +1,12 @@
-import {VideoTransformation} from "../../../src/transformation/VideoTransformation";
+import { VideoTransformation } from "../../../src/transformation/VideoTransformation";
 
-describe('Tests for VideoTransformation', () => {
+describe("Tests for VideoTransformation", () => {
   let tVideo: VideoTransformation = null;
   beforeEach(() => {
     tVideo = new VideoTransformation();
   });
 
-  it('Instantiates a VideoTransformation', () => {
+  it("Instantiates a VideoTransformation", () => {
     expect(tVideo).toBeDefined();
   });
 

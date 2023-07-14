@@ -6,13 +6,12 @@
  * @see Visit {@link Actions.Effect|Effect} for an example
  */
 
-
 /**
  * @summary qualifier
  * @memberOf Qualifiers.ArtisticFilter
  */
 function alDente(): string {
-  return 'al_dente';
+  return "al_dente";
 }
 
 /**
@@ -20,7 +19,7 @@ function alDente(): string {
  * @memberOf Qualifiers.ArtisticFilter
  */
 function athena(): string {
-  return 'athena';
+  return "athena";
 }
 
 /**
@@ -28,7 +27,7 @@ function athena(): string {
  * @memberOf Qualifiers.ArtisticFilter
  */
 function audrey(): string {
-  return 'audrey';
+  return "audrey";
 }
 
 /**
@@ -36,7 +35,7 @@ function audrey(): string {
  * @memberOf Qualifiers.ArtisticFilter
  */
 function aurora(): string {
-  return 'aurora';
+  return "aurora";
 }
 
 /**
@@ -44,7 +43,7 @@ function aurora(): string {
  * @memberOf Qualifiers.ArtisticFilter
  */
 function daguerre(): string {
-  return 'daguerre';
+  return "daguerre";
 }
 
 /**
@@ -52,7 +51,7 @@ function daguerre(): string {
  * @memberOf Qualifiers.ArtisticFilter
  */
 function eucalyptus(): string {
-  return 'eucalyptus';
+  return "eucalyptus";
 }
 
 /**
@@ -60,7 +59,7 @@ function eucalyptus(): string {
  * @memberOf Qualifiers.ArtisticFilter
  */
 function fes(): string {
-  return 'fes';
+  return "fes";
 }
 
 /**
@@ -68,7 +67,7 @@ function fes(): string {
  * @memberOf Qualifiers.ArtisticFilter
  */
 function frost(): string {
-  return 'frost';
+  return "frost";
 }
 
 /**
@@ -76,7 +75,7 @@ function frost(): string {
  * @memberOf Qualifiers.ArtisticFilter
  */
 function hairspray(): string {
-  return 'hairspray';
+  return "hairspray";
 }
 
 /**
@@ -84,7 +83,7 @@ function hairspray(): string {
  * @memberOf Qualifiers.ArtisticFilter
  */
 function hokusai(): string {
-  return 'hokusai';
+  return "hokusai";
 }
 
 /**
@@ -92,7 +91,7 @@ function hokusai(): string {
  * @memberOf Qualifiers.ArtisticFilter
  */
 function incognito(): string {
-  return 'incognito';
+  return "incognito";
 }
 
 /**
@@ -100,7 +99,7 @@ function incognito(): string {
  * @memberOf Qualifiers.ArtisticFilter
  */
 function linen(): string {
-  return 'linen';
+  return "linen";
 }
 
 /**
@@ -108,7 +107,7 @@ function linen(): string {
  * @memberOf Qualifiers.ArtisticFilter
  */
 function peacock(): string {
-  return 'peacock';
+  return "peacock";
 }
 
 /**
@@ -116,7 +115,7 @@ function peacock(): string {
  * @memberOf Qualifiers.ArtisticFilter
  */
 function primavera(): string {
-  return 'primavera';
+  return "primavera";
 }
 
 /**
@@ -124,7 +123,7 @@ function primavera(): string {
  * @memberOf Qualifiers.ArtisticFilter
  */
 function quartz(): string {
-  return 'quartz';
+  return "quartz";
 }
 
 /**
@@ -132,7 +131,7 @@ function quartz(): string {
  * @memberOf Qualifiers.ArtisticFilter
  */
 function redRock(): string {
-  return 'red_rock';
+  return "red_rock";
 }
 
 /**
@@ -140,7 +139,7 @@ function redRock(): string {
  * @memberOf Qualifiers.ArtisticFilter
  */
 function refresh(): string {
-  return 'refresh';
+  return "refresh";
 }
 
 /**
@@ -148,7 +147,7 @@ function refresh(): string {
  * @memberOf Qualifiers.ArtisticFilter
  */
 function sizzle(): string {
-  return 'sizzle';
+  return "sizzle";
 }
 
 /**
@@ -156,7 +155,7 @@ function sizzle(): string {
  * @memberOf Qualifiers.ArtisticFilter
  */
 function sonnet(): string {
-  return 'sonnet';
+  return "sonnet";
 }
 
 /**
@@ -164,7 +163,7 @@ function sonnet(): string {
  * @memberOf Qualifiers.ArtisticFilter
  */
 function ukulele(): string {
-  return 'ukulele';
+  return "ukulele";
 }
 
 /**
@@ -172,7 +171,7 @@ function ukulele(): string {
  * @memberOf Qualifiers.ArtisticFilter
  */
 function zorro(): string {
-  return 'zorro';
+  return "zorro";
 }
 
 const ArtisticFilter = {
@@ -196,9 +195,8 @@ const ArtisticFilter = {
   sonnet,
   ukulele,
   frost,
-  zorro
+  zorro,
 };
-
 
 export {
   ArtisticFilter,
@@ -222,7 +220,5 @@ export {
   sonnet,
   ukulele,
   frost,
-  zorro
+  zorro,
 };
-
-

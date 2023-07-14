@@ -11,7 +11,7 @@
  * @memberOf Qualifiers.AudioCodec
  */
 function none(): string {
-  return 'none';
+  return "none";
 }
 
 /**
@@ -19,7 +19,7 @@ function none(): string {
  * @memberOf Qualifiers.AudioCodec
  */
 function aac(): string {
-  return 'aac';
+  return "aac";
 }
 
 /**
@@ -27,7 +27,7 @@ function aac(): string {
  * @memberOf Qualifiers.AudioCodec
  */
 function vorbis(): string {
-  return 'vorbis';
+  return "vorbis";
 }
 
 /**
@@ -35,7 +35,7 @@ function vorbis(): string {
  * @memberOf Qualifiers.AudioCodec
  */
 function mp3(): string {
-  return 'mp3';
+  return "mp3";
 }
 
 /**
@@ -43,25 +43,15 @@ function mp3(): string {
  * @memberOf Qualifiers.AudioCodec
  */
 function opus(): string {
-  return 'opus';
+  return "opus";
 }
-
 
 const AudioCodec = {
   aac,
   mp3,
   opus,
   none,
-  vorbis
+  vorbis,
 };
 
-export {
-  AudioCodec,
-  aac,
-  mp3,
-  opus,
-  none,
-  vorbis
-};
-
-
+export { AudioCodec, aac, mp3, opus, none, vorbis };

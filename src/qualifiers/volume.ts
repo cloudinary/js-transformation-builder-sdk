@@ -15,8 +15,8 @@
  * @memberOf Qualifiers.Volume
  * @return string
  */
-function mute(): string{
-  return 'mute';
+function mute(): string {
+  return "mute";
 }
 
 /**
@@ -27,7 +27,7 @@ function mute(): string{
  * @param {string|number} percent The percentage change of volume (Range: -100 to 400).
  * @return string
  */
-function byPercent(percent: string|number): string {
+function byPercent(percent: string | number): string {
   return `${percent}`;
 }
 
@@ -39,9 +39,9 @@ function byPercent(percent: string|number): string {
  * @param {string|number} decibel The offset in dB.
  * @return string
  */
-function byDecibels(decibel: string|number): string {
+function byDecibels(decibel: string | number): string {
   return `${decibel}db`;
 }
 
-const Volume = {mute, byPercent, byDecibels};
-export {Volume, mute, byPercent, byDecibels};
+const Volume = { mute, byPercent, byDecibels };
+export { Volume, mute, byPercent, byDecibels };

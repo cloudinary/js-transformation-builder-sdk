@@ -12,7 +12,7 @@
  * @memberOf Qualifiers.TextAlignment
  */
 function left(): string {
-  return 'left';
+  return "left";
 }
 
 /**
@@ -20,7 +20,7 @@ function left(): string {
  * @memberOf Qualifiers.TextAlignment
  */
 function right(): string {
-  return 'right';
+  return "right";
 }
 
 /**
@@ -28,7 +28,7 @@ function right(): string {
  * @memberOf Qualifiers.TextAlignment
  */
 function center(): string {
-  return 'center';
+  return "center";
 }
 
 /**
@@ -36,7 +36,7 @@ function center(): string {
  * @memberOf Qualifiers.TextAlignment
  */
 function start(): string {
-  return 'start';
+  return "start";
 }
 
 /**
@@ -44,7 +44,7 @@ function start(): string {
  * @memberOf Qualifiers.TextAlignment
  */
 function end(): string {
-  return 'end';
+  return "end";
 }
 
 /**
@@ -52,17 +52,9 @@ function end(): string {
  * @memberOf Qualifiers.TextAlignment
  */
 function justify(): string {
-  return 'justify';
+  return "justify";
 }
 
-const TextAlignment = {left, right, center, end, justify, start};
+const TextAlignment = { left, right, center, end, justify, start };
 
-export {
-  TextAlignment,
-  left,
-  right,
-  center,
-  end,
-  justify,
-  start
-};
+export { TextAlignment, left, right, center, end, justify, start };

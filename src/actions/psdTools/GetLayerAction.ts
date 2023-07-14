@@ -1,6 +1,6 @@
-import {Action} from "../../internal/Action.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
+import { Action } from "../../internal/Action.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
+import { QualifierValue } from "../../internal/qualifier/QualifierValue.js";
 
 /**
  * @description Represents a layer in a Photoshop document.
@@ -15,14 +15,14 @@ class GetLayerAction extends Action {
 
   constructor() {
     super();
-    this.qualifierValue.delimiter = ';';
+    this.qualifierValue.delimiter = ";";
   }
 
   /**
    * @description deliver an image containing only specified layer of a Photoshop image from The layer index
    * @param {string|number} from the index of the layer
    */
-  byIndex(from: string|number): this{
+  byIndex(from: string | number): this {
     this.qualifierValue.addValue(from);
     return this;
   }
@@ -32,10 +32,10 @@ class GetLayerAction extends Action {
    * @param {string|number} from The layer number
    * @param {string|number} to The layer number
    */
-  byRange(from: string|number, to: string|number): this{
+  byRange(from: string | number, to: string | number): this {
     const range = new QualifierValue(from);
     range.addValue(to);
-    range.delimiter = '-';
+    range.delimiter = "-";
 
     this.qualifierValue.addValue(range);
     return this;
@@ -45,7 +45,7 @@ class GetLayerAction extends Action {
    * @description deliver an image containing only specified layer by name of a Photoshop image
    * @param {string|number} name The layer by name
    */
-  byName(name: string): this{
+  byName(name: string): this {
     this.name = name;
     this.qualifierValue.addValue(name);
     return this;
@@ -53,13 +53,13 @@ class GetLayerAction extends Action {
 
   protected prepareQualifiers(): this {
     let qualifierValue = this.qualifierValue;
-    if(this.name) {
-      qualifierValue = new QualifierValue(['name', this.qualifierValue]).setDelimiter(':');
+    if (this.name) {
+      qualifierValue = new QualifierValue(["name", this.qualifierValue]).setDelimiter(":");
     }
 
-    this.addQualifier(new Qualifier('pg', qualifierValue));
+    this.addQualifier(new Qualifier("pg", qualifierValue));
     return this;
   }
 }
 
-export {GetLayerAction};
+export { GetLayerAction };

@@ -1,8 +1,7 @@
-import {LayerAction} from "./layer/LayerAction.js";
-import {ImageSource} from "../qualifiers/source/sourceTypes/ImageSource.js";
-import {BaseTextSource} from "../qualifiers/source/sourceTypes/BaseTextSource.js";
-import {FetchSource} from "../qualifiers/source/sourceTypes/FetchSource.js";
-
+import { LayerAction } from "./layer/LayerAction.js";
+import { ImageSource } from "../qualifiers/source/sourceTypes/ImageSource.js";
+import { BaseTextSource } from "../qualifiers/source/sourceTypes/BaseTextSource.js";
+import { FetchSource } from "../qualifiers/source/sourceTypes/FetchSource.js";
 
 /**
  * @memberOf Actions
@@ -38,9 +37,6 @@ import {FetchSource} from "../qualifiers/source/sourceTypes/FetchSource.js";
  *     )
  */
 
-
-
-
 /**
  * @summary action
  * @description Adds a layer for an asset
@@ -50,9 +46,8 @@ import {FetchSource} from "../qualifiers/source/sourceTypes/FetchSource.js";
  * @return {SDK.LayerAction}
  */
 function source(source: ImageSource | BaseTextSource | FetchSource): LayerAction {
-  return new LayerAction(source)
-    .setLayerType('u');
+  return new LayerAction(source).setLayerType("u");
 }
 
-const Underlay = {source};
-export {Underlay, source};
+const Underlay = { source };
+export { Underlay, source };

@@ -1,7 +1,7 @@
-import {BaseTextSource} from "./BaseTextSource.js";
-import {TextStyle} from "../../textStyle.js";
-import {ISubtitlesSourceModel} from "../../../internal/models/ISubtitlesSourceModel.js";
-import {ITextStyleModel} from "../../../internal/models/ITextStyleModel.js";
+import { BaseTextSource } from "./BaseTextSource.js";
+import { TextStyle } from "../../textStyle.js";
+import { ISubtitlesSourceModel } from "../../../internal/models/ISubtitlesSourceModel.js";
+import { ITextStyleModel } from "../../../internal/models/ITextStyleModel.js";
 
 /**
  * @memberOf Qualifiers.Source
@@ -9,17 +9,16 @@ import {ITextStyleModel} from "../../../internal/models/ITextStyleModel.js";
  * @description Defines how to manipulate a Subtitles layer
  */
 class SubtitlesSource extends BaseTextSource {
-  protected type = 'subtitles'; // used within TextSource for l/u_subtitles:
+  protected type = "subtitles"; // used within TextSource for l/u_subtitles:
   protected _qualifierModel: ISubtitlesSourceModel;
 
   constructor(fileName: string) {
     super(fileName);
     this._qualifierModel = {
-      sourceType: 'subtitles',
-      publicId: fileName
+      sourceType: "subtitles",
+      publicId: fileName,
     };
   }
-
 
   /**
    * @description Set the textStyle for the subtitles layer
@@ -40,9 +39,9 @@ class SubtitlesSource extends BaseTextSource {
    * @example
    * encodeText('foo/bar'); // -> foo:bar
    */
-  encodeText(text:string): string {
-    return text.replace(/\//g, ':');
+  encodeText(text: string): string {
+    return text.replace(/\//g, ":");
   }
 }
 
-export {SubtitlesSource};
+export { SubtitlesSource };

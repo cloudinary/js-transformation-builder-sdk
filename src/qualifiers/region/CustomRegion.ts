@@ -1,12 +1,12 @@
-import {NamedRegion} from "./NamedRegion.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
+import { NamedRegion } from "./NamedRegion.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
 
 /**
  * @memberOf Qualifiers.Region
  */
 class CustomRegion extends NamedRegion {
   constructor() {
-    super('named');
+    super("named");
   }
 
   /**
@@ -14,7 +14,7 @@ class CustomRegion extends NamedRegion {
    * @param {number} x
    */
   x(x: number | string): this {
-    this.addQualifier(new Qualifier('x', x));
+    this.addQualifier(new Qualifier("x", x));
     return this;
   }
 
@@ -23,7 +23,7 @@ class CustomRegion extends NamedRegion {
    * @param {number} y
    */
   y(y: number | string): this {
-    this.addQualifier(new Qualifier('y', y));
+    this.addQualifier(new Qualifier("y", y));
     return this;
   }
 
@@ -32,7 +32,7 @@ class CustomRegion extends NamedRegion {
    * @param {number} width
    */
   width(width: number): this {
-    this.addQualifier(new Qualifier('w', width));
+    this.addQualifier(new Qualifier("w", width));
     return this;
   }
 
@@ -41,9 +41,9 @@ class CustomRegion extends NamedRegion {
    * @param {number} height
    */
   height(height: number): this {
-    this.addQualifier(new Qualifier('h', height));
+    this.addQualifier(new Qualifier("h", height));
     return this;
   }
 }
 
-export {CustomRegion};
+export { CustomRegion };

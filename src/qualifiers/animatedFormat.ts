@@ -1,4 +1,4 @@
-import {AnimatedFormatQualifierValue} from "./animatedFormat/AnimatedFormatQualifierValue.js";
+import { AnimatedFormatQualifierValue } from "./animatedFormat/AnimatedFormatQualifierValue.js";
 
 /**
  * @description Contains methods to specify the animated format
@@ -7,7 +7,6 @@ import {AnimatedFormatQualifierValue} from "./animatedFormat/AnimatedFormatQuali
  * @see Visit {@link Actions.Transcode|Transcode} for an example
  */
 
-
 /**
  * @description Automatically sets the animated format
  * @summary qualifier
@@ -15,9 +14,8 @@ import {AnimatedFormatQualifierValue} from "./animatedFormat/AnimatedFormatQuali
  * @return {Qualifiers.AnimatedFormatQualifierValue}
  */
 function auto(): AnimatedFormatQualifierValue {
-  return new AnimatedFormatQualifierValue('auto');
+  return new AnimatedFormatQualifierValue("auto");
 }
-
 
 /**
  * @summary qualifier
@@ -25,7 +23,7 @@ function auto(): AnimatedFormatQualifierValue {
  * @return {Qualifiers.AnimatedFormatQualifierValue}
  */
 function gif(): AnimatedFormatQualifierValue {
-  return new AnimatedFormatQualifierValue('gif');
+  return new AnimatedFormatQualifierValue("gif");
 }
 
 /**
@@ -34,7 +32,7 @@ function gif(): AnimatedFormatQualifierValue {
  * @return {Qualifiers.AnimatedFormatQualifierValue}
  */
 function webp(): AnimatedFormatQualifierValue {
-  return new AnimatedFormatQualifierValue('webp');
+  return new AnimatedFormatQualifierValue("webp");
 }
 
 /**
@@ -43,11 +41,8 @@ function webp(): AnimatedFormatQualifierValue {
  * @return {Qualifiers.AnimatedFormatQualifierValue}
  */
 function png(): AnimatedFormatQualifierValue {
-  return new AnimatedFormatQualifierValue('png');
+  return new AnimatedFormatQualifierValue("png");
 }
 
-
-const AnimatedFormat = {auto, gif, webp, png};
-export {auto, gif, webp, png, AnimatedFormat};
-
-
+const AnimatedFormat = { auto, gif, webp, png };
+export { auto, gif, webp, png, AnimatedFormat };

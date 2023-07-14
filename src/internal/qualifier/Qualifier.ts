@@ -1,14 +1,14 @@
-import {QualifierValue} from './QualifierValue.js';
-import {QualifierModel} from '../models/QualifierModel.js';
+import { QualifierValue } from "./QualifierValue.js";
+import { QualifierModel } from "../models/QualifierModel.js";
 
 /**
  * @summary SDK
  * @memberOf SDK
  */
-class Qualifier extends QualifierModel{
+class Qualifier extends QualifierModel {
   key: string;
   qualifierValue: QualifierValue;
-  delimiter = '_'; // {key}{delimiter}{qualifierValue}
+  delimiter = "_"; // {key}{delimiter}{qualifierValue}
 
   constructor(key: string, qualifierValue?: QualifierValue | QualifierValue[] | number | string | (string | number)[]) {
     super();
@@ -22,7 +22,7 @@ class Qualifier extends QualifierModel{
   }
 
   toString(): string {
-    const {key, delimiter, qualifierValue} = this;
+    const { key, delimiter, qualifierValue } = this;
 
     return `${key}${delimiter}${qualifierValue.toString()}`;
   }
@@ -34,4 +34,4 @@ class Qualifier extends QualifierModel{
   }
 }
 
-export {Qualifier};
+export { Qualifier };

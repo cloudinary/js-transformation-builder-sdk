@@ -1,4 +1,4 @@
-import {QualifierValue} from "../../../../internal/qualifier/QualifierValue.js";
+import { QualifierValue } from "../../../../internal/qualifier/QualifierValue.js";
 
 /**
  * @memberOf Qualifiers.FocusOn
@@ -17,5 +17,4 @@ class FocusOnValue extends QualifierValue {
   }
 }
 
-
-export {FocusOnValue};
+export { FocusOnValue };

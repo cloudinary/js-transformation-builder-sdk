@@ -1,8 +1,8 @@
-import {Action} from "../../internal/Action.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
-import {IVectorizeEffectModel} from "../../internal/models/IEffectActionModel.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
+import { Action } from "../../internal/Action.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
+import { QualifierValue } from "../../internal/qualifier/QualifierValue.js";
+import { IVectorizeEffectModel } from "../../internal/models/IEffectActionModel.js";
+import { IActionModel } from "../../internal/models/IActionModel.js";
 
 /**
  * @description Vectorizes the image.
@@ -19,7 +19,7 @@ class VectorizeEffectAction extends Action {
   protected _actionModel: IVectorizeEffectModel = {};
   constructor() {
     super();
-    this._actionModel.actionType = 'vectorize';
+    this._actionModel.actionType = "vectorize";
   }
 
   /**
@@ -49,7 +49,7 @@ class VectorizeEffectAction extends Action {
    * @param {number | string} num
    * @return {this}
    */
-  despeckleLevel(num: number | string):this {
+  despeckleLevel(num: number | string): this {
     this._actionModel.despeckleLevel = num as number;
     this._despeckleLevel = num;
     return this;
@@ -71,14 +71,14 @@ class VectorizeEffectAction extends Action {
    * @param {number} num
    * @return {this}
    */
-  paths(num: number):this {
+  paths(num: number): this {
     this._actionModel.paths = num;
     this._paths = num;
     return this;
   }
 
   protected prepareQualifiers(): void {
-    let str = 'vectorize';
+    let str = "vectorize";
     if (this._numOfColors) {
       str += `:${new QualifierValue(`colors:${this._numOfColors}`).toString()}`;
     }
@@ -99,11 +99,12 @@ class VectorizeEffectAction extends Action {
       str += `:${new QualifierValue(`corners:${this._cornersLevel}`).toString()}`;
     }
 
-    this.addQualifier(new Qualifier('e', str));
+    this.addQualifier(new Qualifier("e", str));
   }
 
   static fromJson(actionModel: IActionModel): VectorizeEffectAction {
-    const {actionType, paths, cornersLevel, despeckleLevel, detailLevel, numOfColors} = (actionModel as IVectorizeEffectModel);
+    const { actionType, paths, cornersLevel, despeckleLevel, detailLevel, numOfColors } =
+      actionModel as IVectorizeEffectModel;
 
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
     // This allows the inheriting classes to determine the class to be created
@@ -116,8 +117,6 @@ class VectorizeEffectAction extends Action {
 
     return result;
   }
-
 }
 
-
-export {VectorizeEffectAction};
+export { VectorizeEffectAction };

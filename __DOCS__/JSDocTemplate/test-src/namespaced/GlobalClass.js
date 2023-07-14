@@ -15,24 +15,24 @@
  * 	</script>
  * </head>
  */
-function GlobalClass(arg1, arg2){
-	/**
-	 * @summary The name of the class.
-	 * @memberof GlobalClass#
-	 * @name name
-	 * @type {string}
-	 * @default "Test Global"
-	 */
-	this.name = "Test Global";
-	/**
-	 * @summary A private member of the class.
-	 * @memberof GlobalClass#
-	 * @name _privateMember
-	 * @type {string}
-	 * @private
-	 * @default "Test Global"
-	 */
-	this._privateMember = "Private Member";
+function GlobalClass(arg1, arg2) {
+  /**
+   * @summary The name of the class.
+   * @memberof GlobalClass#
+   * @name name
+   * @type {string}
+   * @default "Test Global"
+   */
+  this.name = "Test Global";
+  /**
+   * @summary A private member of the class.
+   * @memberof GlobalClass#
+   * @name _privateMember
+   * @type {string}
+   * @private
+   * @default "Test Global"
+   */
+  this._privateMember = "Private Member";
 }
 
 /**
@@ -44,9 +44,7 @@ function GlobalClass(arg1, arg2){
  * @param {...Object} [objN] - Any additional objects, test `markdown`
  * @returns {Object} The combination of all the objects, test `markdown`.
  */
-GlobalClass.prototype.testMethod = function(value, obj, objN){
-
-};
+GlobalClass.prototype.testMethod = function (value, obj, objN) {};
 
 /**
  * @summary This is a test instance method of the global test class to check that global type definitions are documented.
@@ -54,12 +52,9 @@ GlobalClass.prototype.testMethod = function(value, obj, objN){
  * @function testMethod
  * @param {SomeType} type - The parameter which is of type SomeType
  */
-GlobalClass.prototype.testTypeDefMethod = function(type){
-
-};
+GlobalClass.prototype.testTypeDefMethod = function (type) {};
 
 window.GlobalClass = GlobalClass;
-
 
 /**
  * Some global type.

@@ -59,7 +59,7 @@
    */
   LunrDatabase.prototype.load = function () {
     var self = this;
-    return $.get('js/lunr-data.json').then(function (results) {
+    return $.get("js/lunr-data.json").then(function (results) {
       self.store = results.store;
       self.index = lunr.Index.load(results.index);
       self.loaded = true;
@@ -102,7 +102,9 @@
    * @private
    */
   LunrDatabase.prototype._search = function (query) {
-    var self = this, results = [], raw = this.index.search(query);
+    var self = this,
+      results = [],
+      raw = this.index.search(query);
     $.each(raw, function (i, result) {
       results.push(self.store[result.ref]);
     });
@@ -124,40 +126,40 @@
      * @summary The search input found in the lunr-search-navbar.tmpl.
      * @type {jQuery}
      */
-    this.$input = $('#lunr-search-input').on('keyup', {self: this}, this.onKeyup);
+    this.$input = $("#lunr-search-input").on("keyup", { self: this }, this.onKeyup);
     /**
      * @summary The search button found in the lunr-search-navbar.tmpl.
      * @type {jQuery}
      */
-    this.$submit = $('#lunr-search-submit').on('click', {self: this}, this.onClick);
+    this.$submit = $("#lunr-search-submit").on("click", { self: this }, this.onClick);
     /**
      * @summary The Bootstrap modal found in the lunr-search-modal.tmpl.
      * @type {jQuery}
      */
-    this.$modal = $('#lunr-search-modal');
+    this.$modal = $("#lunr-search-modal");
     /**
      * @summary The Bootstrap modals' body found in the lunr-search-modal.tmpl.
      * @type {jQuery}
      */
-    this.$body = $('#lunr-search-body');
+    this.$body = $("#lunr-search-body");
 
     /**
      * @summary The Bootstrap modals' body's left column found in the lunr-search-modal.tmpl.
      * @type {jQuery}
      */
-    this.$bodyLeft = $('#lunr-search-body').find('.modal-body__left');
+    this.$bodyLeft = $("#lunr-search-body").find(".modal-body__left");
 
     /**
      * @summary The Bootstrap modals' body's right column found in the lunr-search-modal.tmpl.
      * @type {jQuery}
      */
-    this.$bodyRight = $('#lunr-search-body').find('.modal-body__right');
+    this.$bodyRight = $("#lunr-search-body").find(".modal-body__right");
 
     /**
      * @summary The Bootstrap modals' footer found in the lunr-search-modal.tmpl.
      * @type {jQuery}
      */
-    this.$footer = $('#lunr-search-footer');
+    this.$footer = $("#lunr-search-footer");
     /**
      * @summary If required this contains a Bootstrap pagination component that is added to the footer of the modal.
      * @type {jQuery}
@@ -177,14 +179,14 @@
    */
   LunrSearch.prototype.$createPagination = function (totalPages) {
     if (totalPages <= 1) return $();
-    var $ul = $('<ul/>', {'class': 'pagination pagination-sm pull-left'});
+    var $ul = $("<ul/>", { class: "pagination pagination-sm pull-left" });
     for (var i = 0; i < totalPages; i++) {
-      var $link = $('<a/>', {
-          href: '#lunr-search-result-page-' + i,
-          text: i + 1
-        }).on('click', {self: this}, this.onPaginationClick),
-        $li = $('<li/>').append($link);
-      if (i == 0) $li.addClass('active');
+      var $link = $("<a/>", {
+          href: "#lunr-search-result-page-" + i,
+          text: i + 1,
+        }).on("click", { self: this }, this.onPaginationClick),
+        $li = $("<li/>").append($link);
+      if (i == 0) $li.addClass("active");
       $ul.append($li);
     }
     return $ul;
@@ -197,11 +199,13 @@
    */
   LunrSearch.prototype.onPaginationClick = function (e) {
     e.preventDefault();
-    var self = e.data.self, $this = $(this), target = $this.attr('href');
-    self.$body.find('.lunr-search-results-page').removeClass('active');
-    self.$body.find(target).addClass('active');
-    self.$pagination.find('li').removeClass('active');
-    $this.closest('li').addClass('active');
+    var self = e.data.self,
+      $this = $(this),
+      target = $this.attr("href");
+    self.$body.find(".lunr-search-results-page").removeClass("active");
+    self.$body.find(target).addClass("active");
+    self.$pagination.find("li").removeClass("active");
+    $this.closest("li").addClass("active");
   };
 
   /**
@@ -214,14 +218,15 @@
   LunrSearch.prototype.start = function (query) {
     var self = this;
     return this.db.search(query).then(function (results) {
-      var pages = [], index = -1;
+      var pages = [],
+        index = -1;
 
       // first split the results into pages using the limit
 
       var all = {};
-      var summaries = ['action', 'qualifier', 'namespace','sdk', 'test',' config', 'method', 'class']
+      var summaries = ["action", "qualifier", "namespace", "sdk", "test", " config", "method", "class"];
 
-      results.forEach(function(doclet){
+      results.forEach(function (doclet) {
         for (var i = 0; i < summaries.length; i++) {
           var summaryKey = summaries[i];
           if (summaryKey === doclet.summary) {
@@ -236,21 +241,25 @@
         }
 
         // if nothing was found
-        all['rest'] = all['rest'] || [];
-        all['rest'].push(doclet);
+        all["rest"] = all["rest"] || [];
+        all["rest"].push(doclet);
       });
 
       var sortedResults = [];
 
-      summaries.forEach(function(summaryKey) {
+      summaries.forEach(function (summaryKey) {
         // make sure it exists, it might not!
         if (all[summaryKey]) {
-          all[summaryKey].forEach(function(doclet){ sortedResults.push(doclet); });
+          all[summaryKey].forEach(function (doclet) {
+            sortedResults.push(doclet);
+          });
         }
       });
 
-      if (all['rest']) {
-        all['rest'].forEach(function(doclet){ sortedResults.push(doclet); });
+      if (all["rest"]) {
+        all["rest"].forEach(function (doclet) {
+          sortedResults.push(doclet);
+        });
       }
 
       $.each(sortedResults, function (i, result) {
@@ -263,47 +272,58 @@
       self.$bodyLeft.empty();
 
       $.each(pages, function (i, page) {
-        var $ul = $('<ul/>', {'class': 'lunr-search-results-page', id: 'lunr-search-result-page-' + i});
-        if (i === 0) $ul.addClass('active');
+        var $ul = $("<ul/>", {
+          class: "lunr-search-results-page",
+          id: "lunr-search-result-page-" + i,
+        });
+        if (i === 0) $ul.addClass("active");
         $.each(page, function (i, result) {
           var kind = result.kind;
-          if (kind === 'function') kind = 'method';
+          if (kind === "function") kind = "method";
 
-          var $li = $('<li/>');
-          $li.addClass('search-result-line-item');
+          var $li = $("<li/>");
+          $li.addClass("search-result-line-item");
 
           // sanitize the id, it can have .html, or .html#foobar, we want use use each part as a a searchable item, but without the html
           // Foo.Bar.Zoo.html#qwerty -> [Foo, Bar, Zoo, querty]
-          var docletNamespace = result.id.replace('.html#', '.').replace('.html', '.').split('.').filter(function (a) {
-            return a;
+          var docletNamespace = result.id
+            .replace(".html#", ".")
+            .replace(".html", ".")
+            .split(".")
+            .filter(function (a) {
+              return a;
+            });
+
+          var $div = $("<div/>");
+
+          (result.summary || kind).split(" ").forEach(function (pillText) {
+            if (pillText) {
+              $div.append(
+                $("<span/>", {
+                  class: "lunr-search-result-pill" + " " + pillText.toLowerCase(),
+                }).text(pillText)
+              );
+            }
           });
 
-          var $div = $('<div/>');
-
-          (result.summary || kind).split(' ').forEach(function (pillText) {
-            if (pillText) {
-              $div.append($('<span/>', {'class': 'lunr-search-result-pill' + ' ' + pillText.toLowerCase()}).text(pillText));
-            }
-          })
-
           docletNamespace.forEach(function (namespaceChunk, i) {
-            var nextItemAsSpan = $('<span/>', {'style': 'font-weight:bold'});
+            var nextItemAsSpan = $("<span/>", { style: "font-weight:bold" });
 
             if (docletNamespace[i + 1]) {
-              $div.append($('<span/>', nextItemAsSpan).text(namespaceChunk));
-              $div.append($('<span/>').text(' -> '));
+              $div.append($("<span/>", nextItemAsSpan).text(namespaceChunk));
+              $div.append($("<span/>").text(" -> "));
             } else {
-              var nextItemAsLink = $('<a/>', {
+              var nextItemAsLink = $("<a/>", {
                 href: result.id,
-                'style': 'font-weight:bold',
-                target: 'blank'
+                style: "font-weight:bold",
+                target: "blank",
               }).text(namespaceChunk);
               $div.append(nextItemAsLink);
             }
           });
 
           $li.append($div);
-          $li.append($('<div/>', {'class': 'lunr-search-result-desc'}).text(result.description))
+          $li.append($("<div/>", { class: "lunr-search-result-desc" }).text(result.description));
           $ul.append($li);
         });
 
@@ -316,7 +336,7 @@
       // create the pagination component if required and append it to the footer and show the modal.
       self.$pagination = self.$createPagination(pages.length);
       self.$footer.prepend(self.$pagination);
-      self.$modal.modal({show: true});
+      self.$modal.modal({ show: true });
     });
   };
 
@@ -344,8 +364,8 @@
   // expose the class on the window in case for some reason we need to create a new instance (we shouldn't)
   window.LunrSearch = LunrSearch;
 
-  if (location.protocol.substr(0, 4) !== 'http') {
-    var script = document.createElement('script');
+  if (location.protocol.substr(0, 4) !== "http") {
+    var script = document.createElement("script");
     script.type = "text/javascript";
     script.src = "js/lunr-data.js";
     document.body.appendChild(script);
@@ -357,5 +377,4 @@
   $(function () {
     window.lunrSearch = new LunrSearch();
   });
-
 })(window.TEMPLATE_OPTIONS, jQuery);

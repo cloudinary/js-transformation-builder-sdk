@@ -5,14 +5,13 @@
  * @see Visit {@link Actions.Transcode|Transcode} for an example
  */
 
-
 /**
  * @summary qualifier
  * @description Preserves the original audio frequency of the video when used with vc_auto.
  * @memberOf Qualifiers.AudioFrequency
  */
 function ORIGINAL(): string {
-  return 'iaf';
+  return "iaf";
 }
 
 /**
@@ -31,7 +30,6 @@ function FREQ176400(): number {
   return 176400;
 }
 
-
 /**
  * @summary qualifier
  * @memberOf Qualifiers.AudioFrequency
@@ -40,7 +38,6 @@ function FREQ96000(): number {
   return 96000;
 }
 
-
 /**
  * @summary qualifier
  * @memberOf Qualifiers.AudioFrequency
@@ -48,7 +45,6 @@ function FREQ96000(): number {
 function FREQ88200(): number {
   return 88200;
 }
-
 
 /**
  * @summary qualifier
@@ -130,8 +126,6 @@ function FREQ47250(): number {
   return 47250;
 }
 
-
-
 const AudioFrequency = {
   FREQ8000,
   FREQ11025,
@@ -147,7 +141,7 @@ const AudioFrequency = {
   FREQ96000,
   FREQ176400,
   FREQ192000,
-  ORIGINAL
+  ORIGINAL,
 };
 
 export {
@@ -166,5 +160,5 @@ export {
   FREQ96000,
   FREQ176400,
   FREQ192000,
-  ORIGINAL
+  ORIGINAL,
 };

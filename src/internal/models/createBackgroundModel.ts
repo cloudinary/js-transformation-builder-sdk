@@ -1,12 +1,12 @@
 import BlurredBackgroundAction from "../../qualifiers/background/shared/BlurredBackgroundAction.js";
-import {IColorModel} from "./IColorModel.js";
-import {BackgroundAutoBorderQualifier} from "../../qualifiers/background/shared/auto/BackgroundAutoBorderQualifier.js";
-import {BackgroundBorderGradientQualifier} from "../../qualifiers/background/shared/gradient/BackgroundBorderGradientQualifier.js";
-import {GradientDirectionType} from "../../types/types.js";
-import {BackgroundColor} from "../../actions/background/actions/BackgroundColor.js";
-import {BackgroundPredominantGradientQualifier} from "../../qualifiers/background/shared/gradient/BackgroundPredominantGradientQualifier.js";
-import {BackgroundAutoPredominantQualifier} from "../../qualifiers/background/shared/auto/BackgroundAutoPredominantQualifier.js";
-import {BackgroundGenerativeFillQualifier} from "../../qualifiers/background/shared/BackgroundGenerativeFillQualifier.js";
+import { IColorModel } from "./IColorModel.js";
+import { BackgroundAutoBorderQualifier } from "../../qualifiers/background/shared/auto/BackgroundAutoBorderQualifier.js";
+import { BackgroundBorderGradientQualifier } from "../../qualifiers/background/shared/gradient/BackgroundBorderGradientQualifier.js";
+import { GradientDirectionType } from "../../types/types.js";
+import { BackgroundColor } from "../../actions/background/actions/BackgroundColor.js";
+import { BackgroundPredominantGradientQualifier } from "../../qualifiers/background/shared/gradient/BackgroundPredominantGradientQualifier.js";
+import { BackgroundAutoPredominantQualifier } from "../../qualifiers/background/shared/auto/BackgroundAutoPredominantQualifier.js";
+import { BackgroundGenerativeFillQualifier } from "../../qualifiers/background/shared/BackgroundGenerativeFillQualifier.js";
 
 type IGradientColors = number | string;
 
@@ -15,11 +15,11 @@ interface IBackgroundModel {
 }
 
 interface IAutoBackgroundModel extends IBackgroundModel {
-  backgroundType: 'auto';
+  backgroundType: "auto";
 }
 
 interface IBlurredBackgroundModel extends IBackgroundModel {
-  backgroundType: 'blurred';
+  backgroundType: "blurred";
   intensity?: number;
   brightness?: number;
 }
@@ -30,7 +30,7 @@ interface IContrastPaletteBackgroundModel extends IBackgroundModel {
 }
 
 interface IBorderBackgroundModel extends IContrastPaletteBackgroundModel {
-  backgroundType: 'border';
+  backgroundType: "border";
 }
 
 interface IBaseGradientBackgroundModel extends IContrastPaletteBackgroundModel {
@@ -39,24 +39,24 @@ interface IBaseGradientBackgroundModel extends IContrastPaletteBackgroundModel {
 }
 
 interface IBorderGradientBackgroundModel extends IBaseGradientBackgroundModel {
-  backgroundType: 'borderGradient';
+  backgroundType: "borderGradient";
 }
 
 interface IColorBackgroundModel extends IBackgroundModel {
-  backgroundType: 'color';
+  backgroundType: "color";
   color: IColorModel;
 }
 
 interface IPredominantBackgroundModel extends IContrastPaletteBackgroundModel {
-  backgroundType: 'predominant';
+  backgroundType: "predominant";
 }
 
 interface IPredominantGradientBackgroundModel extends IBaseGradientBackgroundModel {
-  backgroundType: 'predominantGradient';
+  backgroundType: "predominantGradient";
 }
 
 interface IGenerativeFillBackgroundModel {
-  backgroundType: 'generativeFill';
+  backgroundType: "generativeFill";
   prompt?: string;
 }
 
@@ -65,14 +65,14 @@ interface IGenerativeFillBackgroundModel {
  * @param background
  */
 function getBackgroundValue(background: unknown): string {
-  return `${background}`.replace('b_', '');
+  return `${background}`.replace("b_", "");
 }
 
 /**
  * Create an IAutoBackgroundModel from given background
  */
 function createAutoBackgroundModel(): IAutoBackgroundModel {
-  return {backgroundType: 'auto'};
+  return { backgroundType: "auto" };
 }
 
 /**
@@ -80,13 +80,13 @@ function createAutoBackgroundModel(): IAutoBackgroundModel {
  * @param background
  */
 function createBlurredBackgroundModel(background: BlurredBackgroundAction): IBlurredBackgroundModel {
-  const {
-    intensityLevel,
-    brightnessLevel
-  } = background as unknown as { intensityLevel: number, brightnessLevel: number };
+  const { intensityLevel, brightnessLevel } = background as unknown as {
+    intensityLevel: number;
+    brightnessLevel: number;
+  };
 
   const result: IBlurredBackgroundModel = {
-    backgroundType: 'blurred'
+    backgroundType: "blurred",
   };
 
   if (intensityLevel || intensityLevel === 0) {
@@ -104,12 +104,14 @@ function createBlurredBackgroundModel(background: BlurredBackgroundAction): IBlu
  * Create an IContrastPaletteBackgroundModel from given background
  * @param background
  */
-function createContrastPaletteBackgroundModel(background: BackgroundAutoBorderQualifier): IContrastPaletteBackgroundModel {
+function createContrastPaletteBackgroundModel(
+  background: BackgroundAutoBorderQualifier
+): IContrastPaletteBackgroundModel {
   const contrast = (background as unknown as { _contrast: boolean })._contrast;
   const palette: IColorModel[] = (background as unknown as { _palette: IColorModel[] })._palette;
 
   const result = {
-    backgroundType: ''
+    backgroundType: "",
   } as IContrastPaletteBackgroundModel;
 
   if (contrast) {
@@ -130,7 +132,7 @@ function createContrastPaletteBackgroundModel(background: BackgroundAutoBorderQu
 function createBorderBackgroundModel(background: BackgroundAutoBorderQualifier): IBorderBackgroundModel {
   return {
     ...createContrastPaletteBackgroundModel(background),
-    backgroundType: 'border'
+    backgroundType: "border",
   };
 }
 
@@ -138,9 +140,13 @@ function createBorderBackgroundModel(background: BackgroundAutoBorderQualifier):
  * Create an IBaseGradientBackgroundModel from given background
  * @param background
  */
-function createBaseGradientBackgroundModel(background: BackgroundBorderGradientQualifier): IBaseGradientBackgroundModel {
+function createBaseGradientBackgroundModel(
+  background: BackgroundBorderGradientQualifier
+): IBaseGradientBackgroundModel {
   const gradientColors = (background as unknown as { _gradientColors: number })._gradientColors;
-  const gradientDirection = `${(background as unknown as { _gradientDirection: GradientDirectionType })._gradientDirection}` as GradientDirectionType;
+  const gradientDirection = `${
+    (background as unknown as { _gradientDirection: GradientDirectionType })._gradientDirection
+  }` as GradientDirectionType;
   const result = createContrastPaletteBackgroundModel(background) as unknown as IBorderGradientBackgroundModel;
 
   if (gradientColors) {
@@ -158,10 +164,12 @@ function createBaseGradientBackgroundModel(background: BackgroundBorderGradientQ
  * Create an IBorderGradientBackgroundModel from given background
  * @param background
  */
-function createBorderGradientBackgroundModel(background: BackgroundBorderGradientQualifier): IBorderGradientBackgroundModel {
+function createBorderGradientBackgroundModel(
+  background: BackgroundBorderGradientQualifier
+): IBorderGradientBackgroundModel {
   return {
     ...createBaseGradientBackgroundModel(background),
-    backgroundType: 'borderGradient'
+    backgroundType: "borderGradient",
   } as IBorderGradientBackgroundModel;
 }
 
@@ -171,8 +179,8 @@ function createBorderGradientBackgroundModel(background: BackgroundBorderGradien
  */
 function createColorBackgroundModel(background: BackgroundColor): IColorBackgroundModel {
   return {
-    backgroundType: 'color',
-    color: getBackgroundValue(background)
+    backgroundType: "color",
+    color: getBackgroundValue(background),
   };
 }
 
@@ -183,7 +191,7 @@ function createColorBackgroundModel(background: BackgroundColor): IColorBackgrou
 function createPredominantBackgroundModel(background: BackgroundAutoPredominantQualifier): IPredominantBackgroundModel {
   return {
     ...createContrastPaletteBackgroundModel(background),
-    backgroundType: 'predominant'
+    backgroundType: "predominant",
   };
 }
 
@@ -191,10 +199,12 @@ function createPredominantBackgroundModel(background: BackgroundAutoPredominantQ
  * Create an IPredominantGradientBackgroundModel from given background
  * @param background
  */
-function createPredominantGradientBackgroundModel(background: BackgroundPredominantGradientQualifier): IPredominantGradientBackgroundModel {
+function createPredominantGradientBackgroundModel(
+  background: BackgroundPredominantGradientQualifier
+): IPredominantGradientBackgroundModel {
   return {
     ...createBaseGradientBackgroundModel(background),
-    backgroundType: 'predominantGradient'
+    backgroundType: "predominantGradient",
   };
 }
 
@@ -202,10 +212,12 @@ function createPredominantGradientBackgroundModel(background: BackgroundPredomin
  * Create an IGenerativeFillBackgroundModel from given background
  * @param urlValue
  */
-function createGenerativeFillBackgroundModel(background: BackgroundGenerativeFillQualifier): IGenerativeFillBackgroundModel {
+function createGenerativeFillBackgroundModel(
+  background: BackgroundGenerativeFillQualifier
+): IGenerativeFillBackgroundModel {
   return {
     backgroundType: background.getBackgroundType(),
-    ...(background.getPrompt() ? { prompt: background.getPrompt() } : {})
+    ...(background.getPrompt() ? { prompt: background.getPrompt() } : {}),
   };
 }
 
@@ -214,7 +226,7 @@ function createGenerativeFillBackgroundModel(background: BackgroundGenerativeFil
  * @param background
  */
 function createBackgroundModel(background: unknown): IBackgroundModel {
-  if (getBackgroundValue(background) === 'auto') {
+  if (getBackgroundValue(background) === "auto") {
     return createAutoBackgroundModel();
   }
 
@@ -255,5 +267,5 @@ export {
   IPredominantBackgroundModel,
   IPredominantGradientBackgroundModel,
   IGenerativeFillBackgroundModel,
-  createBackgroundModel
+  createBackgroundModel,
 };

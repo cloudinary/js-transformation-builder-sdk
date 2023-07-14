@@ -1,13 +1,13 @@
-import {Action} from "../../internal/Action.js";
-import {Transformation} from "../../transformation/Transformation.js";
-import {VideoSource} from "../../qualifiers/source/sourceTypes/VideoSource.js";
-import {ImageSource} from "../../qualifiers/source/sourceTypes/ImageSource.js";
-import {FetchSource} from "../../qualifiers/source/sourceTypes/FetchSource.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
-import {IConcatenateActionModel} from "../../internal/models/IConcatenateActionModel.js";
-import {ITransformationFromJson} from "../../internal/models/IHasFromJson.js";
-import {IVideoSourceModel} from "../../internal/models/IVideoSourceModel.js";
-import {createSourceFromModel} from "../../internal/models/createSourceFromModel.js";
+import { Action } from "../../internal/Action.js";
+import { Transformation } from "../../transformation/Transformation.js";
+import { VideoSource } from "../../qualifiers/source/sourceTypes/VideoSource.js";
+import { ImageSource } from "../../qualifiers/source/sourceTypes/ImageSource.js";
+import { FetchSource } from "../../qualifiers/source/sourceTypes/FetchSource.js";
+import { IActionModel } from "../../internal/models/IActionModel.js";
+import { IConcatenateActionModel } from "../../internal/models/IConcatenateActionModel.js";
+import { ITransformationFromJson } from "../../internal/models/IHasFromJson.js";
+import { IVideoSourceModel } from "../../internal/models/IVideoSourceModel.js";
+import { createSourceFromModel } from "../../internal/models/createSourceFromModel.js";
 
 /**
  * @description Class for Concatenating another video.
@@ -32,8 +32,8 @@ class ConcatenateAction extends Action {
   constructor(source: VideoSource | ImageSource | FetchSource) {
     super();
     this._actionModel = {
-      actionType: 'concatenate',
-      source: source.toJson() as IVideoSourceModel
+      actionType: "concatenate",
+      source: source.toJson() as IVideoSourceModel,
     };
 
     this.concatSource = source;
@@ -78,10 +78,12 @@ class ConcatenateAction extends Action {
   getTransitionString(): string {
     const transTx = this._transition.getTransformation();
     return [
-      `e_transition,${this._transition.getOpenSourceString('l')}`,
+      `e_transition,${this._transition.getOpenSourceString("l")}`,
       transTx && transTx.toString(),
-      'fl_layer_apply'
-    ].filter((a) => a).join('/');
+      "fl_layer_apply",
+    ]
+      .filter((a) => a)
+      .join("/");
   }
 
   /**
@@ -109,15 +111,13 @@ class ConcatenateAction extends Action {
     const open = [
       this._duration && `du_${this._duration}`,
       !this._transition && `fl_splice`,
-      `${this.concatSource.getOpenSourceString('l')}`
-    ].filter((a) => a).join(',');
+      `${this.concatSource.getOpenSourceString("l")}`,
+    ]
+      .filter((a) => a)
+      .join(",");
 
     // Calculate the open part
-    const close = [
-      'fl_layer_apply',
-      this._prepend && 'so_0'
-    ].filter((a) => a).join(',');
-
+    const close = ["fl_layer_apply", this._prepend && "so_0"].filter((a) => a).join(",");
 
     // Calculate the Transition part
     let concatSourceTx;
@@ -132,29 +132,25 @@ class ConcatenateAction extends Action {
     }
 
     // Put it all together, the transition is already part of the concatSourceTx
-    return [
-      open,
-      concatSourceTx.toString(),
-      close
-    ].filter((a) => a).join('/');
+    return [open, concatSourceTx.toString(), close].filter((a) => a).join("/");
   }
 
   static fromJson(actionModel: IActionModel, transformationFromJson: ITransformationFromJson): ConcatenateAction {
-    const {source, transition, prepend, duration} = (actionModel as IConcatenateActionModel);
+    const { source, transition, prepend, duration } = actionModel as IConcatenateActionModel;
     const sourceInstance = createSourceFromModel(source, transformationFromJson) as ImageSource;
 
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
     // This allows the inheriting classes to determine the class to be created
     const result = new this(sourceInstance);
-    if (transition){
+    if (transition) {
       result.transition(VideoSource.fromJson(transition, transformationFromJson));
     }
 
-    if (prepend){
+    if (prepend) {
       result.prepend();
     }
 
-    if (duration){
+    if (duration) {
       result.duration(duration);
     }
 

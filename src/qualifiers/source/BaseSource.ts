@@ -1,15 +1,14 @@
-import {Transformation} from "../../transformation/Transformation.js";
-import {ImageTransformation} from "../../transformation/ImageTransformation.js";
-import {QualifierModel} from "../../internal/models/QualifierModel.js";
-
+import { Transformation } from "../../transformation/Transformation.js";
+import { ImageTransformation } from "../../transformation/ImageTransformation.js";
+import { QualifierModel } from "../../internal/models/QualifierModel.js";
 
 /**
  * @memberOf Qualifiers.Source
  * @extends {QualifierModel}
  * @description An abstract class extended by all Source objects
  */
-abstract class BaseSource extends QualifierModel{
-  protected _transformation:Transformation;
+abstract class BaseSource extends QualifierModel {
+  protected _transformation: Transformation;
 
   /**
    * @description Utility function to encode an asset publicID in an overlay
@@ -18,7 +17,7 @@ abstract class BaseSource extends QualifierModel{
    * encodeAssetPublicID('foo/bar'); // -> foo:bar
    */
   protected encodeAssetPublicID(publicID: string): string {
-    return publicID.replace(/\//g, ':');
+    return publicID.replace(/\//g, ":");
   }
   /**
    * @description
@@ -40,7 +39,7 @@ abstract class BaseSource extends QualifierModel{
     return this._transformation;
   }
 
-  abstract getOpenSourceString(layerType: 'u' | 'l'): string
+  abstract getOpenSourceString(layerType: "u" | "l"): string;
 }
 
-export {BaseSource};
+export { BaseSource };

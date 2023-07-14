@@ -22,15 +22,15 @@ export function toFloatAsString(value: string | number): string {
 
   // If the leading digit is 0, and we have more than 1 digit, it's not a number.
   // 00, 00000, 0x15 etc.
-  if (returnValue.length > 1 && returnValue[0] === '0') {
+  if (returnValue.length > 1 && returnValue[0] === "0") {
     return returnValue;
   }
 
   // Final sanity check, parse the number as a float and check if its NaN
-  const isNumberLike = !isNaN(parseFloat(returnValue)) && returnValue.indexOf(':') === -1;
+  const isNumberLike = !isNaN(parseFloat(returnValue)) && returnValue.indexOf(":") === -1;
 
   // If it's a number-like, but the input does not contain a decimal - add it.
-  if (isNumberLike && returnValue.indexOf('.') === -1) {
+  if (isNumberLike && returnValue.indexOf(".") === -1) {
     return `${returnValue}.0`;
   } else {
     // If the input already contains a decimal, just return the value

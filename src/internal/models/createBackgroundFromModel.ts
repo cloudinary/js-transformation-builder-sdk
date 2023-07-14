@@ -1,4 +1,4 @@
-import {BackgroundQualifier} from "../../qualifiers/background/shared/base/BackgroundQualifier.js";
+import { BackgroundQualifier } from "../../qualifiers/background/shared/base/BackgroundQualifier.js";
 import {
   IBackgroundModel,
   IBlurredBackgroundModel,
@@ -7,20 +7,20 @@ import {
   IColorBackgroundModel,
   IGenerativeFillBackgroundModel,
   IPredominantBackgroundModel,
-  IPredominantGradientBackgroundModel
+  IPredominantGradientBackgroundModel,
 } from "./createBackgroundModel.js";
-import {Background} from "../../qualifiers.js";
-import {BackgroundBorderGradientQualifier} from "../../qualifiers/background/shared/gradient/BackgroundBorderGradientQualifier.js";
-import {auto, border, borderGradient, color, predominant, predominantGradient} from "../../qualifiers/background.js";
-import {BackgroundAutoPredominantQualifier} from "../../qualifiers/background/shared/auto/BackgroundAutoPredominantQualifier.js";
-import {BackgroundGenerativeFillQualifier} from "../../qualifiers/background/shared/BackgroundGenerativeFillQualifier.js";
+import { Background } from "../../qualifiers.js";
+import { BackgroundBorderGradientQualifier } from "../../qualifiers/background/shared/gradient/BackgroundBorderGradientQualifier.js";
+import { auto, border, borderGradient, color, predominant, predominantGradient } from "../../qualifiers/background.js";
+import { BackgroundAutoPredominantQualifier } from "../../qualifiers/background/shared/auto/BackgroundAutoPredominantQualifier.js";
+import { BackgroundGenerativeFillQualifier } from "../../qualifiers/background/shared/BackgroundGenerativeFillQualifier.js";
 
 /**
  * Create BackgroundQualifier from IBlurredBackgroundModel
  * @param backgroundModel
  */
 function createBlurredBackground(backgroundModel: IBlurredBackgroundModel): BackgroundQualifier {
-  const {brightness, intensity} = backgroundModel;
+  const { brightness, intensity } = backgroundModel;
   const result = Background.blurred();
 
   if (brightness || brightness == 0) {
@@ -39,8 +39,11 @@ function createBlurredBackground(backgroundModel: IBlurredBackgroundModel): Back
  * @param background
  * @param backgroundModel
  */
-function createGradientBackground(background: BackgroundBorderGradientQualifier, backgroundModel: IBorderGradientBackgroundModel | IPredominantGradientBackgroundModel) {
-  const {gradientColors, gradientDirection, contrast, palette} = backgroundModel;
+function createGradientBackground(
+  background: BackgroundBorderGradientQualifier,
+  backgroundModel: IBorderGradientBackgroundModel | IPredominantGradientBackgroundModel
+) {
+  const { gradientColors, gradientDirection, contrast, palette } = backgroundModel;
 
   if (contrast) {
     background.contrast();
@@ -66,8 +69,11 @@ function createGradientBackground(background: BackgroundBorderGradientQualifier,
  * @param background
  * @param backgroundModel
  */
-function createContrastPaletteBackground(background: BackgroundAutoPredominantQualifier, backgroundModel: IPredominantBackgroundModel | IBorderBackgroundModel) {
-  const {contrast, palette} = backgroundModel;
+function createContrastPaletteBackground(
+  background: BackgroundAutoPredominantQualifier,
+  backgroundModel: IPredominantBackgroundModel | IBorderBackgroundModel
+) {
+  const { contrast, palette } = backgroundModel;
 
   if (contrast) {
     background.contrast();
@@ -93,26 +99,26 @@ function createGenerativeFillBackground(backgroundModel: IGenerativeFillBackgrou
  * @param backgroundModel
  */
 function createBackgroundFromModel(backgroundModel: IBackgroundModel): BackgroundQualifier {
-  const {backgroundType} = backgroundModel;
+  const { backgroundType } = backgroundModel;
 
   switch (backgroundType) {
-    case 'auto':
+    case "auto":
       return auto();
-    case 'blurred':
+    case "blurred":
       return createBlurredBackground(backgroundModel as IBlurredBackgroundModel);
-    case 'border':
+    case "border":
       return createContrastPaletteBackground(border(), backgroundModel as IBorderBackgroundModel);
-    case 'borderGradient':
+    case "borderGradient":
       return createGradientBackground(borderGradient(), backgroundModel as IBorderGradientBackgroundModel);
-    case 'predominant':
+    case "predominant":
       return createContrastPaletteBackground(predominant(), backgroundModel as IPredominantBackgroundModel);
-    case 'predominantGradient':
+    case "predominantGradient":
       return createGradientBackground(predominantGradient(), backgroundModel as IPredominantGradientBackgroundModel);
-    case 'generativeFill':
+    case "generativeFill":
       return createGenerativeFillBackground(backgroundModel as IGenerativeFillBackgroundModel);
     default:
       return color((backgroundModel as IColorBackgroundModel).color);
   }
 }
 
-export {createBackgroundFromModel};
+export { createBackgroundFromModel };

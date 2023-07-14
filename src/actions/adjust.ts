@@ -1,15 +1,15 @@
-import {FillLightAction} from "./adjust/FillLightAction.js";
-import {RecolorAction} from "./adjust/RecolorAction.js";
-import {OpacityAdjustAction} from "./adjust/OpacityAdjustAction.js";
-import {By3dLutAction} from "./adjust/By3dLutAction.js";
-import {ImproveAction} from "./adjust/ImproveAction.js";
-import {ReplaceColorAction} from "./adjust/ReplaceColorAction.js";
-import {EffectActionWithLevel} from "./effect/EffectActions/EffectActionWithLevel.js";
-import {EffectActionWithStrength} from "./effect/EffectActions/EffectActionWithStrength.js";
-import {EffectActionWithBlend} from "./effect/EffectActions/EffectActionWithBlend.js";
-import {ViesusCorrectAdjustAction} from "./adjust/simple/ViesusCorrectAdjustAction.js";
-import {SimpleEffectAction} from "./effect/EffectActions/SimpleEffectAction.js";
-import {stringOrNumber} from "../types/types.js";
+import { FillLightAction } from "./adjust/FillLightAction.js";
+import { RecolorAction } from "./adjust/RecolorAction.js";
+import { OpacityAdjustAction } from "./adjust/OpacityAdjustAction.js";
+import { By3dLutAction } from "./adjust/By3dLutAction.js";
+import { ImproveAction } from "./adjust/ImproveAction.js";
+import { ReplaceColorAction } from "./adjust/ReplaceColorAction.js";
+import { EffectActionWithLevel } from "./effect/EffectActions/EffectActionWithLevel.js";
+import { EffectActionWithStrength } from "./effect/EffectActions/EffectActionWithStrength.js";
+import { EffectActionWithBlend } from "./effect/EffectActions/EffectActionWithBlend.js";
+import { ViesusCorrectAdjustAction } from "./adjust/simple/ViesusCorrectAdjustAction.js";
+import { SimpleEffectAction } from "./effect/EffectActions/SimpleEffectAction.js";
+import { stringOrNumber } from "../types/types.js";
 
 /**
  * @description Adjusts the visual appearance of an image or video.
@@ -17,9 +17,8 @@ import {stringOrNumber} from "../types/types.js";
  * @namespace Adjust
  */
 
-
-
-export type IAdjustAction = FillLightAction
+export type IAdjustAction =
+  | FillLightAction
   | RecolorAction
   | OpacityAdjustAction
   | By3dLutAction
@@ -31,7 +30,6 @@ export type IAdjustAction = FillLightAction
   | ViesusCorrectAdjustAction
   | SimpleEffectAction;
 
-
 /**
  * @summary action
  * @memberOf Actions.Adjust
@@ -41,10 +39,9 @@ export type IAdjustAction = FillLightAction
  * @param {string} value The full tint effect value, provided as a string.
  * @return {Actions.Effect.SimpleEffectAction}
  */
-function tint(value: stringOrNumber = ''): SimpleEffectAction {
-  return new SimpleEffectAction('tint', value);
+function tint(value: stringOrNumber = ""): SimpleEffectAction {
+  return new SimpleEffectAction("tint", value);
 }
-
 
 /**
  * @summary action
@@ -53,10 +50,9 @@ function tint(value: stringOrNumber = ''): SimpleEffectAction {
  * @param {number} level The level of brightness. (Range: -99 to 100, Server default: 80)
  * @return {Actions.Effect.EffectActionWithLevel}
  */
-function brightness(level?:number): EffectActionWithLevel {
-  return new EffectActionWithLevel('brightness', level);
+function brightness(level?: number): EffectActionWithLevel {
+  return new EffectActionWithLevel("brightness", level);
 }
-
 
 /**
  * @summary action
@@ -77,8 +73,8 @@ function viesusCorrect(): ViesusCorrectAdjustAction {
  * @param {number} level The level of red. (Range: -100 to 100, Server default: 0)
  * @return {Actions.Effect.EffectActionWithLevel}
  */
-function red(level?:number): EffectActionWithLevel {
-  return new EffectActionWithLevel('red', level);
+function red(level?: number): EffectActionWithLevel {
+  return new EffectActionWithLevel("red", level);
 }
 
 /**
@@ -88,8 +84,8 @@ function red(level?:number): EffectActionWithLevel {
  * @param {number} strength The strength of the filter. (Range: 1 to 2000, Server default: 100)
  * @return {Actions.Effect.EffectActionWithStrength}
  */
-function sharpen(strength?:number):EffectActionWithStrength {
-  return new EffectActionWithStrength('sharpen', strength);
+function sharpen(strength?: number): EffectActionWithStrength {
+  return new EffectActionWithStrength("sharpen", strength);
 }
 
 /**
@@ -99,8 +95,8 @@ function sharpen(strength?:number):EffectActionWithStrength {
  * @param {number} level The level of color saturation (Range: -100 to 100, Server default: 80).
  * @return {Actions.Effect.EffectActionWithLevel}
  */
-function saturation(level?:number):EffectActionWithLevel {
-  return new EffectActionWithLevel('saturation', level);
+function saturation(level?: number): EffectActionWithLevel {
+  return new EffectActionWithLevel("saturation", level);
 }
 
 /**
@@ -110,8 +106,8 @@ function saturation(level?:number):EffectActionWithLevel {
  * @param {number} level The level of contrast. (Range: -100 to 100, Server default: 0)
  * @return {Actions.Effect.EffectActionWithLevel}
  */
-function contrast(level?:number):EffectActionWithLevel {
-  return new EffectActionWithLevel('contrast', level);
+function contrast(level?: number): EffectActionWithLevel {
+  return new EffectActionWithLevel("contrast", level);
 }
 
 /**
@@ -122,8 +118,8 @@ function contrast(level?:number):EffectActionWithLevel {
  * @param {number} level The level of gamma (Range: -50 to 150, Server default: 0).
  * @return {Actions.Effect.EffectActionWithLevel}
  */
-function gamma(level?:number):EffectActionWithLevel {
-  return new EffectActionWithLevel('gamma', level);
+function gamma(level?: number): EffectActionWithLevel {
+  return new EffectActionWithLevel("gamma", level);
 }
 
 /**
@@ -133,10 +129,9 @@ function gamma(level?:number):EffectActionWithLevel {
  * @param {number} level - The level of blue. (Range: -100 to 100, Server default: 0)
  * @return {Actions.Effect.EffectActionWithLevel}
  */
-function blue(level?:number): EffectActionWithLevel {
-  return new EffectActionWithLevel('blue', level);
+function blue(level?: number): EffectActionWithLevel {
+  return new EffectActionWithLevel("blue", level);
 }
-
 
 /**
  * @summary action
@@ -146,8 +141,8 @@ function blue(level?:number): EffectActionWithLevel {
  * @param {number} level The level of modulation. (Range: -99 to 100, Server default: 80)
  * @return {Actions.Effect.EffectActionWithLevel}
  */
-function brightnessHSB(level?:number):EffectActionWithLevel {
-  return new EffectActionWithLevel('brightness_hsb', level);
+function brightnessHSB(level?: number): EffectActionWithLevel {
+  return new EffectActionWithLevel("brightness_hsb", level);
 }
 
 /**
@@ -164,10 +159,9 @@ function brightnessHSB(level?:number):EffectActionWithLevel {
  * @param {number} level The level of the threshold. (Range: 1 to 100, Server default: 50)
  * @return {Actions.Effect.EffectActionWithLevel}
  */
-function opacityThreshold(level?:number): EffectActionWithLevel {
-  return new EffectActionWithLevel('opacity_threshold', level);
+function opacityThreshold(level?: number): EffectActionWithLevel {
+  return new EffectActionWithLevel("opacity_threshold", level);
 }
-
 
 /**
  * @summary action
@@ -178,10 +172,9 @@ function opacityThreshold(level?:number): EffectActionWithLevel {
  *                                  (Range: 0 to 100, Server default: 100)
  * @return {Actions.Effect.EffectActionWithBlendPercentage}
  */
-function autoColor(blend?:number):EffectActionWithBlend {
-  return new EffectActionWithBlend('auto_color', blend);
+function autoColor(blend?: number): EffectActionWithBlend {
+  return new EffectActionWithBlend("auto_color", blend);
 }
-
 
 /**
  * @summary action
@@ -193,8 +186,8 @@ function autoColor(blend?:number):EffectActionWithBlend {
  *                 (Range: 0 to 100, Server default: 100)
  * @return {Actions.Effect.EffectActionWithBlendPercentage}
  */
-function autoBrightness(blend?:number):EffectActionWithBlend {
-  return new EffectActionWithBlend('auto_brightness', blend);
+function autoBrightness(blend?: number): EffectActionWithBlend {
+  return new EffectActionWithBlend("auto_brightness", blend);
 }
 
 /**
@@ -205,10 +198,9 @@ function autoBrightness(blend?:number):EffectActionWithBlend {
  * @param {number} level The level of hue. (Range: -100 to 100, Server default: 80)
  * @return {Actions.Effect.EffectActionWithLevel}
  */
-function hue(level?:number):EffectActionWithLevel {
-  return new EffectActionWithLevel('hue', level);
+function hue(level?: number): EffectActionWithLevel {
+  return new EffectActionWithLevel("hue", level);
 }
-
 
 /**
  * @summary action
@@ -217,8 +209,8 @@ function hue(level?:number):EffectActionWithLevel {
  * @param {number} level The level of green. (Range: -100 to 100, Server default: 0)
  * @return {Actions.Effect.EffectActionWithLevel}
  */
-function green(level?:number): EffectActionWithLevel {
-  return new EffectActionWithLevel('green', level);
+function green(level?: number): EffectActionWithLevel {
+  return new EffectActionWithLevel("green", level);
 }
 
 /**
@@ -228,8 +220,8 @@ function green(level?:number): EffectActionWithLevel {
  * @param {number} strength The strength of the filter. (Range: 1 to 2000, Server default: 100)
  * @return {Actions.Effect.EffectActionWithStrength}
  */
-function unsharpMask(strength?:number):EffectActionWithStrength {
-  return new EffectActionWithStrength('unsharp_mask', strength);
+function unsharpMask(strength?: number): EffectActionWithStrength {
+  return new EffectActionWithStrength("unsharp_mask", strength);
 }
 
 /**
@@ -239,8 +231,8 @@ function unsharpMask(strength?:number):EffectActionWithStrength {
  * @param {number} strength The strength of the vibrance. (Range: -100 to 100, Server default: 20)
  * @return {Actions.Effect.EffectActionWithStrength}
  */
-function vibrance(strength?:number):EffectActionWithStrength {
-  return new EffectActionWithStrength('vibrance', strength);
+function vibrance(strength?: number): EffectActionWithStrength {
+  return new EffectActionWithStrength("vibrance", strength);
 }
 
 /**
@@ -253,10 +245,9 @@ function vibrance(strength?:number):EffectActionWithStrength {
  *                (Range: 0 to 100, Server default: 100)
  * @return {Actions.Effect.EffectActionWithBlendPercentage}
  */
-function autoContrast(blend?:number):EffectActionWithBlend {
-  return new EffectActionWithBlend('auto_contrast', blend);
+function autoContrast(blend?: number): EffectActionWithBlend {
+  return new EffectActionWithBlend("auto_contrast", blend);
 }
-
 
 /**
  * @summary action
@@ -265,10 +256,9 @@ function autoContrast(blend?:number):EffectActionWithBlend {
  * @param {number} level
  * @return {Actions.Adjust.OpacityAdjustAction}
  */
-function opacity(level:number): OpacityAdjustAction {
+function opacity(level: number): OpacityAdjustAction {
   return new OpacityAdjustAction(level);
 }
-
 
 /**
  * @summary action
@@ -302,7 +292,7 @@ function replaceColor(toColor: string): ReplaceColorAction {
  * @param {number[][]} matrix
  * @return {Actions.Adjust.RecolorAction}
  */
-function recolor(matrix:number[][]): RecolorAction {
+function recolor(matrix: number[][]): RecolorAction {
   return new RecolorAction(matrix);
 }
 
@@ -330,13 +320,57 @@ function by3dLut(publicId: string): By3dLutAction {
   return new By3dLutAction(publicId);
 }
 
+const Adjust = {
+  brightness,
+  viesusCorrect,
+  opacity,
+  red,
+  sharpen,
+  improve,
+  saturation,
+  contrast,
+  gamma,
+  green,
+  blue,
+  brightnessHSB,
+  hue,
+  autoBrightness,
+  autoColor,
+  autoContrast,
+  vibrance,
+  unsharpMask,
+  opacityThreshold,
+  replaceColor,
+  recolor,
+  fillLight,
+  by3dLut,
+  tint,
+};
 
-
-const Adjust = {brightness, viesusCorrect, opacity, red, sharpen, improve, saturation,
-  contrast, gamma, green, blue, brightnessHSB, hue, autoBrightness, autoColor,
-  autoContrast, vibrance, unsharpMask, opacityThreshold, replaceColor, recolor, fillLight, by3dLut, tint};
-
-
-export {Adjust, brightness, viesusCorrect, opacity, red, sharpen, improve, saturation,
-  contrast, gamma, green, blue, brightnessHSB, hue, autoBrightness, autoColor,
-  autoContrast, vibrance, unsharpMask, opacityThreshold, replaceColor, recolor, fillLight, by3dLut, tint};
+export {
+  Adjust,
+  brightness,
+  viesusCorrect,
+  opacity,
+  red,
+  sharpen,
+  improve,
+  saturation,
+  contrast,
+  gamma,
+  green,
+  blue,
+  brightnessHSB,
+  hue,
+  autoBrightness,
+  autoColor,
+  autoContrast,
+  vibrance,
+  unsharpMask,
+  opacityThreshold,
+  replaceColor,
+  recolor,
+  fillLight,
+  by3dLut,
+  tint,
+};

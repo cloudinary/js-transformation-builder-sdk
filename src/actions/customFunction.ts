@@ -18,7 +18,6 @@
  * );
  */
 
-
 import CustomFunctionAction from "./customFunction/CustomFunctionAction.js";
 import RemoteAction from "./customFunction/RemoteAction.js";
 
@@ -30,9 +29,8 @@ import RemoteAction from "./customFunction/RemoteAction.js";
  * @memberOf Actions.CustomFunction
  * @return {Actions.CustomFunctionAction}
  */
-function remote(path:string): RemoteAction {
-  return new RemoteAction(path)
-    .asRemote();
+function remote(path: string): RemoteAction {
+  return new RemoteAction(path).asRemote();
 }
 
 /**
@@ -43,11 +41,9 @@ function remote(path:string): RemoteAction {
  * @memberOf Actions.CustomFunction
  * @return {Actions.CustomFunctionAction}
  */
-function wasm(publicID:string): CustomFunctionAction {
-  return new CustomFunctionAction(publicID)
-    .asWasm();
+function wasm(publicID: string): CustomFunctionAction {
+  return new CustomFunctionAction(publicID).asWasm();
 }
 
-
-const CustomFunction = {remote, wasm};
-export {CustomFunction, remote, wasm};
+const CustomFunction = { remote, wasm };
+export { CustomFunction, remote, wasm };

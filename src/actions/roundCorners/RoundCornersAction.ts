@@ -1,8 +1,8 @@
-import {Action} from "../../internal/Action.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
-import {IRoundCornersActionModel, CornerRadiusValueType} from "../../internal/models/IRoundCornersActionModel.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
+import { Action } from "../../internal/Action.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
+import { QualifierValue } from "../../internal/qualifier/QualifierValue.js";
+import { IRoundCornersActionModel, CornerRadiusValueType } from "../../internal/models/IRoundCornersActionModel.js";
+import { IActionModel } from "../../internal/models/IActionModel.js";
 
 /**
  * @description A class to round one or more corners of an image or video.
@@ -16,7 +16,7 @@ class RoundCornersAction extends Action {
 
   constructor() {
     super();
-    this._actionModel.actionType = 'roundCorners';
+    this._actionModel.actionType = "roundCorners";
   }
 
   /**
@@ -35,11 +35,11 @@ class RoundCornersAction extends Action {
     c !== undefined && qualifierValue.addValue(c);
     d !== undefined && qualifierValue.addValue(d);
 
-    const definedRadiuses = ([a, b, c, d].filter((r) => r !== undefined) as [number?, number?, number?, number?]);
+    const definedRadiuses = [a, b, c, d].filter((r) => r !== undefined) as [number?, number?, number?, number?];
     this._radius = definedRadiuses;
     this._actionModel.radius = definedRadiuses;
 
-    this.addQualifier(new Qualifier('r').addValue(qualifierValue));
+    this.addQualifier(new Qualifier("r").addValue(qualifierValue));
     return this;
   }
 
@@ -47,10 +47,10 @@ class RoundCornersAction extends Action {
    * @description Applies maximum rounding to the corners of the asset. An asset with square dimensions becomes a circle.
    */
   max(): this {
-    this._radius = 'max';
-    this._actionModel.radius = 'max';
+    this._radius = "max";
+    this._actionModel.radius = "max";
 
-    return this.addQualifier(new Qualifier('r', 'max'));
+    return this.addQualifier(new Qualifier("r", "max"));
   }
 
   getRadius(): CornerRadiusValueType {
@@ -58,7 +58,7 @@ class RoundCornersAction extends Action {
   }
 
   static fromJson(actionModel: IActionModel): RoundCornersAction {
-    const { radius } = (actionModel as IRoundCornersActionModel);
+    const { radius } = actionModel as IRoundCornersActionModel;
 
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
     // This allows the inheriting classes to determine the class to be created
@@ -66,7 +66,7 @@ class RoundCornersAction extends Action {
     if (Array.isArray(radius)) {
       result.radius(radius[0], radius[1], radius[2], radius[3]);
     }
-    if (radius === 'max') {
+    if (radius === "max") {
       result.max();
     }
 

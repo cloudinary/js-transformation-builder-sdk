@@ -1,7 +1,7 @@
-import {Action} from "../../internal/Action.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
-import {clip, clipEvenOdd} from "../../qualifiers/flag.js";
+import { Action } from "../../internal/Action.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
+import { QualifierValue } from "../../internal/qualifier/QualifierValue.js";
+import { clip, clipEvenOdd } from "../../qualifiers/flag.js";
 
 /**
  * @description  Defines the clipping path to use when trimming pixels.
@@ -14,7 +14,6 @@ class ClipAction extends Action {
   private isEvenOdd = false;
   constructor() {
     super();
-
   }
 
   /**
@@ -48,21 +47,21 @@ class ClipAction extends Action {
 
   protected prepareQualifiers(): this {
     let qualifierValue;
-    if(typeof this.path === 'string') {
-      qualifierValue = new QualifierValue(['name', this.path]).setDelimiter(':');
+    if (typeof this.path === "string") {
+      qualifierValue = new QualifierValue(["name", this.path]).setDelimiter(":");
     } else {
       qualifierValue = new QualifierValue(this.path);
     }
     //handles flag
-    if(this.isEvenOdd){
+    if (this.isEvenOdd) {
       this.addFlag(clipEvenOdd());
-    }else {
+    } else {
       this.addFlag(clip());
     }
 
-    this.addQualifier(new Qualifier('pg', qualifierValue));
+    this.addQualifier(new Qualifier("pg", qualifierValue));
     return this;
   }
 }
 
-export {ClipAction};
+export { ClipAction };

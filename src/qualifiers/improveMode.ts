@@ -1,4 +1,3 @@
-
 /**
  * @description Defines the available modes to use with the improve effect.
  * @namespace ImproveMode
@@ -14,8 +13,6 @@
  * image.adjust(improve().mode(outdoor()));
  */
 
-
-
 /**
  * @summary qualifier
  * @memberOf Qualifiers.ImproveMode
@@ -23,7 +20,7 @@
  * @return string
  */
 function outdoor(): string {
-  return 'outdoor';
+  return "outdoor";
 }
 
 /**
@@ -33,13 +30,12 @@ function outdoor(): string {
  * @return string
  */
 function indoor(): string {
-  return 'indoor';
+  return "indoor";
 }
 
 const ImproveMode = {
   indoor,
-  outdoor
+  outdoor,
 };
 
-export {outdoor, indoor, ImproveMode};
-
+export { outdoor, indoor, ImproveMode };

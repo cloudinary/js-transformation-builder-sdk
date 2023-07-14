@@ -12,7 +12,7 @@
  * @memberOf Qualifiers.FontWeight
  */
 function thin(): string {
-  return 'thin';
+  return "thin";
 }
 
 /**
@@ -20,7 +20,7 @@ function thin(): string {
  * @memberOf Qualifiers.FontWeight
  */
 function light(): string {
-  return 'light';
+  return "light";
 }
 
 /**
@@ -28,7 +28,7 @@ function light(): string {
  * @memberOf Qualifiers.FontWeight
  */
 function normal(): string {
-  return 'normal';
+  return "normal";
 }
 
 /**
@@ -36,15 +36,8 @@ function normal(): string {
  * @memberOf Qualifiers.FontWeight
  */
 function bold(): string {
-  return 'bold';
+  return "bold";
 }
 
-
-const FontWeight = {bold, light, normal, thin};
-export {
-  FontWeight,
-  bold,
-  light,
-  normal,
-  thin
-};
+const FontWeight = { bold, light, normal, thin };
+export { FontWeight, bold, light, normal, thin };

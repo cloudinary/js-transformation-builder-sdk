@@ -5,10 +5,7 @@ import { GenerativeRemove } from "../../../src/actions/effect/GenerativeRemove";
 describe("GenerativeRemove.toJson()", () => {
   it("produces correct action JSON", () => {
     const testCases: Array<[GenerativeRemove, unknown]> = [
-      [
-        Effect.generativeRemove().prompt("dog"),
-        { actionType: "generativeRemove", prompts: ["dog"] },
-      ],
+      [Effect.generativeRemove().prompt("dog"), { actionType: "generativeRemove", prompts: ["dog"] }],
       [
         Effect.generativeRemove().prompt("dog").detectMultiple(),
         {
@@ -17,10 +14,7 @@ describe("GenerativeRemove.toJson()", () => {
           detectMultiple: true,
         },
       ],
-      [
-        Effect.generativeRemove().prompts(["dog", "cat"]),
-        { actionType: "generativeRemove", prompts: ["dog", "cat"] },
-      ],
+      [Effect.generativeRemove().prompts(["dog", "cat"]), { actionType: "generativeRemove", prompts: ["dog", "cat"] }],
       [
         Effect.generativeRemove().region({
           x: 100,

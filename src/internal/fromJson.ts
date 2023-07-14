@@ -6,10 +6,7 @@ import { IActionModel } from "./models/IActionModel.js";
 import { Action } from "./Action.js";
 import { IErrorObject } from "./models/IErrorObject.js";
 import { createUnsupportedError } from "./utils/unsupportedError.js";
-import {
-  IHasFromJson,
-  ITransformationFromJson,
-} from "./models/IHasFromJson.js";
+import { IHasFromJson, ITransformationFromJson } from "./models/IHasFromJson.js";
 import { ResizeMinimumFitAction } from "../actions/resize/ResizeMinimumFitAction.js";
 import { ResizeCropAction } from "../actions/resize/ResizeCropAction.js";
 import { OpacityAdjustAction } from "../actions/adjust/OpacityAdjustAction.js";
@@ -153,15 +150,10 @@ function actions(actionModels: IActionModel[]): Action[] {
   return actionModels.map((actionModel) => {
     const actionClass = ActionModelMap[actionModel.actionType];
     if (!actionClass) {
-      throw createUnsupportedError(
-        `unsupported action ${actionModel.actionType}`
-      );
+      throw createUnsupportedError(`unsupported action ${actionModel.actionType}`);
     }
 
-    return actionClass.fromJson(
-      actionModel,
-      fromJson as unknown as ITransformationFromJson
-    );
+    return actionClass.fromJson(actionModel, fromJson as unknown as ITransformationFromJson);
   });
 }
 
@@ -169,15 +161,11 @@ function actions(actionModels: IActionModel[]): Action[] {
  * Return array of action instances represented by given action models.
  * @param transformationModel
  */
-function fromJson(
-  transformationModel: ITransformationModel
-): Transformation | IErrorObject {
+function fromJson(transformationModel: ITransformationModel): Transformation | IErrorObject {
   try {
     // Create a new Transformation and add all actions to it
     const transformation = new Transformation();
-    actions(transformationModel.actions).forEach((action) =>
-      transformation.addAction(action)
-    );
+    actions(transformationModel.actions).forEach((action) => transformation.addAction(action));
     return transformation;
   } catch (error) {
     return { error };

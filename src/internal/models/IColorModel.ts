@@ -1,3 +1,3 @@
 type IColorModel = string;
 
-export {IColorModel};
+export { IColorModel };

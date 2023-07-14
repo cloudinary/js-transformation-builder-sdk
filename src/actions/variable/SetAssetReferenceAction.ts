@@ -11,8 +11,7 @@ class SetAssetReferenceAction extends VariableAction {
     // Required due to https://github.com/microsoft/TypeScript/issues/13029
     /* istanbul ignore next */
 
-    const parsedValue = value
-      .replace(/\//g, ':');
+    const parsedValue = value.replace(/\//g, ":");
 
     super(name, `ref:!${parsedValue}!`);
   }

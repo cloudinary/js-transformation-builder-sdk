@@ -1,4 +1,4 @@
-import {legacyNormalizeExpression} from "../utils/legacyNormalizeExpression.js";
+import { legacyNormalizeExpression } from "../utils/legacyNormalizeExpression.js";
 
 /**
  * Parse "if" parameter

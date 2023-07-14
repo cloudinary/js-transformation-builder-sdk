@@ -1,5 +1,5 @@
-import {Action} from "../../../internal/Action.js";
-import {Qualifier} from "../../../internal/qualifier/Qualifier.js";
+import { Action } from "../../../internal/Action.js";
+import { Qualifier } from "../../../internal/qualifier/Qualifier.js";
 
 /**
  * Enhances an image to its best visual quality with the Viesus Automatic Image Enhancement add-on.</br>
@@ -7,7 +7,7 @@ import {Qualifier} from "../../../internal/qualifier/Qualifier.js";
  * @memberOf Actions.Adjust
  */
 class ViesusCorrectAdjustAction extends Action {
-  private _noRedEye : boolean;
+  private _noRedEye: boolean;
   private _skinSaturation: boolean;
   private _skinSaturationLevel: number;
 
@@ -23,7 +23,7 @@ class ViesusCorrectAdjustAction extends Action {
    * @description Applies saturation to the skin tones in the image.
    * @param level The saturation level. (Range: -100 to 100, Server default: 50).
    */
-  skinSaturation(level?:number): this {
+  skinSaturation(level?: number): this {
     this._skinSaturation = true;
     if (level) {
       this._skinSaturationLevel = level;
@@ -32,20 +32,20 @@ class ViesusCorrectAdjustAction extends Action {
   }
 
   protected prepareQualifiers(): void {
-    let value = 'viesus_correct';
+    let value = "viesus_correct";
 
     if (this._noRedEye) {
-      value += ':no_redeye';
+      value += ":no_redeye";
     }
     if (this._skinSaturation) {
-      value += ':skin_saturation';
-      if (typeof this._skinSaturationLevel !== 'undefined') {
+      value += ":skin_saturation";
+      if (typeof this._skinSaturationLevel !== "undefined") {
         value += `_${this._skinSaturationLevel}`;
       }
     }
 
-    this.addQualifier(new Qualifier('e', value));
+    this.addQualifier(new Qualifier("e", value));
   }
 }
 
-export {ViesusCorrectAdjustAction};
+export { ViesusCorrectAdjustAction };

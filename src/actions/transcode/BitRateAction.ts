@@ -1,8 +1,8 @@
-import {Action} from "../../internal/Action.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
-import {IBitRateActionModel} from "../../internal/models/ITranscodeActionModel.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
+import { Action } from "../../internal/Action.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
+import { QualifierValue } from "../../internal/qualifier/QualifierValue.js";
+import { IBitRateActionModel } from "../../internal/models/ITranscodeActionModel.js";
+import { IActionModel } from "../../internal/models/IActionModel.js";
 
 /**
  * @extends SDK.Action
@@ -13,11 +13,11 @@ import {IActionModel} from "../../internal/models/IActionModel.js";
  * @see Visit {@link Actions.Transcode|Transcode} for an example
  */
 class BitRateAction extends Action {
-  private bitRate: string|number;
+  private bitRate: string | number;
   private isConstant = false;
-  protected _actionModel : IBitRateActionModel = {actionType: 'bitRate'}
+  protected _actionModel: IBitRateActionModel = { actionType: "bitRate" };
 
-  constructor(bitRate: string|number) {
+  constructor(bitRate: string | number) {
     super();
     this.bitRate = bitRate;
     this._actionModel.bitRate = bitRate;
@@ -33,17 +33,17 @@ class BitRateAction extends Action {
 
   protected prepareQualifiers(): this {
     let qualifierValue;
-    if(this.isConstant) {
-      qualifierValue = new QualifierValue([this.bitRate, 'constant']).setDelimiter(':');
-    }else {
+    if (this.isConstant) {
+      qualifierValue = new QualifierValue([this.bitRate, "constant"]).setDelimiter(":");
+    } else {
       qualifierValue = new QualifierValue(this.bitRate);
     }
-    this.addQualifier(new Qualifier('br', qualifierValue));
+    this.addQualifier(new Qualifier("br", qualifierValue));
     return this;
   }
 
   static fromJson(actionModel: IActionModel): BitRateAction {
-    const {bitRate, constant} = (actionModel as IBitRateActionModel);
+    const { bitRate, constant } = actionModel as IBitRateActionModel;
 
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
     // This allows the inheriting classes to determine the class to be created

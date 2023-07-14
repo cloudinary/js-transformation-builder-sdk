@@ -95,9 +95,7 @@ class GenerativeRemove extends Action {
   private preparePromptsQualifier() {
     const prompts = this._prompts;
 
-    const str = `gen_remove:${new QualifierValue(
-      `prompt_(${prompts.join(";")})`
-    ).toString()}`;
+    const str = `gen_remove:${new QualifierValue(`prompt_(${prompts.join(";")})`).toString()}`;
 
     this.addQualifier(new Qualifier("e", str));
   }
@@ -105,9 +103,7 @@ class GenerativeRemove extends Action {
   private prepareRegionQualifier() {
     const region = this.stringifyRegion(this._regions[0]);
 
-    const str = `gen_remove:${new QualifierValue(
-      `region_${region}`
-    ).toString()}`;
+    const str = `gen_remove:${new QualifierValue(`region_${region}`).toString()}`;
 
     this.addQualifier(new Qualifier("e", str));
   }
@@ -115,9 +111,7 @@ class GenerativeRemove extends Action {
   private prepareRegionsQualifier() {
     const regions = this._regions.map((region) => this.stringifyRegion(region));
 
-    const str = `gen_remove:${new QualifierValue(
-      `region_(${regions.join(";")})`
-    ).toString()}`;
+    const str = `gen_remove:${new QualifierValue(`region_(${regions.join(";")})`).toString()}`;
 
     this.addQualifier(new Qualifier("e", str));
   }

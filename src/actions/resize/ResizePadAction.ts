@@ -1,12 +1,15 @@
-import {BackgroundQualifier} from "../../qualifiers/background/shared/base/BackgroundQualifier.js";
-import {IGravity} from "../../qualifiers/gravity/GravityQualifier.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {ResizeAdvancedAction} from "./ResizeAdvancedAction.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
-import {CompassGravity} from "../../qualifiers/gravity/compassGravity/CompassGravity.js";
-import {createBackgroundModel, IBackgroundModel} from "../../internal/models/createBackgroundModel.js";
-import {createBackgroundFromModel} from "../../internal/models/createBackgroundFromModel.js";
-import {BackgroundGenerativeFillQualifier, isGenerativeFillBackgroundValue} from "../../qualifiers/background/shared/BackgroundGenerativeFillQualifier.js";
+import { BackgroundQualifier } from "../../qualifiers/background/shared/base/BackgroundQualifier.js";
+import { IGravity } from "../../qualifiers/gravity/GravityQualifier.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
+import { ResizeAdvancedAction } from "./ResizeAdvancedAction.js";
+import { IActionModel } from "../../internal/models/IActionModel.js";
+import { CompassGravity } from "../../qualifiers/gravity/compassGravity/CompassGravity.js";
+import { createBackgroundModel, IBackgroundModel } from "../../internal/models/createBackgroundModel.js";
+import { createBackgroundFromModel } from "../../internal/models/createBackgroundFromModel.js";
+import {
+  BackgroundGenerativeFillQualifier,
+  isGenerativeFillBackgroundValue,
+} from "../../qualifiers/background/shared/BackgroundGenerativeFillQualifier.js";
 
 /**
  * @description Defines an advanced resize with padding.
@@ -38,7 +41,7 @@ class ResizePadAction<GravityType extends IGravity> extends ResizeAdvancedAction
    */
   offsetX(x: number | string): this {
     this._actionModel.x = x;
-    return this.addQualifier(new Qualifier('x', x));
+    return this.addQualifier(new Qualifier("x", x));
   }
 
   /**
@@ -47,7 +50,7 @@ class ResizePadAction<GravityType extends IGravity> extends ResizeAdvancedAction
    */
   offsetY(y: number | string): this {
     this._actionModel.y = y;
-    return this.addQualifier(new Qualifier('y', y));
+    return this.addQualifier(new Qualifier("y", y));
   }
 
   static fromJson(actionModel: IActionModel): ResizePadAction<CompassGravity> {
@@ -61,5 +64,4 @@ class ResizePadAction<GravityType extends IGravity> extends ResizeAdvancedAction
   }
 }
 
-
-export {ResizePadAction};
+export { ResizePadAction };

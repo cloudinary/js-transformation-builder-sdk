@@ -1,6 +1,5 @@
-import {Action} from "../../internal/Action.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-
+import { Action } from "../../internal/Action.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
 
 export type IDistortCoordinates = [number, number, number, number, number, number, number, number];
 
@@ -19,9 +18,8 @@ class DistortAction extends Action {
   constructor(coordinates: IDistortCoordinates) {
     super();
 
-    this.addQualifier(new Qualifier('e', `distort:${coordinates.join(':')}`));
+    this.addQualifier(new Qualifier("e", `distort:${coordinates.join(":")}`));
   }
 }
 
-
-export {DistortAction};
+export { DistortAction };

@@ -1,7 +1,7 @@
-import {Action} from "../../internal/Action.js";
-import {toFloatAsString} from "../../internal/utils/toFloatAsString.js";
-import {IPreviewActionModel} from "../../internal/models/IPreviewActionModel.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
+import { Action } from "../../internal/Action.js";
+import { toFloatAsString } from "../../internal/utils/toFloatAsString.js";
+import { IPreviewActionModel } from "../../internal/models/IPreviewActionModel.js";
+import { IActionModel } from "../../internal/models/IActionModel.js";
 
 /**
  * @description Class for creating a preview of a video
@@ -18,7 +18,7 @@ class PreviewAction extends Action {
   constructor() {
     super();
     this._actionModel = {
-      actionType: 'preview'
+      actionType: "preview",
     };
   }
 
@@ -57,27 +57,29 @@ class PreviewAction extends Action {
 
   toString(): string {
     return [
-      'e_preview',
+      "e_preview",
       this._duration && `duration_${toFloatAsString(this._duration)}`,
       this._maxSeg && `max_seg_${this._maxSeg}`,
-      this._minSeg && `min_seg_dur_${toFloatAsString(this._minSeg)}`
-    ].filter((a) => a).join(':');
+      this._minSeg && `min_seg_dur_${toFloatAsString(this._minSeg)}`,
+    ]
+      .filter((a) => a)
+      .join(":");
   }
 
   static fromJson(actionModel: IActionModel): PreviewAction {
-    const {duration, maximumSegments, minimumSegmentDuration} = (actionModel as IPreviewActionModel);
+    const { duration, maximumSegments, minimumSegmentDuration } = actionModel as IPreviewActionModel;
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
     // This allows the inheriting classes to determine the class to be created
     const result = new this();
-    if (duration != null){
+    if (duration != null) {
       result.duration(duration);
     }
 
-    if (maximumSegments != null){
+    if (maximumSegments != null) {
       result.maximumSegments(maximumSegments);
     }
 
-    if (minimumSegmentDuration != null){
+    if (minimumSegmentDuration != null) {
       result.minimumSegmentDuration(minimumSegmentDuration);
     }
 
@@ -85,4 +87,4 @@ class PreviewAction extends Action {
   }
 }
 
-export {PreviewAction};
+export { PreviewAction };

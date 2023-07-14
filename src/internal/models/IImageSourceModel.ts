@@ -1,5 +1,5 @@
-import {ISourceModel} from "./ISourceModel.js";
-import {ITransformationModel} from "./ITransformationModel.js";
+import { ISourceModel } from "./ISourceModel.js";
+import { ITransformationModel } from "./ITransformationModel.js";
 
 export interface IImageSourceModel extends ISourceModel {
   sourceType: "image";
@@ -12,5 +12,5 @@ export interface IImageSourceModel extends ISourceModel {
  * @param obj
  */
 export function isIImageSourceModel(obj: unknown): obj is IImageSourceModel {
-  return obj && (obj as IImageSourceModel).sourceType === 'image';
+  return obj && (obj as IImageSourceModel).sourceType === "image";
 }

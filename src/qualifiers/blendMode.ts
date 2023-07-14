@@ -1,4 +1,4 @@
-import {BlendModeQualifier} from "./blendMode/BlendModeQualifier.js";
+import { BlendModeQualifier } from "./blendMode/BlendModeQualifier.js";
 /**
  * @description Defines the mode of blending to use when overlaying an image.
  *
@@ -8,17 +8,14 @@ import {BlendModeQualifier} from "./blendMode/BlendModeQualifier.js";
  * @see To be used with an {@link Actions.Overlay|Overlay}
  */
 
-
-
-
 /**
  * @summary qualifier
  * @memberOf Qualifiers.BlendMode
  * @description Add an overlay image blended using the 'multiply' blend mode.
  * @return {Qualifiers.BlendMode.BlendModeQualifier}
  */
-function multiply():BlendModeQualifier {
-  return new BlendModeQualifier('multiply');
+function multiply(): BlendModeQualifier {
+  return new BlendModeQualifier("multiply");
 }
 
 /**
@@ -27,8 +24,8 @@ function multiply():BlendModeQualifier {
  * @description Add an overlay image blended using the 'screen' blend mode.
  * @return {Qualifiers.BlendMode.BlendModeQualifier}
  */
-function screen():BlendModeQualifier {
-  return new BlendModeQualifier('screen');
+function screen(): BlendModeQualifier {
+  return new BlendModeQualifier("screen");
 }
 
 /**
@@ -37,8 +34,8 @@ function screen():BlendModeQualifier {
  * @description Add an overlay image blended using the 'overlay' blend mode.
  * @return {Qualifiers.BlendMode.BlendModeQualifier}
  */
-function overlay():BlendModeQualifier {
-  return new BlendModeQualifier('overlay');
+function overlay(): BlendModeQualifier {
+  return new BlendModeQualifier("overlay");
 }
 
 /**
@@ -47,10 +44,9 @@ function overlay():BlendModeQualifier {
  * @description Add an overlay image blended using the 'mask' blend mode.
  * @return {Qualifiers.BlendMode.BlendModeQualifier}
  */
-function mask():BlendModeQualifier {
-  return new BlendModeQualifier('mask');
+function mask(): BlendModeQualifier {
+  return new BlendModeQualifier("mask");
 }
-
 
 /**
  * @summary qualifier
@@ -59,25 +55,16 @@ function mask():BlendModeQualifier {
  * @param {number} lvl 	The level of distortion. (Range: 1 to 100, Server default: 50)
  * @return {Qualifiers.BlendMode.BlendModeQualifier}
  */
-function antiRemoval(lvl?: number):BlendModeQualifier {
-  return new BlendModeQualifier('anti_removal', lvl);
+function antiRemoval(lvl?: number): BlendModeQualifier {
+  return new BlendModeQualifier("anti_removal", lvl);
 }
-
 
 const BlendMode = {
   screen,
   multiply,
   overlay,
   mask,
-  antiRemoval
+  antiRemoval,
 };
 
-export {
-  BlendMode,
-  screen,
-  multiply,
-  overlay,
-  mask,
-  antiRemoval
-};
-
+export { BlendMode, screen, multiply, overlay, mask, antiRemoval };

@@ -4,7 +4,6 @@ import log from "../utils/log";
 import testCleanUp from "../utils/fileSystem/testCleanUp";
 import bundleSizeTestRunner from "../bundleSizeTestRunner";
 
-
 /**
  * Executable entrypoint for the BundleSizeTests
  * Run with `npm run test:size`
@@ -41,5 +40,3 @@ bundleSizeTestRunner()
     // Exit the process
     process.exit(1);
   });
-
-

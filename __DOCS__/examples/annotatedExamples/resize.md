@@ -1,19 +1,19 @@
 ```javascript
 // Import the cloudinary class
-import {Cloudinary} from "@cloudinary/url-gen/instance/Cloudinary";
+import { Cloudinary } from "@cloudinary/url-gen/instance/Cloudinary";
 
 // Create your instance
 const cld = new Cloudinary({
-    cloud: {
-        cloudName: 'demo'
-    },
-    url: {
-        secure: true // force https, set to false to force http
-    }
+  cloud: {
+    cloudName: "demo",
+  },
+  url: {
+    secure: true, // force https, set to false to force http
+  },
 });
 
 // Lets create a new image
-const myImage = cld.image('sample');
+const myImage = cld.image("sample");
 
 // The image interface exposes a lot of useful functions we call ActionGroups
 // Each ActionGroup accepts a matching Action as a parameter
@@ -23,13 +23,12 @@ const myImage = cld.image('sample');
 // This doesn't make much sense on its own
 // myImage.resize();
 
-
 // the resize() ActionGroup needs an Action parameter
 // Lets give resize() a ResizeScale paramter to scale our image
 // We import all of our Action parameters from @cloudinary/url-gen/actions/{actionGroup}
 // Note that you can import all Resize Actions, or just the single one you want
-import {Resize} from "@cloudinary/url-gen/actions/resize";
-const {scale} = Resize;
+import { Resize } from "@cloudinary/url-gen/actions/resize";
+const { scale } = Resize;
 // Resize.scale === scale
 // Explore the Resize object to discover more resize actions
 

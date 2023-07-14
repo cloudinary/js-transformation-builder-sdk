@@ -1,4 +1,4 @@
-import TextLayer from './textlayer.js';
+import TextLayer from "./textlayer.js";
 
 class SubtitlesLayer extends TextLayer {
   /**
@@ -10,6 +10,5 @@ class SubtitlesLayer extends TextLayer {
     super(options);
     this.options.resourceType = "subtitles";
   }
-
 }
 export default SubtitlesLayer;

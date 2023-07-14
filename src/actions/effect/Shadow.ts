@@ -1,11 +1,11 @@
-import {Action} from "../../internal/Action.js";
-import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {prepareColor} from "../../internal/utils/prepareColor.js";
-import {SystemColors} from "../../qualifiers/color.js";
-import {ExpressionQualifier} from "../../qualifiers/expression/ExpressionQualifier.js";
-import {IShadowEffectActionModel} from "../../internal/models/IEffectActionModel.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
+import { Action } from "../../internal/Action.js";
+import { QualifierValue } from "../../internal/qualifier/QualifierValue.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
+import { prepareColor } from "../../internal/utils/prepareColor.js";
+import { SystemColors } from "../../qualifiers/color.js";
+import { ExpressionQualifier } from "../../qualifiers/expression/ExpressionQualifier.js";
+import { IShadowEffectActionModel } from "../../internal/models/IEffectActionModel.js";
+import { IActionModel } from "../../internal/models/IActionModel.js";
 
 /**
  * @description Applies a shadow filter to the asset.
@@ -21,7 +21,7 @@ class ShadowEffectAction extends Action {
     super();
     this._actionModel.actionType = effectType;
     this.effectType = effectType;
-    this.addQualifier(new Qualifier('e', new QualifierValue(['shadow', strength])));
+    this.addQualifier(new Qualifier("e", new QualifierValue(["shadow", strength])));
   }
 
   /**
@@ -31,7 +31,7 @@ class ShadowEffectAction extends Action {
    */
   strength(strength: number): this {
     this._actionModel.strength = strength;
-    return this.addQualifier(new Qualifier('e', new QualifierValue(['shadow', strength])));
+    return this.addQualifier(new Qualifier("e", new QualifierValue(["shadow", strength])));
   }
 
   /**
@@ -39,9 +39,9 @@ class ShadowEffectAction extends Action {
    * @param {number | SDK.ExpressionQualifier} x
    * @return {this}
    */
-  offsetX(x:number | ExpressionQualifier): this {
+  offsetX(x: number | ExpressionQualifier): this {
     this._actionModel.offsetX = x as number;
-    return this.addQualifier(new Qualifier('x', new QualifierValue(x)));
+    return this.addQualifier(new Qualifier("x", new QualifierValue(x)));
   }
 
   /**
@@ -49,9 +49,9 @@ class ShadowEffectAction extends Action {
    * @param {number | SDK.ExpressionQualifier} y
    * @return {this}
    */
-  offsetY(y:number | ExpressionQualifier): this {
+  offsetY(y: number | ExpressionQualifier): this {
     this._actionModel.offsetY = y as number;
-    return this.addQualifier(new Qualifier('y', new QualifierValue(y)));
+    return this.addQualifier(new Qualifier("y", new QualifierValue(y)));
   }
 
   /**
@@ -59,13 +59,13 @@ class ShadowEffectAction extends Action {
    * @param color
    * @return {this}
    */
-  color(color:SystemColors): this {
+  color(color: SystemColors): this {
     this._actionModel.color = color;
-    return this.addQualifier(new Qualifier('co', new QualifierValue(prepareColor(color))));
+    return this.addQualifier(new Qualifier("co", new QualifierValue(prepareColor(color))));
   }
 
   static fromJson(actionModel: IActionModel): ShadowEffectAction {
-    const {actionType, strength, offsetX, offsetY, color} = (actionModel as IShadowEffectActionModel);
+    const { actionType, strength, offsetX, offsetY, color } = actionModel as IShadowEffectActionModel;
 
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
     // This allows the inheriting classes to determine the class to be created
@@ -78,5 +78,4 @@ class ShadowEffectAction extends Action {
   }
 }
 
-
-export {ShadowEffectAction};
+export { ShadowEffectAction };
