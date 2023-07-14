@@ -1,5 +1,5 @@
-import {LeveledEffectAction} from "../EffectActions/LeveledEffectAction.js";
-import {IActionModel} from "../../../internal/models/IActionModel.js";
+import { LeveledEffectAction } from "../EffectActions/LeveledEffectAction.js";
+import { IActionModel } from "../../../internal/models/IActionModel.js";
 
 /**
  * @description Delivers a video or animated GIF that contains additional loops of the video/GIF.
@@ -16,7 +16,7 @@ class LoopEffectAction extends LeveledEffectAction {
   }
 
   static fromJson(actionModel: IActionModel): LoopEffectAction {
-    const {actionType, iterations } = (actionModel);
+    const { actionType, iterations } = actionModel;
 
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
     // This allows the inheriting classes to determine the class to be created
@@ -26,5 +26,4 @@ class LoopEffectAction extends LeveledEffectAction {
   }
 }
 
-
-export {LoopEffectAction};
+export { LoopEffectAction };

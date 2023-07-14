@@ -20,7 +20,6 @@
  * image.toString();
  */
 
-
 import RoundCornersAction from "./roundCorners/RoundCornersAction.js";
 
 /**
@@ -29,7 +28,7 @@ import RoundCornersAction from "./roundCorners/RoundCornersAction.js";
  * @memberOf Actions.RoundCorners
  * @return {Actions.RoundCorners.RoundCornersAction}
  */
-function max():RoundCornersAction {
+function max(): RoundCornersAction {
   return new RoundCornersAction().max();
 }
 
@@ -49,10 +48,9 @@ function max():RoundCornersAction {
  * @memberOf Actions.RoundCorners
  * @return {Actions.RoundCorners.RoundCornersAction}
  */
-function byRadius(a:number, b?:number, c?:number, d?:number):RoundCornersAction {
+function byRadius(a: number, b?: number, c?: number, d?: number): RoundCornersAction {
   return new RoundCornersAction().radius(a, b, c, d);
 }
 
-const RoundCorners = {byRadius, max};
-export {RoundCorners, byRadius, max};
-
+const RoundCorners = { byRadius, max };
+export { RoundCorners, byRadius, max };

@@ -12,7 +12,7 @@
  * @memberOf Qualifiers.FontAntialias
  */
 function none(): string {
-  return '';
+  return "";
 }
 
 /**
@@ -20,7 +20,7 @@ function none(): string {
  * @memberOf Qualifiers.FontAntialias
  */
 function gray(): string {
-  return 'gray';
+  return "gray";
 }
 
 /**
@@ -28,7 +28,7 @@ function gray(): string {
  * @memberOf Qualifiers.FontAntialias
  */
 function subpixel(): string {
-  return 'subpixel';
+  return "subpixel";
 }
 
 /**
@@ -36,7 +36,7 @@ function subpixel(): string {
  * @memberOf Qualifiers.FontAntialias
  */
 function fast(): string {
-  return 'fast';
+  return "fast";
 }
 
 /**
@@ -44,7 +44,7 @@ function fast(): string {
  * @memberOf Qualifiers.FontAntialias
  */
 function good(): string {
-  return 'good';
+  return "good";
 }
 
 /**
@@ -52,17 +52,9 @@ function good(): string {
  * @memberOf Qualifiers.FontAntialias
  */
 function best(): string {
-  return 'best';
+  return "best";
 }
 
-const FontAntialias = {gray, subpixel, best, fast, none, good};
+const FontAntialias = { gray, subpixel, best, fast, none, good };
 
-export {
-  FontAntialias,
-  gray,
-  subpixel,
-  best,
-  fast,
-  none,
-  good
-};
+export { FontAntialias, gray, subpixel, best, fast, none, good };

@@ -1,18 +1,17 @@
 ```javascript
-import {Cloudinary} from "@cloudinary/url-gen/instance/Cloudinary";
+import { Cloudinary } from "@cloudinary/url-gen/instance/Cloudinary";
 
 const cld = new Cloudinary({
-    cloud: {
-        cloudName: 'demo'
-    },
-    url: {
-        secure: true // force https, set to false to force http
-    }
+  cloud: {
+    cloudName: "demo",
+  },
+  url: {
+    secure: true, // force https, set to false to force http
+  },
 });
 
-
 // Import the RotationModeAction
-import {mode} from '@cloudinary/url-gen/actions/rotate';
+import { mode } from "@cloudinary/url-gen/actions/rotate";
 
 // Remember, mode is a function that returns an Action
 // but we refer to both as a RotationMode action
@@ -20,13 +19,13 @@ import {mode} from '@cloudinary/url-gen/actions/rotate';
 // The RotationModeAction (mode) requires a Qualifier
 // That qualifier will require a certain QualifierValue
 // To make life easier, you can import all possible QualifierValue(s) of rotate
-import {RotationMode} from '@cloudinary/url-gen/qualifiers/rotationMode';
+import { RotationMode } from "@cloudinary/url-gen/qualifiers/rotationMode";
 
 // You can also import only the required QualifierValue you want
-import {verticalFlip} from '@cloudinary/url-gen/qualifiers/rotationMode';
+import { verticalFlip } from "@cloudinary/url-gen/qualifiers/rotationMode";
 // RotationMode.verticalFlip === verticalFlip
 
-const myImage = cld.image('sample');
+const myImage = cld.image("sample");
 
 // rotate() accepts a RotationModeAction (mode)
 // mode() has a Qualifier, however because that Qualifier is mandatory, we pass it directly to the factory

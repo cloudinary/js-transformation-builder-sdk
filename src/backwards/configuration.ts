@@ -1,10 +1,9 @@
-import { cloneDeep } from '../internal/utils/cloneDeep.js';
-import {isObject} from "./utils/isObject.js";
+import { cloneDeep } from "../internal/utils/cloneDeep.js";
+import { isObject } from "./utils/isObject.js";
 /**
  * Class for defining account configuration options.
  * Depends on 'utils'
  */
-
 
 /**
  * Assign values from sources if they are not defined in the destination.
@@ -15,8 +14,8 @@ import {isObject} from "./utils/isObject.js";
  * @param {...Object} source - the source object(s) to assign defaults from
  * @return {Object} destination after it was modified
  */
-const useDefaultValues = (destination:{}, ...sources: object[])=>{
-  return sources.reduce(function(dest, source) {
+const useDefaultValues = (destination: {}, ...sources: object[]) => {
+  return sources.reduce(function (dest, source) {
     let key, value;
     for (key in source) {
       // @ts-ignore
@@ -70,7 +69,7 @@ class Configuration {
    * @return {Configuration}
    *
    */
-  set(name:string|boolean, value:any) {
+  set(name: string | boolean, value: any) {
     // @ts-ignore
     this.configuration[name] = value;
     return this;
@@ -82,11 +81,11 @@ class Configuration {
    * @param {string} name - the name of the item to set
    * @return {*} the configuration item
    */
-  get(name:string) {
+  get(name: string) {
     return this.configuration[name];
   }
 
-  merge(config:any) {
+  merge(config: any) {
     Object.assign(this.configuration, cloneDeep(config));
     return this;
   }
@@ -100,11 +99,14 @@ class Configuration {
    */
   fromDocument() {
     var el, i, len, meta_elements;
-    meta_elements = typeof document !== "undefined" && document !== null ? document.querySelectorAll('meta[name^="cloudinary_"]') : void 0;
+    meta_elements =
+      typeof document !== "undefined" && document !== null
+        ? document.querySelectorAll('meta[name^="cloudinary_"]')
+        : void 0;
     if (meta_elements) {
       for (i = 0, len = meta_elements.length; i < len; i++) {
         el = meta_elements[i];
-        this.configuration[el.getAttribute('name').replace('cloudinary_', '')] = el.getAttribute('content');
+        this.configuration[el.getAttribute("name").replace("cloudinary_", "")] = el.getAttribute("content");
       }
     }
     return this;
@@ -119,30 +121,30 @@ class Configuration {
    */
   fromEnvironment() {
     var cloudinary_url, query, uri, uriRegex;
-    if(typeof process !== "undefined" && process !== null && process.env && process.env.CLOUDINARY_URL ){
+    if (typeof process !== "undefined" && process !== null && process.env && process.env.CLOUDINARY_URL) {
       cloudinary_url = process.env.CLOUDINARY_URL;
       uriRegex = /cloudinary:\/\/(?:(\w+)(?:\:([\w-]+))?@)?([\w\.-]+)(?:\/([^?]*))?(?:\?(.+))?/;
       uri = uriRegex.exec(cloudinary_url);
       if (uri) {
         if (uri[3] != null) {
-          this.configuration['cloud_name'] = uri[3];
+          this.configuration["cloud_name"] = uri[3];
         }
         if (uri[1] != null) {
-          this.configuration['api_key'] = uri[1];
+          this.configuration["api_key"] = uri[1];
         }
         if (uri[2] != null) {
-          this.configuration['api_secret'] = uri[2];
+          this.configuration["api_secret"] = uri[2];
         }
         if (uri[4] != null) {
-          this.configuration['private_cdn'] = uri[4] != null;
+          this.configuration["private_cdn"] = uri[4] != null;
         }
         if (uri[4] != null) {
-          this.configuration['secure_distribution'] = uri[4];
+          this.configuration["secure_distribution"] = uri[4];
         }
         query = uri[5];
         if (query != null) {
-          query.split('&').forEach(value=>{
-            let [k, v] = value.split('=');
+          query.split("&").forEach((value) => {
+            let [k, v] = value.split("=");
             if (v == null) {
               // @ts-ignore
               v = true;
@@ -169,12 +171,12 @@ class Configuration {
    * @see {@link fromEnvironment} for initialization using environment variables
    * @see {@link fromDocument} for initialization using HTML meta tags
    */
-  config(new_config:string, new_value:string) {
+  config(new_config: string, new_value: string) {
     switch (false) {
       case new_value === void 0:
         this.set(new_config, new_value);
         return this.configuration;
-      case typeof new_config != 'string':
+      case typeof new_config != "string":
         return this.get(new_config);
       case !isObject(new_config):
         this.merge(new_config);
@@ -193,14 +195,18 @@ class Configuration {
   toOptions() {
     return cloneDeep(this.configuration);
   }
-
 }
 
 const DEFAULT_CONFIGURATION_PARAMS = {
-  responsive_class: 'cld-responsive',
+  responsive_class: "cld-responsive",
   responsive_use_breakpoints: true,
   round_dpr: true,
-  secure: (typeof window !== "undefined" && window !== null ? window.location ? window.location.protocol : void 0 : void 0) === 'https:'
+  secure:
+    (typeof window !== "undefined" && window !== null
+      ? window.location
+        ? window.location.protocol
+        : void 0
+      : void 0) === "https:",
 };
 
 export const CONFIG_PARAMS = [
@@ -228,7 +234,7 @@ export const CONFIG_PARAMS = [
   "use_root_path",
   "version",
   "externalLibraries",
-  "max_timeout_ms"
+  "max_timeout_ms",
 ];
 
 export default Configuration;

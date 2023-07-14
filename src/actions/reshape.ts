@@ -1,12 +1,12 @@
 import CutByImage from "./reshape/CutByImage.js";
-import {ImageSource} from "../qualifiers/source/sourceTypes/ImageSource.js";
-import {DistortArcAction} from "./reshape/DistortArc.js";
-import {ShearAction} from "./reshape/Shear.js";
-import {DistortAction, IDistortCoordinates} from "./reshape/Distort.js";
-import {TrimAction} from "./reshape/TrimAction.js";
-import {TextSource} from "../qualifiers/source/sourceTypes/TextSource.js";
-import {FetchSource} from "../qualifiers/source/sourceTypes/FetchSource.js";
-import {stringOrNumber} from "../types/types.js";
+import { ImageSource } from "../qualifiers/source/sourceTypes/ImageSource.js";
+import { DistortArcAction } from "./reshape/DistortArc.js";
+import { ShearAction } from "./reshape/Shear.js";
+import { DistortAction, IDistortCoordinates } from "./reshape/Distort.js";
+import { TrimAction } from "./reshape/TrimAction.js";
+import { TextSource } from "../qualifiers/source/sourceTypes/TextSource.js";
+import { FetchSource } from "../qualifiers/source/sourceTypes/FetchSource.js";
+import { stringOrNumber } from "../types/types.js";
 
 type IReshape = CutByImage | DistortArcAction;
 
@@ -19,8 +19,6 @@ type IReshape = CutByImage | DistortArcAction;
  * @example
  * // Expand every function separately to see its own example
  */
-
-
 
 /**
  * @summary action
@@ -155,5 +153,5 @@ function trim(): TrimAction {
   return new TrimAction();
 }
 
-const Reshape = {cutByImage, distortArc, distort, shear, trim};
-export {cutByImage, Reshape, IReshape, distortArc, distort, shear, trim};
+const Reshape = { cutByImage, distortArc, distort, shear, trim };
+export { cutByImage, Reshape, IReshape, distortArc, distort, shear, trim };

@@ -1,7 +1,6 @@
-import Layer from './layer.js';
-import {isString} from "../../internal/utils/dataStructureUtils.js";
-import {base64Encode} from "../../internal/utils/base64Encode.js";
-
+import Layer from "./layer.js";
+import { isString } from "../../internal/utils/dataStructureUtils.js";
+import { base64Encode } from "../../internal/utils/base64Encode.js";
 
 class FetchLayer extends Layer {
   /**
@@ -10,7 +9,7 @@ class FetchLayer extends Layer {
    * @param {Object|string} options - layer parameters or a url
    * @param {string} options.url the url of the image to fetch
    */
-  constructor(options:any) {
+  constructor(options: any) {
     super(options);
     if (isString(options)) {
       this.options.url = options;
@@ -19,7 +18,7 @@ class FetchLayer extends Layer {
     }
   }
 
-  url(url:string) {
+  url(url: string) {
     this.options.url = url;
     return this;
   }
@@ -32,7 +31,6 @@ class FetchLayer extends Layer {
   toString() {
     return `fetch:${base64Encode(this.options.url)}`;
   }
-
 }
 
 export default FetchLayer;

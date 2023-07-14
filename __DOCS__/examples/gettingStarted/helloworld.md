@@ -3,32 +3,26 @@
 <h2>Code Example</h2>
 
 ```javascript
-import {Cloudinary} from "@cloudinary/url-gen/instance/Cloudinary";
-import {scale} from "@cloudinary/url-gen/actions/resize";
+import { Cloudinary } from "@cloudinary/url-gen/instance/Cloudinary";
+import { scale } from "@cloudinary/url-gen/actions/resize";
 
 // Create your instance
 const cld = new Cloudinary({
-    cloud: {
-        cloudName: 'demo'
-    },
-    url: {
-        secure: true // force https, set to false to force http
-    }
+  cloud: {
+    cloudName: "demo",
+  },
+  url: {
+    secure: true, // force https, set to false to force http
+  },
 });
 
-
 // Create a new image
-const myImage = cld.image('sample');
+const myImage = cld.image("sample");
 
-myImage.resize(
-    scale()
-        .width(100)
-        .height(100)
-);
+myImage.resize(scale().width(100).height(100));
 
 const myURL = myImage.toString();
 // End result: c_scale,w_100,h_100
-
 ```
 
 <h1>Explanation</h1>

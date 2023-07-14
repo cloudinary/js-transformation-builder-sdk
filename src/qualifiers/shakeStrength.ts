@@ -41,13 +41,7 @@ const ShakeStrength = {
   pixels16,
   pixels32,
   pixels48,
-  pixels64
+  pixels64,
 };
 
-export {
-  pixels16,
-  pixels32,
-  pixels48,
-  pixels64,
-  ShakeStrength
-};
+export { pixels16, pixels32, pixels48, pixels64, ShakeStrength };

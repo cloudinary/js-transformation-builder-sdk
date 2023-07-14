@@ -1,4 +1,4 @@
-import {LEGACY_PREDEFINED_VARS, LEGACY_CONDITIONAL_OPERATORS} from "../consts.js";
+import { LEGACY_PREDEFINED_VARS, LEGACY_CONDITIONAL_OPERATORS } from "../consts.js";
 
 /**
  * Normalize an offset value
@@ -6,7 +6,7 @@ import {LEGACY_PREDEFINED_VARS, LEGACY_CONDITIONAL_OPERATORS} from "../consts.js
  * @return {Object|String} a normalized String of the input value if possible otherwise the value itself
  */
 export function legacyNormalizeExpression(expression: string | any) {
-  if (typeof expression !== 'string' || expression.length === 0 || expression.match(/^!.+!$/)) {
+  if (typeof expression !== "string" || expression.length === 0 || expression.match(/^!.+!$/)) {
     if (expression) {
       return expression.toString();
     } else {
@@ -21,15 +21,15 @@ export function legacyNormalizeExpression(expression: string | any) {
   const operatorsPattern = "((" + operators + ")(?=[ _]))";
   const operatorsReplaceRE = new RegExp(operatorsPattern, "g");
   expression = expression.replace(operatorsReplaceRE, (match: keyof typeof LEGACY_CONDITIONAL_OPERATORS) => {
-    return LEGACY_CONDITIONAL_OPERATORS[match]
+    return LEGACY_CONDITIONAL_OPERATORS[match];
   });
 
   // predefined variables
   const predefinedVarsPattern = "(" + Object.keys(LEGACY_PREDEFINED_VARS).join("|") + ")";
-  const userVariablePattern = '(\\$_*[^_ ]+)';
+  const userVariablePattern = "(\\$_*[^_ ]+)";
   const variablesReplaceRE = new RegExp(`${userVariablePattern}|${predefinedVarsPattern}`, "g");
   // @ts-ignore
-  expression = expression.replace(variablesReplaceRE, (match: string) => (LEGACY_PREDEFINED_VARS[match] || match));
+  expression = expression.replace(variablesReplaceRE, (match: string) => LEGACY_PREDEFINED_VARS[match] || match);
 
-  return expression.replace(/[ _]+/g, '_');
+  return expression.replace(/[ _]+/g, "_");
 }

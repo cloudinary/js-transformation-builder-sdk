@@ -1,6 +1,6 @@
-import {prepareColor} from "../../../../internal/utils/prepareColor.js";
-import {BackgroundQualifier} from "./BackgroundQualifier.js";
-import {SystemColors} from "../../../color.js";
+import { prepareColor } from "../../../../internal/utils/prepareColor.js";
+import { BackgroundQualifier } from "./BackgroundQualifier.js";
+import { SystemColors } from "../../../color.js";
 
 /**
  * @description Defines the background color to use when resizing with padding.
@@ -39,4 +39,4 @@ class BaseCommonBackground extends BackgroundQualifier {
   }
 }
 
-export {BaseCommonBackground};
+export { BaseCommonBackground };

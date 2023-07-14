@@ -1,4 +1,4 @@
-import {FormatQualifier} from "./format/FormatQualifier.js";
+import { FormatQualifier } from "./format/FormatQualifier.js";
 
 /**
  * @description Contains functions to select the asset format, can be used to convert images and videos to other formats.
@@ -7,16 +7,15 @@ import {FormatQualifier} from "./format/FormatQualifier.js";
  * @see Visit {@link Actions.Delivery.format|Delivery Format} for an example
  */
 
-
-
-
 /**
  * @summary qualifier
  * @description Image format heic.
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function heic():FormatQualifier { return new FormatQualifier('heic'); }
+function heic(): FormatQualifier {
+  return new FormatQualifier("heic");
+}
 
 /**
  * @summary qualifier
@@ -24,7 +23,9 @@ function heic():FormatQualifier { return new FormatQualifier('heic'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function flif():FormatQualifier { return new FormatQualifier('flif'); }
+function flif(): FormatQualifier {
+  return new FormatQualifier("flif");
+}
 
 /**
  * @summary qualifier
@@ -32,7 +33,9 @@ function flif():FormatQualifier { return new FormatQualifier('flif'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function ai():FormatQualifier { return new FormatQualifier('ai'); }
+function ai(): FormatQualifier {
+  return new FormatQualifier("ai");
+}
 
 /**
  * @summary qualifier
@@ -40,7 +43,9 @@ function ai():FormatQualifier { return new FormatQualifier('ai'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function wdp():FormatQualifier { return new FormatQualifier('wdp'); }
+function wdp(): FormatQualifier {
+  return new FormatQualifier("wdp");
+}
 
 /**
  * @summary qualifier
@@ -48,7 +53,9 @@ function wdp():FormatQualifier { return new FormatQualifier('wdp'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function svg():FormatQualifier { return new FormatQualifier('svg'); }
+function svg(): FormatQualifier {
+  return new FormatQualifier("svg");
+}
 
 /**
  * @summary qualifier
@@ -56,7 +63,9 @@ function svg():FormatQualifier { return new FormatQualifier('svg'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function webp():FormatQualifier { return new FormatQualifier('webp'); }
+function webp(): FormatQualifier {
+  return new FormatQualifier("webp");
+}
 
 /**
  * @summary qualifier
@@ -64,7 +73,9 @@ function webp():FormatQualifier { return new FormatQualifier('webp'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function psd():FormatQualifier { return new FormatQualifier('psd'); }
+function psd(): FormatQualifier {
+  return new FormatQualifier("psd");
+}
 
 /**
  * @summary qualifier
@@ -72,7 +83,9 @@ function psd():FormatQualifier { return new FormatQualifier('psd'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function jp2():FormatQualifier { return new FormatQualifier('jp2'); }
+function jp2(): FormatQualifier {
+  return new FormatQualifier("jp2");
+}
 
 /**
  * @summary qualifier
@@ -80,7 +93,9 @@ function jp2():FormatQualifier { return new FormatQualifier('jp2'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function jpc():FormatQualifier { return new FormatQualifier('jpc'); }
+function jpc(): FormatQualifier {
+  return new FormatQualifier("jpc");
+}
 
 /**
  * @summary qualifier
@@ -88,7 +103,9 @@ function jpc():FormatQualifier { return new FormatQualifier('jpc'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function eps():FormatQualifier { return new FormatQualifier('eps'); }
+function eps(): FormatQualifier {
+  return new FormatQualifier("eps");
+}
 
 /**
  * @summary qualifier
@@ -96,7 +113,9 @@ function eps():FormatQualifier { return new FormatQualifier('eps'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function tiff():FormatQualifier { return new FormatQualifier('tiff'); }
+function tiff(): FormatQualifier {
+  return new FormatQualifier("tiff");
+}
 
 /**
  * @summary qualifier
@@ -104,7 +123,9 @@ function tiff():FormatQualifier { return new FormatQualifier('tiff'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function pdf():FormatQualifier { return new FormatQualifier('pdf'); }
+function pdf(): FormatQualifier {
+  return new FormatQualifier("pdf");
+}
 
 /**
  * @summary qualifier
@@ -112,7 +133,9 @@ function pdf():FormatQualifier { return new FormatQualifier('pdf'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function ico():FormatQualifier { return new FormatQualifier('ico'); }
+function ico(): FormatQualifier {
+  return new FormatQualifier("ico");
+}
 
 /**
  * @summary qualifier
@@ -120,7 +143,9 @@ function ico():FormatQualifier { return new FormatQualifier('ico'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function bmp():FormatQualifier { return new FormatQualifier('bmp'); }
+function bmp(): FormatQualifier {
+  return new FormatQualifier("bmp");
+}
 
 /**
  * @summary qualifier
@@ -128,7 +153,9 @@ function bmp():FormatQualifier { return new FormatQualifier('bmp'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function png():FormatQualifier { return new FormatQualifier('png'); }
+function png(): FormatQualifier {
+  return new FormatQualifier("png");
+}
 
 /**
  * @summary qualifier
@@ -136,7 +163,9 @@ function png():FormatQualifier { return new FormatQualifier('png'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function gif():FormatQualifier { return new FormatQualifier('gif'); }
+function gif(): FormatQualifier {
+  return new FormatQualifier("gif");
+}
 
 /**
  * @summary qualifier
@@ -144,7 +173,9 @@ function gif():FormatQualifier { return new FormatQualifier('gif'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function auto():FormatQualifier { return new FormatQualifier('auto'); }
+function auto(): FormatQualifier {
+  return new FormatQualifier("auto");
+}
 
 /**
  * @summary qualifier
@@ -152,7 +183,9 @@ function auto():FormatQualifier { return new FormatQualifier('auto'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function jpg():FormatQualifier { return new FormatQualifier('jpg'); }
+function jpg(): FormatQualifier {
+  return new FormatQualifier("jpg");
+}
 
 /**
  * @summary qualifier
@@ -160,7 +193,9 @@ function jpg():FormatQualifier { return new FormatQualifier('jpg'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function djvu():FormatQualifier { return new FormatQualifier('djvu'); }
+function djvu(): FormatQualifier {
+  return new FormatQualifier("djvu");
+}
 
 /**
  * @summary qualifier
@@ -168,7 +203,9 @@ function djvu():FormatQualifier { return new FormatQualifier('djvu'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function ps():FormatQualifier { return new FormatQualifier('ps'); }
+function ps(): FormatQualifier {
+  return new FormatQualifier("ps");
+}
 
 /**
  * @summary qualifier
@@ -176,7 +213,9 @@ function ps():FormatQualifier { return new FormatQualifier('ps'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function ept():FormatQualifier { return new FormatQualifier('ept'); }
+function ept(): FormatQualifier {
+  return new FormatQualifier("ept");
+}
 
 /**
  * @summary qualifier
@@ -184,7 +223,9 @@ function ept():FormatQualifier { return new FormatQualifier('ept'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function eps3():FormatQualifier { return new FormatQualifier('eps3'); }
+function eps3(): FormatQualifier {
+  return new FormatQualifier("eps3");
+}
 
 /**
  * @summary qualifier
@@ -192,7 +233,9 @@ function eps3():FormatQualifier { return new FormatQualifier('eps3'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function fxb():FormatQualifier { return new FormatQualifier('fxb'); }
+function fxb(): FormatQualifier {
+  return new FormatQualifier("fxb");
+}
 
 /**
  * @summary qualifier
@@ -200,7 +243,9 @@ function fxb():FormatQualifier { return new FormatQualifier('fxb'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function gltf():FormatQualifier { return new FormatQualifier('gltf'); }
+function gltf(): FormatQualifier {
+  return new FormatQualifier("gltf");
+}
 
 /**
  * @summary qualifier
@@ -208,7 +253,9 @@ function gltf():FormatQualifier { return new FormatQualifier('gltf'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function heif():FormatQualifier { return new FormatQualifier('heif'); }
+function heif(): FormatQualifier {
+  return new FormatQualifier("heif");
+}
 
 /**
  * @summary qualifier
@@ -216,7 +263,9 @@ function heif():FormatQualifier { return new FormatQualifier('heif'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function indd():FormatQualifier { return new FormatQualifier('indd'); }
+function indd(): FormatQualifier {
+  return new FormatQualifier("indd");
+}
 
 /**
  * @summary qualifier
@@ -224,7 +273,9 @@ function indd():FormatQualifier { return new FormatQualifier('indd'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function jpe():FormatQualifier { return new FormatQualifier('jpe'); }
+function jpe(): FormatQualifier {
+  return new FormatQualifier("jpe");
+}
 
 /**
  * @summary qualifier
@@ -232,7 +283,9 @@ function jpe():FormatQualifier { return new FormatQualifier('jpe'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function jpeg():FormatQualifier { return new FormatQualifier('jpeg'); }
+function jpeg(): FormatQualifier {
+  return new FormatQualifier("jpeg");
+}
 
 /**
  * @summary qualifier
@@ -240,7 +293,9 @@ function jpeg():FormatQualifier { return new FormatQualifier('jpeg'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function jxr():FormatQualifier { return new FormatQualifier('jxr'); }
+function jxr(): FormatQualifier {
+  return new FormatQualifier("jxr");
+}
 
 /**
  * @summary qualifier
@@ -248,7 +303,9 @@ function jxr():FormatQualifier { return new FormatQualifier('jxr'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function hdp():FormatQualifier { return new FormatQualifier('hdp'); }
+function hdp(): FormatQualifier {
+  return new FormatQualifier("hdp");
+}
 
 /**
  * @summary qualifier
@@ -256,7 +313,9 @@ function hdp():FormatQualifier { return new FormatQualifier('hdp'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function spd():FormatQualifier { return new FormatQualifier('spd'); }
+function spd(): FormatQualifier {
+  return new FormatQualifier("spd");
+}
 
 /**
  * @summary qualifier
@@ -264,7 +323,9 @@ function spd():FormatQualifier { return new FormatQualifier('spd'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function arw():FormatQualifier { return new FormatQualifier('arw'); }
+function arw(): FormatQualifier {
+  return new FormatQualifier("arw");
+}
 
 /**
  * @summary qualifier
@@ -272,7 +333,9 @@ function arw():FormatQualifier { return new FormatQualifier('arw'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function cr2():FormatQualifier { return new FormatQualifier('cr2'); }
+function cr2(): FormatQualifier {
+  return new FormatQualifier("cr2");
+}
 
 /**
  * @summary qualifier
@@ -280,7 +343,9 @@ function cr2():FormatQualifier { return new FormatQualifier('cr2'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function tga():FormatQualifier { return new FormatQualifier('tga'); }
+function tga(): FormatQualifier {
+  return new FormatQualifier("tga");
+}
 
 /**
  * @summary qualifier
@@ -288,7 +353,9 @@ function tga():FormatQualifier { return new FormatQualifier('tga'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function tif():FormatQualifier { return new FormatQualifier('tif'); }
+function tif(): FormatQualifier {
+  return new FormatQualifier("tif");
+}
 
 /**
  * @summary qualifier
@@ -296,7 +363,9 @@ function tif():FormatQualifier { return new FormatQualifier('tif'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function avif():FormatQualifier { return new FormatQualifier('avif'); }
+function avif(): FormatQualifier {
+  return new FormatQualifier("avif");
+}
 
 /**
  * @summary qualifier
@@ -304,7 +373,9 @@ function avif():FormatQualifier { return new FormatQualifier('avif'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function usdz():FormatQualifier { return new FormatQualifier('usdz'); }
+function usdz(): FormatQualifier {
+  return new FormatQualifier("usdz");
+}
 
 /**
  * @summary qualifier
@@ -312,7 +383,9 @@ function usdz():FormatQualifier { return new FormatQualifier('usdz'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function video3g2():FormatQualifier { return new FormatQualifier('3g2'); }
+function video3g2(): FormatQualifier {
+  return new FormatQualifier("3g2");
+}
 
 /**
  * @summary qualifier
@@ -320,7 +393,9 @@ function video3g2():FormatQualifier { return new FormatQualifier('3g2'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function video3gp():FormatQualifier { return new FormatQualifier('3gp'); }
+function video3gp(): FormatQualifier {
+  return new FormatQualifier("3gp");
+}
 
 /**
  * @summary qualifier
@@ -328,7 +403,9 @@ function video3gp():FormatQualifier { return new FormatQualifier('3gp'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function videoAvi():FormatQualifier { return new FormatQualifier('avi'); }
+function videoAvi(): FormatQualifier {
+  return new FormatQualifier("avi");
+}
 
 /**
  * @summary qualifier
@@ -336,7 +413,9 @@ function videoAvi():FormatQualifier { return new FormatQualifier('avi'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function videoFlv():FormatQualifier { return new FormatQualifier('flv'); }
+function videoFlv(): FormatQualifier {
+  return new FormatQualifier("flv");
+}
 
 /**
  * @summary qualifier
@@ -344,7 +423,9 @@ function videoFlv():FormatQualifier { return new FormatQualifier('flv'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function videoM3u8():FormatQualifier { return new FormatQualifier('m3u8'); }
+function videoM3u8(): FormatQualifier {
+  return new FormatQualifier("m3u8");
+}
 
 /**
  * @summary qualifier
@@ -352,7 +433,9 @@ function videoM3u8():FormatQualifier { return new FormatQualifier('m3u8'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function videoTs():FormatQualifier { return new FormatQualifier('ts'); }
+function videoTs(): FormatQualifier {
+  return new FormatQualifier("ts");
+}
 
 /**
  * @summary qualifier
@@ -360,7 +443,9 @@ function videoTs():FormatQualifier { return new FormatQualifier('ts'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function videoMov():FormatQualifier { return new FormatQualifier('mov'); }
+function videoMov(): FormatQualifier {
+  return new FormatQualifier("mov");
+}
 
 /**
  * @summary qualifier
@@ -368,7 +453,9 @@ function videoMov():FormatQualifier { return new FormatQualifier('mov'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function videoMkv():FormatQualifier { return new FormatQualifier('mkv'); }
+function videoMkv(): FormatQualifier {
+  return new FormatQualifier("mkv");
+}
 
 /**
  * @summary qualifier
@@ -376,7 +463,9 @@ function videoMkv():FormatQualifier { return new FormatQualifier('mkv'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function videoMp4():FormatQualifier { return new FormatQualifier('mp4'); }
+function videoMp4(): FormatQualifier {
+  return new FormatQualifier("mp4");
+}
 
 /**
  * @summary qualifier
@@ -384,7 +473,9 @@ function videoMp4():FormatQualifier { return new FormatQualifier('mp4'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function videoMpeg():FormatQualifier { return new FormatQualifier('mpeg'); }
+function videoMpeg(): FormatQualifier {
+  return new FormatQualifier("mpeg");
+}
 
 /**
  * @summary qualifier
@@ -392,7 +483,9 @@ function videoMpeg():FormatQualifier { return new FormatQualifier('mpeg'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function videoMpd():FormatQualifier { return new FormatQualifier('mpd'); }
+function videoMpd(): FormatQualifier {
+  return new FormatQualifier("mpd");
+}
 
 /**
  * @summary qualifier
@@ -400,7 +493,9 @@ function videoMpd():FormatQualifier { return new FormatQualifier('mpd'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function videoMxf():FormatQualifier { return new FormatQualifier('mxf'); }
+function videoMxf(): FormatQualifier {
+  return new FormatQualifier("mxf");
+}
 
 /**
  * @summary qualifier
@@ -408,7 +503,9 @@ function videoMxf():FormatQualifier { return new FormatQualifier('mxf'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function videoOgv():FormatQualifier { return new FormatQualifier('ogv'); }
+function videoOgv(): FormatQualifier {
+  return new FormatQualifier("ogv");
+}
 
 /**
  * @summary qualifier
@@ -416,7 +513,9 @@ function videoOgv():FormatQualifier { return new FormatQualifier('ogv'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function videoWebm():FormatQualifier { return new FormatQualifier('webm'); }
+function videoWebm(): FormatQualifier {
+  return new FormatQualifier("webm");
+}
 
 /**
  * @summary qualifier
@@ -424,7 +523,9 @@ function videoWebm():FormatQualifier { return new FormatQualifier('webm'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function videoWmv():FormatQualifier { return new FormatQualifier('wmv'); }
+function videoWmv(): FormatQualifier {
+  return new FormatQualifier("wmv");
+}
 
 /**
  * @summary qualifier
@@ -432,7 +533,9 @@ function videoWmv():FormatQualifier { return new FormatQualifier('wmv'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function videoM2ts():FormatQualifier { return new FormatQualifier('m2ts'); }
+function videoM2ts(): FormatQualifier {
+  return new FormatQualifier("m2ts");
+}
 
 /**
  * @summary qualifier
@@ -440,7 +543,9 @@ function videoM2ts():FormatQualifier { return new FormatQualifier('m2ts'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function videoMts():FormatQualifier { return new FormatQualifier('mts'); }
+function videoMts(): FormatQualifier {
+  return new FormatQualifier("mts");
+}
 
 /**
  * @summary qualifier
@@ -448,7 +553,9 @@ function videoMts():FormatQualifier { return new FormatQualifier('mts'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function audioAac():FormatQualifier { return new FormatQualifier('aac'); }
+function audioAac(): FormatQualifier {
+  return new FormatQualifier("aac");
+}
 
 /**
  * @summary qualifier
@@ -456,7 +563,9 @@ function audioAac():FormatQualifier { return new FormatQualifier('aac'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function audioAiff():FormatQualifier { return new FormatQualifier('aiff'); }
+function audioAiff(): FormatQualifier {
+  return new FormatQualifier("aiff");
+}
 
 /**
  * @summary qualifier
@@ -464,7 +573,9 @@ function audioAiff():FormatQualifier { return new FormatQualifier('aiff'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function audioAmr():FormatQualifier { return new FormatQualifier('amr'); }
+function audioAmr(): FormatQualifier {
+  return new FormatQualifier("amr");
+}
 
 /**
  * @summary qualifier
@@ -472,7 +583,9 @@ function audioAmr():FormatQualifier { return new FormatQualifier('amr'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function audioFlac():FormatQualifier { return new FormatQualifier('flac'); }
+function audioFlac(): FormatQualifier {
+  return new FormatQualifier("flac");
+}
 
 /**
  * @summary qualifier
@@ -480,7 +593,9 @@ function audioFlac():FormatQualifier { return new FormatQualifier('flac'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function audioM4a():FormatQualifier { return new FormatQualifier('m4a'); }
+function audioM4a(): FormatQualifier {
+  return new FormatQualifier("m4a");
+}
 
 /**
  * @summary qualifier
@@ -488,7 +603,9 @@ function audioM4a():FormatQualifier { return new FormatQualifier('m4a'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function audioMp3():FormatQualifier { return new FormatQualifier('mp3'); }
+function audioMp3(): FormatQualifier {
+  return new FormatQualifier("mp3");
+}
 
 /**
  * @summary qualifier
@@ -496,7 +613,9 @@ function audioMp3():FormatQualifier { return new FormatQualifier('mp3'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function audioOgg():FormatQualifier { return new FormatQualifier('ogg'); }
+function audioOgg(): FormatQualifier {
+  return new FormatQualifier("ogg");
+}
 
 /**
  * @summary qualifier
@@ -504,7 +623,9 @@ function audioOgg():FormatQualifier { return new FormatQualifier('ogg'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function audioOpus():FormatQualifier { return new FormatQualifier('opus'); }
+function audioOpus(): FormatQualifier {
+  return new FormatQualifier("opus");
+}
 
 /**
  * @summary qualifier
@@ -512,7 +633,9 @@ function audioOpus():FormatQualifier { return new FormatQualifier('opus'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function audioWav():FormatQualifier { return new FormatQualifier('wav'); }
+function audioWav(): FormatQualifier {
+  return new FormatQualifier("wav");
+}
 
 /**
  * @summary qualifier
@@ -520,8 +643,140 @@ function audioWav():FormatQualifier { return new FormatQualifier('wav'); }
  * @memberOf Qualifiers.Format
  * @return {Qualifiers.Format.FormatQualifier}
  */
-function glb():FormatQualifier { return new FormatQualifier('glb'); }
+function glb(): FormatQualifier {
+  return new FormatQualifier("glb");
+}
 
-
-const Format = {usdz, jp2, ai, auto, bmp, eps, flif, gif, heic, ico, jpc, jpg, pdf, png, psd, svg, tiff, wdp, webp, arw, audioAac, audioAiff, audioAmr, audioFlac, audioM4a, audioMp3, audioOgg, audioOpus, audioWav, avif, cr2, djvu, eps3, ept, fxb, gltf, hdp, heif, indd, jpe, jpeg, jxr, ps, spd, tga, tif, video3g2, video3gp, videoAvi, videoFlv, videoM2ts, videoM3u8, videoMkv, videoMov, videoMp4, videoMpd, videoMpeg, videoMts, videoMxf, videoOgv, videoTs, videoWebm, videoWmv, glb};
-export {usdz, jp2, ai, auto, bmp, eps, flif, gif, heic, ico, jpc, jpg, pdf, png, psd, svg, tiff, wdp, webp, arw, audioAac, audioAiff, audioAmr, audioFlac, audioM4a, audioMp3, audioOgg, audioOpus, audioWav, avif, cr2, djvu, eps3, ept, fxb, gltf, hdp, heif, indd, jpe, jpeg, jxr, ps, spd, tga, tif, video3g2, video3gp, videoAvi, videoFlv, videoM2ts, videoM3u8, videoMkv, videoMov, videoMp4, videoMpd, videoMpeg, videoMts, videoMxf, videoOgv, videoTs, videoWebm, videoWmv, glb, Format};
+const Format = {
+  usdz,
+  jp2,
+  ai,
+  auto,
+  bmp,
+  eps,
+  flif,
+  gif,
+  heic,
+  ico,
+  jpc,
+  jpg,
+  pdf,
+  png,
+  psd,
+  svg,
+  tiff,
+  wdp,
+  webp,
+  arw,
+  audioAac,
+  audioAiff,
+  audioAmr,
+  audioFlac,
+  audioM4a,
+  audioMp3,
+  audioOgg,
+  audioOpus,
+  audioWav,
+  avif,
+  cr2,
+  djvu,
+  eps3,
+  ept,
+  fxb,
+  gltf,
+  hdp,
+  heif,
+  indd,
+  jpe,
+  jpeg,
+  jxr,
+  ps,
+  spd,
+  tga,
+  tif,
+  video3g2,
+  video3gp,
+  videoAvi,
+  videoFlv,
+  videoM2ts,
+  videoM3u8,
+  videoMkv,
+  videoMov,
+  videoMp4,
+  videoMpd,
+  videoMpeg,
+  videoMts,
+  videoMxf,
+  videoOgv,
+  videoTs,
+  videoWebm,
+  videoWmv,
+  glb,
+};
+export {
+  usdz,
+  jp2,
+  ai,
+  auto,
+  bmp,
+  eps,
+  flif,
+  gif,
+  heic,
+  ico,
+  jpc,
+  jpg,
+  pdf,
+  png,
+  psd,
+  svg,
+  tiff,
+  wdp,
+  webp,
+  arw,
+  audioAac,
+  audioAiff,
+  audioAmr,
+  audioFlac,
+  audioM4a,
+  audioMp3,
+  audioOgg,
+  audioOpus,
+  audioWav,
+  avif,
+  cr2,
+  djvu,
+  eps3,
+  ept,
+  fxb,
+  gltf,
+  hdp,
+  heif,
+  indd,
+  jpe,
+  jpeg,
+  jxr,
+  ps,
+  spd,
+  tga,
+  tif,
+  video3g2,
+  video3gp,
+  videoAvi,
+  videoFlv,
+  videoM2ts,
+  videoM3u8,
+  videoMkv,
+  videoMov,
+  videoMp4,
+  videoMpd,
+  videoMpeg,
+  videoMts,
+  videoMxf,
+  videoOgv,
+  videoTs,
+  videoWebm,
+  videoWmv,
+  glb,
+  Format,
+};

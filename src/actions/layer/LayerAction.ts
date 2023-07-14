@@ -1,24 +1,23 @@
-import {Action} from "../../internal/Action.js";
-import {TimelinePosition} from "../../qualifiers/video/TimelinePosition.js";
-import {BlendModeQualifier} from "../../qualifiers/blendMode/BlendModeQualifier.js";
-import {PositionQualifier} from "../../qualifiers/position/PositionQualifier.js";
-import {FlagQualifier} from "../../qualifiers/flag/FlagQualifier.js";
-import {Position} from "../../qualifiers/position.js";
-import {BaseSource} from "../../qualifiers/source/BaseSource.js";
-import {BlendModeType} from "../../types/types.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
-import {IOverlayActionModel} from "../../internal/models/IOverlayActionModel.js";
-import {createSourceFromModel} from "../../internal/models/createSourceFromModel.js";
-import {ImageSource} from "../../qualifiers/source/sourceTypes/ImageSource.js";
-import {ITransformationFromJson} from "../../internal/models/IHasFromJson.js";
-import {createPositionFromModel} from "../../internal/models/createPositionFromModel.js";
-import {createTimelinePositionFromModel} from "../../internal/models/createTimelinePositionFromModel.js";
-import {ISourceModel} from "../../internal/models/ISourceModel.js";
-import {ITimelinePositionModel} from "../../internal/models/ITimelinePositionModel.js";
-import {IPositionModel} from "../../internal/models/IPositionModel.js";
-import {ACTION_TYPE_TO_BLEND_MODE_MAP} from "../../internal/internalConstants.js";
-
+import { Action } from "../../internal/Action.js";
+import { TimelinePosition } from "../../qualifiers/video/TimelinePosition.js";
+import { BlendModeQualifier } from "../../qualifiers/blendMode/BlendModeQualifier.js";
+import { PositionQualifier } from "../../qualifiers/position/PositionQualifier.js";
+import { FlagQualifier } from "../../qualifiers/flag/FlagQualifier.js";
+import { Position } from "../../qualifiers/position.js";
+import { BaseSource } from "../../qualifiers/source/BaseSource.js";
+import { BlendModeType } from "../../types/types.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
+import { IActionModel } from "../../internal/models/IActionModel.js";
+import { IOverlayActionModel } from "../../internal/models/IOverlayActionModel.js";
+import { createSourceFromModel } from "../../internal/models/createSourceFromModel.js";
+import { ImageSource } from "../../qualifiers/source/sourceTypes/ImageSource.js";
+import { ITransformationFromJson } from "../../internal/models/IHasFromJson.js";
+import { createPositionFromModel } from "../../internal/models/createPositionFromModel.js";
+import { createTimelinePositionFromModel } from "../../internal/models/createTimelinePositionFromModel.js";
+import { ISourceModel } from "../../internal/models/ISourceModel.js";
+import { ITimelinePositionModel } from "../../internal/models/ITimelinePositionModel.js";
+import { IPositionModel } from "../../internal/models/IPositionModel.js";
+import { ACTION_TYPE_TO_BLEND_MODE_MAP } from "../../internal/internalConstants.js";
 
 /**
  * @extends SDK.Action
@@ -29,11 +28,11 @@ import {ACTION_TYPE_TO_BLEND_MODE_MAP} from "../../internal/internalConstants.js
  */
 class LayerAction extends Action {
   private source: BaseSource;
-  private _position:PositionQualifier;
+  private _position: PositionQualifier;
   private _blendMode: BlendModeQualifier | BlendModeType;
   private _timelinePosition: TimelinePosition;
   protected _actionModel: IOverlayActionModel;
-  layerType: 'u' | 'l';
+  layerType: "u" | "l";
 
   /**
    * @description Creates a LayerAction to be used with overlays and underlays
@@ -44,8 +43,8 @@ class LayerAction extends Action {
     this.source = layerSource;
 
     this._actionModel = {
-      actionType: 'overlay',
-      source: layerSource.toJson() as ISourceModel
+      actionType: "overlay",
+      source: layerSource.toJson() as ISourceModel,
     };
   }
 
@@ -54,9 +53,9 @@ class LayerAction extends Action {
    * @param {'u' | 'l'} type
    * @return {this}
    */
-  setLayerType(type: 'u' | 'l'): this {
+  setLayerType(type: "u" | "l"): this {
     this.layerType = type;
-    this._actionModel.actionType = type === 'u' ? 'underlay' : 'overlay';
+    this._actionModel.actionType = type === "u" ? "underlay" : "overlay";
 
     return this;
   }
@@ -90,14 +89,16 @@ class LayerAction extends Action {
    * @param {Qualifiers.BlendMode|BlendModeType} blendMode
    * @return {this}
    */
-  blendMode(blendMode: BlendModeType|BlendModeQualifier): this {
+  blendMode(blendMode: BlendModeType | BlendModeQualifier): this {
     this._blendMode = blendMode;
 
-    const [mode, level] = `${blendMode}`.replace('e_', '').split(":");
-    if (mode === 'anti_removal') {
-      this._actionModel.blendMode = level ? {blendModeType: 'antiRemoval', level: level} : {blendModeType: 'antiRemoval'};
-    }else {
-      this._actionModel.blendMode = {blendModeType: mode};
+    const [mode, level] = `${blendMode}`.replace("e_", "").split(":");
+    if (mode === "anti_removal") {
+      this._actionModel.blendMode = level
+        ? { blendModeType: "antiRemoval", level: level }
+        : { blendModeType: "antiRemoval" };
+    } else {
+      this._actionModel.blendMode = { blendModeType: mode };
     }
     return this;
   }
@@ -108,8 +109,8 @@ class LayerAction extends Action {
    * Closes a layer (layers are built in three stages -> /Open/Transform/Close).
    * @return {SDK.Action}
    */
-  private closeLayer():Action {
-    const bit = new Action().addFlag(new FlagQualifier('layer_apply'));
+  private closeLayer(): Action {
+    const bit = new Action().addFlag(new FlagQualifier("layer_apply"));
 
     this._position?.qualifiers.forEach((qualifier) => {
       bit.addQualifier(qualifier);
@@ -120,9 +121,9 @@ class LayerAction extends Action {
       bit.addFlag(flag);
     });
 
-    if(typeof this._blendMode === "string"){
-      bit.addQualifier(new Qualifier('e', this._blendMode));
-    }else{
+    if (typeof this._blendMode === "string") {
+      bit.addQualifier(new Qualifier("e", this._blendMode));
+    } else {
       this._blendMode?.qualifiers.forEach((qualifier) => {
         bit.addQualifier(qualifier);
       });
@@ -144,28 +145,29 @@ class LayerAction extends Action {
     return `${this.source.getOpenSourceString(this.layerType)}`;
   }
 
-
   /**
    * @description
    * Serializes the Layer to a string
    * @return {string}
    */
-  toString():string{
+  toString(): string {
     return [
       this.openLayer(),
       this.source.getTransformation() && this.source.getTransformation().toString(),
-      this.closeLayer()
-    ].filter((a) => a).join('/');
+      this.closeLayer(),
+    ]
+      .filter((a) => a)
+      .join("/");
   }
 
   static fromJson(actionModel: IActionModel, transformationFromJson: ITransformationFromJson): LayerAction {
-    const {source, actionType, position, timelinePosition, blendMode} = (actionModel as IOverlayActionModel);
+    const { source, actionType, position, timelinePosition, blendMode } = actionModel as IOverlayActionModel;
     const sourceInstance = createSourceFromModel(source, transformationFromJson) as ImageSource;
 
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
     // This allows the inheriting classes to determine the class to be created
     const result = new this(sourceInstance);
-    const layerType = actionType === 'overlay' ? 'l' : 'u';
+    const layerType = actionType === "overlay" ? "l" : "u";
     result.setLayerType(layerType);
 
     if (position) {
@@ -178,9 +180,9 @@ class LayerAction extends Action {
 
     if (blendMode) {
       const blendModeType = ACTION_TYPE_TO_BLEND_MODE_MAP[blendMode.blendModeType] || blendMode.blendModeType;
-      if(blendMode?.level) {
+      if (blendMode?.level) {
         result.blendMode(new BlendModeQualifier(blendModeType, blendMode.level as number));
-      }else{
+      } else {
         result.blendMode(new BlendModeQualifier(blendModeType));
       }
     }
@@ -189,4 +191,4 @@ class LayerAction extends Action {
   }
 }
 
-export {LayerAction};
+export { LayerAction };

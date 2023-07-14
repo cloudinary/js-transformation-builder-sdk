@@ -6,18 +6,22 @@
  * See the examples under every method
  */
 
-import {DeliveryFormatAction} from "./delivery/DeliveryFormatAction.js";
-import {DeliveryQualityAction} from "./delivery/DeliveryQualityAction.js";
-import {FormatQualifier} from "../qualifiers/format/FormatQualifier.js";
-import {DeliveryColorSpaceFromICCAction} from "./delivery/DeliveryColorSpaceFromICCAction.js";
-import {DeliveryAction} from "./delivery/DeliveryAction.js";
-import {ColorSpaceType} from "../types/types.js";
-import {QualityTypes} from "../types/types.js";
-import {ImageFormatType, VideoFormatType} from "../types/types.js";
-import {DeliveryColorSpaceAction} from "./delivery/DeliveryColorSpaceAction.js";
-import {DeliveryDPRAction} from "./delivery/DeliveryDPRAction.js";
+import { DeliveryFormatAction } from "./delivery/DeliveryFormatAction.js";
+import { DeliveryQualityAction } from "./delivery/DeliveryQualityAction.js";
+import { FormatQualifier } from "../qualifiers/format/FormatQualifier.js";
+import { DeliveryColorSpaceFromICCAction } from "./delivery/DeliveryColorSpaceFromICCAction.js";
+import { DeliveryAction } from "./delivery/DeliveryAction.js";
+import { ColorSpaceType } from "../types/types.js";
+import { QualityTypes } from "../types/types.js";
+import { ImageFormatType, VideoFormatType } from "../types/types.js";
+import { DeliveryColorSpaceAction } from "./delivery/DeliveryColorSpaceAction.js";
+import { DeliveryDPRAction } from "./delivery/DeliveryDPRAction.js";
 
-export type IDeliveryAction = DeliveryAction | DeliveryColorSpaceAction | DeliveryColorSpaceFromICCAction | DeliveryDPRAction;
+export type IDeliveryAction =
+  | DeliveryAction
+  | DeliveryColorSpaceAction
+  | DeliveryColorSpaceFromICCAction
+  | DeliveryDPRAction;
 
 /**
  * @summary action
@@ -42,8 +46,8 @@ export type IDeliveryAction = DeliveryAction | DeliveryColorSpaceAction | Delive
  * );
  *
  */
-function format(format:FormatQualifier | ImageFormatType | VideoFormatType | string) :DeliveryFormatAction {
-  return new DeliveryFormatAction('f', format);
+function format(format: FormatQualifier | ImageFormatType | VideoFormatType | string): DeliveryFormatAction {
+  return new DeliveryFormatAction("f", format);
 }
 
 /**
@@ -62,7 +66,7 @@ function format(format:FormatQualifier | ImageFormatType | VideoFormatType | str
  *  dpr('2.0'),
  * );
  */
-function dpr(dpr: string|number):DeliveryDPRAction {
+function dpr(dpr: string | number): DeliveryDPRAction {
   return new DeliveryDPRAction(dpr);
 }
 
@@ -88,7 +92,7 @@ function dpr(dpr: string|number):DeliveryDPRAction {
  *  quality('auto'),
  * );
  */
-function quality(qualityType:QualityTypes | string | number) :DeliveryQualityAction {
+function quality(qualityType: QualityTypes | string | number): DeliveryQualityAction {
   return new DeliveryQualityAction(qualityType);
 }
 
@@ -109,8 +113,8 @@ function quality(qualityType:QualityTypes | string | number) :DeliveryQualityAct
  *  density(150),
  * );
  */
-function density(value:number) :DeliveryAction {
-  return new DeliveryAction('dn', value, 'density');
+function density(value: number): DeliveryAction {
+  return new DeliveryAction("dn", value, "density");
 }
 
 /**
@@ -129,8 +133,8 @@ function density(value:number) :DeliveryAction {
  *  defaultImage('sample'),
  * );
  */
-function defaultImage(publicIdWithExtension:string) :DeliveryAction {
-  return new DeliveryAction('d', publicIdWithExtension, 'defaultImage');
+function defaultImage(publicIdWithExtension: string): DeliveryAction {
+  return new DeliveryAction("d", publicIdWithExtension, "defaultImage");
 }
 
 /**
@@ -184,8 +188,7 @@ const Delivery = {
   defaultImage,
   colorSpace,
   colorSpaceFromICC,
-  quality
+  quality,
 };
 
-export {Delivery, format, dpr, quality, density, defaultImage, colorSpace, colorSpaceFromICC};
-
+export { Delivery, format, dpr, quality, density, defaultImage, colorSpace, colorSpaceFromICC };

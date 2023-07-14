@@ -2,8 +2,8 @@ import SetAction from "./variable/SetAction.js";
 import SetAssetReferenceAction from "./variable/SetAssetReferenceAction.js";
 import SetFromContextAction from "./variable/SetFromContextAction.js";
 import SetFromMetadataAction from "./variable/SetFromMetadataAction.js";
-import {ExpressionQualifier} from "../qualifiers/expression/ExpressionQualifier.js";
-import {toFloatAsString} from "../internal/utils/toFloatAsString.js";
+import { ExpressionQualifier } from "../qualifiers/expression/ExpressionQualifier.js";
+import { toFloatAsString } from "../internal/utils/toFloatAsString.js";
 
 /**
  * Defines a new user variable with the given value.
@@ -30,7 +30,6 @@ import {toFloatAsString} from "../internal/utils/toFloatAsString.js";
  *  .resize(scale().width('$foo1').height('$foo2'))
  */
 
-
 /**
  * @summary action
  * @description Sets a new user variable with the given value.
@@ -40,7 +39,7 @@ import {toFloatAsString} from "../internal/utils/toFloatAsString.js";
  * @return {Actions.Variable.SetAction}
  */
 function set(name: string, value: number | string | number[] | string[] | ExpressionQualifier): SetAction {
-  if (Object.prototype.hasOwnProperty.call(value, 'push')) {
+  if (Object.prototype.hasOwnProperty.call(value, "push")) {
     return new SetAction(name, value);
   }
 
@@ -56,7 +55,7 @@ function set(name: string, value: number | string | number[] | string[] | Expres
  * @return {Actions.Variable.SetAction}
  */
 function setFloat(name: string, value: number): SetAction {
-  return new SetAction(name, toFloatAsString(value), '');
+  return new SetAction(name, toFloatAsString(value), "");
 }
 
 /**
@@ -69,7 +68,7 @@ function setFloat(name: string, value: number): SetAction {
  */
 function setInteger(name: string, value: number): SetAction {
   let val = value;
-  if (typeof value === 'string') {
+  if (typeof value === "string") {
     val = parseInt(value);
   }
 
@@ -79,7 +78,6 @@ function setInteger(name: string, value: number): SetAction {
 
   return new SetAction(name, Math.round(val));
 }
-
 
 /**
  * @summary action
@@ -92,9 +90,6 @@ function setInteger(name: string, value: number): SetAction {
 function setString(name: string, value: string | number): SetAction {
   return new SetAction(name, value.toString());
 }
-
-
-
 
 /**
  * @summary action
@@ -141,15 +136,6 @@ const Variable = {
   setInteger,
   setAssetReference,
   setFromContext,
-  setFromMetadata
-};
-export {
-  set,
-  setFloat,
-  setString,
-  setInteger,
-  setAssetReference,
-  setFromContext,
   setFromMetadata,
-  Variable
 };
+export { set, setFloat, setString, setInteger, setAssetReference, setFromContext, setFromMetadata, Variable };

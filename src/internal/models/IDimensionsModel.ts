@@ -4,4 +4,4 @@ interface IDimensionsModel {
   aspectRatio?: string | number;
 }
 
-export {IDimensionsModel};
+export { IDimensionsModel };

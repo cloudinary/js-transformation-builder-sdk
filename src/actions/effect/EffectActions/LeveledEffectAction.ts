@@ -1,7 +1,7 @@
-import {SimpleEffectAction} from "./SimpleEffectAction.js";
-import {ExpressionQualifier} from "../../../qualifiers/expression/ExpressionQualifier.js";
-import {IColorizeModel, IEffectActionWithLevelModel} from "../../../internal/models/IEffectActionModel.js";
-import {EFFECT_MODE_TO_ACTION_TYPE_MAP} from "../../../internal/internalConstants.js";
+import { SimpleEffectAction } from "./SimpleEffectAction.js";
+import { ExpressionQualifier } from "../../../qualifiers/expression/ExpressionQualifier.js";
+import { IColorizeModel, IEffectActionWithLevelModel } from "../../../internal/models/IEffectActionModel.js";
+import { EFFECT_MODE_TO_ACTION_TYPE_MAP } from "../../../internal/internalConstants.js";
 /**
  * @description A base class for effects with a level, the extending class needs to implement a method that calls setLevel()
  * @extends {Actions.Effect.SimpleEffectAction}
@@ -9,15 +9,15 @@ import {EFFECT_MODE_TO_ACTION_TYPE_MAP} from "../../../internal/internalConstant
  * @see Visit {@link Actions.Effect|Effect} for an example
  */
 class LeveledEffectAction extends SimpleEffectAction {
-  protected LEVEL_NAME = 'level';
+  protected LEVEL_NAME = "level";
   protected _actionModel: IEffectActionWithLevelModel | IColorizeModel = {};
   protected effectType: string;
-  constructor(effectType?: string, level?: number|string) {
+  constructor(effectType?: string, level?: number | string) {
     super(effectType, level);
     this.effectType = effectType;
     this._actionModel.actionType = EFFECT_MODE_TO_ACTION_TYPE_MAP[effectType] || effectType;
 
-    if(level){
+    if (level) {
       this.setLevel(level);
     }
   }
@@ -36,4 +36,4 @@ class LeveledEffectAction extends SimpleEffectAction {
   }
 }
 
-export {LeveledEffectAction};
+export { LeveledEffectAction };

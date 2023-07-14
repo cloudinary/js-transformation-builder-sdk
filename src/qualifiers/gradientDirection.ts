@@ -1,4 +1,4 @@
-import {GradientDirectionQualifierValue} from "./gradientDirection/GradientDirectionQualifierValue.js";
+import { GradientDirectionQualifierValue } from "./gradientDirection/GradientDirectionQualifierValue.js";
 
 /**
  * @description Defines the direction for a background gradient fade effect.
@@ -13,7 +13,7 @@ import {GradientDirectionQualifierValue} from "./gradientDirection/GradientDirec
  * @return {Qualifiers.GradientDirection.GradientDirectionQualifierValue}
  */
 function horizontal(): GradientDirectionQualifierValue {
-  return new GradientDirectionQualifierValue('horizontal');
+  return new GradientDirectionQualifierValue("horizontal");
 }
 
 /**
@@ -23,7 +23,7 @@ function horizontal(): GradientDirectionQualifierValue {
  * @return {Qualifiers.GradientDirection.GradientDirectionQualifierValue}
  */
 function vertical(): GradientDirectionQualifierValue {
-  return new GradientDirectionQualifierValue('vertical');
+  return new GradientDirectionQualifierValue("vertical");
 }
 
 /**
@@ -33,7 +33,7 @@ function vertical(): GradientDirectionQualifierValue {
  * @return {Qualifiers.GradientDirection.GradientDirectionQualifierValue}
  */
 function diagonalDesc(): GradientDirectionQualifierValue {
-  return new GradientDirectionQualifierValue('diagonal_desc');
+  return new GradientDirectionQualifierValue("diagonal_desc");
 }
 
 /**
@@ -43,23 +43,14 @@ function diagonalDesc(): GradientDirectionQualifierValue {
  * @return {Qualifiers.GradientDirection.GradientDirectionQualifierValue}
  */
 function diagonalAsc(): GradientDirectionQualifierValue {
-  return new GradientDirectionQualifierValue('diagonal_asc');
+  return new GradientDirectionQualifierValue("diagonal_asc");
 }
-
-
 
 const GradientDirection = {
   horizontal,
   vertical,
   diagonalDesc,
-  diagonalAsc
-};
-
-
-export {
-  horizontal,
-  vertical,
-  diagonalDesc,
   diagonalAsc,
-  GradientDirection
 };
+
+export { horizontal, vertical, diagonalDesc, diagonalAsc, GradientDirection };

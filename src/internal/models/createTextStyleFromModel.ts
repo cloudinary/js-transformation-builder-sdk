@@ -1,12 +1,12 @@
-import {ITextStyleModel} from "./ITextStyleModel.js";
-import {TextStyle} from "../../qualifiers/textStyle.js";
-import {solid} from "../../qualifiers/textStroke.js";
+import { ITextStyleModel } from "./ITextStyleModel.js";
+import { TextStyle } from "../../qualifiers/textStyle.js";
+import { solid } from "../../qualifiers/textStroke.js";
 
 /**
  * Create TextStyle from ITextStyleModel
  * @param textStyleModel
  */
-export function createTextStyleFromModel(textStyleModel: ITextStyleModel): TextStyle{
+export function createTextStyleFromModel(textStyleModel: ITextStyleModel): TextStyle {
   const {
     fontFamily,
     fontSize,
@@ -22,42 +22,42 @@ export function createTextStyleFromModel(textStyleModel: ITextStyleModel): TextS
   } = textStyleModel;
 
   const result = new TextStyle(fontFamily, fontSize);
-  if (fontWeight){
+  if (fontWeight) {
     result.fontWeight(fontWeight);
   }
 
-  if (fontStyle){
+  if (fontStyle) {
     result.fontStyle(fontStyle);
   }
 
-  if(fontAntialias){
+  if (fontAntialias) {
     result.fontAntialias(fontAntialias);
   }
 
-  if (fontHinting){
+  if (fontHinting) {
     result.fontHinting(fontHinting);
   }
 
-  if (textDecoration){
+  if (textDecoration) {
     result.textDecoration(textDecoration);
   }
 
-  if(textAlignment){
+  if (textAlignment) {
     result.textAlignment(textAlignment);
   }
 
   if (stroke) {
     result.stroke();
-    if(typeof stroke !== "boolean" ) {
+    if (typeof stroke !== "boolean") {
       result.stroke(solid(stroke.width, stroke.color));
     }
   }
 
-  if(letterSpacing){
+  if (letterSpacing) {
     result.letterSpacing(letterSpacing);
   }
 
-  if(lineSpacing){
+  if (lineSpacing) {
     result.lineSpacing(lineSpacing);
   }
 

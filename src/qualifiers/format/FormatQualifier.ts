@@ -1,4 +1,4 @@
-import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
+import { QualifierValue } from "../../internal/qualifier/QualifierValue.js";
 
 /**
  * @memberOf Qualifiers.Format
@@ -11,9 +11,9 @@ class FormatQualifier extends QualifierValue {
     this.val = val;
   }
 
-  getValue(): string{
+  getValue(): string {
     return this.val;
   }
 }
 
-export {FormatQualifier};
+export { FormatQualifier };

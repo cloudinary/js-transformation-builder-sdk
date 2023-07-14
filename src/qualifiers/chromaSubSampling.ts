@@ -1,16 +1,18 @@
+/**
+ * @summary qualifier
+ * @memberOf Qualifiers.ChromeSubSampling
+ */
+function chroma444(): number {
+  return 444;
+}
 
 /**
  * @summary qualifier
  * @memberOf Qualifiers.ChromeSubSampling
  */
-function chroma444():number { return 444; }
-
-/**
- * @summary qualifier
- * @memberOf Qualifiers.ChromeSubSampling
- */
-function chroma420():number { return 420; }
-
+function chroma420(): number {
+  return 420;
+}
 
 /**
  * @description Contains functions to select the chroma subsampling setting.
@@ -22,12 +24,7 @@ function chroma420():number { return 420; }
  */
 const ChromaSubSampling = {
   chroma444,
-  chroma420
-};
-
-export {
-  ChromaSubSampling,
   chroma420,
-  chroma444
 };
 
+export { ChromaSubSampling, chroma420, chroma444 };

@@ -1,32 +1,37 @@
 {
   "tags": {
     "allowUnknownTags": true,
-    "dictionaries": ["jsdoc","closure"]
+    "dictionaries": ["jsdoc", "closure"]
   },
   "source": {
     "include": ["src"],
     "includePattern": ".+\\.ts(doc|x)?$"
   },
-  "plugins": [
-    "plugins/markdown",
-    "node_modules/better-docs/typescript"
-  ],
+  "plugins": ["plugins/markdown", "node_modules/better-docs/typescript"],
   "typescript": {
     "moduleRoot": "src"
   },
   "templates": {
     "cleverLinks": true,
-    "navMembers" : [
-      {"kind": "namespace", "title": "Actions & Qualifiers", "summary": "All documented namespaces."},
-      {"kind": "interface", "title": "Interfaces", "summary": "All documented interfaces."},
-      {"kind": "tutorial", "title": "Help & Examples", "summary": "All available tutorials."}
+    "navMembers": [
+      {
+        "kind": "namespace",
+        "title": "Actions & Qualifiers",
+        "summary": "All documented namespaces."
+      },
+      {
+        "kind": "interface",
+        "title": "Interfaces",
+        "summary": "All documented interfaces."
+      },
+      {
+        "kind": "tutorial",
+        "title": "Help & Examples",
+        "summary": "All available tutorials."
+      }
     ],
-    "stylesheets" : [
-      "./customStyles.css"
-    ],
-    "scripts" : [
-      "./injectVersionSemver.js"
-    ],
+    "stylesheets": ["./customStyles.css"],
+    "scripts": ["./injectVersionSemver.js"],
     "search": true,
     "monospaceLinks": true,
     "systemColor": "#3448C5",

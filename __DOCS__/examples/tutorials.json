@@ -1,13 +1,9 @@
 {
   "gettingStarted": {
     "title": "Getting started",
-    "children": [
-      "installation",
-      "helloworld",
-      "terminology"
-    ]
+    "children": ["installation", "helloworld", "terminology"]
   },
-  "installation" : {
+  "installation": {
     "title": "Installation"
   },
   "helloworld": {
@@ -22,20 +18,20 @@
   "treeShaking": {
     "title": "Tree shaking"
   },
-  "annotatedExamples" : {
+  "annotatedExamples": {
     "title": "Annotated Code Examples",
     "children": ["resize", "rotate", "imageOverlay"]
   },
-  "imageOverlay" : {
+  "imageOverlay": {
     "title": "Image overlay on an Image"
   },
-  "resize" : {
+  "resize": {
     "title": "Resize"
   },
-  "rotate" : {
+  "rotate": {
     "title": "Rotate"
   },
-  "configuration" : {
+  "configuration": {
     "title": "Configuration"
   }
 }

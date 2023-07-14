@@ -1,5 +1,5 @@
-import {AutoFocus} from "../../autoFocus.js";
-import {GravityQualifier} from "../GravityQualifier.js";
+import { AutoFocus } from "../../autoFocus.js";
+import { GravityQualifier } from "../GravityQualifier.js";
 
 /**
  * @description The class for the autoGravity builder
@@ -10,7 +10,7 @@ class AutoGravity extends GravityQualifier {
   constructor() {
     // Required due to https://github.com/microsoft/TypeScript/issues/13029
     /* istanbul ignore next */
-    super('auto');
+    super("auto");
   }
 
   /**
@@ -23,5 +23,4 @@ class AutoGravity extends GravityQualifier {
   }
 }
 
-
-export {AutoGravity};
+export { AutoGravity };

@@ -1,6 +1,6 @@
-import {FocusOnValue} from "../../focusOn.js";
-import {GravityQualifier} from "../GravityQualifier.js";
-import {AutoGravity} from "../autoGravity/AutoGravity.js";
+import { FocusOnValue } from "../../focusOn.js";
+import { GravityQualifier } from "../GravityQualifier.js";
+import { AutoGravity } from "../autoGravity/AutoGravity.js";
 
 /**
  * @description The class for the FocusOn builder
@@ -30,4 +30,4 @@ class FocusOnGravity extends GravityQualifier {
   }
 }
 
-export {FocusOnGravity};
+export { FocusOnGravity };

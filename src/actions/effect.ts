@@ -101,9 +101,7 @@ function oilPaint(oilPaintLevel?: number): EffectActionWithStrength {
  * @param {ArtisticFilterType | string} artisticFilterType
  * @return {Actions.Effect.SimpleEffectAction}
  */
-function artisticFilter(
-  artisticFilterType: ArtisticFilterType | string
-): SimpleEffectAction {
+function artisticFilter(artisticFilterType: ArtisticFilterType | string): SimpleEffectAction {
   return new SimpleEffectAction("art", artisticFilterType);
 }
 

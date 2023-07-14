@@ -1,13 +1,12 @@
-import {ImageTransformation} from "../../../src/transformation/ImageTransformation";
+import { ImageTransformation } from "../../../src/transformation/ImageTransformation";
 
-
-describe('Tests for ImageTransformation', () => {
+describe("Tests for ImageTransformation", () => {
   let tImage: ImageTransformation = null;
   beforeEach(() => {
     tImage = new ImageTransformation();
   });
 
-  it('Instantiates a ImageTransformation', () => {
+  it("Instantiates a ImageTransformation", () => {
     expect(tImage).toBeDefined();
   });
 

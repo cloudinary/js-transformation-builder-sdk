@@ -1,6 +1,6 @@
-import {Action} from "../../internal/Action.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
+import { Action } from "../../internal/Action.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
+import { QualifierValue } from "../../internal/qualifier/QualifierValue.js";
 
 /**
  * @description Represents an embedded smart object in a Photoshop document.
@@ -16,7 +16,7 @@ class SmartObjectAction extends Action {
 
   constructor() {
     super();
-    this.qualifierValue.delimiter = ';';
+    this.qualifierValue.delimiter = ";";
   }
 
   /**
@@ -42,13 +42,13 @@ class SmartObjectAction extends Action {
   protected prepareQualifiers(): void {
     let qualifierValue;
     if (this.useName) {
-      qualifierValue = new QualifierValue(['embedded:name', this.qualifierValue]);
+      qualifierValue = new QualifierValue(["embedded:name", this.qualifierValue]);
     } else {
-      qualifierValue = new QualifierValue(['embedded', this.qualifierValue]);
+      qualifierValue = new QualifierValue(["embedded", this.qualifierValue]);
     }
 
-    this.addQualifier(new Qualifier('pg', qualifierValue));
+    this.addQualifier(new Qualifier("pg", qualifierValue));
   }
 }
 
-export {SmartObjectAction};
+export { SmartObjectAction };

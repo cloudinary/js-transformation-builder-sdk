@@ -11,11 +11,11 @@
  * @memberOf Qualifiers.DPR
  */
 function auto(): string {
-  return 'auto';
+  return "auto";
 }
 
 const Dpr = {
-  auto
+  auto,
 };
 
-export {auto, Dpr};
+export { auto, Dpr };

@@ -4,15 +4,15 @@
  * @param {object|*} layer The layer to parse.
  * @return {string} layer transformation string
  */
-import {isObject} from "../utils/isObject.js";
-import {base64Encode} from "../../internal/utils/base64Encode.js";
-import {LAYER_KEYWORD_PARAMS} from "../consts.js";
-import {smartEscape} from "../utils/smartEscape.js";
+import { isObject } from "../utils/isObject.js";
+import { base64Encode } from "../../internal/utils/base64Encode.js";
+import { LAYER_KEYWORD_PARAMS } from "../consts.js";
+import { smartEscape } from "../utils/smartEscape.js";
 import TextLayer from "../legacyLayer/textlayer.js";
 import Layer from "../legacyLayer/layer.js";
 
 export function textStyle(layer: any) {
-  const keywords:any[] = [];
+  const keywords: any[] = [];
   let style = "";
   Object.keys(LAYER_KEYWORD_PARAMS).forEach((attr: keyof typeof LAYER_KEYWORD_PARAMS) => {
     let default_value = LAYER_KEYWORD_PARAMS[attr];
@@ -44,14 +44,13 @@ export function textStyle(layer: any) {
   return style;
 }
 
-
 export function processLayer(layer: any) {
-  if (layer instanceof TextLayer || layer instanceof Layer){
+  if (layer instanceof TextLayer || layer instanceof Layer) {
     return layer.toString();
   }
-  let result = '';
+  let result = "";
   if (isObject(layer)) {
-    if (layer.resource_type === "fetch" || (layer.url != null)) {
+    if (layer.resource_type === "fetch" || layer.url != null) {
       result = `fetch:${base64Encode(layer.url)}`;
     } else {
       let public_id = layer.public_id;
@@ -63,12 +62,12 @@ export function processLayer(layer: any) {
       let components = [];
       const noPublicId = !public_id || public_id.length === 0;
       if (!noPublicId) {
-        public_id = public_id.replace(new RegExp("/", 'g'), ":");
+        public_id = public_id.replace(new RegExp("/", "g"), ":");
         if (format != null) {
           public_id = `${public_id}.${format}`;
         }
       }
-      if ((!text || text.length ===0) && resource_type !== "text") {
+      if ((!text || text.length === 0) && resource_type !== "text") {
         if (noPublicId) {
           throw "Must supply public_id for resource_type layer_parameter";
         }
@@ -80,8 +79,8 @@ export function processLayer(layer: any) {
         type = null;
         // type is ignored for text layers
         style = textStyle(layer);
-        if (text && text.length >=0 ) {
-          const noStyle = !style
+        if (text && text.length >= 0) {
+          const noStyle = !style;
           if (!(noPublicId || noStyle) || (noPublicId && noStyle)) {
             throw "Must supply either style parameters or a public_id when providing text parameter in a text overlay/underlay";
           }

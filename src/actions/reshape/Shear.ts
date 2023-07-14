@@ -1,5 +1,5 @@
-import {Action} from "../../internal/Action.js";
-import {stringOrNumber} from "../../types/types.js";
+import { Action } from "../../internal/Action.js";
+import { stringOrNumber } from "../../types/types.js";
 
 /**
  * @description Skews the image according to the two specified values in degrees.
@@ -11,7 +11,7 @@ class ShearAction extends Action {
   private _x: stringOrNumber;
   private _y: stringOrNumber;
 
-  constructor(x: stringOrNumber, y:stringOrNumber) {
+  constructor(x: stringOrNumber, y: stringOrNumber) {
     super();
     this.skewX(x);
     this.skewY(y);
@@ -33,13 +33,8 @@ class ShearAction extends Action {
   }
 
   toString(): string {
-    return [
-      'e_shear',
-      this._x,
-      this._y
-    ].filter((a) => a).join(':');
+    return ["e_shear", this._x, this._y].filter((a) => a).join(":");
   }
 }
 
-
-export {ShearAction};
+export { ShearAction };

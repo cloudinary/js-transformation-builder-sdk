@@ -1,4 +1,4 @@
-import {LeveledEffectAction} from "./LeveledEffectAction.js";
+import { LeveledEffectAction } from "./LeveledEffectAction.js";
 
 /**
  * @description A class that provides a built in level() method that sets the level of the effect
@@ -13,4 +13,4 @@ class EffectActionWithLevel extends LeveledEffectAction {
   }
 }
 
-export {EffectActionWithLevel};
+export { EffectActionWithLevel };

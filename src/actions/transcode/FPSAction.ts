@@ -1,7 +1,7 @@
-import {Action} from "../../internal/Action.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {IFPSActionModel, IFPSRangeActionModel} from "../../internal/models/ITranscodeActionModel.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
+import { Action } from "../../internal/Action.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
+import { IFPSActionModel, IFPSRangeActionModel } from "../../internal/models/ITranscodeActionModel.js";
+import { IActionModel } from "../../internal/models/IActionModel.js";
 import FPSRangeAction from "./FPSRangeAction.js";
 
 /**
@@ -15,21 +15,21 @@ import FPSRangeAction from "./FPSRangeAction.js";
  * @see Visit {@link Actions.Transcode|Transcode} for an example
  */
 class FPSAction extends Action {
-  protected _actionModel : IFPSActionModel = {actionType: 'fps'};
+  protected _actionModel: IFPSActionModel = { actionType: "fps" };
 
   constructor(from: number) {
     super();
     this._actionModel.fps = from;
-    this.addQualifier(new Qualifier('fps', from));
+    this.addQualifier(new Qualifier("fps", from));
   }
 
   static fromJson(actionModel: IActionModel): FPSAction | FPSRangeAction {
-    const {fps} = (actionModel as IFPSActionModel);
+    const { fps } = actionModel as IFPSActionModel;
     let result;
-    if(typeof fps === 'object') {
+    if (typeof fps === "object") {
       //@ts-ignore
       result = new FPSRangeAction(fps.from, fps.to);
-    }else {
+    } else {
       result = new this(fps);
     }
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])

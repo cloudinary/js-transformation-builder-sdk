@@ -1,4 +1,4 @@
-import {ResizeFillAction} from "./ResizeFillAction.js";
+import { ResizeFillAction } from "./ResizeFillAction.js";
 
 /**
  * @description Defines how to crop-limit-fill an asset
@@ -8,4 +8,4 @@ import {ResizeFillAction} from "./ResizeFillAction.js";
  */
 class ResizeLimitFillAction extends ResizeFillAction {}
 
-export {ResizeLimitFillAction};
+export { ResizeLimitFillAction };

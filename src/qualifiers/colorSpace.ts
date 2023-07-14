@@ -5,14 +5,14 @@
  * @see Visit {@link Actions.Delivery.colorSpace|Delivery Color Space} for an example
  */
 
-import {ColorSpaceType} from "../types/types.js";
+import { ColorSpaceType } from "../types/types.js";
 
 /**
  * @summary qualifier
  * @memberOf Qualifiers.ColorSpace
  */
 function srgb(): ColorSpaceType {
-  return 'srgb';
+  return "srgb";
 }
 
 /**
@@ -20,61 +20,48 @@ function srgb(): ColorSpaceType {
  * @memberOf Qualifiers.ColorSpace
  */
 function trueColor(): ColorSpaceType {
-  return 'srgb:truecolor';
+  return "srgb:truecolor";
 }
-
 
 /**
  * @summary qualifier
  * @memberOf Qualifiers.ColorSpace
  */
 function tinySrgb(): ColorSpaceType {
-  return 'tinysrgb';
+  return "tinysrgb";
 }
-
 
 /**
  * @summary qualifier
  * @memberOf Qualifiers.ColorSpace
  */
 function cmyk(): ColorSpaceType {
-  return 'cmyk';
+  return "cmyk";
 }
-
 
 /**
  * @summary qualifier
  * @memberOf Qualifiers.ColorSpace
  */
 function noCmyk(): ColorSpaceType {
-  return 'no_cmyk';
+  return "no_cmyk";
 }
-
 
 /**
  * @summary qualifier
  * @memberOf Qualifiers.ColorSpace
  */
 function keepCmyk(): ColorSpaceType {
-  return 'keep_cmyk';
+  return "keep_cmyk";
 }
 
-const ColorSpace: Record<string, ()=>ColorSpaceType> = {
+const ColorSpace: Record<string, () => ColorSpaceType> = {
   cmyk,
   keepCmyk,
   noCmyk,
   srgb,
   tinySrgb,
-  trueColor
+  trueColor,
 };
 
-export {
-  ColorSpace,
-  cmyk,
-  keepCmyk,
-  noCmyk,
-  srgb,
-  tinySrgb,
-  trueColor
-};
-
+export { ColorSpace, cmyk, keepCmyk, noCmyk, srgb, tinySrgb, trueColor };

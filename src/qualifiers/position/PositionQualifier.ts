@@ -1,11 +1,11 @@
-import {Action} from "../../internal/Action.js";
-import {CompassGravity} from "../gravity/compassGravity/CompassGravity.js";
-import {FocusOnGravity} from "../gravity/focusOnGravity/FocusOnGravity.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {tiled} from "../flag.js";
-import {noOverflow} from "../flag.js";
-import {IPositionModel} from "../../internal/models/IPositionModel.js";
-import {createGravityModel} from "../../internal/models/createGravityModel.js";
+import { Action } from "../../internal/Action.js";
+import { CompassGravity } from "../gravity/compassGravity/CompassGravity.js";
+import { FocusOnGravity } from "../gravity/focusOnGravity/FocusOnGravity.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
+import { tiled } from "../flag.js";
+import { noOverflow } from "../flag.js";
+import { IPositionModel } from "../../internal/models/IPositionModel.js";
+import { createGravityModel } from "../../internal/models/createGravityModel.js";
 
 /**
  * @description
@@ -63,8 +63,8 @@ class PositionQualifier extends Action {
    * @param {number | string} offsetX
    * @return {this}
    */
-  offsetX(offsetX:number | string): this{
-    this.addQualifier(new Qualifier('x', offsetX));
+  offsetX(offsetX: number | string): this {
+    this.addQualifier(new Qualifier("x", offsetX));
     this._actionModel.offsetX = offsetX;
 
     return this;
@@ -75,12 +75,12 @@ class PositionQualifier extends Action {
    * @param {number | string} offsetY
    * @return {this}
    */
-  offsetY(offsetY:number | string): this{
-    this.addQualifier(new Qualifier('y', offsetY));
+  offsetY(offsetY: number | string): this {
+    this.addQualifier(new Qualifier("y", offsetY));
     this._actionModel.offsetY = offsetY;
 
     return this;
   }
 }
 
-export {PositionQualifier};
+export { PositionQualifier };

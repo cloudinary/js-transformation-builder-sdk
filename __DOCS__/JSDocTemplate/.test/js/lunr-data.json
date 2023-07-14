@@ -39,43 +39,12 @@
     "tokenizer": "default",
     "documentStore": {
       "store": {
-        "index.html": [
-          "base",
-          "bootstrap",
-          "foodoc",
-          "handlebar",
-          "index",
-          "jsdoc3",
-          "readm",
-          "templat"
-        ],
-        "global.html": [
-          "document",
-          "global"
-        ],
-        "undefined": [
-          "car",
-          "drive",
-          "tutori"
-        ],
-        "list_tutorial.html": [
-          "avail",
-          "list",
-          "list:tutori",
-          "tutori"
-        ],
-        "list_class.html": [
-          "class",
-          "document",
-          "list",
-          "list:class"
-        ],
-        "list_namespace.html": [
-          "document",
-          "list",
-          "list:namespac",
-          "namespac"
-        ],
+        "index.html": ["base", "bootstrap", "foodoc", "handlebar", "index", "jsdoc3", "readm", "templat"],
+        "global.html": ["document", "global"],
+        "undefined": ["car", "drive", "tutori"],
+        "list_tutorial.html": ["avail", "list", "list:tutori", "tutori"],
+        "list_class.html": ["class", "document", "list", "list:class"],
+        "list_namespace.html": ["document", "list", "list:namespac", "namespac"],
         "CustomError.html": [
           "class",
           "custom",
@@ -111,13 +80,7 @@
           "test",
           "us"
         ],
-        "GlobalClass.html#name": [
-          "class",
-          "globalclass#nam",
-          "member",
-          "name",
-          "string"
-        ],
+        "GlobalClass.html#name": ["class", "globalclass#nam", "member", "name", "string"],
         "GlobalClass.html#_privateMember": [
           "_privatememb",
           "class",
@@ -244,15 +207,7 @@
           "type",
           "typedef"
         ],
-        "MyApi.Child.html": [
-          "child",
-          "class",
-          "markdown",
-          "myapi",
-          "myapi.child",
-          "summari",
-          "test"
-        ],
+        "MyApi.Child.html": ["child", "class", "markdown", "myapi", "myapi.child", "summari", "test"],
         "MyApi.Child.html#protectedMember": [
           "child#protectedmemb",
           "class",
@@ -358,23 +313,8 @@
           "staticmemb",
           "string"
         ],
-        "MyApi.html#~Object": [
-          "definit",
-          "myapi",
-          "myapi~object",
-          "namespac",
-          "object",
-          "test",
-          "type",
-          "typedef"
-        ],
-        "MyApi.utils.html": [
-          "child",
-          "myapi.util",
-          "namespac",
-          "test",
-          "util"
-        ],
+        "MyApi.html#~Object": ["definit", "myapi", "myapi~object", "namespac", "object", "test", "type", "typedef"],
+        "MyApi.utils.html": ["child", "myapi.util", "namespac", "test", "util"],
         "MyApi.utils.html#.format": [
           "arg",
           "argn",
@@ -4312,11 +4252,7 @@
       "valu",
       "within"
     ],
-    "pipeline": [
-      "trimmer",
-      "stopWordFilter",
-      "stemmer"
-    ]
+    "pipeline": ["trimmer", "stopWordFilter", "stemmer"]
   },
   "store": {
     "index.html": {

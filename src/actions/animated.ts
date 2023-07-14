@@ -1,6 +1,6 @@
-import {Action} from "../internal/Action.js";
-import {Qualifier} from "../internal/qualifier/Qualifier.js";
-import {QualifierValue} from "../internal/qualifier/QualifierValue.js";
+import { Action } from "../internal/Action.js";
+import { Qualifier } from "../internal/qualifier/Qualifier.js";
+import { QualifierValue } from "../internal/qualifier/QualifierValue.js";
 
 /**
  * @description Delivers an animated GIF that contains additional loops of the GIF.
@@ -17,7 +17,6 @@ import {QualifierValue} from "../internal/qualifier/QualifierValue.js";
  * const image = yourCldInstance.image('woman');
  * image.animated(edit().delay(200).loop(3)));
  */
-
 
 /**
  * @memberOf Actions.Animated
@@ -42,7 +41,7 @@ class AnimatedAction extends Action {
    * @return {this}
    */
   delay(delayValue: number): this {
-    this.addQualifier(new Qualifier('dl', delayValue));
+    this.addQualifier(new Qualifier("dl", delayValue));
     return this;
   }
 
@@ -52,11 +51,10 @@ class AnimatedAction extends Action {
    * @return {this}
    */
   loop(additionalLoops?: number): this {
-    const qualifierValue = new QualifierValue(['loop', additionalLoops]).setDelimiter(':');
-    this.addQualifier(new Qualifier('e', qualifierValue));
+    const qualifierValue = new QualifierValue(["loop", additionalLoops]).setDelimiter(":");
+    this.addQualifier(new Qualifier("e", qualifierValue));
     return this;
   }
-
 }
 
 /**
@@ -70,8 +68,7 @@ function edit(): AnimatedAction {
 }
 
 const Animated = {
-  edit
+  edit,
 };
 
-
-export {AnimatedAction, Animated, edit};
+export { AnimatedAction, Animated, edit };

@@ -23,7 +23,7 @@
     "showAccessFilter": false,
     "sort": "linenum, longname, version, since",
     "search": true,
-    "analytics": {"ua": null, "domain": null},
+    "analytics": { "ua": null, "domain": null },
     "favicon": null,
     "stylesheets": [],
     "scripts": []

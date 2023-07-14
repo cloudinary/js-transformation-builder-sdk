@@ -1,13 +1,11 @@
-import {prepareColor} from "../internal/utils/prepareColor.js";
-import {BackgroundAutoBorderQualifier} from "./background/shared/auto/BackgroundAutoBorderQualifier.js";
-import {BackgroundBorderGradientQualifier} from "./background/shared/gradient/BackgroundBorderGradientQualifier.js";
-import {BackgroundAutoPredominantQualifier} from "./background/shared/auto/BackgroundAutoPredominantQualifier.js";
-import {BackgroundPredominantGradientQualifier} from "./background/shared/gradient/BackgroundPredominantGradientQualifier.js";
+import { prepareColor } from "../internal/utils/prepareColor.js";
+import { BackgroundAutoBorderQualifier } from "./background/shared/auto/BackgroundAutoBorderQualifier.js";
+import { BackgroundBorderGradientQualifier } from "./background/shared/gradient/BackgroundBorderGradientQualifier.js";
+import { BackgroundAutoPredominantQualifier } from "./background/shared/auto/BackgroundAutoPredominantQualifier.js";
+import { BackgroundPredominantGradientQualifier } from "./background/shared/gradient/BackgroundPredominantGradientQualifier.js";
 import BlurredBackgroundAction from "./background/shared/BlurredBackgroundAction.js";
-import {BackgroundQualifier} from "./background/shared/base/BackgroundQualifier.js";
-import {SystemColors} from "./color.js";
-
-
+import { BackgroundQualifier } from "./background/shared/base/BackgroundQualifier.js";
+import { SystemColors } from "./color.js";
 
 /**
  * @description Defines the background color to use instead of transparent background areas or when resizing with padding.
@@ -18,15 +16,13 @@ import {SystemColors} from "./color.js";
  * @memberOf Qualifiers
  */
 
-
-
 /**
  * @summary qualifier
  * @description Selects the predominant color while taking only the image border pixels into account.
  * @memberOf Qualifiers.Background
  * @return {BackgroundAutoBorderQualifier}
  */
-function border(): BackgroundAutoBorderQualifier{
+function border(): BackgroundAutoBorderQualifier {
   return new BackgroundAutoBorderQualifier();
 }
 
@@ -38,8 +34,8 @@ function border(): BackgroundAutoBorderQualifier{
  * @memberOf Qualifiers.Background
  * @return {Qualifiers.Background.BackgroundQualifier}
  */
-function auto(): BackgroundQualifier{
-  return new BackgroundQualifier('auto');
+function auto(): BackgroundQualifier {
+  return new BackgroundQualifier("auto");
 }
 
 /**
@@ -99,17 +95,7 @@ const Background = {
   predominantGradient: predominantGradient,
   predominant: predominant,
   color: color,
-  blurred: blurred
+  blurred: blurred,
 };
 
-export {
-  auto,
-  border,
-  borderGradient,
-  predominantGradient,
-  predominant,
-  color,
-  blurred,
-  Background
-};
-
+export { auto, border, borderGradient, predominantGradient, predominant, color, blurred, Background };

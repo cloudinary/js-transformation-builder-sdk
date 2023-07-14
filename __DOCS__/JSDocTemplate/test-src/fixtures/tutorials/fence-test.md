@@ -4,7 +4,6 @@ Mauris sit amet risus non ligula lacinia iaculis. Sed ornare tellus velit, vel e
 
 Quisque elementum sapien id neque volutpat cursus non mattis velit.
 
-
 ```javascript
 $mod       : function ( qu, value ) {
 		var operands = sys.flatten( qu.operands );
@@ -26,21 +25,23 @@ echo "Hi! $LN, $FN !"
 
 ```html
 <div class="my-class test">
-    <h1>Weo weo</h1>
+  <h1>Weo weo</h1>
 </div>
 ```
 
 ```css
 @font-face {
-  font-family: 'Glyphicons Halflings';
-  src: url('../fonts/glyphicons-halflings-regular.eot');
-  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  font-family: "Glyphicons Halflings";
+  src: url("../fonts/glyphicons-halflings-regular.eot");
+  src: url("../fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/glyphicons-halflings-regular.woff2")
+      format("woff2"), url("../fonts/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/glyphicons-halflings-regular.ttf")
+      format("truetype"), url("../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg");
 }
 .glyphicon {
   position: relative;
   top: 1px;
   display: inline-block;
-  font-family: 'Glyphicons Halflings';
+  font-family: "Glyphicons Halflings";
   font-style: normal;
   font-weight: normal;
   line-height: 1;

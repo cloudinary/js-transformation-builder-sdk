@@ -1,4 +1,4 @@
-import {ExpressionQualifier} from "../../qualifiers/expression/ExpressionQualifier.js";
+import { ExpressionQualifier } from "../../qualifiers/expression/ExpressionQualifier.js";
 
 /**
  * @summary SDK
@@ -6,7 +6,7 @@ import {ExpressionQualifier} from "../../qualifiers/expression/ExpressionQualifi
  */
 class QualifierValue {
   values: any[] = [];
-  delimiter = ':'; // {value}{delimiter}{value}...
+  delimiter = ":"; // {value}{delimiter}{value}...
 
   /**
    *
@@ -32,7 +32,7 @@ class QualifierValue {
    * @return {boolean}
    */
   private hasValue(v: any): boolean {
-    return typeof v !== 'undefined' && v !== null && v !== '';
+    return typeof v !== "undefined" && v !== null && v !== "";
   }
 
   /**
@@ -64,4 +64,4 @@ class QualifierValue {
   }
 }
 
-export {QualifierValue};
+export { QualifierValue };

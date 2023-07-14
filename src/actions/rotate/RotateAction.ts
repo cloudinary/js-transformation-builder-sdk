@@ -1,12 +1,11 @@
-import {Action} from "../../internal/Action.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {RotationModeQualifierValue} from "../../qualifiers/rotate/RotationModeQualifierValue.js";
-import {RotationModeType} from "../../types/types.js";
-import {IRotateByAngleActionModel} from "../../internal/models/IRotateActionModel.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
+import { Action } from "../../internal/Action.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
+import { RotationModeQualifierValue } from "../../qualifiers/rotate/RotationModeQualifierValue.js";
+import { RotationModeType } from "../../types/types.js";
+import { IRotateByAngleActionModel } from "../../internal/models/IRotateActionModel.js";
+import { IActionModel } from "../../internal/models/IActionModel.js";
 
-const QUALIFIER_KEY = 'a';
-
+const QUALIFIER_KEY = "a";
 
 /**
  * @description Rotates or flips an image or video.
@@ -22,7 +21,7 @@ class RotateAction extends Action {
   constructor(angle?: number) {
     super();
     this.addQualifier(new Qualifier(QUALIFIER_KEY, angle));
-    this._actionModel.actionType = 'rotateByAngle';
+    this._actionModel.actionType = "rotateByAngle";
 
     if (angle) {
       this._actionModel.angle = angle;
@@ -36,7 +35,7 @@ class RotateAction extends Action {
    * possible values
    * @return {this}
    */
-  mode(rotationMode: RotationModeQualifierValue | RotationModeType | string):this {
+  mode(rotationMode: RotationModeQualifierValue | RotationModeType | string): this {
     return this.addValueToQualifier(QUALIFIER_KEY, rotationMode);
   }
 
@@ -51,7 +50,7 @@ class RotateAction extends Action {
   }
 
   static fromJson(actionModel: IActionModel): RotateAction {
-    const {angle} = (actionModel as IRotateByAngleActionModel);
+    const { angle } = actionModel as IRotateByAngleActionModel;
 
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
     // This allows the inheriting classes to determine the class to be created

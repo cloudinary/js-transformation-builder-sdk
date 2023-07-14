@@ -1,4 +1,4 @@
-import {IQualifierModel} from "./IQualifierModel.js";
+import { IQualifierModel } from "./IQualifierModel.js";
 
 export interface ITimelinePositionModel extends IQualifierModel {
   startOffset?: number | string;

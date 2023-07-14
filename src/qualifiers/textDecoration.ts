@@ -12,7 +12,7 @@
  * @memberOf Qualifiers.TextDecoration
  */
 function normal(): string {
-  return '';
+  return "";
 }
 
 /**
@@ -20,7 +20,7 @@ function normal(): string {
  * @memberOf Qualifiers.TextDecoration
  */
 function underline(): string {
-  return 'underline';
+  return "underline";
 }
 
 /**
@@ -28,14 +28,9 @@ function underline(): string {
  * @memberOf Qualifiers.TextDecoration
  */
 function strikethrough(): string {
-  return 'strikethrough';
+  return "strikethrough";
 }
 
-const TextDecoration = {normal, underline, strikethrough};
+const TextDecoration = { normal, underline, strikethrough };
 
-export {
-  TextDecoration,
-  normal,
-  underline,
-  strikethrough
-};
+export { TextDecoration, normal, underline, strikethrough };

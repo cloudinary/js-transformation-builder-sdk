@@ -1,21 +1,18 @@
 // eslint-disable @typescript-eslint/ban-ts-comment
-import {LegacyITransforamtionOptions} from "../types/types.js";
-import {processLayer} from "./transformationProcessing/processLayer.js";
-import {process_if} from "./transformationProcessing/processIf.js";
-import {toArray} from "./utils/toArray.js";
-import {processRadius} from "./transformationProcessing/processRadius.js";
-import {isObject} from "./utils/isObject.js";
-import {processCustomFunction} from "./transformationProcessing/processCustomFunction.js";
-import {processCustomPreFunction} from "./transformationProcessing/processCustomPreFunction.js";
-import {splitRange} from "./utils/splitRange.js";
-import {legacyNormalizeExpression} from "./utils/legacyNormalizeExpression.js";
-import {normRangeValues} from "./utils/norm_range_values.js";
-import {processVideoParams} from "./transformationProcessing/processVideoParams.js";
+import { LegacyITransforamtionOptions } from "../types/types.js";
+import { processLayer } from "./transformationProcessing/processLayer.js";
+import { process_if } from "./transformationProcessing/processIf.js";
+import { toArray } from "./utils/toArray.js";
+import { processRadius } from "./transformationProcessing/processRadius.js";
+import { isObject } from "./utils/isObject.js";
+import { processCustomFunction } from "./transformationProcessing/processCustomFunction.js";
+import { processCustomPreFunction } from "./transformationProcessing/processCustomPreFunction.js";
+import { splitRange } from "./utils/splitRange.js";
+import { legacyNormalizeExpression } from "./utils/legacyNormalizeExpression.js";
+import { normRangeValues } from "./utils/norm_range_values.js";
+import { processVideoParams } from "./transformationProcessing/processVideoParams.js";
 import Transformation from "./transformation.js";
-import {processDpr} from "./transformationProcessing/processDpr.js";
-
-
-
+import { processDpr } from "./transformationProcessing/processDpr.js";
 
 /**
  * Things dropped
@@ -29,11 +26,11 @@ import {processDpr} from "./transformationProcessing/processDpr.js";
  * @param transformationOptions
  */
 export function generateTransformationString(transformationOptions: LegacyITransforamtionOptions): string {
-  if (typeof transformationOptions === 'string') {
+  if (typeof transformationOptions === "string") {
     return transformationOptions;
   }
 
-  if (transformationOptions instanceof Transformation){
+  if (transformationOptions instanceof Transformation) {
     return transformationOptions.toString();
   }
 
@@ -41,7 +38,11 @@ export function generateTransformationString(transformationOptions: LegacyITrans
     return transformationOptions
       .map((singleTransformation) => {
         return generateTransformationString(singleTransformation);
-      }).filter((a) => { return a;}).join('/');
+      })
+      .filter((a) => {
+        return a;
+      })
+      .join("/");
   }
 
   // let responsive_width = consumeOption(transformationOptions, "responsive_width", config().responsive_width);
@@ -53,10 +54,11 @@ export function generateTransformationString(transformationOptions: LegacyITrans
   const hasLayer = transformationOptions.overlay || transformationOptions.underlay;
   const crop = transformationOptions.crop;
   const angle = toArray(transformationOptions.angle).join(".");
-  const background = (transformationOptions.background || '').replace(/^#/, "rgb:");
-  const color = (transformationOptions.color || '').replace(/^#/, "rgb:");
-  const flags = (toArray(transformationOptions.flags || [])).join('.');
-  const dpr = transformationOptions.dpr === undefined ? transformationOptions.dpr : processDpr(transformationOptions.dpr);
+  const background = (transformationOptions.background || "").replace(/^#/, "rgb:");
+  const color = (transformationOptions.color || "").replace(/^#/, "rgb:");
+  const flags = toArray(transformationOptions.flags || []).join(".");
+  const dpr =
+    transformationOptions.dpr === undefined ? transformationOptions.dpr : processDpr(transformationOptions.dpr);
 
   const overlay = processLayer(transformationOptions.overlay);
   const radius = processRadius(transformationOptions.radius);
@@ -74,7 +76,6 @@ export function generateTransformationString(transformationOptions: LegacyITrans
   // TODO, Do we need this?
   const no_html_sizes = hasLayer || angle || crop === "fit" || crop === "limit";
 
-
   if (size) {
     const [sizeWidth, sizeHeight] = size.split("x");
     width = sizeWidth;
@@ -84,7 +85,6 @@ export function generateTransformationString(transformationOptions: LegacyITrans
     height = transformationOptions.height;
   }
 
-
   if (width && (width.toString().indexOf("auto") === 0 || no_html_sizes || parseFloat(width.toString()) < 1)) {
     delete transformationOptions.width;
   }
@@ -92,47 +92,50 @@ export function generateTransformationString(transformationOptions: LegacyITrans
     delete transformationOptions.height;
   }
 
-
   // Is any child transformation an object?
-  const isAnyChildAnObject = childTransformations.some((transformation: LegacyITransforamtionOptions) => typeof transformation === 'object');
+  const isAnyChildAnObject = childTransformations.some(
+    (transformation: LegacyITransforamtionOptions) => typeof transformation === "object"
+  );
 
   // If array of objects, or array of strings?
   if (isAnyChildAnObject) {
-    childTransformations = childTransformations.map((transformation: LegacyITransforamtionOptions) => {
-      if (isObject(transformation)) {
-        return generateTransformationString(transformation);
-      } else {
-        return generateTransformationString({transformation});
-      }
-    }).filter((a: LegacyITransforamtionOptions) => a);
-
+    childTransformations = childTransformations
+      .map((transformation: LegacyITransforamtionOptions) => {
+        if (isObject(transformation)) {
+          return generateTransformationString(transformation);
+        } else {
+          return generateTransformationString({ transformation });
+        }
+      })
+      .filter((a: LegacyITransforamtionOptions) => a);
   } else {
     namedTransformations = childTransformations.join(".");
     childTransformations = []; // Reset child transfomrations
   }
 
-
   if (Array.isArray(effect)) {
     effect = effect.join(":");
   } else if (isObject(effect)) {
-    effect = Object.entries(effect).map(
-      ([key, value]) => `${key}:${value}`
-    );
+    effect = Object.entries(effect).map(([key, value]) => `${key}:${value}`);
   }
 
   let border = transformationOptions.border;
   if (isObject(border)) {
-    border = `${border.width != null ? border.width : 2}px_solid_${(border.color != null ? border.color : "black").replace(/^#/, 'rgb:')}`;
+    border = `${border.width != null ? border.width : 2}px_solid_${(border.color != null
+      ? border.color
+      : "black"
+    ).replace(/^#/, "rgb:")}`;
   } else {
     // @ts-ignore
-    if (/^\d+$/.exec(border)) { // fallback to html border attributes
+    if (/^\d+$/.exec(border)) {
+      // fallback to html border attributes
       transformationOptions.border = border;
       border = void 0;
     }
   }
 
   if (Array.isArray(fps)) {
-    fps = fps.join('-');
+    fps = fps.join("-");
   }
 
   // ocr(value) {
@@ -179,48 +182,51 @@ export function generateTransformationString(transformationOptions: LegacyITrans
     so: normRangeValues(splitRange(transformationOptions.offset)[0]),
     sp: transformationOptions.streaming_profile,
     vc: processVideoParams(transformationOptions.video_codec),
-    vs: transformationOptions.video_sampling
+    vs: transformationOptions.video_sampling,
   };
-
 
   // We can accept variables in here transformationOptions, or in here transformationOptions.variables
   const variables = Object.entries(transformationOptions)
-    .filter(([key, value]) => key.startsWith('$'))
+    .filter(([key, value]) => key.startsWith("$"))
     .map(([key, value]) => {
       // delete transformationOptions[key]; // Delete the variables, so we don't add them twice
       return `${key}_${legacyNormalizeExpression(value)}`;
-    }).sort().concat(
+    })
+    .sort()
+    .concat(
       // @ts-ignore
       (transformationOptions.variables || []).map(([name, value]) => `${name}_${legacyNormalizeExpression(value)}`)
-    ).join(',');
-
+    )
+    .join(",");
 
   // Clean up!
   const urlImageTransfomrations = Object.entries(urlParams)
     .filter(([key, value]) => {
-      if (typeof value === 'undefined' || value === null) {
+      if (typeof value === "undefined" || value === null) {
         return false;
       }
-      if (typeof value === 'string' && value.length === 0) {
+      if (typeof value === "string" && value.length === 0) {
         return false;
       }
 
       if (Array.isArray(value) && value.length === 0) {
-        return false
+        return false;
       }
 
       return true;
     })
     .map(([key, value]) => `${key}_${value}`)
     .sort()
-    .join(',');
+    .join(",");
 
   const finalTransformationString = [
     ifValue,
     variables,
     urlImageTransfomrations,
-    transformationOptions.raw_transformation
-  ].filter((a) => a).join(",");
+    transformationOptions.raw_transformation,
+  ]
+    .filter((a) => a)
+    .join(",");
 
   if (finalTransformationString) {
     childTransformations.push(finalTransformationString);
@@ -229,4 +235,3 @@ export function generateTransformationString(transformationOptions: LegacyITrans
   // console.log(childTransformations);
   return childTransformations.join("/");
 }
-

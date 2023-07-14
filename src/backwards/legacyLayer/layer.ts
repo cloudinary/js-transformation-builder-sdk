@@ -1,4 +1,4 @@
-import {snakeCase} from "../utils/snakeCase.js";
+import { snakeCase } from "../utils/snakeCase.js";
 
 class Layer {
   protected options: {
@@ -26,28 +26,28 @@ class Layer {
    * @constructor Layer
    * @param {Object} options - layer parameters
    */
-  constructor(options?:{}) {
+  constructor(options?: {}) {
     this.options = {};
     if (options != null) {
       ["resourceType", "type", "publicId", "format"].forEach((key) => {
         var ref;
         // @ts-ignore
-        return this.options[key] = (ref = options[key]) != null ? ref : options[snakeCase(key)];
+        return (this.options[key] = (ref = options[key]) != null ? ref : options[snakeCase(key)]);
       });
     }
   }
 
-  resourceType(value:string) {
+  resourceType(value: string) {
     this.options.resourceType = value;
     return this;
   }
 
-  type(value:string) {
+  type(value: string) {
     this.options.type = value;
     return this;
   }
 
-  publicId(value:string) {
+  publicId(value: string) {
     this.options.publicId = value;
     return this;
   }
@@ -75,7 +75,7 @@ class Layer {
     }
   }
 
-  format(value:any): this | void {
+  format(value: any): this | void {
     this.options.format = value;
     return this;
   }
@@ -85,7 +85,7 @@ class Layer {
    * @function Layer#toString
    */
   toString() {
-    let components:string[]=[];
+    let components: string[] = [];
     if (this.options.publicId == null) {
       throw "Must supply publicId";
     }
@@ -96,13 +96,12 @@ class Layer {
       components.push(this.options.type);
     }
     components.push(this.getFullPublicId());
-    return components.filter(x => !!x).join(":");
+    return components.filter((x) => !!x).join(":");
   }
 
   clone() {
     return new Layer(this.options);
   }
-
 }
 
 export default Layer;

@@ -1,5 +1,5 @@
-import {Action} from "../../internal/Action.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
+import { Action } from "../../internal/Action.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
 
 /**
  * @description Distorts the image to an arc shape.
@@ -14,9 +14,8 @@ import {Qualifier} from "../../internal/qualifier/Qualifier.js";
 class DistortArcAction extends Action {
   constructor(degrees: number | string) {
     super();
-    this.addQualifier(new Qualifier('e', `distort:arc:${degrees}`));
+    this.addQualifier(new Qualifier("e", `distort:arc:${degrees}`));
   }
 }
 
-
-export {DistortArcAction};
+export { DistortArcAction };

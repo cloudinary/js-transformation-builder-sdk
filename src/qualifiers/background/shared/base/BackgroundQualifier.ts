@@ -1,4 +1,4 @@
-import {Qualifier} from "../../../../internal/qualifier/Qualifier.js";
+import { Qualifier } from "../../../../internal/qualifier/Qualifier.js";
 
 /**
  * @description Defines the visual appearance of the background.
@@ -8,7 +8,7 @@ import {Qualifier} from "../../../../internal/qualifier/Qualifier.js";
 class BackgroundQualifier extends Qualifier {
   constructor(backgroundValue?: string) {
     // The qualifier key for this qualifier
-    super('b');
+    super("b");
 
     // Such as color (b_red)
     if (backgroundValue) {
@@ -17,4 +17,4 @@ class BackgroundQualifier extends Qualifier {
   }
 }
 
-export {BackgroundQualifier};
+export { BackgroundQualifier };

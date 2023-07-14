@@ -1,98 +1,113 @@
-import Layer from './layer.js';
-import {snakeCase} from "../utils/snakeCase.js";
-import {isEmpty} from "../utils/isEmpty.js";
-import {smartEscape} from "../utils/smartEscape.js";
-import {isNumberLike} from "../utils/isNumberLike.js";
+import Layer from "./layer.js";
+import { snakeCase } from "../utils/snakeCase.js";
+import { isEmpty } from "../utils/isEmpty.js";
+import { smartEscape } from "../utils/smartEscape.js";
+import { isNumberLike } from "../utils/isNumberLike.js";
 
 class TextLayer extends Layer {
   /**
    * @constructor TextLayer
    * @param {Object} options - layer parameters
    */
-  constructor(options?:{}) {
+  constructor(options?: {}) {
     let keys;
     super(options);
-    keys = ["resourceType", "resourceType", "fontFamily", "fontSize", "fontWeight", "fontStyle", "textDecoration", "textAlign", "stroke", "letterSpacing", "lineSpacing", "fontHinting", "fontAntialiasing", "text"];
+    keys = [
+      "resourceType",
+      "resourceType",
+      "fontFamily",
+      "fontSize",
+      "fontWeight",
+      "fontStyle",
+      "textDecoration",
+      "textAlign",
+      "stroke",
+      "letterSpacing",
+      "lineSpacing",
+      "fontHinting",
+      "fontAntialiasing",
+      "text",
+    ];
     if (options != null) {
       keys.forEach((key) => {
         var ref;
         // @ts-ignore
-        return this.options[key] = (ref = options[key]) != null ? ref : options[snakeCase(key)];
+        return (this.options[key] = (ref = options[key]) != null ? ref : options[snakeCase(key)]);
       });
     }
     this.options.resourceType = "text";
   }
 
   //@ts-ignore
-  resourceType(resourceType:string) {
+  resourceType(resourceType: string) {
     throw "Cannot modify resourceType for text layers";
   }
 
   //@ts-ignore
-  type(type:string) {
+  type(type: string) {
     throw "Cannot modify type for text layers";
   }
 
-  format(format:any) {
+  format(format: any) {
     throw "Cannot modify format for text layers";
   }
 
-  fontFamily(fontFamily:string) {
+  fontFamily(fontFamily: string) {
     this.options.fontFamily = fontFamily;
     return this;
   }
 
-  fontSize(fontSize:string | number) {
+  fontSize(fontSize: string | number) {
     this.options.fontSize = fontSize;
     return this;
   }
 
-  fontWeight(fontWeight:string) {
+  fontWeight(fontWeight: string) {
     this.options.fontWeight = fontWeight;
     return this;
   }
 
-  fontStyle(fontStyle:string) {
+  fontStyle(fontStyle: string) {
     this.options.fontStyle = fontStyle;
     return this;
   }
 
-  textDecoration(textDecoration:string) {
+  textDecoration(textDecoration: string) {
     this.options.textDecoration = textDecoration;
     return this;
   }
 
-  textAlign(textAlign:string) {
+  textAlign(textAlign: string) {
     this.options.textAlign = textAlign;
     return this;
   }
 
-  stroke(stroke:string) {
+  stroke(stroke: string) {
     this.options.stroke = stroke;
     return this;
   }
 
-  letterSpacing(letterSpacing:string) {
+  letterSpacing(letterSpacing: string) {
     this.options.letterSpacing = letterSpacing;
     return this;
   }
 
-  lineSpacing(lineSpacing:string) {
+  lineSpacing(lineSpacing: string) {
     this.options.lineSpacing = lineSpacing;
     return this;
   }
 
-  fontHinting (fontHinting:string){
+  fontHinting(fontHinting: string) {
     this.options.fontHinting = fontHinting;
     return this;
   }
 
-  fontAntialiasing (fontAntialiasing:string){
+  fontAntialiasing(fontAntialiasing: string) {
     this.options.fontAntialiasing = fontAntialiasing;
     return this;
   }
 
-  text(text:string) {
+  text(text: string) {
     this.options.text = text;
     return this;
   }
@@ -111,7 +126,7 @@ class TextLayer extends Layer {
     if (this.options.text != null) {
       hasPublicId = !isEmpty(publicId);
       hasStyle = !isEmpty(style);
-      if (hasPublicId && hasStyle || !hasPublicId && !hasStyle) {
+      if ((hasPublicId && hasStyle) || (!hasPublicId && !hasStyle)) {
         throw "Must supply either style parameters or a public_id when providing text parameter in a text overlay/underlay, but not both!";
       }
       re = /\$\([a-zA-Z]\w*\)/g;
@@ -119,7 +134,7 @@ class TextLayer extends Layer {
       //        textSource = text.replace(new RegExp("[,/]", 'g'), (c)-> "%#{c.charCodeAt(0).toString(16).toUpperCase()}")
       textSource = smartEscape(this.options.text, /[,\/]/g);
       text = "";
-      while (res = re.exec(textSource)) {
+      while ((res = re.exec(textSource))) {
         text += smartEscape(textSource.slice(start, res.index));
         text += res[0];
         start = res.index + res[0].length;
@@ -127,7 +142,7 @@ class TextLayer extends Layer {
       text += smartEscape(textSource.slice(start));
     }
     components = [this.options.resourceType, style, publicId, text];
-    return (components).filter(x => !!x).join(":");
+    return components.filter((x) => !!x).join(":");
   }
 
   textStyleIdentifier() {
@@ -152,13 +167,13 @@ class TextLayer extends Layer {
     if (!(isEmpty(this.options.lineSpacing) && !isNumberLike(this.options.lineSpacing))) {
       components.push("line_spacing_" + this.options.lineSpacing);
     }
-    if (!(isEmpty(this.options.fontAntialiasing))) {
-      components.push("antialias_"+this.options.fontAntialiasing);
+    if (!isEmpty(this.options.fontAntialiasing)) {
+      components.push("antialias_" + this.options.fontAntialiasing);
     }
-    if (!(isEmpty(this.options.fontHinting))) {
-      components.push("hinting_"+this.options.fontHinting );
+    if (!isEmpty(this.options.fontHinting)) {
+      components.push("hinting_" + this.options.fontHinting);
     }
-    if (!isEmpty(components.filter(x => !!x))) {
+    if (!isEmpty(components.filter((x) => !!x))) {
       if (isEmpty(this.options.fontFamily)) {
         throw `Must supply fontFamily. ${components}`;
       }
@@ -167,10 +182,9 @@ class TextLayer extends Layer {
       }
     }
     components.unshift(this.options.fontFamily, this.options.fontSize);
-    components = components.filter(x => !!x).join("_");
+    components = components.filter((x) => !!x).join("_");
     return components;
   }
-
-};
+}
 
 export default TextLayer;

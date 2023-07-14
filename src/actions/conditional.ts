@@ -1,8 +1,8 @@
-import {Action} from "../internal/Action.js";
-import {expression} from "../qualifiers/expression.js";
-import {Transformation} from "../transformation/Transformation.js";
-import {IConditionalActionModel} from "../internal/models/IConditionalActionModel.js";
-import {IActionModel} from "../internal/models/IActionModel.js";
+import { Action } from "../internal/Action.js";
+import { expression } from "../qualifiers/expression.js";
+import { Transformation } from "../transformation/Transformation.js";
+import { IConditionalActionModel } from "../internal/models/IConditionalActionModel.js";
+import { IActionModel } from "../internal/models/IActionModel.js";
 
 /**
  * Sets up a conditional transformation.
@@ -20,7 +20,6 @@ import {IActionModel} from "../internal/models/IActionModel.js";
  * // Transformation will contain `if_ar_gte_1.0/w_100/if_end`
  */
 
-
 /**
  * @memberOf Actions.Conditional
  * @see Actions.Conditional
@@ -36,8 +35,10 @@ import {IActionModel} from "../internal/models/IActionModel.js";
  * image.toString()
  * // Transformation will contain `if_ar_gte_1.0/w_100/if_end`
  */
-class ConditionalAction extends Action{
-  protected _actionModel: IConditionalActionModel = {actionType: "ifCondition"};
+class ConditionalAction extends Action {
+  protected _actionModel: IConditionalActionModel = {
+    actionType: "ifCondition",
+  };
   private ifTx: Transformation;
   private elseTx: Transformation;
   private exp: string;
@@ -67,16 +68,13 @@ class ConditionalAction extends Action{
   }
 
   toString(): string {
-    return [
-      `if_${expression(this.exp)}`,
-      `${this.ifTx}`,
-      this.elseTx && `if_else/${this.elseTx}`,
-      `if_end`
-    ].filter((a) => a).join('/');
+    return [`if_${expression(this.exp)}`, `${this.ifTx}`, this.elseTx && `if_else/${this.elseTx}`, `if_end`]
+      .filter((a) => a)
+      .join("/");
   }
 
   static fromJson(actionModel: IActionModel): ConditionalAction {
-    const {expression, transformation, otherwise} = (actionModel as IConditionalActionModel);
+    const { expression, transformation, otherwise } = actionModel as IConditionalActionModel;
 
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
     // This allows the inheriting classes to determine the class to be created
@@ -86,9 +84,6 @@ class ConditionalAction extends Action{
     return result;
   }
 }
-
-
-
 
 /**
  * @summary action
@@ -104,6 +99,6 @@ function ifCondition(expression: string, tx: Transformation): ConditionalAction 
   return new ConditionalAction(expression, tx);
 }
 
-const Conditional = {ifCondition, ConditionalAction};
+const Conditional = { ifCondition, ConditionalAction };
 
-export {Conditional, ifCondition, ConditionalAction};
+export { Conditional, ifCondition, ConditionalAction };

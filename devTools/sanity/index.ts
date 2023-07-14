@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable require-jsdoc */
 
-import {ISanityGeneratorResponse} from "sdk-sanity-generator";
+import { ISanityGeneratorResponse } from "sdk-sanity-generator";
 
-const fs = require('fs');
-const sanityGenerator = require('sdk-sanity-generator').sanityGenerator;
-const createTestFile = require('./createTestFile');
+const fs = require("fs");
+const sanityGenerator = require("sdk-sanity-generator").sanityGenerator;
+const createTestFile = require("./createTestFile");
 
 sanityGenerator({
-  framework: 'js_2',
-  requestSpreading: 70
+  framework: "js_2",
+  requestSpreading: 70,
 }).then((res: ISanityGeneratorResponse) => {
   console.log(res);
   console.log(`Successful transformations: ${res.success.length}`);

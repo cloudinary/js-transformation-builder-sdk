@@ -1,9 +1,9 @@
-import {ITextStyleModel} from "./ITextStyleModel.js";
-import {IBaseTextSourceModel} from "./ITextSourceModel.js";
+import { ITextStyleModel } from "./ITextStyleModel.js";
+import { IBaseTextSourceModel } from "./ITextSourceModel.js";
 
 export interface ISubtitlesSourceModel extends IBaseTextSourceModel {
   textStyle?: ITextStyleModel;
-  sourceType: 'subtitles';
+  sourceType: "subtitles";
   publicId: string;
 }
 
@@ -12,5 +12,5 @@ export interface ISubtitlesSourceModel extends IBaseTextSourceModel {
  * @param obj
  */
 export function isISubtitlesSourceModel(obj: unknown): obj is ISubtitlesSourceModel {
-  return obj && (obj as ISubtitlesSourceModel).sourceType === 'subtitles';
+  return obj && (obj as ISubtitlesSourceModel).sourceType === "subtitles";
 }

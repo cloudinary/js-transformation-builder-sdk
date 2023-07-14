@@ -1,12 +1,9 @@
-import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
+import { QualifierValue } from "../../internal/qualifier/QualifierValue.js";
 
 /**
  * @memberOf Qualifiers.AnimatedFormat
  * @extends {SDK.QualifierValue}
  */
-class AnimatedFormatQualifierValue extends QualifierValue {
+class AnimatedFormatQualifierValue extends QualifierValue {}
 
-}
-
-
-export {AnimatedFormatQualifierValue};
+export { AnimatedFormatQualifierValue };

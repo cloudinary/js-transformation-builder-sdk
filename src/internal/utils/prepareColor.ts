@@ -1,5 +1,4 @@
-import {SystemColors} from "../../qualifiers/color.js";
-
+import { SystemColors } from "../../qualifiers/color.js";
 
 /**
  * Returns RGB or Color

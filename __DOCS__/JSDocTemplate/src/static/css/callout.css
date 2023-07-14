@@ -5,95 +5,95 @@
  * Requires a base and modifier class.
  */
 .callout {
-	padding: 20px;
-	margin: 20px 0;
-	border: 1px solid #eee;
-	border-left-width: 5px;
-	border-radius: 3px;
+  padding: 20px;
+  margin: 20px 0;
+  border: 1px solid #eee;
+  border-left-width: 5px;
+  border-radius: 3px;
 }
 .callout h5 {
-	margin-top: 0;
-	margin-bottom: 5px;
-	/* text-transform: uppercase; */
-	/* letter-spacing: 1px; */
-	font-family: inherit;
-	font-weight: 500;
-	line-height: 1.1;
-	font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 5px;
+  /* text-transform: uppercase; */
+  /* letter-spacing: 1px; */
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+  font-size: 18px;
 }
 .callout p:last-child,
 .callout table:last-child {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 .callout code {
-	border-radius: 3px;
+  border-radius: 3px;
 }
 .callout .control-label {
-	color: #999;
-	font-weight: normal;
+  color: #999;
+  font-weight: normal;
 }
-.callout+.callout {
-	margin-top: -5px;
+.callout + .callout {
+  margin-top: -5px;
 }
 
 .callout-default {
-	border-left-color: #999;
+  border-left-color: #999;
 }
 .callout-default h5 {
-	color: #999;
+  color: #999;
 }
 .callout-primary {
-	border-left-color: #337ab7;
+  border-left-color: #337ab7;
 }
 .callout-primary h5 {
-	color: #337ab7;
+  color: #337ab7;
 }
 .callout-success {
-	border-left-color: #5cb85c;
+  border-left-color: #5cb85c;
 }
 .callout-success h5 {
-	color: #5cb85c;
+  color: #5cb85c;
 }
 .callout-danger {
-	border-left-color: #d9534f;
+  border-left-color: #d9534f;
 }
 .callout-danger h5 {
-	color: #d9534f;
+  color: #d9534f;
 }
 .callout-warning {
-	border-left-color: #f0ad4e;
+  border-left-color: #f0ad4e;
 }
 .callout-warning h5 {
-	color: #f0ad4e;
+  color: #f0ad4e;
 }
 .callout-info {
-	border-left-color: #87b9f1;
+  border-left-color: #87b9f1;
 }
 .callout-info h5 {
-	color: #87b9f1;
+  color: #87b9f1;
 }
 .callout-rpc {
-	border-left-color: #c7bfd3;
+  border-left-color: #c7bfd3;
 }
 .callout-rpc h5 {
-	color: #c7bfd3;
+  color: #c7bfd3;
 }
 .callout-example {
-	border-left-color: #8461b9;
+  border-left-color: #8461b9;
 }
 .callout-example h5 {
-	color: #8461b9;
+  color: #8461b9;
 }
 
 .callout .form-group {
-	margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 .callout .form-group > div.control-static > p {
-	min-height: 34px;
-	padding-top: 7px;
-	padding-bottom: 7px;
-	margin-bottom: 0;
+  min-height: 34px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  margin-bottom: 0;
 }
 .callout .table > thead > tr > th {
-	font-weight: normal;
+  font-weight: normal;
 }

@@ -10,11 +10,11 @@ export function processVideoParams(param: any) {
   switch (param && param.constructor) {
     case Object: {
       let video = "";
-      if ('codec' in param) {
+      if ("codec" in param) {
         video = param.codec;
-        if ('profile' in param) {
+        if ("profile" in param) {
           video += ":" + param.profile;
-          if ('level' in param) {
+          if ("level" in param) {
             video += ":" + param.level;
           }
         }

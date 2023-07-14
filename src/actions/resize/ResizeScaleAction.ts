@@ -1,5 +1,5 @@
-import {ResizeSimpleAction} from "./ResizeSimpleAction.js";
-import {GravityQualifier} from "../../qualifiers/gravity/GravityQualifier.js";
+import { ResizeSimpleAction } from "./ResizeSimpleAction.js";
+import { GravityQualifier } from "../../qualifiers/gravity/GravityQualifier.js";
 
 /**
  * @description Defines a scaling resize action.
@@ -14,8 +14,8 @@ class ResizeScaleAction extends ResizeSimpleAction {
    * @return {this}
    */
   liquidRescaling(): this {
-    return this.addQualifier(new GravityQualifier('liquid'));
+    return this.addQualifier(new GravityQualifier("liquid"));
   }
 }
 
-export {ResizeScaleAction};
+export { ResizeScaleAction };

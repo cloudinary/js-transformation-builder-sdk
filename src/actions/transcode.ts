@@ -6,12 +6,13 @@ import FPSRangeAction from "./transcode/FPSRangeAction.js";
 import KeyframeIntervalsAction from "./transcode/KeyframeIntervalsAction.js";
 import StreamingProfileAction from "./transcode/StreamingProfile.js";
 import ToAnimatedAction from "./transcode/ToAnimatedAction.js";
-import {AnimatedFormatQualifierValue} from "../qualifiers/animatedFormat/AnimatedFormatQualifierValue.js";
-import {AdvVideoCodecType, VideoCodecType} from "../qualifiers/videoCodecType/VideoCodecType.js";
-import {VideoCodecAction} from "./transcode/VideoCodecAction.js";
-import {AnimatedFormatType, AudioCodecType, AudioFrequencyType, StreamingProfileTypes} from "../types/types.js";
+import { AnimatedFormatQualifierValue } from "../qualifiers/animatedFormat/AnimatedFormatQualifierValue.js";
+import { AdvVideoCodecType, VideoCodecType } from "../qualifiers/videoCodecType/VideoCodecType.js";
+import { VideoCodecAction } from "./transcode/VideoCodecAction.js";
+import { AnimatedFormatType, AudioCodecType, AudioFrequencyType, StreamingProfileTypes } from "../types/types.js";
 
-export type ITranscodeAction = BitRateAction
+export type ITranscodeAction =
+  | BitRateAction
   | AudioCodecAction
   | AudioFrequencyAction
   | FPSAction
@@ -19,7 +20,7 @@ export type ITranscodeAction = BitRateAction
   | KeyframeIntervalsAction
   | StreamingProfileAction
   | ToAnimatedAction
-  | VideoCodecAction
+  | VideoCodecAction;
 
 /**
  * @description Defines how to transcode a video to another format
@@ -50,7 +51,7 @@ export type ITranscodeAction = BitRateAction
  * @return {Actions.Transcode.AudioFrequencyAction}
  *
  */
-function audioFrequency(freq: AudioFrequencyType|string|number): AudioFrequencyAction{
+function audioFrequency(freq: AudioFrequencyType | string | number): AudioFrequencyAction {
   return new AudioFrequencyAction(freq);
 }
 /**
@@ -69,7 +70,7 @@ function audioFrequency(freq: AudioFrequencyType|string|number): AudioFrequencyA
  * video.transcode( audioCodec( aac() ) );
  * @return {Actions.Transcode.AudioCodecAction}
  */
-function audioCodec(codec: AudioCodecType | string): AudioCodecAction{
+function audioCodec(codec: AudioCodecType | string): AudioCodecAction {
   return new AudioCodecAction(codec);
 }
 /**
@@ -94,7 +95,7 @@ function audioCodec(codec: AudioCodecType | string): AudioCodecAction{
  * video.transcode( bitRate(500).constant() );
  * @return {Actions.Transcode.BitRateAction}
  */
-function bitRate(bitRate: string|number): BitRateAction {
+function bitRate(bitRate: string | number): BitRateAction {
   return new BitRateAction(bitRate);
 }
 
@@ -195,7 +196,7 @@ function streamingProfile(profile: StreamingProfileTypes | string): StreamingPro
  * video.transcode( toAnimated( gif() ) );
  * @return {Actions.Transcode.ToAnimatedAction}
  */
-function toAnimated(animatedFormat: AnimatedFormatQualifierValue | AnimatedFormatType | string = ''): ToAnimatedAction {
+function toAnimated(animatedFormat: AnimatedFormatQualifierValue | AnimatedFormatType | string = ""): ToAnimatedAction {
   return new ToAnimatedAction(animatedFormat);
 }
 
@@ -219,5 +220,26 @@ function videoCodec(videoCodecType: VideoCodecType | AdvVideoCodecType): VideoCo
   return new VideoCodecAction(videoCodecType);
 }
 
-const Transcode = {bitRate, audioCodec, audioFrequency, fps, fpsRange, keyframeInterval, streamingProfile, toAnimated, videoCodec};
-export {Transcode, bitRate, audioCodec, audioFrequency, fps, fpsRange, keyframeInterval, streamingProfile, toAnimated, videoCodec};
+const Transcode = {
+  bitRate,
+  audioCodec,
+  audioFrequency,
+  fps,
+  fpsRange,
+  keyframeInterval,
+  streamingProfile,
+  toAnimated,
+  videoCodec,
+};
+export {
+  Transcode,
+  bitRate,
+  audioCodec,
+  audioFrequency,
+  fps,
+  fpsRange,
+  keyframeInterval,
+  streamingProfile,
+  toAnimated,
+  videoCodec,
+};

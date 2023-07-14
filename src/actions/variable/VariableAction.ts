@@ -1,7 +1,7 @@
-import {Action} from "../../internal/Action.js";
-import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {ExpressionQualifier} from "../../qualifiers/expression/ExpressionQualifier.js";
+import { Action } from "../../internal/Action.js";
+import { QualifierValue } from "../../internal/qualifier/QualifierValue.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
+import { ExpressionQualifier } from "../../qualifiers/expression/ExpressionQualifier.js";
 
 type TypeVariableValue = number | string | ExpressionQualifier;
 
@@ -25,7 +25,7 @@ class VariableAction extends Action {
   /**
    * @description Converts the returned value to type float.
    */
-  asFloat():this {
+  asFloat(): this {
     this.isFloat = true;
     return this;
   }
@@ -40,18 +40,17 @@ class VariableAction extends Action {
 
   protected prepareQualifiers(): this {
     let qualifierValue;
-    if(this.isFloat) {
-      qualifierValue = new QualifierValue([this.value, 'to_f']).setDelimiter('_');
-    }else if(this.isNumber) {
-      qualifierValue = new QualifierValue([this.value, 'to_i']).setDelimiter('_');
-    }else{
+    if (this.isFloat) {
+      qualifierValue = new QualifierValue([this.value, "to_f"]).setDelimiter("_");
+    } else if (this.isNumber) {
+      qualifierValue = new QualifierValue([this.value, "to_i"]).setDelimiter("_");
+    } else {
       qualifierValue = new QualifierValue(this.value);
     }
 
     this.addQualifier(new Qualifier(`$${this.name}`, qualifierValue));
     return this;
   }
-
 }
 
 export default VariableAction;

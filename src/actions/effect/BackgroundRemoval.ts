@@ -1,9 +1,9 @@
-import {Action} from "../../internal/Action.js";
-import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {ForegroundObjectValue} from "../../qualifiers/foregroundObject.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
-import {IBackgroundRemovalModel} from "../../internal/models/IEffectActionModel.js";
+import { Action } from "../../internal/Action.js";
+import { QualifierValue } from "../../internal/qualifier/QualifierValue.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
+import { ForegroundObjectValue } from "../../qualifiers/foregroundObject.js";
+import { IActionModel } from "../../internal/models/IActionModel.js";
+import { IBackgroundRemovalModel } from "../../internal/models/IEffectActionModel.js";
 
 /**
  * @description A class that defines how to remove the background of an asset
@@ -17,7 +17,7 @@ class BackgroundRemoval extends Action {
 
   constructor() {
     super();
-    this._actionModel.actionType = 'backgroundRemoval';
+    this._actionModel.actionType = "backgroundRemoval";
   }
 
   fineEdges(value = true) {
@@ -41,21 +41,21 @@ class BackgroundRemoval extends Action {
   }
 
   protected prepareQualifiers(): void {
-    let str = 'background_removal';
+    let str = "background_removal";
 
     if (this._fineEdges !== undefined) {
-      str += `:${new QualifierValue(`fineedges_${this._fineEdges ? 'y' : 'n'}`).toString()}`;
+      str += `:${new QualifierValue(`fineedges_${this._fineEdges ? "y" : "n"}`).toString()}`;
     }
 
     if (this._hints?.length) {
-      str += `:${new QualifierValue(`hints_(${this._hints.join(';')})`).toString()}`;
+      str += `:${new QualifierValue(`hints_(${this._hints.join(";")})`).toString()}`;
     }
 
-    this.addQualifier(new Qualifier('e', str));
+    this.addQualifier(new Qualifier("e", str));
   }
 
   static fromJson(actionModel: IActionModel): BackgroundRemoval {
-    const {fineEdges, hints} = (actionModel as IBackgroundRemovalModel);
+    const { fineEdges, hints } = actionModel as IBackgroundRemovalModel;
     const result = new this();
 
     if (fineEdges !== undefined) {
@@ -69,5 +69,4 @@ class BackgroundRemoval extends Action {
   }
 }
 
-
-export {BackgroundRemoval};
+export { BackgroundRemoval };

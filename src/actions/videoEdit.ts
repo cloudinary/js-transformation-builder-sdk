@@ -1,8 +1,8 @@
-import TrimAction from './videoEdit/TrimAction.js';
-import ConcatenateAction from './videoEdit/ConcatenateAction.js';
+import TrimAction from "./videoEdit/TrimAction.js";
+import ConcatenateAction from "./videoEdit/ConcatenateAction.js";
 import VolumeAction from "./videoEdit/VolumeAction.js";
-import {VideoSource} from "../qualifiers/source/sourceTypes/VideoSource.js";
-import {PreviewAction} from "./videoEdit/PreviewAction.js";
+import { VideoSource } from "../qualifiers/source/sourceTypes/VideoSource.js";
+import { PreviewAction } from "./videoEdit/PreviewAction.js";
 
 /**
  * @summary action
@@ -38,7 +38,7 @@ import {PreviewAction} from "./videoEdit/PreviewAction.js";
  *  .duration(5)
  * )
  */
-function concatenate(source:VideoSource):ConcatenateAction{
+function concatenate(source: VideoSource): ConcatenateAction {
   return new ConcatenateAction(source);
 }
 
@@ -47,7 +47,7 @@ function concatenate(source:VideoSource):ConcatenateAction{
  * @description Trims a video (and discards the rest).
  *
  * <b>Learn more</b>: {@link https://cloudinary.com/documentation/video_trimming_and_concatenating#trimming_videos|
-  * Trimming videos}
+ * Trimming videos}
  *
  * @memberOf Actions.VideoEdit
  * @return {Actions.VideoEdit.TrimAction}
@@ -64,7 +64,7 @@ function concatenate(source:VideoSource):ConcatenateAction{
  *  .duration(10)
  * )
  */
-function trim(): TrimAction{
+function trim(): TrimAction {
   return new TrimAction();
 }
 
@@ -73,7 +73,7 @@ function trim(): TrimAction{
  * @description Increases or decreases the volume by a percentage of the current volume.
  *
  * <b>Learn more</b>: {@link https://cloudinary.com/documentation/audio_transformations#adjust_the_audio_volume|
-  * Adjust the audio volume}
+ * Adjust the audio volume}
  *
  * @memberOf Actions.VideoEdit
  * @param {string | number} volumeValue The value of volume. The percentage change of volume (Range: -100 to 400).
@@ -91,7 +91,7 @@ function trim(): TrimAction{
  * video.videoEdit( volume('5db') ) // as decibels
  * video.videoEdit( volume(mute()) ) // if you prefer silence..
  */
-function volume(volumeValue: string | number): VolumeAction{
+function volume(volumeValue: string | number): VolumeAction {
   return new VolumeAction(volumeValue);
 }
 
@@ -100,7 +100,7 @@ function volume(volumeValue: string | number): VolumeAction{
  * @description A video preview is a short excerpt from a video that can be used to engage your audience and help them select the video content that interests them.
  *
  * <b>Learn more</b>: {@link https://cloudinary.com/documentation/video_effects_and_enhancements#ai_based_video_preview|
-  * Create a video preview}
+ * Create a video preview}
  *
  * @memberOf Actions.VideoEdit
  * @return {Actions.VideoEdit.PreviewAction}
@@ -117,11 +117,11 @@ function volume(volumeValue: string | number): VolumeAction{
  *  .maximumSegments(10)
  * )
  */
-function preview(): PreviewAction{
+function preview(): PreviewAction {
   return new PreviewAction();
 }
 
 export declare type videoEditType = VolumeAction | TrimAction | ConcatenateAction | PreviewAction;
 
-const VideoEdit = {concatenate, trim, volume, preview};
-export {VideoEdit, concatenate, trim, volume, preview};
+const VideoEdit = { concatenate, trim, volume, preview };
+export { VideoEdit, concatenate, trim, volume, preview };

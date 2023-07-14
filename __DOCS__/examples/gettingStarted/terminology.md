@@ -2,34 +2,25 @@
 
 <h4>The best way to explain our terminology is through an example</h4>
 
-
 ```javascript
-import {Cloudinary} from "@cloudinary/url-gen/instance/Cloudinary";
-import {Rotate} from "@cloudinary/url-gen/actions/rotate";
-import {Resize} from "@cloudinary/url-gen/actions/resize";
-import {RotationMode} from "@cloudinary/url-gen/qualifiers/rotationMode";
+import { Cloudinary } from "@cloudinary/url-gen/instance/Cloudinary";
+import { Rotate } from "@cloudinary/url-gen/actions/rotate";
+import { Resize } from "@cloudinary/url-gen/actions/resize";
+import { RotationMode } from "@cloudinary/url-gen/qualifiers/rotationMode";
 
 // Create your instance
 const cld = new Cloudinary({
-    cloud: {
-        cloudName: 'demo'
-    },
-    url: {
-        secure: true // force https, set to false to force http
-    }
+  cloud: {
+    cloudName: "demo",
+  },
+  url: {
+    secure: true, // force https, set to false to force http
+  },
 });
 
+const myImage = cld.image("sample");
 
-const myImage = cld.image('sample');
-
-myImage
-    .resize(
-        Resize.scale()
-            .width(100)
-            .height(100))
-    .rotate(
-        Rotate.mode(RotationMode.verticalFlip())
-    );
+myImage.resize(Resize.scale().width(100).height(100)).rotate(Rotate.mode(RotationMode.verticalFlip()));
 ```
 
 <h3>Cloudinary Instance & Configuration</h3>
@@ -48,7 +39,6 @@ myImage
   <li>You can find more Actions in <code>'@cloudinary/url-gen/actions'</code>
   <li>You can import all actions from <code>import {Actions} from '@cloudinary/url-gen'</code>
 </ul>
-
 
 <h3>Qualifiers and QualifierValues</h3>
 <ul>

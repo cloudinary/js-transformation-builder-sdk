@@ -1,9 +1,9 @@
-import {stringOrNumber, LegacyITransforamtionOptions} from "../types/types.js";
-import {generateTransformationString} from "./generateTransformationString.js";
-import {finalize_resource_type} from "./utils/finalizeResourceType.js";
-import {finalize_source} from "./utils/finalize_source.js";
-import {unsigned_url_prefix} from "./utils/unsigned_url_prefix.js";
-import { cloneDeep } from '../internal/utils/cloneDeep.js';
+import { stringOrNumber, LegacyITransforamtionOptions } from "../types/types.js";
+import { generateTransformationString } from "./generateTransformationString.js";
+import { finalize_resource_type } from "./utils/finalizeResourceType.js";
+import { finalize_source } from "./utils/finalize_source.js";
+import { unsigned_url_prefix } from "./utils/unsigned_url_prefix.js";
+import { cloneDeep } from "../internal/utils/cloneDeep.js";
 
 export function createCloudinaryLegacyURL(public_id: string, transformationOptions: LegacyITransforamtionOptions) {
   // Path format
@@ -15,10 +15,10 @@ export function createCloudinaryLegacyURL(public_id: string, transformationOptio
 
   let source_to_sign;
   let type = transformationOptions.type;
-  let resource_type = transformationOptions.resource_type || 'image'
+  let resource_type = transformationOptions.resource_type || "image";
   let version: stringOrNumber = transformationOptions.version;
-  const force_version = typeof transformationOptions.force_version === 'boolean' ? transformationOptions.force_version : true
-
+  const force_version =
+    typeof transformationOptions.force_version === "boolean" ? transformationOptions.force_version : true;
 
   const long_url_signature = !!transformationOptions.long_url_signature;
   const format = transformationOptions.format;
@@ -34,13 +34,13 @@ export function createCloudinaryLegacyURL(public_id: string, transformationOptio
   const cdn_subdomain = transformationOptions.cdn_subdomain;
   const secure_cdn_subdomain = transformationOptions.secure_cdn_subdomain;
 
-  const cname = transformationOptions.cname
-  const shorten = transformationOptions.shorten
-  const sign_url = transformationOptions.sign_url
-  const api_secret = transformationOptions.api_secret
-  const url_suffix = transformationOptions.url_suffix
-  const use_root_path = transformationOptions.use_root_path
-  const auth_token = transformationOptions.auth_token
+  const cname = transformationOptions.cname;
+  const shorten = transformationOptions.shorten;
+  const sign_url = transformationOptions.sign_url;
+  const api_secret = transformationOptions.api_secret;
+  const url_suffix = transformationOptions.url_suffix;
+  const use_root_path = transformationOptions.use_root_path;
+  const auth_token = transformationOptions.auth_token;
 
   const preloaded = /^(image|raw)\/([a-z0-9_]+)\/v(\d+)\/([^#]+)$/.exec(public_id);
 
@@ -61,7 +61,13 @@ export function createCloudinaryLegacyURL(public_id: string, transformationOptio
   [resource_type, type] = finalize_resource_type(resource_type, type, url_suffix, use_root_path, shorten);
   [public_id, source_to_sign] = finalize_source(public_id, format, url_suffix);
 
-  if (version == null && force_version && source_to_sign.indexOf("/") >= 0 && !source_to_sign.match(/^v[0-9]+/) && !source_to_sign.match(/^https?:\//)) {
+  if (
+    version == null &&
+    force_version &&
+    source_to_sign.indexOf("/") >= 0 &&
+    !source_to_sign.match(/^v[0-9]+/) &&
+    !source_to_sign.match(/^https?:\//)
+  ) {
     version = 1;
   }
   if (version != null) {
@@ -70,18 +76,19 @@ export function createCloudinaryLegacyURL(public_id: string, transformationOptio
     version = null;
   }
 
-  const transformation = generateTransformationString(cloneDeep(transformationOptions)).replace(/([^:])\/\//g, '$1/');;
+  const transformation = generateTransformationString(cloneDeep(transformationOptions)).replace(/([^:])\/\//g, "$1/");
   if (sign_url && !auth_token) {
-    let to_sign = [transformation, source_to_sign].filter(function (part) {
-      return (part != null) && part !== '';
-    }).join('/');
+    let to_sign = [transformation, source_to_sign]
+      .filter(function (part) {
+        return part != null && part !== "";
+      })
+      .join("/");
     try {
       for (let i = 0; to_sign !== decodeURIComponent(to_sign) && i < 10; i++) {
         to_sign = decodeURIComponent(to_sign);
       }
       // eslint-disable-next-line no-empty
-    } catch (error) {
-    }
+    } catch (error) {}
 
     // No support for Auth Token
     // const shasum = crypto.createHash(long_url_signature ? 'sha256' : 'sha1');
@@ -100,9 +107,12 @@ export function createCloudinaryLegacyURL(public_id: string, transformationOptio
     secure_distribution
   );
 
-  const resultUrl = [prefix, resource_type, type, transformation, version, public_id].filter(function (part) {
-    return (part != null) && part !== '';
-  }).join('/').replace(' ', '%20');
+  const resultUrl = [prefix, resource_type, type, transformation, version, public_id]
+    .filter(function (part) {
+      return part != null && part !== "";
+    })
+    .join("/")
+    .replace(" ", "%20");
 
   return resultUrl;
 }

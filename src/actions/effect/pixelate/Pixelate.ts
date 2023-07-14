@@ -1,9 +1,9 @@
-import {NamedRegion} from "../../../qualifiers/region/NamedRegion.js";
-import {Qualifier} from "../../../internal/qualifier/Qualifier.js";
-import {Action} from "../../../internal/Action.js";
-import {IPixelateModel} from "../../../internal/models/IEffectActionModel.js";
-import {IActionModel} from "../../../internal/models/IActionModel.js";
-import {custom, faces} from "../../../qualifiers/region.js";
+import { NamedRegion } from "../../../qualifiers/region/NamedRegion.js";
+import { Qualifier } from "../../../internal/qualifier/Qualifier.js";
+import { Action } from "../../../internal/Action.js";
+import { IPixelateModel } from "../../../internal/models/IEffectActionModel.js";
+import { IActionModel } from "../../../internal/models/IActionModel.js";
+import { custom, faces } from "../../../qualifiers/region.js";
 
 /**
  * @description The Action class of the pixelate Builder
@@ -19,7 +19,7 @@ class Pixelate extends Action {
   constructor(squareSize: number | string) {
     super();
     this._squareSize = squareSize;
-    this._actionModel.actionType = 'pixelate';
+    this._actionModel.actionType = "pixelate";
     this._actionModel.squareSize = squareSize as number;
   }
 
@@ -29,7 +29,7 @@ class Pixelate extends Action {
    */
   region(pixelateRegion: NamedRegion): this {
     this._region = pixelateRegion;
-    this._actionModel.region = {RegionType: this._region.regionType};
+    this._actionModel.region = { RegionType: this._region.regionType };
     return this;
   }
 
@@ -63,42 +63,42 @@ class Pixelate extends Action {
      * We're not using the full Gravity Qualifier here to prevent the code import for such a simplistic case
      */
 
-    const str = this._squareSize ? `:${this._squareSize}` : '';
-    if ('_region' in this) {
+    const str = this._squareSize ? `:${this._squareSize}` : "";
+    if ("_region" in this) {
       const qualifiers = this._region.qualifiers;
       // Copy qualifiers from the region "action" to the pixelate action
       qualifiers.forEach((q) => this.addQualifier(q));
 
-      if (this._region.regionType === 'named') {
-        this.addQualifier(new Qualifier('e', `pixelate_region${str}`));
+      if (this._region.regionType === "named") {
+        this.addQualifier(new Qualifier("e", `pixelate_region${str}`));
       }
 
-      if (this._region.regionType === 'ocr_text') {
-        this.addQualifier(new Qualifier('e', `pixelate_region${str}`));
-        this.addQualifier(new Qualifier('g', `ocr_text`));
+      if (this._region.regionType === "ocr_text") {
+        this.addQualifier(new Qualifier("e", `pixelate_region${str}`));
+        this.addQualifier(new Qualifier("g", `ocr_text`));
       }
 
-      if (this._region.regionType === 'faces') {
-        this.addQualifier(new Qualifier('e', `pixelate_faces${str}`));
+      if (this._region.regionType === "faces") {
+        this.addQualifier(new Qualifier("e", `pixelate_faces${str}`));
       }
     } else {
-      this.addQualifier(new Qualifier('e', `pixelate${str}`));
+      this.addQualifier(new Qualifier("e", `pixelate${str}`));
     }
   }
 
   static fromJson(actionModel: IActionModel): Pixelate {
-    const {actionType, region, squareSize } = (actionModel as IPixelateModel);
+    const { actionType, region, squareSize } = actionModel as IPixelateModel;
 
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
     // This allows the inheriting classes to determine the class to be created
     const result = new this(squareSize);
     squareSize && result.squareSize(squareSize);
 
-    if(region && region.RegionType === 'faces'){
+    if (region && region.RegionType === "faces") {
       result.region(faces());
     }
 
-    if(region && region.RegionType === 'custom'){
+    if (region && region.RegionType === "custom") {
       result.region(custom());
     }
 
@@ -106,5 +106,4 @@ class Pixelate extends Action {
   }
 }
 
-
-export {Pixelate};
+export { Pixelate };

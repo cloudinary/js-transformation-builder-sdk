@@ -1,4 +1,4 @@
-import {BaseCommonBackground} from "../base/BaseCommonBackground.js";
+import { BaseCommonBackground } from "../base/BaseCommonBackground.js";
 
 /**
  * @description Automatically determines the color to use for padding, if needed when resizing an asset. Selects the
@@ -15,10 +15,10 @@ class BackgroundAutoPredominantQualifier extends BaseCommonBackground {
   toString(): string {
     return `
     b_auto:predominant
-    ${this._contrast ? '_contrast' : ''}
-    ${this._palette.length ? `:palette_${this._palette.join('_')}` : ''}
-    `.replace(/\s+/g, '');
+    ${this._contrast ? "_contrast" : ""}
+    ${this._palette.length ? `:palette_${this._palette.join("_")}` : ""}
+    `.replace(/\s+/g, "");
   }
 }
 
-export {BackgroundAutoPredominantQualifier};
+export { BackgroundAutoPredominantQualifier };

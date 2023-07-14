@@ -1,8 +1,8 @@
-import {FlagQualifier} from "../qualifiers/flag/FlagQualifier.js";
-import {Qualifier} from "./qualifier/Qualifier.js";
-import {mapToSortedArray} from "./utils/dataStructureUtils.js";
-import {FlagTypes} from "../types/types.js";
-import {ActionModel} from "./models/ActionModel.js";
+import { FlagQualifier } from "../qualifiers/flag/FlagQualifier.js";
+import { Qualifier } from "./qualifier/Qualifier.js";
+import { mapToSortedArray } from "./utils/dataStructureUtils.js";
+import { FlagTypes } from "../types/types.js";
+import { ActionModel } from "./models/ActionModel.js";
 
 /**
  * @summary SDK
@@ -18,10 +18,10 @@ class Action extends ActionModel {
   // If the falgs are added to the qualifiers map, only a single flag could exist in a component (it's a map)
   // So flags are stored separately until the very end because of that reason
   flags: FlagQualifier[] = [];
-  private delimiter = ','; // {qualifier}{delimiter}{qualifier} for example: `${'w_100'}${','}${'c_fill'}`
+  private delimiter = ","; // {qualifier}{delimiter}{qualifier} for example: `${'w_100'}${','}${'c_fill'}`
   protected prepareQualifiers(): void {}
 
-  private actionTag = ''; // A custom name tag to identify this action in the future
+  private actionTag = ""; // A custom name tag to identify this action in the future
 
   /**
    * @description Returns the custom name tag that was given to this action
@@ -56,18 +56,16 @@ class Action extends ActionModel {
    */
   addQualifier(qualifier: Qualifier | string): this {
     // if string, find the key and value
-    if (typeof qualifier === 'string') {
-      const [key, value] = qualifier.toLowerCase().split('_');
+    if (typeof qualifier === "string") {
+      const [key, value] = qualifier.toLowerCase().split("_");
 
-
-      if (key === 'fl') {
+      if (key === "fl") {
         // if string qualifier is a flag, store it in the flags arrays
         this.flags.push(new FlagQualifier(value));
       } else {
         // if the string qualifier is not a flag, create a new qualifier from it
         this.qualifiers.set(key, new Qualifier(key, value));
       }
-
     } else {
       // if a qualifier object, insert to the qualifiers map
       this.qualifiers.set(qualifier.key, qualifier);
@@ -82,7 +80,7 @@ class Action extends ActionModel {
    * @return {this}
    */
   addFlag(flag: FlagTypes | FlagQualifier | string): this {
-    if (typeof flag === 'string') {
+    if (typeof flag === "string") {
       this.flags.push(new FlagQualifier(flag));
     } else {
       if (flag instanceof FlagQualifier) {
@@ -100,4 +98,4 @@ class Action extends ActionModel {
   }
 }
 
-export {Action};
+export { Action };

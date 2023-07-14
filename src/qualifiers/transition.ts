@@ -1,11 +1,10 @@
-import {VideoSource} from "./source/sourceTypes/VideoSource.js";
+import { VideoSource } from "./source/sourceTypes/VideoSource.js";
 /**
  * @description This namespace contains different sources that can be used as a transition between two videos
  * @memberOf Qualifiers
  * @namespace Transition
  * @see Visit {@link Actions.VideoEdit.concatenate|VideoEdit.concatenate} for an example
  */
-
 
 /**
  * @description Returns an instance of a VideoSource
@@ -17,6 +16,5 @@ function videoSource(publicID: string): VideoSource {
   return new VideoSource(publicID);
 }
 
-
-const Transition = {videoSource};
-export {Transition, videoSource};
+const Transition = { videoSource };
+export { Transition, videoSource };

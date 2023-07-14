@@ -1,8 +1,8 @@
-import {Action} from "../../internal/Action.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
-import {IFPSRangeActionModel} from "../../internal/models/ITranscodeActionModel.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
+import { Action } from "../../internal/Action.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
+import { QualifierValue } from "../../internal/qualifier/QualifierValue.js";
+import { IFPSRangeActionModel } from "../../internal/models/ITranscodeActionModel.js";
+import { IActionModel } from "../../internal/models/IActionModel.js";
 
 /**
  * @extends SDK.Action
@@ -17,14 +17,14 @@ import {IActionModel} from "../../internal/models/IActionModel.js";
 class FPSRangeAction extends Action {
   private from: number;
   private to: number;
-  protected _actionModel : IFPSRangeActionModel = {};
+  protected _actionModel: IFPSRangeActionModel = {};
 
   constructor(from: number, to?: number) {
     super();
     this.from = from;
     this._actionModel = {
-      actionType: 'fps',
-      fps: {from}
+      actionType: "fps",
+      fps: { from },
     };
     if (to != null) {
       this.to = to;
@@ -32,15 +32,14 @@ class FPSRangeAction extends Action {
     }
   }
 
-
   protected prepareQualifiers(): this {
     let qualifierValue;
-    if(this.from && this.to) {
+    if (this.from && this.to) {
       qualifierValue = new QualifierValue(`${this.from}-${this.to}`);
-    }else {
+    } else {
       qualifierValue = new QualifierValue(`${this.from}-`);
     }
-    this.addQualifier(new Qualifier('fps', qualifierValue));
+    this.addQualifier(new Qualifier("fps", qualifierValue));
     return this;
   }
 }

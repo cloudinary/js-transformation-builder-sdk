@@ -4,14 +4,14 @@
  * @description This is the longer description for the namespace giving a better idea about the code contained within it.
  */
 window.MyApi = {
-	/**
-	 * @summary This is a static member of the namespace.
-	 * @memberof MyApi.
-	 * @name staticMember
-	 * @type {string}
-	 * @default I'm a member of the MyApi namespace.
-	 */
-	staticMember: "I'm a member of the MyApi namespace."
+  /**
+   * @summary This is a static member of the namespace.
+   * @memberof MyApi.
+   * @name staticMember
+   * @type {string}
+   * @default I'm a member of the MyApi namespace.
+   */
+  staticMember: "I'm a member of the MyApi namespace.",
 };
 
 /**
@@ -40,33 +40,33 @@ window.MyApi = {
  * 	</script>
  * </head>
  */
-MyApi.Class = function(arg1, arg2){
-	/**
-	 * @summary I'm a member of the class.
-	 * @memberof MyApi.Class#
-	 * @name publicMember
-	 * @type {string}
-	 * @default "I'm an instance member."
-	 */
-	this.publicMember = "I'm an instance member.";
-	/**
-	 * @summary I'm a protected member of the class.
-	 * @memberof MyApi.Class#
-	 * @name protectedMember
-	 * @type {string}
-	 * @default "I'm a protected member."
-	 * @protected
-	 */
-	this.protectedMember = "I'm a protected member.";
-	/**
-	 * @summary I'm a private member of the class.
-	 * @memberof MyApi.Class#
-	 * @name _privateMember
-	 * @type {string}
-	 * @default "I'm a private member."
-	 * @private
-	 */
-	this._privateMember = "I'm a private member.";
+MyApi.Class = function (arg1, arg2) {
+  /**
+   * @summary I'm a member of the class.
+   * @memberof MyApi.Class#
+   * @name publicMember
+   * @type {string}
+   * @default "I'm an instance member."
+   */
+  this.publicMember = "I'm an instance member.";
+  /**
+   * @summary I'm a protected member of the class.
+   * @memberof MyApi.Class#
+   * @name protectedMember
+   * @type {string}
+   * @default "I'm a protected member."
+   * @protected
+   */
+  this.protectedMember = "I'm a protected member.";
+  /**
+   * @summary I'm a private member of the class.
+   * @memberof MyApi.Class#
+   * @name _privateMember
+   * @type {string}
+   * @default "I'm a private member."
+   * @private
+   */
+  this._privateMember = "I'm a private member.";
 };
 
 /**
@@ -81,15 +81,15 @@ MyApi.Class = function(arg1, arg2){
  * @fires MyApi.Class~"test.my-api"
  * @throws {CustomError} This is thrown when some condition fails within this method.
  */
-MyApi.Class.prototype.testMethod = function(value, obj, objN){
-	/**
-	 * @summary This is an event raised by this class, it's documentation appears on this page as the event is specified as an inner member the class by using the tilde (~) scope.
-	 * @memberof MyApi.Class~
-	 * @event "test.my-api"
-	 * @param {Event} e - The event object.
-	 * @param {*} custom - Some custom parameter passed to any listeners.
-	 */
-	throw new CustomError("Some custom error.");
+MyApi.Class.prototype.testMethod = function (value, obj, objN) {
+  /**
+   * @summary This is an event raised by this class, it's documentation appears on this page as the event is specified as an inner member the class by using the tilde (~) scope.
+   * @memberof MyApi.Class~
+   * @event "test.my-api"
+   * @param {Event} e - The event object.
+   * @param {*} custom - Some custom parameter passed to any listeners.
+   */
+  throw new CustomError("Some custom error.");
 };
 
 /**
@@ -104,14 +104,14 @@ MyApi.Class.prototype.testMethod = function(value, obj, objN){
  * @fires MyApi.Class~"another.my-api"
  * @throws {CustomError} This is thrown when some condition fails within this method.
  */
-MyApi.Class.prototype.anotherMethod = function(value, obj, objN){
-	/**
-	 * @summary This is an event raised by this class, it's documentation appears on this page as the event is specified as an inner member the class by using the tilde (~) scope.
-	 * @memberof MyApi.Class~
-	 * @event "another.my-api"
-	 * @param {Event} e - The event object.
-	 * @param {*} custom - Some custom parameter passed to any listeners.
-	 */
+MyApi.Class.prototype.anotherMethod = function (value, obj, objN) {
+  /**
+   * @summary This is an event raised by this class, it's documentation appears on this page as the event is specified as an inner member the class by using the tilde (~) scope.
+   * @memberof MyApi.Class~
+   * @event "another.my-api"
+   * @param {Event} e - The event object.
+   * @param {*} custom - Some custom parameter passed to any listeners.
+   */
 };
 
 /**
@@ -131,16 +131,16 @@ MyApi.Class.prototype.anotherMethod = function(value, obj, objN){
  * @constructor Child
  * @extends MyApi.Class
  */
-MyApi.Child = function(){
-	/**
-	 * @summary I'm a protected member of the class.
-	 * @memberof MyApi.Child#
-	 * @name protectedMember
-	 * @type {string}
-	 * @default "I'm a protected member."
-	 * @protected
-	 */
-	this.protectedMember = "I'm a protected member.";
+MyApi.Child = function () {
+  /**
+   * @summary I'm a protected member of the class.
+   * @memberof MyApi.Child#
+   * @name protectedMember
+   * @type {string}
+   * @default "I'm a protected member."
+   * @protected
+   */
+  this.protectedMember = "I'm a protected member.";
 };
 
 /**
@@ -154,12 +154,12 @@ MyApi.Child = function(){
  * @description This method overrides the {@link MyApi.Class#anotherMethod} and should remove the exception documentation as it no longer applies. The event should also be updated to reflect it is raised by this class and not the inherited one.
  * @fires MyApi.Child~"another.my-api"
  */
-MyApi.Child.prototype.anotherMethod = function(value, obj, objN){
-	/**
-	 * @summary This is an event raised by this class, it's documentation appears on this page as the event is specified as an inner member the class by using the tilde (~) scope.
-	 * @memberof MyApi.Child~
-	 * @event "another.my-api"
-	 * @param {Event} e - The event object.
-	 * @param {*} custom - Some custom parameter passed to any listeners.
-	 */
+MyApi.Child.prototype.anotherMethod = function (value, obj, objN) {
+  /**
+   * @summary This is an event raised by this class, it's documentation appears on this page as the event is specified as an inner member the class by using the tilde (~) scope.
+   * @memberof MyApi.Child~
+   * @event "another.my-api"
+   * @param {Event} e - The event object.
+   * @param {*} custom - Some custom parameter passed to any listeners.
+   */
 };

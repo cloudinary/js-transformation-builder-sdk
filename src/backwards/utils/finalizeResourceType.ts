@@ -1,37 +1,45 @@
-export function finalize_resource_type(resource_type: string, type: string, url_suffix: string, use_root_path: boolean, shorten: boolean) {
+export function finalize_resource_type(
+  resource_type: string,
+  type: string,
+  url_suffix: string,
+  use_root_path: boolean,
+  shorten: boolean
+) {
   if (type == null) {
-    type = 'upload';
+    type = "upload";
   }
   if (url_suffix != null) {
-    if (resource_type === 'image' && type === 'upload') {
+    if (resource_type === "image" && type === "upload") {
       resource_type = "images";
       type = null;
-    } else if (resource_type === 'image' && type === 'private') {
-      resource_type = 'private_images';
+    } else if (resource_type === "image" && type === "private") {
+      resource_type = "private_images";
       type = null;
-    } else if (resource_type === 'image' && type === 'authenticated') {
-      resource_type = 'authenticated_images';
+    } else if (resource_type === "image" && type === "authenticated") {
+      resource_type = "authenticated_images";
       type = null;
-    } else if (resource_type === 'raw' && type === 'upload') {
-      resource_type = 'files';
+    } else if (resource_type === "raw" && type === "upload") {
+      resource_type = "files";
       type = null;
-    } else if (resource_type === 'video' && type === 'upload') {
-      resource_type = 'videos';
+    } else if (resource_type === "video" && type === "upload") {
+      resource_type = "videos";
       type = null;
     } else {
-      throw new Error("URL Suffix only supported for image/upload, image/private, image/authenticated, video/upload and raw/upload");
+      throw new Error(
+        "URL Suffix only supported for image/upload, image/private, image/authenticated, video/upload and raw/upload"
+      );
     }
   }
   if (use_root_path) {
-    if ((resource_type === 'image' && type === 'upload') || (resource_type === 'images' && (type == null))) {
+    if ((resource_type === "image" && type === "upload") || (resource_type === "images" && type == null)) {
       resource_type = null;
       type = null;
     } else {
       throw new Error("Root path only supported for image/upload");
     }
   }
-  if (shorten && resource_type === 'image' && type === 'upload') {
-    resource_type = 'iu';
+  if (shorten && resource_type === "image" && type === "upload") {
+    resource_type = "iu";
     type = null;
   }
   return [resource_type, type];

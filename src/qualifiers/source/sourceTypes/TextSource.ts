@@ -1,8 +1,8 @@
-import {BaseTextSource} from "./BaseTextSource.js";
-import {TextStyle} from "../../textStyle.js";
-import {ITransformationFromJson} from "../../../internal/models/IHasFromJson.js";
-import {ITextSourceModel} from "../../../internal/models/ITextSourceModel.js";
-import {createTextStyleFromModel} from "../../../internal/models/createTextStyleFromModel.js";
+import { BaseTextSource } from "./BaseTextSource.js";
+import { TextStyle } from "../../textStyle.js";
+import { ITransformationFromJson } from "../../../internal/models/IHasFromJson.js";
+import { ITextSourceModel } from "../../../internal/models/ITextSourceModel.js";
+import { createTextStyleFromModel } from "../../../internal/models/createTextStyleFromModel.js";
 
 /**
  * @memberOf Qualifiers.Source
@@ -16,13 +16,7 @@ class TextSource extends BaseTextSource {
   }
 
   static fromJson(qualifierModel: ITextSourceModel, transformationFromJson: ITransformationFromJson): TextSource {
-    const {
-      text,
-      textStyle,
-      textColor,
-      backgroundColor,
-      transformation
-    } = qualifierModel;
+    const { text, textStyle, textColor, backgroundColor, transformation } = qualifierModel;
 
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [qualifierModel])
     // This allows the inheriting classes to determine the class to be created
@@ -31,11 +25,11 @@ class TextSource extends BaseTextSource {
       result.transformation(transformationFromJson(transformation));
     }
 
-    if (textColor){
+    if (textColor) {
       result.textColor(textColor);
     }
 
-    if (backgroundColor){
+    if (backgroundColor) {
       result.backgroundColor(backgroundColor);
     }
 
@@ -43,4 +37,4 @@ class TextSource extends BaseTextSource {
   }
 }
 
-export {TextSource};
+export { TextSource };

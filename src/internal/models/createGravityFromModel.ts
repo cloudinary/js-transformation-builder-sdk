@@ -1,25 +1,26 @@
 import {
   IAutoGravityModel,
   IAutoGravityObjectModel,
-  ICompassGravityModel, IFocusOnGravityModel,
+  ICompassGravityModel,
+  IFocusOnGravityModel,
   IGravityModel,
-  IOcrGravityModel
+  IOcrGravityModel,
 } from "./createGravityModel.js";
-import {IGravity} from "../../qualifiers/gravity/GravityQualifier.js";
-import {autoGravity, focusOn} from "../../qualifiers/gravity.js";
-import {FocusOnValue, ocr} from "../../qualifiers/focusOn.js";
-import {AutoGravity} from "../../qualifiers/gravity/autoGravity/AutoGravity.js";
-import {AutoFocus} from "../../qualifiers/autoFocus.js";
-import {FocusOnGravity} from "../../qualifiers/gravity/focusOnGravity/FocusOnGravity.js";
-import {CompassGravity} from "../../qualifiers/gravity/compassGravity/CompassGravity.js";
-import {CompassQualifier} from "../../qualifiers/gravity/qualifiers/compass/CompassQualifier.js";
+import { IGravity } from "../../qualifiers/gravity/GravityQualifier.js";
+import { autoGravity, focusOn } from "../../qualifiers/gravity.js";
+import { FocusOnValue, ocr } from "../../qualifiers/focusOn.js";
+import { AutoGravity } from "../../qualifiers/gravity/autoGravity/AutoGravity.js";
+import { AutoFocus } from "../../qualifiers/autoFocus.js";
+import { FocusOnGravity } from "../../qualifiers/gravity/focusOnGravity/FocusOnGravity.js";
+import { CompassGravity } from "../../qualifiers/gravity/compassGravity/CompassGravity.js";
+import { CompassQualifier } from "../../qualifiers/gravity/qualifiers/compass/CompassQualifier.js";
 
 /**
  * Validates that gravityModel is an ICompassGravityModel
  * @param gravityModel
  */
 function isCompassGravityModel(gravityModel: IGravityModel): gravityModel is ICompassGravityModel {
-  return gravityModel.gravityType === 'direction';
+  return gravityModel.gravityType === "direction";
 }
 
 /**
@@ -27,7 +28,7 @@ function isCompassGravityModel(gravityModel: IGravityModel): gravityModel is ICo
  * @param gravityModel
  */
 function isOcrGravityModel(gravityModel: IGravityModel): gravityModel is IOcrGravityModel {
-  return gravityModel.gravityType === 'ocr';
+  return gravityModel.gravityType === "ocr";
 }
 
 /**
@@ -35,7 +36,7 @@ function isOcrGravityModel(gravityModel: IGravityModel): gravityModel is IOcrGra
  * @param gravityModel
  */
 function isAutoGravityModel(gravityModel: IGravityModel): gravityModel is IAutoGravityModel {
-  return gravityModel.gravityType === 'auto';
+  return gravityModel.gravityType === "auto";
 }
 
 /**
@@ -43,7 +44,7 @@ function isAutoGravityModel(gravityModel: IGravityModel): gravityModel is IAutoG
  * @param autoGravityObjectModel
  */
 function createAutoFocusFromModel(autoGravityObjectModel: IAutoGravityObjectModel): AutoFocus {
-  const {object, weight, avoid} = autoGravityObjectModel;
+  const { object, weight, avoid } = autoGravityObjectModel;
   const autoFocus = new AutoFocus(new FocusOnValue(object));
   (weight || weight === 0) && autoFocus.weight(weight);
   avoid && autoFocus.avoid();
@@ -98,4 +99,4 @@ function createGravityFromModel(gravityModel: IGravityModel): IGravity {
   return createFocusOnGravityFromModel(gravityModel);
 }
 
-export {createGravityFromModel};
+export { createGravityFromModel };

@@ -1,16 +1,16 @@
-import {base64Encode} from "../../internal/utils/base64Encode.js";
-import {Action} from "../../internal/Action.js";
-import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
+import { base64Encode } from "../../internal/utils/base64Encode.js";
+import { Action } from "../../internal/Action.js";
+import { QualifierValue } from "../../internal/qualifier/QualifierValue.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
 
 /**
  * @memberOf Actions.CustomFunction
  * @see Visit {@link Actions.CustomFunction|Custom functions} for an example
  */
 class CustomFunctionAction extends Action {
-  private mode: 'wasm' | 'remote' | string;
-  protected pre?: 'pre';
-  readonly fn:string;
+  private mode: "wasm" | "remote" | string;
+  protected pre?: "pre";
+  readonly fn: string;
   private encodedFn: string;
 
   /**
@@ -22,7 +22,7 @@ class CustomFunctionAction extends Action {
     this.fn = fn;
   }
 
-  private encodeCustomFunctionString(fn:string):string {
+  private encodeCustomFunctionString(fn: string): string {
     const encodedSource = base64Encode(fn);
     return encodedSource;
   }
@@ -32,7 +32,7 @@ class CustomFunctionAction extends Action {
    * Used with the builders of `remote` and `wasm` from {@link Actions.CustomFunction|Custom functions}
    */
   asWasm(): this {
-    this.mode = 'wasm';
+    this.mode = "wasm";
     return this;
   }
 
@@ -41,23 +41,21 @@ class CustomFunctionAction extends Action {
    * Used with the builders of `remote` and `wasm` from {@link Actions.CustomFunction|Custom functions}
    */
   asRemote(): this {
-    this.mode = 'remote';
+    this.mode = "remote";
     return this;
   }
 
-  protected prepareQualifiers():this {
+  protected prepareQualifiers(): this {
     this.encodedFn = this.fn;
-    if (this.mode === 'remote') {
+    if (this.mode === "remote") {
       this.encodedFn = this.encodeCustomFunctionString(this.fn);
     }
-    return this.addQualifier(new Qualifier('fn', new QualifierValue([this.pre, this.mode, this.encodedFn])));
+    return this.addQualifier(new Qualifier("fn", new QualifierValue([this.pre, this.mode, this.encodedFn])));
   }
 
   toString(): string {
-    return super.toString()
-      .replace(/\//g, ':');
+    return super.toString().replace(/\//g, ":");
   }
 }
-
 
 export default CustomFunctionAction;

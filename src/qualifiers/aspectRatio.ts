@@ -1,7 +1,6 @@
-import {AspectRatioQualifierValue} from "./aspectRatio/AspectRatioQualifierValue.js";
-import {ignoreInitialAspectRatio as ignoreInitialAspectRatioFlag} from "./flag.js";
-import {FlagQualifier} from "./flag/FlagQualifier.js";
-
+import { AspectRatioQualifierValue } from "./aspectRatio/AspectRatioQualifierValue.js";
+import { ignoreInitialAspectRatio as ignoreInitialAspectRatioFlag } from "./flag.js";
+import { FlagQualifier } from "./flag/FlagQualifier.js";
 
 /**
  * @description 1 by 1 aspect ration.
@@ -9,7 +8,7 @@ import {FlagQualifier} from "./flag/FlagQualifier.js";
  * @return {string}
  */
 function ar1X1(): AspectRatioQualifierValue {
-  return new AspectRatioQualifierValue('1:1');
+  return new AspectRatioQualifierValue("1:1");
 }
 
 /**
@@ -19,7 +18,7 @@ function ar1X1(): AspectRatioQualifierValue {
  * @return {string}
  */
 function ar5X4(): AspectRatioQualifierValue {
-  return new AspectRatioQualifierValue('5:4');
+  return new AspectRatioQualifierValue("5:4");
 }
 
 /**
@@ -29,7 +28,7 @@ function ar5X4(): AspectRatioQualifierValue {
  * @return {string}
  */
 function ar4X3(): AspectRatioQualifierValue {
-  return new AspectRatioQualifierValue('4:3');
+  return new AspectRatioQualifierValue("4:3");
 }
 
 /**
@@ -39,7 +38,7 @@ function ar4X3(): AspectRatioQualifierValue {
  * @return {string}
  */
 function ar3X2(): AspectRatioQualifierValue {
-  return new AspectRatioQualifierValue('3:2');
+  return new AspectRatioQualifierValue("3:2");
 }
 
 /**
@@ -49,7 +48,7 @@ function ar3X2(): AspectRatioQualifierValue {
  * @return {string}
  */
 function ar16X9(): AspectRatioQualifierValue {
-  return new AspectRatioQualifierValue('16:9');
+  return new AspectRatioQualifierValue("16:9");
 }
 
 /**
@@ -59,7 +58,7 @@ function ar16X9(): AspectRatioQualifierValue {
  * @return {string}
  */
 function ar3X1(): AspectRatioQualifierValue {
-  return new AspectRatioQualifierValue('3:1');
+  return new AspectRatioQualifierValue("3:1");
 }
 
 /**
@@ -71,7 +70,6 @@ function ar3X1(): AspectRatioQualifierValue {
 function ignoreInitialAspectRatio(): FlagQualifier {
   return ignoreInitialAspectRatioFlag();
 }
-
 
 /**
  * @summary qualifier
@@ -88,8 +86,7 @@ const AspectRatio = {
   ar3X2,
   ar4X3,
   ar16X9,
-  ignoreInitialAspectRatio
+  ignoreInitialAspectRatio,
 };
 
-
-export {ar1X1, ar5X4, ar3X1, ar3X2, ar4X3, ar16X9, ignoreInitialAspectRatio, AspectRatio};
+export { ar1X1, ar5X4, ar3X1, ar3X2, ar4X3, ar16X9, ignoreInitialAspectRatio, AspectRatio };

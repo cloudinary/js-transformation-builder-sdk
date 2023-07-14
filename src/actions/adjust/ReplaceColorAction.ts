@@ -1,6 +1,6 @@
-import {Action} from "../../internal/Action.js";
-import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
+import { Action } from "../../internal/Action.js";
+import { QualifierValue } from "../../internal/qualifier/QualifierValue.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
 
 /**
  * @description
@@ -19,7 +19,7 @@ class ReplaceColorAction extends Action {
    * @description Sets the target output color.
    * @param {string} toColor - The HTML name or RGB/A hex code of the target output color.
    */
-  constructor(toColor:string) {
+  constructor(toColor: string) {
     super();
     this.targetColor = toColor;
   }
@@ -32,7 +32,7 @@ class ReplaceColorAction extends Action {
    *                                  The more saturated the original input color, the more a change in value will impact the result (Server default: 50).
    * @return {this}
    */
-  tolerance(toleranceLevel:number): this {
+  tolerance(toleranceLevel: number): this {
     this.toleranceLevel = toleranceLevel;
     return this;
   }
@@ -42,7 +42,7 @@ class ReplaceColorAction extends Action {
    * @param {string} baseColor - The HTML name or RGB/A hex code of the base input color to map (Server default: the most prominent high-saturation color in the image).
    * @return {this}
    */
-  fromColor(baseColor:string): this {
+  fromColor(baseColor: string): this {
     this.baseColor = baseColor;
     return this;
   }
@@ -50,13 +50,13 @@ class ReplaceColorAction extends Action {
   protected prepareQualifiers(): this {
     // Target color and base color might not exist at this point (optional qualifiers)
     // If they exist, ensure that any # for RGB are removed from the resulting string
-    const targetColor = this.targetColor && this.targetColor.toString().replace('#', '');
-    const baseColor = this.baseColor && this.baseColor.toString().replace('#', '');
+    const targetColor = this.targetColor && this.targetColor.toString().replace("#", "");
+    const baseColor = this.baseColor && this.baseColor.toString().replace("#", "");
 
-    const qualifierValue = new QualifierValue(['replace_color', targetColor, this.toleranceLevel, baseColor]);
-    this.addQualifier(new Qualifier('e', qualifierValue));
+    const qualifierValue = new QualifierValue(["replace_color", targetColor, this.toleranceLevel, baseColor]);
+    this.addQualifier(new Qualifier("e", qualifierValue));
     return this;
   }
 }
 
-export {ReplaceColorAction};
+export { ReplaceColorAction };

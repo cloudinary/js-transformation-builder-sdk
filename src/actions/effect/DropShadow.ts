@@ -1,8 +1,8 @@
-import {Action} from "../../internal/Action.js";
-import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {IDropShadowModel} from "../../internal/models/IEffectActionModel.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
+import { Action } from "../../internal/Action.js";
+import { QualifierValue } from "../../internal/qualifier/QualifierValue.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
+import { IDropShadowModel } from "../../internal/models/IEffectActionModel.js";
+import { IActionModel } from "../../internal/models/IActionModel.js";
 
 /**
  * @description Adds a shadow to the object in an image.
@@ -13,12 +13,12 @@ import {IActionModel} from "../../internal/models/IActionModel.js";
 class DropShadow extends Action {
   private _azimuth: number;
   private _elevation: number;
-  private _spread : number;
+  private _spread: number;
   protected _actionModel: IDropShadowModel = {};
 
   constructor() {
     super();
-    this._actionModel.actionType = 'dropshadow';
+    this._actionModel.actionType = "dropshadow";
   }
 
   /**
@@ -27,7 +27,7 @@ class DropShadow extends Action {
    * @param {number} azimuth
    * @return {this}
    */
-  azimuth(azimuth?: number): this{
+  azimuth(azimuth?: number): this {
     this._actionModel.azimuth = azimuth;
     this._azimuth = azimuth;
     return this;
@@ -57,19 +57,19 @@ class DropShadow extends Action {
     return this;
   }
 
-  protected prepareQualifiers() : void {
-    const paramNames = ['azimuth', 'elevation', 'spread'];
+  protected prepareQualifiers(): void {
+    const paramNames = ["azimuth", "elevation", "spread"];
     const paramValues = [this._azimuth, this._elevation, this._spread];
-    const paramString = paramValues.map((value, index) => value !== undefined ? `${paramNames[index]}_${value}` : '').filter(Boolean).join(';');
+    const paramString = paramValues
+      .map((value, index) => (value !== undefined ? `${paramNames[index]}_${value}` : ""))
+      .filter(Boolean)
+      .join(";");
 
-    this.addQualifier(new Qualifier(
-      'e',
-      new QualifierValue(['dropshadow', paramString]).setDelimiter(':'))
-    );
+    this.addQualifier(new Qualifier("e", new QualifierValue(["dropshadow", paramString]).setDelimiter(":")));
   }
 
   static fromJson(actionModel: IActionModel): DropShadow {
-    const {azimuth, elevation, spread} = (actionModel as IDropShadowModel);
+    const { azimuth, elevation, spread } = actionModel as IDropShadowModel;
 
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
     // This allows the inheriting classes to determine the class to be created
@@ -82,6 +82,4 @@ class DropShadow extends Action {
   }
 }
 
-
-
-export {DropShadow};
+export { DropShadow };

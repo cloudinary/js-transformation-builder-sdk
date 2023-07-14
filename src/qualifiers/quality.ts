@@ -10,7 +10,9 @@
  * @memberOf Qualifiers.Quality
  * @return {string}
  */
-function auto():string { return 'auto';}
+function auto(): string {
+  return "auto";
+}
 
 /**
  * @summary qualifier
@@ -18,7 +20,9 @@ function auto():string { return 'auto';}
  * @memberOf Qualifiers.Quality
  * @return {string}
  */
-function autoBest():string { return 'auto:best';}
+function autoBest(): string {
+  return "auto:best";
+}
 
 /**
  * @summary qualifier
@@ -26,7 +30,9 @@ function autoBest():string { return 'auto:best';}
  * @memberOf Qualifiers.Quality
  * @return {string}
  */
-function autoEco():string { return 'auto:eco';}
+function autoEco(): string {
+  return "auto:eco";
+}
 
 /**
  * @summary qualifier
@@ -34,7 +40,9 @@ function autoEco():string { return 'auto:eco';}
  * @memberOf Qualifiers.Quality
  * @return {string}
  */
-function autoGood():string { return 'auto:good';}
+function autoGood(): string {
+  return "auto:good";
+}
 
 /**
  * @summary qualifier
@@ -42,7 +50,9 @@ function autoGood():string { return 'auto:good';}
  * @memberOf Qualifiers.Quality
  * @return {string}
  */
-function autoLow():string { return 'auto:low';}
+function autoLow(): string {
+  return "auto:low";
+}
 
 /**
  * @summary qualifier
@@ -50,7 +60,9 @@ function autoLow():string { return 'auto:low';}
  * @memberOf Qualifiers.Quality
  * @return {string}
  */
-function jpegmini():string { return 'jpegmini';}
+function jpegmini(): string {
+  return "jpegmini";
+}
 
 /**
  * @summary qualifier
@@ -58,7 +70,9 @@ function jpegmini():string { return 'jpegmini';}
  * @memberOf Qualifiers.Quality
  * @return {string}
  */
-function jpegminiBest():string { return 'jpegmini:0';}
+function jpegminiBest(): string {
+  return "jpegmini:0";
+}
 
 /**
  * @summary qualifier
@@ -66,7 +80,9 @@ function jpegminiBest():string { return 'jpegmini:0';}
  * @memberOf Qualifiers.Quality
  * @return {string}
  */
-function jpegminiHigh():string { return 'jpegmini:1';}
+function jpegminiHigh(): string {
+  return "jpegmini:1";
+}
 
 /**
  * @summary qualifier
@@ -75,12 +91,11 @@ function jpegminiHigh():string { return 'jpegmini:1';}
  * @memberOf Qualifiers.Quality
  * @return {string}
  */
-function jpegminiMedium():string { return 'jpegmini:2';}
+function jpegminiMedium(): string {
+  return "jpegmini:2";
+}
 
-const Quality = {auto, autoBest, autoEco, autoGood, autoLow, jpegmini, jpegminiBest, jpegminiHigh, jpegminiMedium};
-
-export {
-  Quality,
+const Quality = {
   auto,
   autoBest,
   autoEco,
@@ -89,5 +104,7 @@ export {
   jpegmini,
   jpegminiBest,
   jpegminiHigh,
-  jpegminiMedium
+  jpegminiMedium,
 };
+
+export { Quality, auto, autoBest, autoEco, autoGood, autoLow, jpegmini, jpegminiBest, jpegminiHigh, jpegminiMedium };

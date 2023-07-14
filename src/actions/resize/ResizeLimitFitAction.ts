@@ -1,4 +1,4 @@
-import {ResizeSimpleAction} from "./ResizeSimpleAction.js";
+import { ResizeSimpleAction } from "./ResizeSimpleAction.js";
 
 /**
  * @description Defines a limit fitting resize action.
@@ -8,4 +8,4 @@ import {ResizeSimpleAction} from "./ResizeSimpleAction.js";
  */
 class ResizeLimitFitAction extends ResizeSimpleAction {}
 
-export {ResizeLimitFitAction};
+export { ResizeLimitFitAction };

@@ -1,4 +1,4 @@
-import {QualifierValue} from "../../../../internal/qualifier/QualifierValue.js";
+import { QualifierValue } from "../../../../internal/qualifier/QualifierValue.js";
 
 /**
  * @memberOf Qualifiers.Compass
@@ -6,7 +6,7 @@ import {QualifierValue} from "../../../../internal/qualifier/QualifierValue.js";
  */
 class CompassQualifier extends QualifierValue {
   // Creates a unique type of TypeScript so it can distinguish between QualifierValue and Compass
-  private type: 'Compass'
+  private type: "Compass";
   readonly val: string;
 
   constructor(val: string) {
@@ -19,4 +19,4 @@ class CompassQualifier extends QualifierValue {
   }
 }
 
-export {CompassQualifier};
+export { CompassQualifier };

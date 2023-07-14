@@ -1,8 +1,8 @@
-import {ISourceModel} from './ISourceModel.js';
-import {ITransformationModel} from "./ITransformationModel.js";
+import { ISourceModel } from "./ISourceModel.js";
+import { ITransformationModel } from "./ITransformationModel.js";
 
 export interface IFetchSourceModel extends ISourceModel {
-  sourceType: 'fetch';
+  sourceType: "fetch";
   url: string;
   format?: string;
   transformation?: ITransformationModel;
@@ -13,5 +13,5 @@ export interface IFetchSourceModel extends ISourceModel {
  * @param obj
  */
 export function isIFetchSourceModel(obj: unknown): obj is IFetchSourceModel {
-  return obj && (obj as IFetchSourceModel).sourceType === 'fetch';
+  return obj && (obj as IFetchSourceModel).sourceType === "fetch";
 }

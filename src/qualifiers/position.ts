@@ -1,4 +1,4 @@
-import {PositionQualifier} from "./position/PositionQualifier.js";
+import { PositionQualifier } from "./position/PositionQualifier.js";
 /**
  * @description
  * Defines the position of a layer: overlay or underlay.</br>
@@ -10,7 +10,4 @@ import {PositionQualifier} from "./position/PositionQualifier.js";
  * @see {@link Actions.Underlay| The underlay action}
  *
  */
-export {
-  PositionQualifier as Position
-};
-
+export { PositionQualifier as Position };

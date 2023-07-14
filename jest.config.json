@@ -11,9 +11,7 @@
     "!<rootDir>/scripts/copyPackageJsonToSrc.ts.ts",
     "!<rootDir>/src/backwards/**/*.ts"
   ],
-  "modulePaths": [
-    "<rootDir>/src"
-  ],
+  "modulePaths": ["<rootDir>/src"],
   "coverageThreshold": {
     "global": {
       "branches": 40,
@@ -27,13 +25,16 @@
       "diagnostics": false
     }
   },
-    "reporters": [
+  "reporters": [
     "default",
-    ["jest-html-reporters", {
-      "publicPath" : "./public/progress/",
-      "filename": "cloudinary-base-progress-report.html",
-      "pageTitle": "Cloudinary JS v2 Progress Report",
-      "expand": true
-    }]
+    [
+      "jest-html-reporters",
+      {
+        "publicPath": "./public/progress/",
+        "filename": "cloudinary-base-progress-report.html",
+        "pageTitle": "Cloudinary JS v2 Progress Report",
+        "expand": true
+      }
+    ]
   ]
 }

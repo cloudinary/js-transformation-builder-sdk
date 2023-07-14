@@ -12,7 +12,7 @@
  * @return {string}
  */
 function deuteranopia(): string {
-  return 'deuteranopia';
+  return "deuteranopia";
 }
 
 /**
@@ -21,7 +21,7 @@ function deuteranopia(): string {
  * @return {string}
  */
 function protanopia(): string {
-  return 'protanopia';
+  return "protanopia";
 }
 
 /**
@@ -30,7 +30,7 @@ function protanopia(): string {
  * @return {string}
  */
 function tritanopia(): string {
-  return 'tritanopia';
+  return "tritanopia";
 }
 
 /**
@@ -39,7 +39,7 @@ function tritanopia(): string {
  * @return {string}
  */
 function tritanomaly(): string {
-  return 'tritanomaly';
+  return "tritanomaly";
 }
 
 /**
@@ -48,7 +48,7 @@ function tritanomaly(): string {
  * @return {string}
  */
 function deuteranomaly(): string {
-  return 'deuteranomaly';
+  return "deuteranomaly";
 }
 
 /**
@@ -57,7 +57,7 @@ function deuteranomaly(): string {
  * @return {string}
  */
 function coneMonochromacy(): string {
-  return 'cone_monochromacy';
+  return "cone_monochromacy";
 }
 
 /**
@@ -66,10 +66,8 @@ function coneMonochromacy(): string {
  * @return {string}
  */
 function rodMonochromacy(): string {
-  return 'rod_monochromacy';
+  return "rod_monochromacy";
 }
-
-
 
 const SimulateColorBlind = {
   coneMonochromacy,
@@ -78,7 +76,7 @@ const SimulateColorBlind = {
   protanopia,
   rodMonochromacy,
   tritanomaly,
-  tritanopia
+  tritanopia,
 };
 
 export {
@@ -89,6 +87,5 @@ export {
   protanopia,
   rodMonochromacy,
   tritanomaly,
-  tritanopia
+  tritanopia,
 };
-

@@ -1,7 +1,16 @@
-import {GravityQualifier} from "../GravityQualifier.js";
-import {CompassQualifier} from "../qualifiers/compass/CompassQualifier.js";
+import { GravityQualifier } from "../GravityQualifier.js";
+import { CompassQualifier } from "../qualifiers/compass/CompassQualifier.js";
 
-type ICompassGravity = 'north' | 'center' | 'east' | 'west' | 'south' | 'north_west' | 'south_east' | 'south_west' | 'north_east';
+type ICompassGravity =
+  | "north"
+  | "center"
+  | "east"
+  | "west"
+  | "south"
+  | "north_west"
+  | "south_east"
+  | "south_west"
+  | "north_east";
 
 /**
  * @description The class for the CompassGravity builder
@@ -9,7 +18,7 @@ type ICompassGravity = 'north' | 'center' | 'east' | 'west' | 'south' | 'north_w
  * @extends {Qualifiers.Gravity.GravityQualifier}
  */
 class CompassGravity extends GravityQualifier {
-  private type:'gravity';
+  private type: "gravity";
   constructor(dir: CompassQualifier | string) {
     // Required due to https://github.com/microsoft/TypeScript/issues/13029
     /* istanbul ignore next */
@@ -17,4 +26,4 @@ class CompassGravity extends GravityQualifier {
   }
 }
 
-export {CompassGravity, ICompassGravity};
+export { CompassGravity, ICompassGravity };

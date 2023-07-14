@@ -16,40 +16,40 @@
 var LARGE_ARRAY_SIZE = 200;
 
 /** Used to stand-in for `undefined` hash values. */
-var HASH_UNDEFINED = '__lodash_hash_undefined__';
+var HASH_UNDEFINED = "__lodash_hash_undefined__";
 
 /** Used as references for constious `Number` constants. */
 var MAX_SAFE_INTEGER = 9007199254740991;
 
 /** `Object#toString` result references. */
-var argsTag = '[object Arguments]',
-  arrayTag = '[object Array]',
-  boolTag = '[object Boolean]',
-  dateTag = '[object Date]',
-  errorTag = '[object Error]',
-  funcTag = '[object Function]',
-  genTag = '[object GeneratorFunction]',
-  mapTag = '[object Map]',
-  numberTag = '[object Number]',
-  objectTag = '[object Object]',
-  promiseTag = '[object Promise]',
-  regexpTag = '[object RegExp]',
-  setTag = '[object Set]',
-  stringTag = '[object String]',
-  symbolTag = '[object Symbol]',
-  weakMapTag = '[object WeakMap]';
+var argsTag = "[object Arguments]",
+  arrayTag = "[object Array]",
+  boolTag = "[object Boolean]",
+  dateTag = "[object Date]",
+  errorTag = "[object Error]",
+  funcTag = "[object Function]",
+  genTag = "[object GeneratorFunction]",
+  mapTag = "[object Map]",
+  numberTag = "[object Number]",
+  objectTag = "[object Object]",
+  promiseTag = "[object Promise]",
+  regexpTag = "[object RegExp]",
+  setTag = "[object Set]",
+  stringTag = "[object String]",
+  symbolTag = "[object Symbol]",
+  weakMapTag = "[object WeakMap]";
 
-var arrayBufferTag = '[object ArrayBuffer]',
-  dataViewTag = '[object DataView]',
-  float32Tag = '[object Float32Array]',
-  float64Tag = '[object Float64Array]',
-  int8Tag = '[object Int8Array]',
-  int16Tag = '[object Int16Array]',
-  int32Tag = '[object Int32Array]',
-  uint8Tag = '[object Uint8Array]',
-  uint8ClampedTag = '[object Uint8ClampedArray]',
-  uint16Tag = '[object Uint16Array]',
-  uint32Tag = '[object Uint32Array]';
+var arrayBufferTag = "[object ArrayBuffer]",
+  dataViewTag = "[object DataView]",
+  float32Tag = "[object Float32Array]",
+  float64Tag = "[object Float64Array]",
+  int8Tag = "[object Int8Array]",
+  int16Tag = "[object Int16Array]",
+  int32Tag = "[object Int32Array]",
+  uint8Tag = "[object Uint8Array]",
+  uint8ClampedTag = "[object Uint8ClampedArray]",
+  uint16Tag = "[object Uint16Array]",
+  uint32Tag = "[object Uint32Array]";
 
 /**
  * Used to match `RegExp`
@@ -68,34 +68,45 @@ var reIsUint = /^(?:0|[1-9]\d*)$/;
 
 /** Used to identify `toStringTag` values supported by `_.clone`. */
 var cloneableTags = {};
-cloneableTags[argsTag] = cloneableTags[arrayTag] =
-  cloneableTags[arrayBufferTag] = cloneableTags[dataViewTag] =
-    cloneableTags[boolTag] = cloneableTags[dateTag] =
-      cloneableTags[float32Tag] = cloneableTags[float64Tag] =
-        cloneableTags[int8Tag] = cloneableTags[int16Tag] =
-          cloneableTags[int32Tag] = cloneableTags[mapTag] =
-            cloneableTags[numberTag] = cloneableTags[objectTag] =
-              cloneableTags[regexpTag] = cloneableTags[setTag] =
-                cloneableTags[stringTag] = cloneableTags[symbolTag] =
-                  cloneableTags[uint8Tag] = cloneableTags[uint8ClampedTag] =
-                    cloneableTags[uint16Tag] = cloneableTags[uint32Tag] = true;
-cloneableTags[errorTag] = cloneableTags[funcTag] =
-  cloneableTags[weakMapTag] = false;
+cloneableTags[argsTag] =
+  cloneableTags[arrayTag] =
+  cloneableTags[arrayBufferTag] =
+  cloneableTags[dataViewTag] =
+  cloneableTags[boolTag] =
+  cloneableTags[dateTag] =
+  cloneableTags[float32Tag] =
+  cloneableTags[float64Tag] =
+  cloneableTags[int8Tag] =
+  cloneableTags[int16Tag] =
+  cloneableTags[int32Tag] =
+  cloneableTags[mapTag] =
+  cloneableTags[numberTag] =
+  cloneableTags[objectTag] =
+  cloneableTags[regexpTag] =
+  cloneableTags[setTag] =
+  cloneableTags[stringTag] =
+  cloneableTags[symbolTag] =
+  cloneableTags[uint8Tag] =
+  cloneableTags[uint8ClampedTag] =
+  cloneableTags[uint16Tag] =
+  cloneableTags[uint32Tag] =
+    true;
+cloneableTags[errorTag] = cloneableTags[funcTag] = cloneableTags[weakMapTag] = false;
 
 /** Detect free constiable `global` from Node.js. */
-var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
+var freeGlobal = typeof global == "object" && global && global.Object === Object && global;
 
 /** Detect free constiable `self`. */
-var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+var freeSelf = typeof self == "object" && self && self.Object === Object && self;
 
 /** Used as a reference to the global object. */
-var root = freeGlobal || freeSelf || Function('return this')();
+var root = freeGlobal || freeSelf || Function("return this")();
 
 /** Detect free constiable `exports`. */
-var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
+var freeExports = typeof exports == "object" && exports && !exports.nodeType && exports;
 
 /** Detect free constiable `module`. */
-var freeModule = freeExports && typeof module == 'object' && module && !module.nodeType && module;
+var freeModule = freeExports && typeof module == "object" && module && !module.nodeType && module;
 
 /** Detect the popular CommonJS extension `module.exports`. */
 var moduleExports = freeModule && freeModule.exports === freeExports;
@@ -235,11 +246,10 @@ function isHostObject(value) {
   // Many host objects are `Object` objects that can coerce to strings
   // despite having improperly defined `toString` methods.
   var result = false;
-  if (value != null && typeof value.toString != 'function') {
+  if (value != null && typeof value.toString != "function") {
     try {
-      result = !!(`${value }`);
-    } catch (e) {
-    }
+      result = !!`${value}`;
+    } catch (e) {}
   }
   return result;
 }
@@ -298,13 +308,13 @@ var arrayProto = Array.prototype,
   objectProto = Object.prototype;
 
 /** Used to detect overreaching core-js shims. */
-var coreJsData = root['__core-js_shared__'];
+var coreJsData = root["__core-js_shared__"];
 
 /** Used to detect methods masquerading as native. */
 var maskSrcKey = (function () {
-  var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || '');
-  return uid ? (`Symbol(src)_1.${ uid}`) : '';
-}());
+  var uid = /[^.]+$/.exec((coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO) || "");
+  return uid ? `Symbol(src)_1.${uid}` : "";
+})();
 
 /** Used to resolve the decompiled source of functions. */
 var funcToString = funcProto.toString;
@@ -320,9 +330,11 @@ var hasOwnProperty = objectProto.hasOwnProperty;
 var objectToString = objectProto.toString;
 
 /** Used to detect if a method is native. */
-var reIsNative = RegExp(`^${ 
-  funcToString.call(hasOwnProperty).replace(reRegExpChar, '\\$&')
-    .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') }$`
+var reIsNative = RegExp(
+  `^${funcToString
+    .call(hasOwnProperty)
+    .replace(reRegExpChar, "\\$&")
+    .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?")}$`
 );
 
 /** Built-in value references. */
@@ -340,12 +352,12 @@ var nativeGetSymbols = Object.getOwnPropertySymbols,
   nativeKeys = overArg(Object.keys, Object);
 
 /* Built-in method references that are verified to be native. */
-var DataView = getNative(root, 'DataView'),
-  Map = getNative(root, 'Map'),
-  Promise = getNative(root, 'Promise'),
-  Set = getNative(root, 'Set'),
-  WeakMap = getNative(root, 'WeakMap'),
-  nativeCreate = getNative(Object, 'create');
+var DataView = getNative(root, "DataView"),
+  Map = getNative(root, "Map"),
+  Promise = getNative(root, "Promise"),
+  Set = getNative(root, "Set"),
+  WeakMap = getNative(root, "WeakMap"),
+  nativeCreate = getNative(Object, "create");
 
 /** Used to detect maps, sets, and weakmaps. */
 var dataViewCtorString = toSource(DataView),
@@ -445,7 +457,7 @@ function hashHas(key) {
  */
 function hashSet(key, value) {
   var data = this.__data__;
-  data[key] = (nativeCreate && value === undefined) ? HASH_UNDEFINED : value;
+  data[key] = nativeCreate && value === undefined ? HASH_UNDEFINED : value;
   return this;
 }
 
@@ -595,9 +607,9 @@ function MapCache(entries) {
  */
 function mapCacheClear() {
   this.__data__ = {
-    'hash': new Hash,
-    'map': new (Map || ListCache),
-    'string': new Hash
+    hash: new Hash(),
+    map: new (Map || ListCache)(),
+    string: new Hash(),
   };
 }
 
@@ -681,7 +693,7 @@ function Stack(entries) {
  * @memberOf Stack
  */
 function stackClear() {
-  this.__data__ = new ListCache;
+  this.__data__ = new ListCache();
 }
 
 /**
@@ -737,7 +749,7 @@ function stackSet(key, value) {
   var cache = this.__data__;
   if (cache instanceof ListCache) {
     var pairs = cache.__data__;
-    if (!Map || (pairs.length < LARGE_ARRAY_SIZE - 1)) {
+    if (!Map || pairs.length < LARGE_ARRAY_SIZE - 1) {
       pairs.push([key, value]);
       return this;
     }
@@ -765,16 +777,13 @@ Stack.prototype.set = stackSet;
 function arrayLikeKeys(value, inherited) {
   // Safari 8.1 makes `arguments.callee` enumerable in strict mode.
   // Safari 9 makes `arguments.length` enumerable in strict mode.
-  var result = (isArray(value) || isArguments(value))
-    ? baseTimes(value.length, String)
-    : [];
+  var result = isArray(value) || isArguments(value) ? baseTimes(value.length, String) : [];
 
   var length = result.length,
     skipIndexes = !!length;
 
   for (var key in value) {
-    if ((inherited || hasOwnProperty.call(value, key)) &&
-      !(skipIndexes && (key == 'length' || isIndex(key, length)))) {
+    if ((inherited || hasOwnProperty.call(value, key)) && !(skipIndexes && (key == "length" || isIndex(key, length)))) {
       result.push(key);
     }
   }
@@ -793,8 +802,7 @@ function arrayLikeKeys(value, inherited) {
  */
 function assignValue(object, key, value) {
   var objValue = object[key];
-  if (!(hasOwnProperty.call(object, key) && eq(objValue, value)) ||
-    (value === undefined && !(key in object))) {
+  if (!(hasOwnProperty.call(object, key) && eq(objValue, value)) || (value === undefined && !(key in object))) {
     object[key] = value;
   }
 }
@@ -884,7 +892,7 @@ function baseClone(value, isDeep, isFull, customizer, key, object, stack) {
     }
   }
   // Check for circular references and return its corresponding clone.
-  stack || (stack = new Stack);
+  stack || (stack = new Stack());
   var stacked = stack.get(value);
   if (stacked) {
     return stacked;
@@ -956,7 +964,7 @@ function baseIsNative(value) {
   if (!isObject(value) || isMasked(value)) {
     return false;
   }
-  var pattern = (isFunction(value) || isHostObject(value)) ? reIsNative : reIsHostCtor;
+  var pattern = isFunction(value) || isHostObject(value) ? reIsNative : reIsHostCtor;
   return pattern.test(toSource(value));
 }
 
@@ -973,7 +981,7 @@ function baseKeys(object) {
   }
   var result = [];
   for (var key in Object(object)) {
-    if (hasOwnProperty.call(object, key) && key != 'constructor') {
+    if (hasOwnProperty.call(object, key) && key != "constructor") {
       result.push(key);
     }
   }
@@ -1034,7 +1042,7 @@ function cloneDataView(dataView, isDeep) {
  */
 function cloneMap(map, isDeep, cloneFunc) {
   var array = isDeep ? cloneFunc(mapToArray(map), true) : mapToArray(map);
-  return arrayReduce(array, addMapEntry, new map.constructor);
+  return arrayReduce(array, addMapEntry, new map.constructor());
 }
 
 /**
@@ -1061,7 +1069,7 @@ function cloneRegExp(regexp) {
  */
 function cloneSet(set, isDeep, cloneFunc) {
   var array = isDeep ? cloneFunc(setToArray(set), true) : setToArray(set);
-  return arrayReduce(array, addSetEntry, new set.constructor);
+  return arrayReduce(array, addSetEntry, new set.constructor());
 }
 
 /**
@@ -1126,9 +1134,7 @@ function copyObject(source, props, object, customizer) {
   while (++index < length) {
     var key = props[index];
 
-    var newValue = customizer
-      ? customizer(object[key], source[key], key, object, source)
-      : undefined;
+    var newValue = customizer ? customizer(object[key], source[key], key, object, source) : undefined;
 
     assignValue(object, key, newValue === undefined ? source[key] : newValue);
   }
@@ -1168,9 +1174,7 @@ function getAllKeys(object) {
  */
 function getMapData(map, key) {
   var data = map.__data__;
-  return isKeyable(key)
-    ? data[typeof key == 'string' ? 'string' : 'hash']
-    : data.map;
+  return isKeyable(key) ? data[typeof key == "string" ? "string" : "hash"] : data.map;
 }
 
 /**
@@ -1206,11 +1210,13 @@ var getTag = baseGetTag;
 
 // Fallback for data views, maps, sets, and weak maps in IE 11,
 // for data views in Edge < 14, and promises in Node.js.
-if ((DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag) ||
-  (Map && getTag(new Map) != mapTag) ||
+if (
+  (DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag) ||
+  (Map && getTag(new Map()) != mapTag) ||
   (Promise && getTag(Promise.resolve()) != promiseTag) ||
-  (Set && getTag(new Set) != setTag) ||
-  (WeakMap && getTag(new WeakMap) != weakMapTag)) {
+  (Set && getTag(new Set()) != setTag) ||
+  (WeakMap && getTag(new WeakMap()) != weakMapTag)
+) {
   getTag = function (value) {
     var result = objectToString.call(value),
       Ctor = result == objectTag ? value.constructor : undefined,
@@ -1246,7 +1252,7 @@ function initCloneArray(array) {
     result = array.constructor(length);
 
   // Add properties assigned by `RegExp#exec`.
-  if (length && typeof array[0] == 'string' && hasOwnProperty.call(array, 'index')) {
+  if (length && typeof array[0] == "string" && hasOwnProperty.call(array, "index")) {
     result.index = array.index;
     result.input = array.input;
   }
@@ -1261,9 +1267,7 @@ function initCloneArray(array) {
  * @returns {Object} Returns the initialized clone.
  */
 function initCloneObject(object) {
-  return (typeof object.constructor == 'function' && !isPrototype(object))
-    ? baseCreate(getPrototype(object))
-    : {};
+  return typeof object.constructor == "function" && !isPrototype(object) ? baseCreate(getPrototype(object)) : {};
 }
 
 /**
@@ -1331,9 +1335,9 @@ function initCloneByTag(object, tag, cloneFunc, isDeep) {
  */
 function isIndex(value, length) {
   length = length == null ? MAX_SAFE_INTEGER : length;
-  return !!length &&
-    (typeof value == 'number' || reIsUint.test(value)) &&
-    (value > -1 && value % 1 == 0 && value < length);
+  return (
+    !!length && (typeof value == "number" || reIsUint.test(value)) && value > -1 && value % 1 == 0 && value < length
+  );
 }
 
 /**
@@ -1345,9 +1349,9 @@ function isIndex(value, length) {
  */
 function isKeyable(value) {
   var type = typeof value;
-  return (type == 'string' || type == 'number' || type == 'symbol' || type == 'boolean')
-    ? (value !== '__proto__')
-    : (value === null);
+  return type == "string" || type == "number" || type == "symbol" || type == "boolean"
+    ? value !== "__proto__"
+    : value === null;
 }
 
 /**
@@ -1358,7 +1362,7 @@ function isKeyable(value) {
  * @returns {boolean} Returns `true` if `func` is masked, else `false`.
  */
 function isMasked(func) {
-  return !!maskSrcKey && (maskSrcKey in func);
+  return !!maskSrcKey && maskSrcKey in func;
 }
 
 /**
@@ -1370,7 +1374,7 @@ function isMasked(func) {
  */
 function isPrototype(value) {
   var Ctor = value && value.constructor,
-    proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto;
+    proto = (typeof Ctor == "function" && Ctor.prototype) || objectProto;
 
   return value === proto;
 }
@@ -1386,14 +1390,12 @@ function toSource(func) {
   if (func != null) {
     try {
       return funcToString.call(func);
-    } catch (e) {
-    }
+    } catch (e) {}
     try {
-      return (`${func }`);
-    } catch (e) {
-    }
+      return `${func}`;
+    } catch (e) {}
   }
-  return '';
+  return "";
 }
 
 /**
@@ -1474,8 +1476,11 @@ function eq(value, other) {
  */
 function isArguments(value) {
   // Safari 8.1 makes `arguments.callee` enumerable in strict mode.
-  return isArrayLikeObject(value) && hasOwnProperty.call(value, 'callee') &&
-    (!propertyIsEnumerable.call(value, 'callee') || objectToString.call(value) == argsTag);
+  return (
+    isArrayLikeObject(value) &&
+    hasOwnProperty.call(value, "callee") &&
+    (!propertyIsEnumerable.call(value, "callee") || objectToString.call(value) == argsTag)
+  );
 }
 
 /**
@@ -1600,7 +1605,7 @@ var isBuffer = nativeIsBuffer || stubFalse;
 function isFunction(value) {
   // The use of `Object#toString` avoids issues with the `typeof` operator
   // in Safari 8-9 which returns 'object' for typed array and other constructors.
-  var tag = isObject(value) ? objectToString.call(value) : '';
+  var tag = isObject(value) ? objectToString.call(value) : "";
   return tag == funcTag || tag == genTag;
 }
 
@@ -1631,8 +1636,7 @@ function isFunction(value) {
  * // => false
  */
 function isLength(value) {
-  return typeof value == 'number' &&
-    value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+  return typeof value == "number" && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
 }
 
 /**
@@ -1662,7 +1666,7 @@ function isLength(value) {
  */
 function isObject(value) {
   var type = typeof value;
-  return !!value && (type == 'object' || type == 'function');
+  return !!value && (type == "object" || type == "function");
 }
 
 /**
@@ -1690,7 +1694,7 @@ function isObject(value) {
  * // => false
  */
 function isObjectLike(value) {
-  return !!value && typeof value == 'object';
+  return !!value && typeof value == "object";
 }
 
 /**
@@ -1764,4 +1768,4 @@ function stubFalse() {
   return false;
 }
 
-export {cloneDeep};
+export { cloneDeep };

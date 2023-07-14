@@ -3,11 +3,11 @@
  * This file contains utility functions related to creating ./dist entry-points (such as @base/actions/adjust)
  */
 
-const fs = require('fs');
+const fs = require("fs");
 
 // All of our package.jsons need to contain this property to allow tree shaking
 const commonPackageProperties = {
-  sideEffects: false
+  sideEffects: false,
 };
 
 /**
@@ -15,40 +15,34 @@ const commonPackageProperties = {
  * Allows users to import from '@base/bundles/umd'
  */
 function createUMDBundleEntryPoint() {
-  const packageJson = Object.assign({
-    "types": `../../index.d.ts`,
-    "main": `./base.js`
-  }, commonPackageProperties);
+  const packageJson = Object.assign(
+    {
+      types: `../../index.d.ts`,
+      main: `./base.js`,
+    },
+    commonPackageProperties
+  );
 
   // create umd
-  fs.writeFileSync(
-    `dist/bundles/umd/package.json`,
-    JSON.stringify(packageJson, null, '\t')
-  );
+  fs.writeFileSync(`dist/bundles/umd/package.json`, JSON.stringify(packageJson, null, "\t"));
 }
-
 
 /**
  * @description Since only ./dist/ is packaged to npm, we need to copy a proper package.json file to it
  *              That will allow `import {TransformableImage} from '@cloudinary/url-gen`
  */
-function copyPackageJson(fileDestination = 'dist') {
-  const projectJson = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
+function copyPackageJson(fileDestination = "dist") {
+  const projectJson = JSON.parse(fs.readFileSync("./package.json", "utf-8"));
   delete projectJson.scripts;
   delete projectJson.devDependencies;
-  projectJson.main = './bundles/umd/base.js';
-  projectJson.browser = './index.js';
-  projectJson.module = './index.js';
-  projectJson.type = 'module',
-
-  Object.assign(projectJson, commonPackageProperties);
-  fs.writeFileSync(`./${fileDestination}/package.json`, JSON.stringify(projectJson, null, '\t'));
+  projectJson.main = "./bundles/umd/base.js";
+  projectJson.browser = "./index.js";
+  projectJson.module = "./index.js";
+  (projectJson.type = "module"), Object.assign(projectJson, commonPackageProperties);
+  fs.writeFileSync(`./${fileDestination}/package.json`, JSON.stringify(projectJson, null, "\t"));
 }
-
 
 module.exports = {
   copyPackageJson,
-  createUMDBundleEntryPoint
+  createUMDBundleEntryPoint,
 };
-
-

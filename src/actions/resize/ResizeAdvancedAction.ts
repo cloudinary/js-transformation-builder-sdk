@@ -1,10 +1,10 @@
-import {ResizeSimpleAction} from "./ResizeSimpleAction.js";
-import {IGravity} from "../../qualifiers/gravity/GravityQualifier.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
-import {createGravityModel, IGravityModel} from "../../internal/models/createGravityModel.js";
-import {createGravityFromModel} from "../../internal/models/createGravityFromModel.js";
-import {IResizeAdvancedActionModel} from "../../internal/models/IResizeAdvancedActionModel.js";
+import { ResizeSimpleAction } from "./ResizeSimpleAction.js";
+import { IGravity } from "../../qualifiers/gravity/GravityQualifier.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
+import { IActionModel } from "../../internal/models/IActionModel.js";
+import { createGravityModel, IGravityModel } from "../../internal/models/createGravityModel.js";
+import { createGravityFromModel } from "../../internal/models/createGravityFromModel.js";
+import { IResizeAdvancedActionModel } from "../../internal/models/IResizeAdvancedActionModel.js";
 
 /**
  * @description Defines an advanced resize.
@@ -12,7 +12,7 @@ import {IResizeAdvancedActionModel} from "../../internal/models/IResizeAdvancedA
  * @memberOf Actions.Resize
  * @see Visit {@link Actions.Resize| Resize} for examples
  */
-class ResizeAdvancedAction extends ResizeSimpleAction{
+class ResizeAdvancedAction extends ResizeSimpleAction {
   protected _actionModel: IResizeAdvancedActionModel;
 
   /**
@@ -21,7 +21,7 @@ class ResizeAdvancedAction extends ResizeSimpleAction{
    */
   gravity(gravity: IGravity): this {
     this._actionModel.gravity = createGravityModel(gravity);
-    const gravityQualifier = typeof gravity === "string" ? new Qualifier('g', gravity) : gravity;
+    const gravityQualifier = typeof gravity === "string" ? new Qualifier("g", gravity) : gravity;
 
     return this.addQualifier(gravityQualifier);
   }
@@ -37,4 +37,4 @@ class ResizeAdvancedAction extends ResizeSimpleAction{
   }
 }
 
-export {ResizeAdvancedAction};
+export { ResizeAdvancedAction };

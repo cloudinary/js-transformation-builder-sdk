@@ -5,8 +5,8 @@
  * @returns string
  */
 function importFromPackage(exportedObject: string): string {
-  const importString = exportedObject.includes('* as') ? exportedObject : `{${exportedObject}}`;
-  const variableName = exportedObject.includes('* as') ? exportedObject.split(' as ')[1] : exportedObject;
+  const importString = exportedObject.includes("* as") ? exportedObject : `{${exportedObject}}`;
+  const variableName = exportedObject.includes("* as") ? exportedObject.split(" as ")[1] : exportedObject;
 
   return `
     import ${importString} from "${process.cwd()}/dist";

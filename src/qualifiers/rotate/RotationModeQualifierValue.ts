@@ -1,4 +1,4 @@
-import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
+import { QualifierValue } from "../../internal/qualifier/QualifierValue.js";
 
 /**
  * @description Acts as a marker for inputs passed into Rotate.mode()
@@ -18,5 +18,4 @@ class RotationModeQualifierValue extends QualifierValue {
   }
 }
 
-
-export {RotationModeQualifierValue};
+export { RotationModeQualifierValue };

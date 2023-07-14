@@ -1,8 +1,8 @@
-import {IResizeSimpleActionModel} from "./IResizeSimpleActionModel.js";
-import {IGravityModel} from "./createGravityModel.js";
+import { IResizeSimpleActionModel } from "./IResizeSimpleActionModel.js";
+import { IGravityModel } from "./createGravityModel.js";
 
-interface IResizeAdvancedActionModel extends IResizeSimpleActionModel{
+interface IResizeAdvancedActionModel extends IResizeSimpleActionModel {
   gravity: IGravityModel;
 }
 
-export {IResizeAdvancedActionModel};
+export { IResizeAdvancedActionModel };

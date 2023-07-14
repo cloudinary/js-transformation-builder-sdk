@@ -1,7 +1,7 @@
-import {LeveledEffectAction} from "../EffectActions/LeveledEffectAction.js";
-import {ExpressionQualifier} from "../../../qualifiers/expression/ExpressionQualifier.js";
-import {IDeshakeEffectModel} from "../../../internal/models/IEffectActionModel.js";
-import {IActionModel} from "../../../internal/models/IActionModel.js";
+import { LeveledEffectAction } from "../EffectActions/LeveledEffectAction.js";
+import { ExpressionQualifier } from "../../../qualifiers/expression/ExpressionQualifier.js";
+import { IDeshakeEffectModel } from "../../../internal/models/IEffectActionModel.js";
+import { IActionModel } from "../../../internal/models/IActionModel.js";
 
 type pixels = 16 | 32 | 48 | 64;
 /**
@@ -11,7 +11,7 @@ type pixels = 16 | 32 | 48 | 64;
  * @see Visit {@link Actions.Effect|Effect} for an example
  */
 class DeshakeEffectAction extends LeveledEffectAction {
-  protected _actionModel: IDeshakeEffectModel = {actionType: 'deshake'};
+  protected _actionModel: IDeshakeEffectModel = { actionType: "deshake" };
   /**
    * The maximum number of pixels in the horizontal and vertical direction that will be addressed. (Possible values: 16, 32, 48, 64. Server default: 16)
    * @param value Possible values: 16, 32, 48, 64.  Server default: 16.
@@ -24,7 +24,7 @@ class DeshakeEffectAction extends LeveledEffectAction {
   }
 
   static fromJson(actionModel: IActionModel): DeshakeEffectAction {
-    const {actionType, pixels} = (actionModel as IDeshakeEffectModel);
+    const { actionType, pixels } = actionModel as IDeshakeEffectModel;
 
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
     // This allows the inheriting classes to determine the class to be created
@@ -34,6 +34,4 @@ class DeshakeEffectAction extends LeveledEffectAction {
   }
 }
 
-
-
-export {DeshakeEffectAction};
+export { DeshakeEffectAction };

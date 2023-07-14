@@ -1,48 +1,46 @@
-import Condition from './condition.js';
-import {CONFIG_PARAMS} from './configuration.js';
-import { cloneDeep } from '../internal/utils/cloneDeep.js';
-import {camelCase, contains, difference,} from "./utils/legacyBaseUtil.js";
-import {snakeCase} from "./utils/snakeCase.js";
-import Expression from './expression.js';
-import Layer from './legacyLayer/layer.js';
-import TextLayer from './legacyLayer/textlayer.js';
-import SubtitlesLayer from './legacyLayer/subtitleslayer.js';
-import FetchLayer from './legacyLayer/fetchlayer.js';
-import {isObject} from "./utils/isObject.js";
-import {isString} from "../internal/utils/dataStructureUtils.js";
-import {isEmpty} from "./utils/isEmpty.js";
-import {isFunction} from "./utils/isFunction.js";
-import {identity, withCamelCaseKeys} from "./utils/legacyBaseUtil.js";
+import Condition from "./condition.js";
+import { CONFIG_PARAMS } from "./configuration.js";
+import { cloneDeep } from "../internal/utils/cloneDeep.js";
+import { camelCase, contains, difference } from "./utils/legacyBaseUtil.js";
+import { snakeCase } from "./utils/snakeCase.js";
+import Expression from "./expression.js";
+import Layer from "./legacyLayer/layer.js";
+import TextLayer from "./legacyLayer/textlayer.js";
+import SubtitlesLayer from "./legacyLayer/subtitleslayer.js";
+import FetchLayer from "./legacyLayer/fetchlayer.js";
+import { isObject } from "./utils/isObject.js";
+import { isString } from "../internal/utils/dataStructureUtils.js";
+import { isEmpty } from "./utils/isEmpty.js";
+import { isFunction } from "./utils/isFunction.js";
+import { identity, withCamelCaseKeys } from "./utils/legacyBaseUtil.js";
 
 /**
  * A list of keys used by the url() function.
  * @private
  */
 export const URL_KEYS = [
-  'accessibility',
-  'api_secret',
-  'auth_token',
-  'cdn_subdomain',
-  'cloud_name',
-  'cname',
-  'format',
-  'placeholder',
-  'private_cdn',
-  'resource_type',
-  'secure',
-  'secure_cdn_subdomain',
-  'secure_distribution',
-  'shorten',
-  'sign_url',
-  'signature',
-  'ssl_detected',
-  'type',
-  'url_suffix',
-  'use_root_path',
-  'version'
+  "accessibility",
+  "api_secret",
+  "auth_token",
+  "cdn_subdomain",
+  "cloud_name",
+  "cname",
+  "format",
+  "placeholder",
+  "private_cdn",
+  "resource_type",
+  "secure",
+  "secure_cdn_subdomain",
+  "secure_distribution",
+  "shorten",
+  "sign_url",
+  "signature",
+  "ssl_detected",
+  "type",
+  "url_suffix",
+  "use_root_path",
+  "version",
 ];
-
-
 
 /**
  * Assign key, value to target, when value is not null.<br>
@@ -51,9 +49,9 @@ export const URL_KEYS = [
  * @param {object} sources one or more objects to get values from
  * @returns {object} the target after the assignment
  */
-function assignNotNull(target:{}, ...sources:object[]) {
-  sources.forEach(source => {
-    Object.keys(source).forEach(key => {
+function assignNotNull(target: {}, ...sources: object[]) {
+  sources.forEach((source) => {
+    Object.keys(source).forEach((key) => {
       // @ts-ignore
       if (source[key] != null) {
         // @ts-ignore
@@ -64,17 +62,12 @@ function assignNotNull(target:{}, ...sources:object[]) {
   return target;
 }
 
-
-
-
-
-
 /**
  * Return true if all items in list are strings
  * @function Util.allString
  * @param {Array} list - an array of items
  */
-const allStrings = function(list:[]) {
+const allStrings = function (list: []) {
   return list.length && list.every(isString);
 };
 
@@ -96,7 +89,7 @@ class Param {
    * @param {function} [process=Util.identity ] - Manipulate origValue when value is called
    * @ignore
    */
-  constructor(name:string, shortName:string, process = identity) {
+  constructor(name: string, shortName: string, process = identity) {
     /**
      * The name of the parameter in snake_case
      * @member {string} Param#name
@@ -134,10 +127,10 @@ class Param {
     var val, valid;
     val = this.value();
     valid = Array.isArray(val) || isObject(val) || isString(val) ? !isEmpty(val) : val != null;
-    if ((this.shortName != null) && valid) {
+    if (this.shortName != null && valid) {
       return `${this.shortName}_${val}`;
     } else {
-      return '';
+      return "";
     }
   }
 
@@ -150,11 +143,11 @@ class Param {
   }
 
   static norm_color(value: string) {
-    return value != null ? value.replace(/^#/, 'rgb:') : void 0;
+    return value != null ? value.replace(/^#/, "rgb:") : void 0;
   }
 
   static build_array(arg: any) {
-    if(arg == null) {
+    if (arg == null) {
       return [];
     } else if (Array.isArray(arg)) {
       return arg;
@@ -175,16 +168,16 @@ class Param {
    { codec: 'h264', profile: 'basic', level: '3.1' }
    * @ignore
    */
-  static process_video_params(param:any) {
+  static process_video_params(param: any) {
     var video;
     switch (param.constructor) {
       case Object:
         video = "";
-        if ('codec' in param) {
+        if ("codec" in param) {
           video = param.codec;
-          if ('profile' in param) {
+          if ("profile" in param) {
             video += ":" + param.profile;
-            if ('level' in param) {
+            if ("level" in param) {
               video += ":" + param.level;
             }
           }
@@ -211,7 +204,7 @@ class ArrayParam extends Param {
    * @extends Param
    * @ignore
    */
-  constructor(name:string, shortName:string, sep: string = '.', process: (x: any) => any = undefined) {
+  constructor(name: string, shortName: string, sep: string = ".", process: (x: any) => any = undefined) {
     super(name, shortName, process);
     this.sep = sep;
   }
@@ -220,28 +213,30 @@ class ArrayParam extends Param {
     if (this.shortName != null) {
       let arrayValue = this.value();
       if (isEmpty(arrayValue)) {
-        return '';
+        return "";
       } else if (isString(arrayValue)) {
         return `${this.shortName}_${arrayValue}`;
       } else {
-        let flat = arrayValue.map((t: { serialize: () => any; })=>isFunction(t.serialize) ? t.serialize() : t).join(this.sep);
+        let flat = arrayValue
+          .map((t: { serialize: () => any }) => (isFunction(t.serialize) ? t.serialize() : t))
+          .join(this.sep);
         return `${this.shortName}_${flat}`;
       }
     } else {
-      return '';
+      return "";
     }
   }
 
   value() {
     if (Array.isArray(this.origValue)) {
-      return this.origValue.map(v=>this.process(v));
+      return this.origValue.map((v) => this.process(v));
     } else {
       return this.process(this.origValue);
     }
   }
 
   set(origValue: any) {
-    if ((origValue == null) || Array.isArray(origValue)) {
+    if (origValue == null || Array.isArray(origValue)) {
       return super.set(origValue);
     } else {
       return super.set([origValue]);
@@ -261,7 +256,7 @@ class TransformationParam extends Param {
    * @extends Param
    * @ignore
    */
-  constructor(name:string, shortName = "t", sep = '.', process:(x: any) => any = undefined) {
+  constructor(name: string, shortName = "t", sep = ".", process: (x: any) => any = undefined) {
     super(name, shortName, process);
     this.sep = sep;
   }
@@ -271,7 +266,7 @@ class TransformationParam extends Param {
    * @returns {*} Returns either the transformation as a string, or an array of string representations.
    */
   serialize() {
-    let result = '';
+    let result = "";
     const val = this.value();
 
     if (isEmpty(val)) {
@@ -280,24 +275,27 @@ class TransformationParam extends Param {
 
     // val is an array of strings so join them
     if (allStrings(val)) {
-      const joined = val.join(this.sep);  // creates t1.t2.t3 in case multiple named transformations were configured
+      const joined = val.join(this.sep); // creates t1.t2.t3 in case multiple named transformations were configured
       if (!isEmpty(joined)) {
         // in case options.transformation was not set with an empty string (val != ['']);
         result = `${this.shortName}_${joined}`;
       }
-    } else { // Convert val to an array of strings
-      result = val.map((t: { serialize: () => any; }) => {
-        if (isString(t) && !isEmpty(t)) {
-          return `${this.shortName}_${t}`;
-        }
-        if (isFunction(t.serialize)) {
-          return t.serialize();
-        }
-        if (isObject(t) && !isEmpty(t)) {
-          return new Transformation(t).serialize();
-        }
-        return undefined;
-      }).filter((t: any)=>t);
+    } else {
+      // Convert val to an array of strings
+      result = val
+        .map((t: { serialize: () => any }) => {
+          if (isString(t) && !isEmpty(t)) {
+            return `${this.shortName}_${t}`;
+          }
+          if (isFunction(t.serialize)) {
+            return t.serialize();
+          }
+          if (isObject(t) && !isEmpty(t)) {
+            return new Transformation(t).serialize();
+          }
+          return undefined;
+        })
+        .filter((t: any) => t);
     }
     return result;
   }
@@ -316,7 +314,6 @@ const number_pattern = "([0-9]*)\\.([0-9]+)|([0-9]+)";
 const offset_any_pattern = "(" + number_pattern + ")([%pP])?";
 
 class RangeParam extends Param {
-
   /**
    * A parameter that represents a range
    * @param {string} name - The name of the parameter in snake_case
@@ -327,14 +324,13 @@ class RangeParam extends Param {
    * @extends Param
    * @ignore
    */
-  constructor(name:string, shortName:string, process = RangeParam.norm_range_value) {
+  constructor(name: string, shortName: string, process = RangeParam.norm_range_value) {
     super(name, shortName, process);
   }
   static norm_range_value(value: string) {
-
-    let offset = String(value).match(new RegExp('^' + offset_any_pattern + '$'));
+    let offset = String(value).match(new RegExp("^" + offset_any_pattern + "$"));
     if (offset) {
-      let modifier = offset[5] != null ? 'p' : '';
+      let modifier = offset[5] != null ? "p" : "";
       value = (offset[1] || offset[4]) + modifier;
     }
     return value;
@@ -349,7 +345,6 @@ class RawParam extends Param {
   serialize() {
     return this.value();
   }
-
 }
 
 class LayerParam extends Param {
@@ -358,7 +353,7 @@ class LayerParam extends Param {
   // @private
   value() {
     if (this.origValue == null) {
-      return '';
+      return "";
     }
     let result;
     if (this.origValue instanceof Layer) {
@@ -366,13 +361,15 @@ class LayerParam extends Param {
     } else if (isObject(this.origValue)) {
       let layerOptions = withCamelCaseKeys(this.origValue);
       // @ts-ignore
-      if (layerOptions.resourceType === "text" || (layerOptions.text != null)) {
+      if (layerOptions.resourceType === "text" || layerOptions.text != null) {
         result = new TextLayer(layerOptions);
-      } else { // @ts-ignore
+      } else {
+        // @ts-ignore
         if (layerOptions.resourceType === "subtitles") {
           result = new SubtitlesLayer(layerOptions);
-        } else { // @ts-ignore
-          if (layerOptions.resourceType === "fetch" || (layerOptions.url != null)) {
+        } else {
+          // @ts-ignore
+          if (layerOptions.resourceType === "fetch" || layerOptions.url != null) {
             result = new FetchLayer(layerOptions);
           } else {
             result = new Layer(layerOptions);
@@ -386,16 +383,15 @@ class LayerParam extends Param {
         result = this.origValue;
       }
     } else {
-      result = '';
+      result = "";
     }
     return result.toString();
   }
 
-  static textStyle(layer: { key?: any; }) {
-    return (new TextLayer(layer)).textStyleIdentifier();
+  static textStyle(layer: { key?: any }) {
+    return new TextLayer(layer).textStyleIdentifier();
   }
 }
-
 
 /**
  * TransformationBase
@@ -412,12 +408,26 @@ class TransformationBase {
   protected param?: (value?: any, name?: any, abbr?: any, defaultValue?: any, process?: any) => this;
   protected rawParam?: (value?: any, name?: any, abbr?: any, defaultValue?: any, process?: any) => TransformationBase;
   protected rangeParam?: (value?: any, name?: any, abbr?: any, defaultValue?: any, process?: any) => TransformationBase;
-  protected arrayParam: (value?: any, name?: any, abbr?: any, sep?: string, defaultValue?: any, process?: any) => TransformationBase;
-  protected transformationParam: (value?: any, name?: any, abbr?: any, sep?: string, defaultValue?: any, process?: any) => TransformationBase;
+  protected arrayParam: (
+    value?: any,
+    name?: any,
+    abbr?: any,
+    sep?: string,
+    defaultValue?: any,
+    process?: any
+  ) => TransformationBase;
+  protected transformationParam: (
+    value?: any,
+    name?: any,
+    abbr?: any,
+    sep?: string,
+    defaultValue?: any,
+    process?: any
+  ) => TransformationBase;
   protected layerParam: (value?: any, name?: any, abbr?: any) => TransformationBase;
   protected getValue: (name: any) => any;
   protected get: (name: any) => any;
-  private remove: (name: any) => (any | null);
+  private remove: (name: any) => any | null;
   private keys: () => any[];
   private toPlainObject: () => {} | { transformation: any };
   private resetTransformations: () => TransformationBase;
@@ -428,11 +438,11 @@ class TransformationBase {
    * Members of this class are documented as belonging to the {@link Transformation} class for convenience.
    * @class TransformationBase
    */
-  constructor(options:any) {
+  constructor(options: any) {
     /** @private */
     /** @private */
-    let parent:any;
-    let trans: {name?:Param|RawParam|RangeParam};
+    let parent: any;
+    let trans: { name?: Param | RawParam | RangeParam };
     parent = void 0;
     trans = {};
     /**
@@ -440,16 +450,16 @@ class TransformationBase {
      * @function Transformation#toOptions
      * @return {Object} Returns a plain object representing this transformation
      */
-    this.toOptions = (withChain:any) => {
+    this.toOptions = (withChain: any) => {
       let opt = {};
-      if(withChain == null) {
+      if (withChain == null) {
         withChain = true;
       }
       // @ts-ignore
-      Object.keys(trans).forEach(key => opt[key] = trans[key].origValue);
+      Object.keys(trans).forEach((key) => (opt[key] = trans[key].origValue));
       assignNotNull(opt, this.otherOptions);
       if (withChain && !isEmpty(this.chained)) {
-        let list = this.chained.map((tr: { toOptions: () => any; }) => tr.toOptions());
+        let list = this.chained.map((tr: { toOptions: () => any }) => tr.toOptions());
         list.push(opt);
         opt = {};
         assignNotNull(opt, this.otherOptions);
@@ -479,7 +489,7 @@ class TransformationBase {
      * @protected
      * @return {Object} Returns the parent of this object if there is any
      */
-    this.getParent =  () => {
+    this.getParent = () => {
       return parent;
     };
 
@@ -590,7 +600,7 @@ class TransformationBase {
      */
     this.keys = function () {
       var key;
-      return ((function () {
+      return (function () {
         var results;
         results = [];
         for (key in trans) {
@@ -599,7 +609,7 @@ class TransformationBase {
           }
         }
         return results;
-      })()).sort();
+      })().sort();
     };
     /**
      * Returns a plain object representation of the transformation. Values are processed.
@@ -619,10 +629,10 @@ class TransformationBase {
         }
       }
       if (!isEmpty(this.chained)) {
-        list = this.chained.map((tr: { toPlainObject: () => any; }) => tr.toPlainObject());
+        list = this.chained.map((tr: { toPlainObject: () => any }) => tr.toPlainObject());
         list.push(hash);
         hash = {
-          transformation: list
+          transformation: list,
         };
       }
       return hash;
@@ -667,7 +677,7 @@ class TransformationBase {
     } else {
       if (isString(options) || Array.isArray(options)) {
         options = {
-          transformation: options
+          transformation: options,
         };
       }
       options = cloneDeep(options);
@@ -682,10 +692,10 @@ class TransformationBase {
       for (let key in options) {
         // @ts-ignore
         let opt = options[key];
-        if(opt != null) {
+        if (opt != null) {
           if (key.match(VAR_NAME_RE)) {
-            if (key !== '$attr') {
-              this.set('variable', key, opt);
+            if (key !== "$attr") {
+              this.set("variable", key, opt);
             }
           } else {
             this.set(key, opt);
@@ -696,11 +706,9 @@ class TransformationBase {
     return this;
   }
 
-  fromTransformation(other:any) {
+  fromTransformation(other: any) {
     if (other instanceof TransformationBase) {
-      other.keys().forEach(key =>
-        this.set(key, other.get(key).origValue)
-      );
+      other.keys().forEach((key) => this.set(key, other.get(key).origValue));
     }
     return this;
   }
@@ -712,7 +720,7 @@ class TransformationBase {
    * @param {*} values - the value of the parameter
    * @returns {Transformation} Returns this instance for chaining
    */
-  set(key:string, ...values: string[]) {
+  set(key: string, ...values: string[]) {
     let camelKey;
     camelKey = camelCase(key);
     if (contains(methods, camelKey)) {
@@ -734,9 +742,24 @@ class TransformationBase {
    * @return {string} Returns the transformation as a string
    */
   serialize() {
-    var ifParam, j, len, paramList, ref, ref1, ref2, ref3, ref4, resultArray, t, transformationList,
-      transformationString, transformations, value, variables, vars;
-    resultArray = this.chained.map((tr: { serialize?: () => any; }) => tr.serialize());
+    var ifParam,
+      j,
+      len,
+      paramList,
+      ref,
+      ref1,
+      ref2,
+      ref3,
+      ref4,
+      resultArray,
+      t,
+      transformationList,
+      transformationString,
+      transformations,
+      value,
+      variables,
+      vars;
+    resultArray = this.chained.map((tr: { serialize?: () => any }) => tr.serialize());
     paramList = this.keys();
     transformations = (ref = this.get("transformation")) != null ? ref.serialize() : void 0;
     ifParam = (ref1 = this.get("if")) != null ? ref1.serialize() : void 0;
@@ -764,7 +787,7 @@ class TransformationBase {
       results = [];
       for (k = 0, len1 = transformationList.length; k < len1; k++) {
         value = transformationList[k];
-        if (Array.isArray(value) && !isEmpty(value) || !Array.isArray(value) && value) {
+        if ((Array.isArray(value) && !isEmpty(value)) || (!Array.isArray(value) && value)) {
           results.push(value);
         }
       }
@@ -776,11 +799,11 @@ class TransformationBase {
     } else if (!isEmpty(ifParam)) {
       transformationList.unshift(ifParam);
     }
-    transformationString = (transformationList).filter(x => !!x).join(param_separator);
+    transformationString = transformationList.filter((x) => !!x).join(param_separator);
     if (!isEmpty(transformationString)) {
       resultArray.push(transformationString);
     }
-    return (resultArray).filter((x: any) => !!x).join(trans_separator);
+    return resultArray.filter((x: any) => !!x).join(trans_separator);
   }
 
   /**
@@ -799,10 +822,10 @@ class TransformationBase {
    * @return PlainObject
    */
   toHtmlAttributes() {
-    let attrName, height, options:any, ref2, ref3, value, width;
+    let attrName, height, options: any, ref2, ref3, value, width;
     options = {};
     let snakeCaseKey;
-    Object.keys(this.otherOptions).forEach(key=>{
+    Object.keys(this.otherOptions).forEach((key) => {
       value = this.otherOptions[key];
       snakeCaseKey = snakeCase(key);
       if (!contains(PARAM_NAMES, snakeCaseKey) && !contains(URL_KEYS, snakeCaseKey)) {
@@ -811,7 +834,7 @@ class TransformationBase {
       }
     });
     // convert all "html_key" to "key" with the same value
-    this.keys().forEach(key => {
+    this.keys().forEach((key) => {
       if (/^html_/.test(key)) {
         options[camelCase(key.slice(5))] = this.getValue(key);
       }
@@ -849,9 +872,9 @@ class TransformationBase {
    * tag.transformation().crop("fit").width(300).toHtml()
    * // <img src="c_fit,w_300">
    */
-  toHtml():any {
+  toHtml(): any {
     var ref;
-    return (ref = this.getParent()) != null ? typeof ref.toHtml === "function" ? ref.toHtml() : void 0 : void 0;
+    return (ref = this.getParent()) != null ? (typeof ref.toHtml === "function" ? ref.toHtml() : void 0) : void 0;
   }
 
   toString() {
@@ -865,10 +888,9 @@ class TransformationBase {
 
 const VAR_NAME_RE = /^\$[a-zA-Z0-9]+$/;
 
-const trans_separator = '/';
+const trans_separator = "/";
 
-const param_separator = ',';
-
+const param_separator = ",";
 
 function lastArgCallback(args: string | IArguments | any[]) {
   var callback;
@@ -895,10 +917,10 @@ function processVar(varArray: string | any[]) {
 }
 
 // @ts-ignore
-function processCustomFunction({function_type, source}) {
-  if (function_type === 'remote') {
+function processCustomFunction({ function_type, source }) {
+  if (function_type === "remote") {
     return [function_type, btoa(source)].join(":");
-  } else if (function_type === 'wasm') {
+  } else if (function_type === "wasm") {
     return [function_type, source].join(":");
   }
 }
@@ -947,7 +969,7 @@ class Transformation extends TransformationBase {
    * @return {Transformation}
    * @example cl = cloudinary.Transformation.new( {angle: 20, crop: "scale", width: "auto"})
    */
-  static new(options?: { serialize?: () => any; }) {
+  static new(options?: { serialize?: () => any }) {
     return new Transformation(options);
   }
 
@@ -985,12 +1007,16 @@ class Transformation extends TransformationBase {
   }
 
   border(value: string | number) {
-    return this.param(value, "border", "bo",  (border:any) => {
+    return this.param(value, "border", "bo", (border: any) => {
       if (isObject(border)) {
-        border = Object.assign({}, {
-          color: "black",
-          width: 2
-        }, border);
+        border = Object.assign(
+          {},
+          {
+            color: "black",
+            width: 2,
+          },
+          border
+        );
         return `${border.width}px_solid_${Param.norm_color(border.color)}`;
       } else {
         return border;
@@ -1020,7 +1046,7 @@ class Transformation extends TransformationBase {
   }
 
   customPreFunction(value: any) {
-    if (this.get('custom_function')) {
+    if (this.get("custom_function")) {
       return;
     }
     return this.rawParam(value, "custom_function", "", () => {
@@ -1049,7 +1075,7 @@ class Transformation extends TransformationBase {
     return this;
   }
 
-   dpr(value: string | number) {
+  dpr(value: string | number) {
     return this.param(value, "dpr", "dpr", (dpr: string) => {
       dpr = dpr.toString();
       if (dpr != null ? dpr.match(/^\d+$/) : void 0) {
@@ -1066,11 +1092,11 @@ class Transformation extends TransformationBase {
   }
 
   else() {
-    return this.if('else');
+    return this.if("else");
   }
 
   endIf() {
-    return this.if('end');
+    return this.if("end");
   }
 
   endOffset(value: string | number) {
@@ -1103,7 +1129,7 @@ class Transformation extends TransformationBase {
     return this;
   }
 
-  fps(value: string | Array<string|number>) {
+  fps(value: string | Array<string | number>) {
     return this.param(value, "fps", "fps", (fps: any[]) => {
       if (isString(fps)) {
         return fps;
@@ -1115,7 +1141,7 @@ class Transformation extends TransformationBase {
     });
   }
 
-  height(value:string | number) {
+  height(value: string | number) {
     return this.param(value, "height", "h", () => {
       if (this.getValue("crop") || this.getValue("overlay") || this.getValue("underlay")) {
         return Expression.normalize(value);
@@ -1125,12 +1151,12 @@ class Transformation extends TransformationBase {
     });
   }
 
-  htmlHeight(value:string) {
+  htmlHeight(value: string) {
     this.param(value, "html_height");
     return this;
   }
 
-  htmlWidth(value:string) {
+  htmlWidth(value: string) {
     this.param(value, "html_width");
     return this;
   }
@@ -1161,25 +1187,29 @@ class Transformation extends TransformationBase {
       case "":
         return Condition.new().setParent(this);
       default:
-        return this.param(value, "if", "if",  (value:any) => {
+        return this.param(value, "if", "if", (value: any) => {
           return Condition.new(value).toString();
         });
     }
   }
 
-  keyframeInterval(value:number) {
+  keyframeInterval(value: number) {
     this.param(value, "keyframe_interval", "ki");
     return this;
   }
 
-  ocr(value:any) {
+  ocr(value: any) {
     this.param(value, "ocr", "ocr");
     return this;
   }
 
-  offset(value:any) {
+  offset(value: any) {
     var end_o, start_o;
-    [start_o, end_o] = (isFunction(value != null ? value.split : void 0)) ? value.split('..') : Array.isArray(value) ? value : [null, null];
+    [start_o, end_o] = isFunction(value != null ? value.split : void 0)
+      ? value.split("..")
+      : Array.isArray(value)
+      ? value
+      : [null, null];
     if (start_o != null) {
       this.startOffset(start_o);
     }
@@ -1231,7 +1261,7 @@ class Transformation extends TransformationBase {
   size(value: string) {
     let height, width;
     if (isFunction(value != null ? value.split : void 0)) {
-      [width, height] = value.split('x');
+      [width, height] = value.split("x");
       this.width(width);
       return this.height(height);
     }
@@ -1246,17 +1276,17 @@ class Transformation extends TransformationBase {
     return this.param(value, "source_transformation");
   }
 
-  startOffset(value:string | number) {
+  startOffset(value: string | number) {
     this.rangeParam(value, "start_offset", "so");
     return this;
   }
 
-  streamingProfile(value:string) {
+  streamingProfile(value: string) {
     this.param(value, "streaming_profile", "sp");
     return this;
   }
 
-  transformation(value:any) {
+  transformation(value: any) {
     this.transformationParam(value, "transformation", "t");
     return this;
   }
@@ -1276,18 +1306,18 @@ class Transformation extends TransformationBase {
     return this;
   }
 
-  videoCodec(value:string | number | Object) {
-     this.param(value, "video_codec", "vc", Param.process_video_params);
-     return this;
+  videoCodec(value: string | number | Object) {
+    this.param(value, "video_codec", "vc", Param.process_video_params);
+    return this;
   }
 
-  videoSampling(value:string | number) {
+  videoSampling(value: string | number) {
     this.param(value, "video_sampling", "vs");
     return this;
   }
 
-  width(value:string | number) {
-   this.param(value, "width", "w", () => {
+  width(value: string | number) {
+    this.param(value, "width", "w", () => {
       if (this.getValue("crop") || this.getValue("overlay") || this.getValue("underlay")) {
         return Expression.normalize(value);
       } else {
@@ -1297,21 +1327,20 @@ class Transformation extends TransformationBase {
     return this;
   }
 
-  x(value:number) {
+  x(value: number) {
     this.param(value, "x", "x", Expression.normalize);
     return this;
   }
 
-  y(value:number) {
+  y(value: number) {
     this.param(value, "y", "y", Expression.normalize);
     return this;
   }
 
-  zoom(value:number | string) {
+  zoom(value: number | string) {
     this.param(value, "zoom", "z", Expression.normalize);
     return this;
   }
-
 }
 
 /**
@@ -1376,7 +1405,7 @@ const methods = [
   "width",
   "x",
   "y",
-  "zoom"
+  "zoom",
 ];
 
 /**

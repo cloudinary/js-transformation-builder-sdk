@@ -1,4 +1,4 @@
-interface IErrorObject{
+interface IErrorObject {
   error: Error;
 }
 
@@ -8,7 +8,7 @@ interface IErrorObject{
  */
 function isErrorObject(obj: unknown): obj is IErrorObject {
   const errorObj = obj as IErrorObject;
-  return ('error' in errorObj) && !!errorObj.error;
+  return "error" in errorObj && !!errorObj.error;
 }
 
-export {IErrorObject, isErrorObject};
+export { IErrorObject, isErrorObject };

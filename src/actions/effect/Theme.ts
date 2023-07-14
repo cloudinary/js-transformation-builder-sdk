@@ -1,7 +1,7 @@
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
-import {Action} from "../../internal/Action.js";
-import {SystemColors} from "../../qualifiers/color.js";
+import { Qualifier } from "../../internal/qualifier/Qualifier.js";
+import { QualifierValue } from "../../internal/qualifier/QualifierValue.js";
+import { Action } from "../../internal/Action.js";
+import { SystemColors } from "../../qualifiers/color.js";
 
 /**
  * @description Changes the main background color to the one specified, as if a 'theme change' was applied (e.g. dark mode vs light mode).
@@ -12,9 +12,9 @@ import {SystemColors} from "../../qualifiers/color.js";
 class ThemeEffect extends Action {
   private color: SystemColors;
   private _photosensitivity: number;
-  private effectName = 'theme';
+  private effectName = "theme";
 
-  constructor(color:SystemColors) {
+  constructor(color: SystemColors) {
     super();
     this.color = color;
   }
@@ -31,17 +31,14 @@ class ThemeEffect extends Action {
     return this;
   }
 
-
   protected prepareQualifiers(): void {
-    const sensitivity = this._photosensitivity ? `:photosensitivity_${this._photosensitivity}` : '';
+    const sensitivity = this._photosensitivity ? `:photosensitivity_${this._photosensitivity}` : "";
     // Replace # in hex colors (#fff -> fff)
-    const val = `${this.effectName}:color_${this.color.replace('#', '')}${sensitivity}`;
+    const val = `${this.effectName}:color_${this.color.replace("#", "")}${sensitivity}`;
 
-    this.addQualifier(new Qualifier('e', new QualifierValue(val)));
+    this.addQualifier(new Qualifier("e", new QualifierValue(val)));
     return;
   }
 }
 
-
-
-export {ThemeEffect};
+export { ThemeEffect };

@@ -1,21 +1,21 @@
-import {IActionModel} from "./IActionModel.js";
+import { IActionModel } from "./IActionModel.js";
 
-export interface IVolumeByDecibelsModel{
-  mode: 'decibels'
+export interface IVolumeByDecibelsModel {
+  mode: "decibels";
   value: number;
 }
 
-export interface IVolumeByPercentModel{
-  mode: 'percent'
+export interface IVolumeByPercentModel {
+  mode: "percent";
   value: number;
 }
 
-export interface IVolumeMuteModel{
-  mode: 'mute'
+export interface IVolumeMuteModel {
+  mode: "mute";
 }
 
 export type IVolumeValueModel = IVolumeByDecibelsModel | IVolumeByPercentModel | IVolumeMuteModel;
 
-export interface IVolumeActionModel extends IActionModel{
-  volumeValue: IVolumeValueModel
+export interface IVolumeActionModel extends IActionModel {
+  volumeValue: IVolumeValueModel;
 }

@@ -1,12 +1,12 @@
-import {BaseSource} from "../BaseSource.js";
-import {SystemColors} from "../../color.js";
-import {TextStyle} from "../../textStyle.js";
-import {serializeCloudinaryCharacters} from "../../../internal/utils/serializeCloudinaryCharacters.js";
-import {Action} from "../../../internal/Action.js";
-import {Qualifier} from "../../../internal/qualifier/Qualifier.js";
-import {prepareColor} from "../../../internal/utils/prepareColor.js";
-import {IBaseTextSourceModel} from "../../../internal/models/ITextSourceModel.js";
-import {TextFitQualifier} from "../../textFit.js";
+import { BaseSource } from "../BaseSource.js";
+import { SystemColors } from "../../color.js";
+import { TextStyle } from "../../textStyle.js";
+import { serializeCloudinaryCharacters } from "../../../internal/utils/serializeCloudinaryCharacters.js";
+import { Action } from "../../../internal/Action.js";
+import { Qualifier } from "../../../internal/qualifier/Qualifier.js";
+import { prepareColor } from "../../../internal/utils/prepareColor.js";
+import { IBaseTextSourceModel } from "../../../internal/models/ITextSourceModel.js";
+import { TextFitQualifier } from "../../textFit.js";
 
 /**
  * @memberOf Qualifiers.Source
@@ -16,9 +16,9 @@ import {TextFitQualifier} from "../../textFit.js";
 class BaseTextSource extends BaseSource {
   private text: string;
   protected _textStyle: TextStyle | string;
-  protected _textColor: SystemColors
-  protected _backgroundColor: SystemColors
-  protected type = 'text';
+  protected _textColor: SystemColors;
+  protected _backgroundColor: SystemColors;
+  protected type = "text";
   protected _qualifierModel: Partial<IBaseTextSourceModel>;
   protected _textFit: TextFitQualifier;
 
@@ -27,32 +27,32 @@ class BaseTextSource extends BaseSource {
     this.text = text;
     this._textStyle = textStyle;
 
-    this._qualifierModel.sourceType = 'text';
+    this._qualifierModel.sourceType = "text";
     this._qualifierModel.text = text;
-    if (textStyle instanceof TextStyle){
+    if (textStyle instanceof TextStyle) {
       this._qualifierModel.textStyle = textStyle.toJson();
     }
   }
 
-  encodeText(text:string): string {
+  encodeText(text: string): string {
     return serializeCloudinaryCharacters(text);
   }
 
-  textColor(color:SystemColors): this {
+  textColor(color: SystemColors): this {
     this._textColor = color;
     this._qualifierModel.textColor = color;
 
     return this;
   }
 
-  backgroundColor(bgColor:SystemColors): this {
+  backgroundColor(bgColor: SystemColors): this {
     this._backgroundColor = bgColor;
     this._qualifierModel.backgroundColor = bgColor;
 
     return this;
   }
 
-  textFit(textFit:TextFitQualifier){
+  textFit(textFit: TextFitQualifier) {
     this._textFit = textFit;
     return this;
   }
@@ -63,23 +63,20 @@ class BaseTextSource extends BaseSource {
    * This method is used internally within {@link SDK.LayerAction|LayerAction}
    * @returns {string}
    */
-  getOpenSourceString(layerType: 'u' | 'l'): string {
-    const layerParam = [
-      this.type,
-      this._textStyle && this._textStyle.toString(),
-      this.encodeText(this.text)
-    ].filter((a) => a).join(':');
-
+  getOpenSourceString(layerType: "u" | "l"): string {
+    const layerParam = [this.type, this._textStyle && this._textStyle.toString(), this.encodeText(this.text)]
+      .filter((a) => a)
+      .join(":");
 
     const tmpAction = new Action();
 
     tmpAction.addQualifier(new Qualifier(layerType, layerParam));
-    this._textColor && tmpAction.addQualifier(new Qualifier('co', prepareColor(this._textColor)));
-    this._backgroundColor && tmpAction.addQualifier(new Qualifier('b', prepareColor(this._backgroundColor)));
+    this._textColor && tmpAction.addQualifier(new Qualifier("co", prepareColor(this._textColor)));
+    this._backgroundColor && tmpAction.addQualifier(new Qualifier("b", prepareColor(this._backgroundColor)));
     this._textFit && tmpAction.addQualifier(this._textFit);
 
     return tmpAction.toString();
   }
 }
 
-export {BaseTextSource};
+export { BaseTextSource };

@@ -1,33 +1,33 @@
 import CustomFunctionAction from "../actions/customFunction/CustomFunctionAction.js";
-import {LayerAction} from "../actions/layer/LayerAction.js";
-import {Action} from "../internal/Action.js";
+import { LayerAction } from "../actions/layer/LayerAction.js";
+import { Action } from "../internal/Action.js";
 import VariableAction from "../actions/variable/VariableAction.js";
-import {ConditionalAction} from "../actions/conditional.js";
-import {ResizeSimpleAction} from "../actions/resize/ResizeSimpleAction.js";
+import { ConditionalAction } from "../actions/conditional.js";
+import { ResizeSimpleAction } from "../actions/resize/ResizeSimpleAction.js";
 import RotateAction from "../actions/rotate/RotateAction.js";
-import {BackgroundColor} from "../actions/background/actions/BackgroundColor.js";
-import {NamedTransformationAction} from "../actions/namedTransformation/NamedTransformationAction.js";
-import {SmartObjectAction} from "../actions/psdTools/SmartObjectAction.js";
-import {ClipAction} from "../actions/psdTools/ClipAction.js";
-import {GetLayerAction} from "../actions/psdTools/GetLayerAction.js";
-import {IReshape} from "../actions/reshape.js";
-import {SystemColors} from "../qualifiers/color.js";
-import {prepareColor} from "../internal/utils/prepareColor.js";
-import {ExtractAction} from "../actions/extract.js";
-import {BorderAction} from "../actions/border.js";
-import {FlagQualifier} from "../qualifiers/flag/FlagQualifier.js";
-import {EffectActions} from "../actions/effect.js";
-import {videoEditType} from "../actions/videoEdit.js";
-import {RawAction} from "../internal/RawAction.js";
-import {IAdjustAction} from "../actions/adjust.js";
-import {IDeliveryAction} from "../actions/delivery.js";
-import {ITranscodeAction} from "../actions/transcode.js";
-import {AnimatedAction} from "../actions/animated.js";
+import { BackgroundColor } from "../actions/background/actions/BackgroundColor.js";
+import { NamedTransformationAction } from "../actions/namedTransformation/NamedTransformationAction.js";
+import { SmartObjectAction } from "../actions/psdTools/SmartObjectAction.js";
+import { ClipAction } from "../actions/psdTools/ClipAction.js";
+import { GetLayerAction } from "../actions/psdTools/GetLayerAction.js";
+import { IReshape } from "../actions/reshape.js";
+import { SystemColors } from "../qualifiers/color.js";
+import { prepareColor } from "../internal/utils/prepareColor.js";
+import { ExtractAction } from "../actions/extract.js";
+import { BorderAction } from "../actions/border.js";
+import { FlagQualifier } from "../qualifiers/flag/FlagQualifier.js";
+import { EffectActions } from "../actions/effect.js";
+import { videoEditType } from "../actions/videoEdit.js";
+import { RawAction } from "../internal/RawAction.js";
+import { IAdjustAction } from "../actions/adjust.js";
+import { IDeliveryAction } from "../actions/delivery.js";
+import { ITranscodeAction } from "../actions/transcode.js";
+import { AnimatedAction } from "../actions/animated.js";
 import RoundCornersAction from "../actions/roundCorners/RoundCornersAction.js";
-import {IActionModel} from "../internal/models/IActionModel.js";
-import {IErrorObject, isErrorObject} from "../internal/models/IErrorObject.js";
-import {ITransformationModel} from "../internal/models/ITransformationModel.js";
-import {DeliveryFormatAction} from "../actions/delivery/DeliveryFormatAction.js";
+import { IActionModel } from "../internal/models/IActionModel.js";
+import { IErrorObject, isErrorObject } from "../internal/models/IErrorObject.js";
+import { ITransformationModel } from "../internal/models/ITransformationModel.js";
+import { DeliveryFormatAction } from "../actions/delivery/DeliveryFormatAction.js";
 
 /**
  * @summary SDK
@@ -47,9 +47,9 @@ class Transformation {
    */
   addAction(action: Action | string): this {
     let actionToAdd: Action | RawAction;
-    if (typeof action === 'string') {
-      if (action.indexOf('/') >= 0) {
-        throw 'addAction cannot accept a string with a forward slash in it - /, use .addTransformation() instead';
+    if (typeof action === "string") {
+      if (action.indexOf("/") >= 0) {
+        throw "addAction cannot accept a string with a forward slash in it - /, use .addTransformation() instead";
       } else {
         actionToAdd = new RawAction(action);
       }
@@ -89,7 +89,7 @@ class Transformation {
         return action.toString();
       })
       .filter((a) => a)
-      .join('/');
+      .join("/");
   }
 
   /**
@@ -135,7 +135,7 @@ class Transformation {
    * @return {this}
    */
   quality(quality: string | number): this {
-    this.addAction(new DeliveryFormatAction('q', quality));
+    this.addAction(new DeliveryFormatAction("q", quality));
     return this;
   }
 
@@ -145,7 +145,7 @@ class Transformation {
    * @return {this}
    */
   format(format: string): this {
-    this.addAction(new DeliveryFormatAction('f', format));
+    this.addAction(new DeliveryFormatAction("f", format));
     return this;
   }
 
@@ -173,7 +173,7 @@ class Transformation {
    * @return {this}
    */
   underlay(underlayAction: LayerAction): this {
-    underlayAction.setLayerType('u');
+    underlayAction.setLayerType("u");
     return this.addAction(underlayAction);
   }
 
@@ -276,7 +276,7 @@ class Transformation {
     const action = new Action();
     let flagToAdd = flagQualifier;
 
-    if (typeof flagQualifier === 'string') {
+    if (typeof flagQualifier === "string") {
       flagToAdd = new FlagQualifier(flagQualifier);
     }
 
@@ -323,8 +323,8 @@ class Transformation {
       actions.push(json as IActionModel);
     }
 
-    return {actions};
+    return { actions };
   }
 }
 
-export {Transformation};
+export { Transformation };

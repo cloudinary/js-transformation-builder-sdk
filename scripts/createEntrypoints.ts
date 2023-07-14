@@ -10,11 +10,7 @@
  * (@base/actions/adjust points to @base/bundles/esm/actions/adjust)
  */
 
-const {
-  copyPackageJson,
-  createUMDBundleEntryPoint
-} = require('./lib/entryPointsLib');
-
+const { copyPackageJson, createUMDBundleEntryPoint } = require("./lib/entryPointsLib");
 
 // Allows import from '@base' (With types)
 copyPackageJson();

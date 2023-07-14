@@ -1,8 +1,8 @@
-import {BaseSource} from "../BaseSource.js";
-import {FormatQualifier} from "../../format/FormatQualifier.js";
-import {base64Encode} from "../../../internal/utils/base64Encode.js";
-import {ITransformationFromJson} from "../../../internal/models/IHasFromJson.js";
-import {IFetchSourceModel} from "../../../internal/models/IFetchSourceModel.js";
+import { BaseSource } from "../BaseSource.js";
+import { FormatQualifier } from "../../format/FormatQualifier.js";
+import { base64Encode } from "../../../internal/utils/base64Encode.js";
+import { ITransformationFromJson } from "../../../internal/models/IHasFromJson.js";
+import { IFetchSourceModel } from "../../../internal/models/IFetchSourceModel.js";
 
 /**
  * @memberOf Qualifiers.Source
@@ -14,7 +14,7 @@ import {IFetchSourceModel} from "../../../internal/models/IFetchSourceModel.js";
  *     This class is used as a Qualifier for the asset.overlay() and asset.underlay() methods.</br>
  *     You can find regular images and videos transformations below:
  *   </div>
-  *   <ul>
+ *   <ul>
  *     <li>{@link SDK.ImageTransformation| Image Transformations}</li>
  *     <li>{@link SDK.VideoTransformation| Video Transformations}</li>
  *   </ul>
@@ -29,8 +29,8 @@ class FetchSource extends BaseSource {
   constructor(remoteURL: string) {
     super();
     this._qualifierModel = {
-      sourceType: 'fetch',
-      url: remoteURL
+      sourceType: "fetch",
+      url: remoteURL,
     };
 
     this._remoteURL = remoteURL;
@@ -42,7 +42,7 @@ class FetchSource extends BaseSource {
    * This method is used internally within {@link SDK.LayerAction|LayerAction}
    * @returns {string}
    */
-  getOpenSourceString(layerType: 'l' | 'u'): string {
+  getOpenSourceString(layerType: "l" | "u"): string {
     if (this._format) {
       return `${layerType}_fetch:${base64Encode(this._remoteURL)}.${this._format.toString()}`;
     } else {
@@ -63,7 +63,7 @@ class FetchSource extends BaseSource {
   }
 
   static fromJson(qualifierModel: IFetchSourceModel, transformationFromJson: ITransformationFromJson): FetchSource {
-    const {url, transformation, format} = qualifierModel;
+    const { url, transformation, format } = qualifierModel;
 
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [qualifierModel])
     // This allows the inheriting classes to determine the class to be created
@@ -72,7 +72,7 @@ class FetchSource extends BaseSource {
       result.transformation(transformationFromJson(transformation));
     }
 
-    if (format){
+    if (format) {
       result.format(new FormatQualifier(format));
     }
 
@@ -80,4 +80,4 @@ class FetchSource extends BaseSource {
   }
 }
 
-export {FetchSource};
+export { FetchSource };

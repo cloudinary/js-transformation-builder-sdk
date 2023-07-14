@@ -1,12 +1,12 @@
-import {normal as normalFontWeight} from "./fontWeight.js";
-import {normal as normalFontStyle} from "./fontStyle.js";
-import {normal as normalTextDecoration} from "./textDecoration.js";
-import {serializeCloudinaryCharacters} from "../internal/utils/serializeCloudinaryCharacters.js";
-import {FontAntialiasType, FontWeightType, TextAlignmentType, TextDecorationType} from "../types/types.js";
-import {ITextStyleModel} from "../internal/models/ITextStyleModel.js";
-import {QualifierModel} from "../internal/models/QualifierModel.js";
-import {solid} from "./textStroke.js";
-import {isISolidStrokeModel} from "../internal/models/IStrokeModel.js";
+import { normal as normalFontWeight } from "./fontWeight.js";
+import { normal as normalFontStyle } from "./fontStyle.js";
+import { normal as normalTextDecoration } from "./textDecoration.js";
+import { serializeCloudinaryCharacters } from "../internal/utils/serializeCloudinaryCharacters.js";
+import { FontAntialiasType, FontWeightType, TextAlignmentType, TextDecorationType } from "../types/types.js";
+import { ITextStyleModel } from "../internal/models/ITextStyleModel.js";
+import { QualifierModel } from "../internal/models/QualifierModel.js";
+import { solid } from "./textStroke.js";
+import { isISolidStrokeModel } from "../internal/models/IStrokeModel.js";
 
 /**
  * @summary qualifier
@@ -40,7 +40,6 @@ class TextStyle extends QualifierModel {
     this._qualifierModel.lineSpacing = spacing;
     return this;
   }
-
 
   /**
    * @param spacing The spacing between the letters, in pixels.
@@ -89,7 +88,7 @@ class TextStyle extends QualifierModel {
    *
    * @param {string} fontStyle The font style.
    */
-  fontStyle(fontStyle: 'normal' | 'italic' | string): this {
+  fontStyle(fontStyle: "normal" | "italic" | string): this {
     this._qualifierModel.fontStyle = fontStyle;
     return this;
   }
@@ -111,7 +110,6 @@ class TextStyle extends QualifierModel {
     return this;
   }
 
-
   /**
    * @param {TextAlignmentType|string} textAlignment The text alignment
    */
@@ -125,10 +123,10 @@ class TextStyle extends QualifierModel {
    */
   stroke(textStroke?: string): this {
     if (textStroke) {
-      const strokeStyle = textStroke.split('_');
+      const strokeStyle = textStroke.split("_");
       this._qualifierModel.stroke = {
-        width: +(strokeStyle[1].replace('px', '')),
-        color: strokeStyle[strokeStyle.length - 1]
+        width: +strokeStyle[1].replace("px", ""),
+        color: strokeStyle[strokeStyle.length - 1],
       };
     } else {
       this._qualifierModel.stroke = true;
@@ -138,11 +136,11 @@ class TextStyle extends QualifierModel {
   }
 
   toString(): string {
-    const {stroke} = this._qualifierModel;
+    const { stroke } = this._qualifierModel;
 
-    let strokeStr = '';
+    let strokeStr = "";
     if (stroke) {
-      strokeStr = isISolidStrokeModel(stroke) ? `stroke_${solid(stroke.width, stroke.color)}` : 'stroke';
+      strokeStr = isISolidStrokeModel(stroke) ? `stroke_${solid(stroke.width, stroke.color)}` : "stroke";
     }
 
     return [
@@ -155,9 +153,11 @@ class TextStyle extends QualifierModel {
       this._qualifierModel.letterSpacing && `letter_spacing_${this._qualifierModel.letterSpacing}`,
       this._qualifierModel.lineSpacing && `line_spacing_${this._qualifierModel.lineSpacing}`,
       this._qualifierModel.fontAntialias && `antialias_${this._qualifierModel.fontAntialias}`,
-      this._qualifierModel.fontHinting && `hinting_${this._qualifierModel.fontHinting}`
-    ].filter((a) => a).join('_');
+      this._qualifierModel.fontHinting && `hinting_${this._qualifierModel.fontHinting}`,
+    ]
+      .filter((a) => a)
+      .join("_");
   }
 }
 
-export {TextStyle};
+export { TextStyle };

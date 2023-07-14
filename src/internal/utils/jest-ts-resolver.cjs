@@ -4,12 +4,12 @@
  */
 module.exports = (request, options) => {
   // Jest's default resolver
-  const {defaultResolver} = options;
+  const { defaultResolver } = options;
 
   try {
     return defaultResolver(request, options);
     // if default resolver fails we replace file extension from .js to .ts
   } catch (e) {
-    return defaultResolver(request.replace(/\.js$/, '.ts'), options);
+    return defaultResolver(request.replace(/\.js$/, ".ts"), options);
   }
 };

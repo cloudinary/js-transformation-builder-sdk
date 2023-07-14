@@ -4,8 +4,7 @@
  * @memberOf Qualifiers
  */
 
-import {FlagQualifier} from "./flag/FlagQualifier.js";
-
+import { FlagQualifier } from "./flag/FlagQualifier.js";
 
 /**
  * @summary qualifier
@@ -20,9 +19,8 @@ import {FlagQualifier} from "./flag/FlagQualifier.js";
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function animated(): FlagQualifier {
-  return new FlagQualifier('animated');
+  return new FlagQualifier("animated");
 }
-
 
 /**
  * @summary qualifier
@@ -35,9 +33,8 @@ function animated(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function animatedWebP(): FlagQualifier {
-  return new FlagQualifier('awebp');
+  return new FlagQualifier("awebp");
 }
-
 
 /**
  * @summary qualifier
@@ -47,9 +44,8 @@ function animatedWebP(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function anyFormat(): FlagQualifier {
-  return new FlagQualifier('any_format');
+  return new FlagQualifier("any_format");
 }
-
 
 /**
  * @summary qualifier
@@ -62,9 +58,8 @@ function anyFormat(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function animatedPng(): FlagQualifier {
-  return new FlagQualifier('apng');
+  return new FlagQualifier("apng");
 }
-
 
 /**
  * @summary qualifier
@@ -74,9 +69,8 @@ function animatedPng(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function clip(): FlagQualifier {
-  return new FlagQualifier('clip');
+  return new FlagQualifier("clip");
 }
-
 
 /**
  * @summary qualifier
@@ -87,9 +81,8 @@ function clip(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function clipEvenOdd(): FlagQualifier {
-  return new FlagQualifier('clip_evenodd');
+  return new FlagQualifier("clip_evenodd");
 }
-
 
 /**
  * @summary qualifier
@@ -99,9 +92,8 @@ function clipEvenOdd(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function forceStrip(): FlagQualifier {
-  return new FlagQualifier('force_strip');
+  return new FlagQualifier("force_strip");
 }
-
 
 /**
  * @summary qualifier
@@ -113,7 +105,6 @@ function custom(value: string): FlagQualifier {
   return new FlagQualifier(value);
 }
 
-
 /**
  * @summary qualifier
  * @memberOf Qualifiers.Flag
@@ -121,9 +112,8 @@ function custom(value: string): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function forceIcc(): FlagQualifier {
-  return new FlagQualifier('force_icc');
+  return new FlagQualifier("force_icc");
 }
-
 
 /**
  * @summary qualifier
@@ -133,9 +123,8 @@ function forceIcc(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function attachment(filename?: string): FlagQualifier {
-  return new FlagQualifier('attachment', filename);
+  return new FlagQualifier("attachment", filename);
 }
-
 
 /**
  * @summary qualifier
@@ -145,9 +134,8 @@ function attachment(filename?: string): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function getInfo(): FlagQualifier {
-  return new FlagQualifier('getinfo');
+  return new FlagQualifier("getinfo");
 }
-
 
 /**
  * @summary qualifier
@@ -157,9 +145,8 @@ function getInfo(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function hlsv3(): FlagQualifier {
-  return new FlagQualifier('hlsv3');
+  return new FlagQualifier("hlsv3");
 }
-
 
 /**
  * @summary qualifier
@@ -168,9 +155,8 @@ function hlsv3(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function immutableCache(): FlagQualifier {
-  return new FlagQualifier('immutable_cache');
+  return new FlagQualifier("immutable_cache");
 }
-
 
 /**
  * @summary qualifier
@@ -180,9 +166,8 @@ function immutableCache(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function ignoreInitialAspectRatio(): FlagQualifier {
-  return new FlagQualifier('ignore_aspect_ratio');
+  return new FlagQualifier("ignore_aspect_ratio");
 }
-
 
 /**
  * @summary qualifier
@@ -191,9 +176,8 @@ function ignoreInitialAspectRatio(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function keepAttribution(): FlagQualifier {
-  return new FlagQualifier('keep_attribution');
+  return new FlagQualifier("keep_attribution");
 }
-
 
 /**
  * @summary qualifier
@@ -203,9 +187,8 @@ function keepAttribution(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function keepDar(): FlagQualifier {
-  return new FlagQualifier('keep_dar');
+  return new FlagQualifier("keep_dar");
 }
-
 
 /**
  * @summary qualifier
@@ -214,9 +197,8 @@ function keepDar(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function keepIptc(): FlagQualifier {
-  return new FlagQualifier('keep_iptc');
+  return new FlagQualifier("keep_iptc");
 }
-
 
 /**
  * @summary qualifier
@@ -226,9 +208,8 @@ function keepIptc(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function layerApply(): FlagQualifier {
-  return new FlagQualifier('layer_apply');
+  return new FlagQualifier("layer_apply");
 }
-
 
 /**
  * @summary qualifier
@@ -241,9 +222,8 @@ function layerApply(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function lossy(): FlagQualifier {
-  return new FlagQualifier('lossy');
+  return new FlagQualifier("lossy");
 }
-
 
 /**
  * @summary qualifier
@@ -252,9 +232,8 @@ function lossy(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function mono(): FlagQualifier {
-  return new FlagQualifier('mono');
+  return new FlagQualifier("mono");
 }
-
 
 /**
  * @summary qualifier
@@ -265,9 +244,8 @@ function mono(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function noOverflow(): FlagQualifier {
-  return new FlagQualifier('no_overflow');
+  return new FlagQualifier("no_overflow");
 }
-
 
 /**
  * @summary qualifier
@@ -276,9 +254,8 @@ function noOverflow(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function noStream(): FlagQualifier {
-  return new FlagQualifier('no_stream');
+  return new FlagQualifier("no_stream");
 }
-
 
 /**
  * @summary qualifier
@@ -287,9 +264,8 @@ function noStream(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function png24(): FlagQualifier {
-  return new FlagQualifier('png24');
+  return new FlagQualifier("png24");
 }
-
 
 /**
  * @summary qualifier
@@ -298,9 +274,8 @@ function png24(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function png32(): FlagQualifier {
-  return new FlagQualifier('png32');
+  return new FlagQualifier("png32");
 }
-
 
 /**
  * @summary qualifier
@@ -309,9 +284,8 @@ function png32(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function png8(): FlagQualifier {
-  return new FlagQualifier('png8');
+  return new FlagQualifier("png8");
 }
-
 
 /**
  * @summary qualifier
@@ -321,9 +295,8 @@ function png8(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function preserveTransparency(): FlagQualifier {
-  return new FlagQualifier('preserve_transparency');
+  return new FlagQualifier("preserve_transparency");
 }
-
 
 /**
  * @summary qualifier
@@ -343,9 +316,8 @@ function preserveTransparency(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function progressive(mode?: FlagQualifier | string): FlagQualifier {
-  return new FlagQualifier('progressive', mode);
+  return new FlagQualifier("progressive", mode);
 }
-
 
 /**
  * @summary qualifier
@@ -354,9 +326,8 @@ function progressive(mode?: FlagQualifier | string): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function regionRelative(): FlagQualifier {
-  return new FlagQualifier('region_relative');
+  return new FlagQualifier("region_relative");
 }
-
 
 /**
  * @summary qualifier
@@ -367,9 +338,8 @@ function regionRelative(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function rasterize(): FlagQualifier {
-  return new FlagQualifier('rasterize');
+  return new FlagQualifier("rasterize");
 }
-
 
 /**
  * @summary qualifier
@@ -378,9 +348,8 @@ function rasterize(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function relative(): FlagQualifier {
-  return new FlagQualifier('relative');
+  return new FlagQualifier("relative");
 }
-
 
 /**
  * @summary qualifier
@@ -389,9 +358,8 @@ function relative(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function sanitize(): FlagQualifier {
-  return new FlagQualifier('sanitize');
+  return new FlagQualifier("sanitize");
 }
-
 
 /**
  * @summary qualifier
@@ -401,9 +369,8 @@ function sanitize(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function splice(): FlagQualifier {
-  return new FlagQualifier('splice');
+  return new FlagQualifier("splice");
 }
-
 
 /**
  * @summary qualifier
@@ -412,9 +379,8 @@ function splice(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function stripProfile(): FlagQualifier {
-  return new FlagQualifier('strip_profile');
+  return new FlagQualifier("strip_profile");
 }
-
 
 /**
  * @summary qualifier
@@ -434,9 +400,8 @@ function stripProfile(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function streamingAttachment(filename: string): FlagQualifier {
-  return new FlagQualifier('streaming_attachment', filename);
+  return new FlagQualifier("streaming_attachment", filename);
 }
-
 
 /**
  * @summary qualifier
@@ -445,9 +410,8 @@ function streamingAttachment(filename: string): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function tiff8Lzw(): FlagQualifier {
-  return new FlagQualifier('tiff8_lzw');
+  return new FlagQualifier("tiff8_lzw");
 }
-
 
 /**
  * @summary qualifier
@@ -458,9 +422,8 @@ function tiff8Lzw(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function tiled(): FlagQualifier {
-  return new FlagQualifier('tiled');
+  return new FlagQualifier("tiled");
 }
-
 
 /**
  * @summary qualifier
@@ -470,9 +433,8 @@ function tiled(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function truncateTS(): FlagQualifier {
-  return new FlagQualifier('truncate_ts');
+  return new FlagQualifier("truncate_ts");
 }
-
 
 /**
  * @summary qualifier
@@ -481,7 +443,7 @@ function truncateTS(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function waveform(): FlagQualifier {
-  return new FlagQualifier('waveform');
+  return new FlagQualifier("waveform");
 }
 
 /**
@@ -491,26 +453,90 @@ function waveform(): FlagQualifier {
  * @return {Qualifiers.Flag.FlagQualifier}
  */
 function ignoreMaskChannels(): FlagQualifier {
-  return new FlagQualifier('ignore_mask_channels');
+  return new FlagQualifier("ignore_mask_channels");
 }
 
-
 const Flag = {
-  animated, anyFormat, animatedPng, animatedWebP,
-  clipEvenOdd, lossy, preserveTransparency, png8, png24, png32, progressive, rasterize,
-  sanitize, stripProfile, tiff8Lzw, attachment, forceIcc, forceStrip, getInfo, immutableCache,
-  keepAttribution, keepIptc, custom, streamingAttachment, hlsv3, keepDar, noStream, mono,
-  layerApply, relative, regionRelative, splice, truncateTS, waveform, ignoreInitialAspectRatio, clip,
-  tiled, noOverflow, ignoreMaskChannels
+  animated,
+  anyFormat,
+  animatedPng,
+  animatedWebP,
+  clipEvenOdd,
+  lossy,
+  preserveTransparency,
+  png8,
+  png24,
+  png32,
+  progressive,
+  rasterize,
+  sanitize,
+  stripProfile,
+  tiff8Lzw,
+  attachment,
+  forceIcc,
+  forceStrip,
+  getInfo,
+  immutableCache,
+  keepAttribution,
+  keepIptc,
+  custom,
+  streamingAttachment,
+  hlsv3,
+  keepDar,
+  noStream,
+  mono,
+  layerApply,
+  relative,
+  regionRelative,
+  splice,
+  truncateTS,
+  waveform,
+  ignoreInitialAspectRatio,
+  clip,
+  tiled,
+  noOverflow,
+  ignoreMaskChannels,
 };
 
 export {
-  Flag, animated, anyFormat, animatedPng, animatedWebP,
-  clipEvenOdd, lossy, preserveTransparency, png8, png24, png32, progressive, rasterize,
-  sanitize, stripProfile, tiff8Lzw, attachment, forceIcc, forceStrip, getInfo, immutableCache,
-  keepAttribution, keepIptc, custom, streamingAttachment, hlsv3, keepDar, noStream, mono,
-  layerApply, relative, regionRelative, splice, truncateTS, waveform, ignoreInitialAspectRatio, clip,
-  tiled, noOverflow, ignoreMaskChannels
+  Flag,
+  animated,
+  anyFormat,
+  animatedPng,
+  animatedWebP,
+  clipEvenOdd,
+  lossy,
+  preserveTransparency,
+  png8,
+  png24,
+  png32,
+  progressive,
+  rasterize,
+  sanitize,
+  stripProfile,
+  tiff8Lzw,
+  attachment,
+  forceIcc,
+  forceStrip,
+  getInfo,
+  immutableCache,
+  keepAttribution,
+  keepIptc,
+  custom,
+  streamingAttachment,
+  hlsv3,
+  keepDar,
+  noStream,
+  mono,
+  layerApply,
+  relative,
+  regionRelative,
+  splice,
+  truncateTS,
+  waveform,
+  ignoreInitialAspectRatio,
+  clip,
+  tiled,
+  noOverflow,
+  ignoreMaskChannels,
 };
-
-

@@ -1,5 +1,5 @@
-import {IActionModel} from "./IActionModel.js";
-import {actionToJson} from "./actionToJson.js";
+import { IActionModel } from "./IActionModel.js";
+import { actionToJson } from "./actionToJson.js";
 
 export class ActionModel {
   protected _actionModel: IActionModel;

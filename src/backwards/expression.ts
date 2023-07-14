@@ -22,7 +22,7 @@ class Expression {
    * Convenience constructor method
    * @function Expression.new
    */
-  static new(expressionStr?:string) {
+  static new(expressionStr?: string) {
     return new this(expressionStr);
   }
 
@@ -32,7 +32,7 @@ class Expression {
    * @param {string} expression a expression, e.g. "w gt 100", "width_gt_100", "width > 100"
    * @return {string} the normalized form of the value expression, e.g. "w_gt_100"
    */
-  static normalize(expression:string | number) {
+  static normalize(expression: string | number) {
     var operators, operatorsPattern, operatorsReplaceRE, predefinedVarsPattern, predefinedVarsReplaceRE;
     if (expression == null) {
       return expression;
@@ -44,15 +44,17 @@ class Expression {
     operatorsPattern = "((" + operators + ")(?=[ _]))";
     operatorsReplaceRE = new RegExp(operatorsPattern, "g");
     // @ts-ignore
-    expression = expression.replace(operatorsReplaceRE, match => OPERATORS[match]);
+    expression = expression.replace(operatorsReplaceRE, (match) => OPERATORS[match]);
 
     // predefined variables
     predefinedVarsPattern = "(" + Object.keys(PREDEFINED_VARS).join("|") + ")";
     predefinedVarsReplaceRE = new RegExp(predefinedVarsPattern, "g");
     // @ts-ignore
-    expression = expression.replace(predefinedVarsReplaceRE, (match, p1, offset) => (expression[offset - 1] === '$' ? match : PREDEFINED_VARS[match]));
+    expression = expression.replace(predefinedVarsReplaceRE, (match, p1, offset) =>
+      expression[offset - 1] === "$" ? match : PREDEFINED_VARS[match]
+    );
 
-    return expression.replace(/[ _]+/g, '_');
+    return expression.replace(/[ _]+/g, "_");
   }
 
   /**
@@ -80,7 +82,7 @@ class Expression {
    * @param {Transformation} the parent transformation
    * @return {Expression} this expression
    */
-  setParent(parent:any) {
+  setParent(parent: any) {
     this.parent = parent;
     return this;
   }
@@ -131,7 +133,7 @@ class Expression {
    * @param {string|number} value the right hand side value
    * @return {Expression} this expression
    */
-  height(operator: string, value: string|number) {
+  height(operator: string, value: string | number) {
     return this.predicate("h", operator, value);
   }
 
@@ -141,7 +143,7 @@ class Expression {
    * @param {string|number} value the right hand side value
    * @return {Expression} this expression
    */
-  width(operator: string, value: string|number) {
+  width(operator: string, value: string | number) {
     return this.predicate("w", operator, value);
   }
 
@@ -151,7 +153,7 @@ class Expression {
    * @param {string|number} value the right hand side value
    * @return {Expression} this expression
    */
-  aspectRatio(operator: string, value: string|number) {
+  aspectRatio(operator: string, value: string | number) {
     return this.predicate("ar", operator, value);
   }
 
@@ -161,7 +163,7 @@ class Expression {
    * @param {string|number} value the right hand side value
    * @return {Expression} this expression
    */
-  pageCount(operator: string, value: string|number) {
+  pageCount(operator: string, value: string | number) {
     return this.predicate("pc", operator, value);
   }
 
@@ -171,18 +173,18 @@ class Expression {
    * @param {string|number} value the right hand side value
    * @return {Expression} this expression
    */
-  faceCount(operator: string, value: string|number) {
+  faceCount(operator: string, value: string | number) {
     return this.predicate("fc", operator, value);
   }
 
-  value(value:string|number) {
+  value(value: string | number) {
     this.expressions.push(value);
     return this;
   }
 
   /**
    */
-  static variable(name:string, value:string|number) {
+  static variable(name: string, value: string | number) {
     return new this(name).value(value);
   }
 
@@ -281,21 +283,20 @@ class Expression {
   static pageY() {
     return new this("pageY");
   }
-
 }
 
 /**
  * @internal
  */
 const OPERATORS = {
-  "=": 'eq',
-  "!=": 'ne',
-  "<": 'lt',
-  ">": 'gt',
-  "<=": 'lte',
-  ">=": 'gte',
-  "&&": 'and',
-  "||": 'or',
+  "=": "eq",
+  "!=": "ne",
+  "<": "lt",
+  ">": "gt",
+  "<=": "lte",
+  ">=": "gte",
+  "&&": "and",
+  "||": "or",
   "*": "mul",
   "/": "div",
   "+": "add",
@@ -307,31 +308,31 @@ const OPERATORS = {
  * @internal
  */
 const PREDEFINED_VARS = {
-  "aspect_ratio": "ar",
-  "aspectRatio": "ar",
-  "current_page": "cp",
-  "currentPage": "cp",
+  aspect_ratio: "ar",
+  aspectRatio: "ar",
+  current_page: "cp",
+  currentPage: "cp",
   "preview:duration": "preview:duration",
-  "duration": "du",
-  "face_count": "fc",
-  "faceCount": "fc",
-  "height": "h",
-  "initial_aspect_ratio": "iar",
-  "initial_duration": "idu",
-  "initial_height": "ih",
-  "initial_width": "iw",
-  "initialAspectRatio": "iar",
-  "initialDuration": "idu",
-  "initialHeight": "ih",
-  "initialWidth": "iw",
-  "page_count": "pc",
-  "page_x": "px",
-  "page_y": "py",
-  "pageCount": "pc",
-  "pageX": "px",
-  "pageY": "py",
-  "tags": "tags",
-  "width": "w"
+  duration: "du",
+  face_count: "fc",
+  faceCount: "fc",
+  height: "h",
+  initial_aspect_ratio: "iar",
+  initial_duration: "idu",
+  initial_height: "ih",
+  initial_width: "iw",
+  initialAspectRatio: "iar",
+  initialDuration: "idu",
+  initialHeight: "ih",
+  initialWidth: "iw",
+  page_count: "pc",
+  page_x: "px",
+  page_y: "py",
+  pageCount: "pc",
+  pageX: "px",
+  pageY: "py",
+  tags: "tags",
+  width: "w",
 };
 
 /**

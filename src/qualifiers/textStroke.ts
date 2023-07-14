@@ -1,5 +1,5 @@
-import {SystemColors} from "./color.js";
-import {ExpressionQualifier} from "./expression/ExpressionQualifier.js";
+import { SystemColors } from "./color.js";
+import { ExpressionQualifier } from "./expression/ExpressionQualifier.js";
 /**
  * @description Contains function to set the outline stroke.
  * <b>Learn more</b>: {@link https://cloudinary.com/documentation/layers#text_layer_options|Adding text overlays to images}
@@ -9,17 +9,16 @@ import {ExpressionQualifier} from "./expression/ExpressionQualifier.js";
  * @see To be used with {@link Qualifiers.TextStyle|Text Style}
  */
 
-
 /**
  * @summary qualifier Adding a Border-like qualifier to the same action.
  * @memberOf Qualifiers.Stroke
  * @param {number|string|ExpressionQualifier} width The width in pixels.
  * @param {number|string|SystemColors} color The color of the border.
  */
-function solid(width: number | string | ExpressionQualifier, color: number | string | SystemColors): string{
+function solid(width: number | string | ExpressionQualifier, color: number | string | SystemColors): string {
   return `bo_${width}px_solid_${color}`;
 }
 
-const Stroke = {solid};
+const Stroke = { solid };
 
-export {Stroke, solid};
+export { Stroke, solid };

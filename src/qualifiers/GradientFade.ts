@@ -11,7 +11,7 @@
  * @return {string}
  */
 function symmetric(): string {
-  return 'symmetric';
+  return "symmetric";
 }
 
 /**
@@ -21,17 +21,12 @@ function symmetric(): string {
  * @return {string}
  */
 function symmetricPad(): string {
-  return 'symmetric_pad';
+  return "symmetric_pad";
 }
-
 
 const GradientFade = {
   symmetric,
-  symmetricPad
+  symmetricPad,
 };
 
-export {
-  GradientFade,
-  symmetricPad,
-  symmetric
-};
+export { GradientFade, symmetricPad, symmetric };

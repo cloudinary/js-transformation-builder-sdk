@@ -1,10 +1,9 @@
-import {FocusOnValue} from "./focusOn.js";
-import {CompassGravity} from "./gravity/compassGravity/CompassGravity.js";
-import {FocusOnGravity} from "./gravity/focusOnGravity/FocusOnGravity.js";
-import {AutoGravity} from "./gravity/autoGravity/AutoGravity.js";
-import {CompassQualifier} from "./gravity/qualifiers/compass/CompassQualifier.js";
-import {XYCenterGravity} from "./gravity/xyCenterGravity/XYCenterGravity.js";
-
+import { FocusOnValue } from "./focusOn.js";
+import { CompassGravity } from "./gravity/compassGravity/CompassGravity.js";
+import { FocusOnGravity } from "./gravity/focusOnGravity/FocusOnGravity.js";
+import { AutoGravity } from "./gravity/autoGravity/AutoGravity.js";
+import { CompassQualifier } from "./gravity/qualifiers/compass/CompassQualifier.js";
+import { XYCenterGravity } from "./gravity/xyCenterGravity/XYCenterGravity.js";
 
 /**
  * @description Defines the gravity based on directional values from a compass.
@@ -44,7 +43,6 @@ function compass(direction: CompassQualifier | string): CompassGravity {
  * @return {FocusOnGravity}
  */
 function focusOn(...args: FocusOnValue[]): FocusOnGravity {
-
   const res = [...args];
   return new FocusOnGravity(res);
 }
@@ -77,7 +75,6 @@ function autoGravity(): AutoGravity {
   return new AutoGravity();
 }
 
-
 /**
  * @summary qualifier
  * @description Set the center of gravity to the given x & y coordinates.
@@ -87,7 +84,6 @@ function autoGravity(): AutoGravity {
 function xyCenter(): XYCenterGravity {
   return new XYCenterGravity();
 }
-
 
 /**
  * @description A qualifier that determines which part of an asset to focus on, and thus which part of the asset to keep, </br>
@@ -110,13 +106,7 @@ const Gravity = {
   compass: compass,
   autoGravity: autoGravity,
   focusOn: focusOn,
-  xyCenter
+  xyCenter,
 };
 
-export {
-  Gravity,
-  compass,
-  autoGravity,
-  focusOn,
-  xyCenter
-};
+export { Gravity, compass, autoGravity, focusOn, xyCenter };

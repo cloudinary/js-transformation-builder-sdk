@@ -1,5 +1,5 @@
-import {BaseSource} from "../qualifiers/source/BaseSource.js";
-import {LayerAction} from "./layer/LayerAction.js";
+import { BaseSource } from "../qualifiers/source/BaseSource.js";
+import { LayerAction } from "./layer/LayerAction.js";
 
 /**
  * @description Adds a video, text or an image layer as an overlay over the base layer. </br>
@@ -35,7 +35,6 @@ import {LayerAction} from "./layer/LayerAction.js";
  *     )
  */
 
-
 /**
  * @summary action
  * @memberOf Actions.Overlay
@@ -45,9 +44,8 @@ import {LayerAction} from "./layer/LayerAction.js";
  * @return {SDK.LayerAction}
  */
 function source(source: BaseSource): LayerAction {
-  return new LayerAction(source)
-    .setLayerType('l');
+  return new LayerAction(source).setLayerType("l");
 }
 
-const Overlay = {source};
-export {Overlay, source};
+const Overlay = { source };
+export { Overlay, source };

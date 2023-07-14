@@ -1,6 +1,6 @@
-import {isString} from "../../internal/utils/dataStructureUtils.js";
+import { isString } from "../../internal/utils/dataStructureUtils.js";
 import VariableAction from "./VariableAction.js";
-import {ExpressionQualifier} from "../../qualifiers/expression/ExpressionQualifier.js";
+import { ExpressionQualifier } from "../../qualifiers/expression/ExpressionQualifier.js";
 
 /**
  * @description Sets a user-defined variable.
@@ -9,10 +9,10 @@ import {ExpressionQualifier} from "../../qualifiers/expression/ExpressionQualifi
  * @see Visit {@link Actions.Variable|Variable} for an example
  */
 class SetAction extends VariableAction {
-  constructor(name: string, value: number | string | string[] | number[] | ExpressionQualifier, wrapper = '!') {
+  constructor(name: string, value: number | string | string[] | number[] | ExpressionQualifier, wrapper = "!") {
     let finalValue: string | number | ExpressionQualifier;
 
-    const parsedValue = Array.isArray(value) ? value.join(':') : value;
+    const parsedValue = Array.isArray(value) ? value.join(":") : value;
 
     if (isString(parsedValue)) {
       /*
@@ -21,14 +21,10 @@ class SetAction extends VariableAction {
        * The wrapper variable is needed because floats are passed as strings ('1.0') - in those case
        * we don't need to treat them as URL strings ($foo_!1.0!), but instead as foo_1.0
        */
-      finalValue = `${wrapper}${parsedValue
-        .replace(/,/g, '%2C')
-        .replace(/\//g, '%2F')
-        .replace(/!/g, '%21')}${wrapper}`;
+      finalValue = `${wrapper}${parsedValue.replace(/,/g, "%2C").replace(/\//g, "%2F").replace(/!/g, "%21")}${wrapper}`;
     } else {
       finalValue = parsedValue;
     }
-
 
     // Required due to https://github.com/microsoft/TypeScript/issues/13029
     /* istanbul ignore next */

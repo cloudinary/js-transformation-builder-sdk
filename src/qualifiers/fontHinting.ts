@@ -7,13 +7,12 @@
  * @see To be used with {@link Qualifiers.TextStyle|Text Style}
  */
 
-
 /**
  * @summary qualifier
  * @memberOf Qualifiers.FontHinting
  */
 function none(): string {
-  return '';
+  return "";
 }
 
 /**
@@ -21,7 +20,7 @@ function none(): string {
  * @memberOf Qualifiers.FontHinting
  */
 function slight(): string {
-  return 'slight';
+  return "slight";
 }
 
 /**
@@ -29,7 +28,7 @@ function slight(): string {
  * @memberOf Qualifiers.FontHinting
  */
 function medium(): string {
-  return 'medium';
+  return "medium";
 }
 
 /**
@@ -37,15 +36,9 @@ function medium(): string {
  * @memberOf Qualifiers.FontHinting
  */
 function full(): string {
-  return 'full';
+  return "full";
 }
 
-const FontHinting = {full, none, medium, slight};
+const FontHinting = { full, none, medium, slight };
 
-export {
-  FontHinting,
-  full,
-  none,
-  medium,
-  slight
-};
+export { FontHinting, full, none, medium, slight };
