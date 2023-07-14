@@ -6,6 +6,7 @@ import {BackgroundPredominantGradientQualifier} from "./background/shared/gradie
 import BlurredBackgroundAction from "./background/shared/BlurredBackgroundAction.js";
 import {BackgroundQualifier} from "./background/shared/base/BackgroundQualifier.js";
 import {SystemColors} from "./color.js";
+import {BackgroundGenerativeFillQualifier} from "./background/shared/BackgroundGenerativeFillQualifier.js";
 
 
 
@@ -92,14 +93,25 @@ function blurred(): BlurredBackgroundAction {
   return new BlurredBackgroundAction();
 }
 
+/**
+ * @summary qualifier
+ * @description A qualifier that automatically fills the padded area using generative AI to extend the image seamlessly.
+ * @memberOf Qualifiers.Background
+ * @return {BackgroundGenerativeFillQualifier}
+ */
+function generativeFill(): BackgroundGenerativeFillQualifier {
+  return new BackgroundGenerativeFillQualifier();
+}
+
 const Background = {
-  auto: auto,
-  border: border,
-  borderGradient: borderGradient,
-  predominantGradient: predominantGradient,
-  predominant: predominant,
-  color: color,
-  blurred: blurred
+  auto,
+  border,
+  borderGradient,
+  predominantGradient,
+  predominant,
+  color,
+  blurred,
+  generativeFill
 };
 
 export {
@@ -110,6 +122,7 @@ export {
   predominant,
   color,
   blurred,
+  generativeFill,
   Background
 };
 

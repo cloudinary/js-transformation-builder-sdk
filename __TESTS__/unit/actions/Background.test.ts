@@ -11,6 +11,7 @@ import {
 } from "../../../src/qualifiers/background";
 import {GradientDirection} from "../../../src/qualifiers/gradientDirection";
 import {Transformation} from "../../../src";
+import {Background} from "../../../src/qualifiers";
 
 
 describe('Tests for Transformation Action -- Background', () => {
@@ -155,7 +156,7 @@ describe('Tests for Transformation Action -- Background', () => {
     it('without prompt', () => {
       const tx = new Transformation()
         .resize(Resize.pad(250, 250)
-          .background("gen_fill")
+          .background(Background.generativeFill())
         )
         .toString();
 
@@ -164,7 +165,7 @@ describe('Tests for Transformation Action -- Background', () => {
     it('with prompt', () => {
       const tx = new Transformation()
         .resize(Resize.pad(250, 250)
-          .background("gen_fill:prompt_turtles in the sea")
+          .background(Background.generativeFill().prompt("turtles in the sea"))
         )
         .toString();
 

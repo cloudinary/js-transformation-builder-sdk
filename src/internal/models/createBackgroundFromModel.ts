@@ -11,7 +11,15 @@ import {
 } from "./createBackgroundModel.js";
 import {Background} from "../../qualifiers.js";
 import {BackgroundBorderGradientQualifier} from "../../qualifiers/background/shared/gradient/BackgroundBorderGradientQualifier.js";
-import {auto, border, borderGradient, color, predominant, predominantGradient} from "../../qualifiers/background.js";
+import {
+  auto,
+  border,
+  borderGradient,
+  color,
+  generativeFill,
+  predominant,
+  predominantGradient
+} from "../../qualifiers/background.js";
 import {BackgroundAutoPredominantQualifier} from "../../qualifiers/background/shared/auto/BackgroundAutoPredominantQualifier.js";
 import {BackgroundGenerativeFillQualifier} from "../../qualifiers/background/shared/BackgroundGenerativeFillQualifier.js";
 
@@ -82,10 +90,16 @@ function createContrastPaletteBackground(background: BackgroundAutoPredominantQu
 
 /**
  * Create a Generative Fill background from given model
+ * @param background
  * @param backgroundModel
  */
-function createGenerativeFillBackground(backgroundModel: IGenerativeFillBackgroundModel) {
-  return BackgroundGenerativeFillQualifier.createInstanceFromModel(backgroundModel);
+function createGenerativeFillBackground(background: BackgroundGenerativeFillQualifier, backgroundModel: IGenerativeFillBackgroundModel) {
+  const {prompt} = backgroundModel;
+
+  if (prompt) {
+    background.prompt(prompt);
+  }
+  return background;
 }
 
 /**
@@ -109,7 +123,7 @@ function createBackgroundFromModel(backgroundModel: IBackgroundModel): Backgroun
     case 'predominantGradient':
       return createGradientBackground(predominantGradient(), backgroundModel as IPredominantGradientBackgroundModel);
     case 'generativeFill':
-      return createGenerativeFillBackground(backgroundModel as IGenerativeFillBackgroundModel);
+      return createGenerativeFillBackground(generativeFill(), backgroundModel as IGenerativeFillBackgroundModel);
     default:
       return color((backgroundModel as IColorBackgroundModel).color);
   }
