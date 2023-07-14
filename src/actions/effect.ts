@@ -1,33 +1,33 @@
-import {BlurAction} from "./effect/blur/Blur.js";
-import {AccelerationEffectAction} from "./effect/leveled/Accelerate.js";
-import {LoopEffectAction} from "./effect/leveled/Loop.js";
-import {CartoonifyEffect} from "./effect/Cartoonify.js";
-import {EffectOutline} from "./effect/Outline.js";
-import {SimpleEffectAction} from "./effect/EffectActions/SimpleEffectAction.js";
-import {MakeTransparentEffectAction} from "./effect/leveled/MakeTransparent.js";
-import {VectorizeEffectAction} from "./effect/Vectorize.js";
-import {SimulateColorBlindEffectAction} from "./effect/SimulateColorBlind.js";
-import {EffectActionWithLevel}from "./effect/EffectActions/EffectActionWithLevel.js";
-import {AssistColorBlindEffectAction} from "./effect/AssistColorBlind.js";
-import {GradientFadeEffectAction} from "./effect/GradientFade.js";
-import {FadeOutEffectAction} from "./effect/leveled/FadeOut.js";
-import {ColorizeEffectAction} from "./effect/Colorize.js";
-import {ShadowEffectAction} from "./effect/Shadow.js";
-import {StyleTransfer} from "./effect/StyleTransfer.js";
-import {DitherEffectAction} from "./effect/Dither.js";
-import {DeshakeEffectAction} from "./effect/leveled/Deshake.js";
-import {Pixelate} from "./effect/pixelate/Pixelate.js";
-import {ImageSource} from "../qualifiers/source/sourceTypes/ImageSource.js";
-import {EffectActionWithStrength} from "./effect/EffectActions/EffectActionWithStrength.js";
-import {BlackwhiteEffectAction} from "./effect/leveled/Blackwhite.js";
-import {FadeInEffectAction} from "./effect/leveled/FadeIn.js";
-import {RemoveBackgroundAction} from "./effect/RemoveBackgroundAction.js";
-import {ThemeEffect} from "./effect/Theme.js";
-import {SystemColors} from "../qualifiers/color.js";
-import {ArtisticFilterType} from "../types/types.js";
-import {BackgroundRemoval} from "./effect/BackgroundRemoval.js";
-import {DropShadow} from "./effect/DropShadow.js";
-
+import { BlurAction } from "./effect/blur/Blur.js";
+import { AccelerationEffectAction } from "./effect/leveled/Accelerate.js";
+import { LoopEffectAction } from "./effect/leveled/Loop.js";
+import { CartoonifyEffect } from "./effect/Cartoonify.js";
+import { EffectOutline } from "./effect/Outline.js";
+import { SimpleEffectAction } from "./effect/EffectActions/SimpleEffectAction.js";
+import { MakeTransparentEffectAction } from "./effect/leveled/MakeTransparent.js";
+import { VectorizeEffectAction } from "./effect/Vectorize.js";
+import { SimulateColorBlindEffectAction } from "./effect/SimulateColorBlind.js";
+import { EffectActionWithLevel } from "./effect/EffectActions/EffectActionWithLevel.js";
+import { AssistColorBlindEffectAction } from "./effect/AssistColorBlind.js";
+import { GradientFadeEffectAction } from "./effect/GradientFade.js";
+import { FadeOutEffectAction } from "./effect/leveled/FadeOut.js";
+import { ColorizeEffectAction } from "./effect/Colorize.js";
+import { ShadowEffectAction } from "./effect/Shadow.js";
+import { StyleTransfer } from "./effect/StyleTransfer.js";
+import { DitherEffectAction } from "./effect/Dither.js";
+import { DeshakeEffectAction } from "./effect/leveled/Deshake.js";
+import { Pixelate } from "./effect/pixelate/Pixelate.js";
+import { ImageSource } from "../qualifiers/source/sourceTypes/ImageSource.js";
+import { EffectActionWithStrength } from "./effect/EffectActions/EffectActionWithStrength.js";
+import { BlackwhiteEffectAction } from "./effect/leveled/Blackwhite.js";
+import { FadeInEffectAction } from "./effect/leveled/FadeIn.js";
+import { RemoveBackgroundAction } from "./effect/RemoveBackgroundAction.js";
+import { ThemeEffect } from "./effect/Theme.js";
+import { SystemColors } from "../qualifiers/color.js";
+import { ArtisticFilterType } from "../types/types.js";
+import { BackgroundRemoval } from "./effect/BackgroundRemoval.js";
+import { DropShadow } from "./effect/DropShadow.js";
+import { GenerativeRemove } from "./effect/GenerativeRemove.js";
 
 /**
  * @summary action
@@ -46,11 +46,9 @@ function blur(blurLevel?: number): BlurAction {
  * @memberOf Actions.Effect
  * @return {Actions.Effect.SimpleEffectAction}
  */
-function grayscale():SimpleEffectAction {
-  return new SimpleEffectAction('grayscale');
+function grayscale(): SimpleEffectAction {
+  return new SimpleEffectAction("grayscale");
 }
-
-
 
 /**
  * @summary action
@@ -59,11 +57,9 @@ function grayscale():SimpleEffectAction {
  * @param {number} level The level of sepia to apply. (Range: 1 to 100, Server default: 80)
  * @return {Actions.Effect.EffectActionWithLevel}
  */
-function sepia(level?: number):EffectActionWithLevel {
-  return new EffectActionWithLevel('sepia', level);
+function sepia(level?: number): EffectActionWithLevel {
+  return new EffectActionWithLevel("sepia", level);
 }
-
-
 
 /**
  * @summary action
@@ -72,10 +68,9 @@ function sepia(level?: number):EffectActionWithLevel {
  * @param shadowLevel
  * @return {Actions.Effect.ShadowEffectAction}
  */
-function shadow(shadowLevel?: number):ShadowEffectAction {
-  return new ShadowEffectAction('shadow', shadowLevel);
+function shadow(shadowLevel?: number): ShadowEffectAction {
+  return new ShadowEffectAction("shadow", shadowLevel);
 }
-
 
 /**
  * @summary action
@@ -84,10 +79,9 @@ function shadow(shadowLevel?: number):ShadowEffectAction {
  * @param {number} colorizeLevel The strength of the color. (Range: 0 to 100, Server default: 100)
  * @return {Actions.Effect.ColorizeEffectAction}
  */
-function colorize(colorizeLevel?: number):ColorizeEffectAction {
-  return new ColorizeEffectAction('colorize', colorizeLevel);
+function colorize(colorizeLevel?: number): ColorizeEffectAction {
+  return new ColorizeEffectAction("colorize", colorizeLevel);
 }
-
 
 /**
  * @summary action
@@ -96,8 +90,8 @@ function colorize(colorizeLevel?: number):ColorizeEffectAction {
  * @param {number} oilPaintLevel The strength of the effect. (Range: 0 to 100, Server default: 30)
  * @return {Actions.Effect.EffectActionWithStrength}
  */
-function oilPaint(oilPaintLevel?: number):EffectActionWithStrength {
-  return new EffectActionWithStrength('oil_paint', oilPaintLevel);
+function oilPaint(oilPaintLevel?: number): EffectActionWithStrength {
+  return new EffectActionWithStrength("oil_paint", oilPaintLevel);
 }
 
 /**
@@ -107,10 +101,11 @@ function oilPaint(oilPaintLevel?: number):EffectActionWithStrength {
  * @param {ArtisticFilterType | string} artisticFilterType
  * @return {Actions.Effect.SimpleEffectAction}
  */
-function artisticFilter(artisticFilterType: ArtisticFilterType | string):SimpleEffectAction {
-  return new SimpleEffectAction('art', artisticFilterType);
+function artisticFilter(
+  artisticFilterType: ArtisticFilterType | string
+): SimpleEffectAction {
+  return new SimpleEffectAction("art", artisticFilterType);
 }
-
 
 /**
  * @summary action
@@ -119,10 +114,9 @@ function artisticFilter(artisticFilterType: ArtisticFilterType | string):SimpleE
  * @param cartoonifyLevel The thickness of the lines. (Range: 0 to 100, Server default: 50)
  * @return {Actions.Effect.CartoonifyEffect}
  */
-function cartoonify(cartoonifyLevel?: number):CartoonifyEffect {
-  return new CartoonifyEffect('cartoonify', cartoonifyLevel);
+function cartoonify(cartoonifyLevel?: number): CartoonifyEffect {
+  return new CartoonifyEffect("cartoonify", cartoonifyLevel);
 }
-
 
 /**
  * @summary action
@@ -133,7 +127,6 @@ function cartoonify(cartoonifyLevel?: number):CartoonifyEffect {
 function outline(): EffectOutline {
   return new EffectOutline();
 }
-
 
 /**
  * @summary action
@@ -147,8 +140,6 @@ function styleTransfer(imageSource: ImageSource): StyleTransfer {
   return new StyleTransfer(imageSource);
 }
 
-
-
 /**
  * @summary action
  * @description
@@ -158,10 +149,9 @@ function styleTransfer(imageSource: ImageSource): StyleTransfer {
  * @memberOf Actions.Effect
  * @return {Actions.Effect.SimpleEffectAction}
  */
-function boomerang():SimpleEffectAction {
-  return new SimpleEffectAction('boomerang');
+function boomerang(): SimpleEffectAction {
+  return new SimpleEffectAction("boomerang");
 }
-
 
 /**
  * @summary action
@@ -171,10 +161,9 @@ function boomerang():SimpleEffectAction {
  * @memberOf Actions.Effect
  * @return {Actions.Effect.SimpleEffectAction}
  */
-function advancedRedEye():SimpleEffectAction {
-  return new SimpleEffectAction('adv_redeye');
+function advancedRedEye(): SimpleEffectAction {
+  return new SimpleEffectAction("adv_redeye");
 }
-
 
 /**
  * @summary action
@@ -183,10 +172,9 @@ function advancedRedEye():SimpleEffectAction {
  * @param {number | string} level The balance between black (100) and white (0). (Range: 0 to 100, Server default: 50)
  * @return {Actions.Effect.BlackwhiteEffectAction}
  */
-function blackwhite(level?: number | 'bw'):BlackwhiteEffectAction {
-  return new BlackwhiteEffectAction('blackwhite', level);
+function blackwhite(level?: number | "bw"): BlackwhiteEffectAction {
+  return new BlackwhiteEffectAction("blackwhite", level);
 }
-
 
 /**
  * @summary action
@@ -194,10 +182,9 @@ function blackwhite(level?: number | 'bw'):BlackwhiteEffectAction {
  * @memberOf Actions.Effect
  * @return {Actions.Effect.SimpleEffectAction}
  */
-function negate():SimpleEffectAction {
-  return new SimpleEffectAction('negate');
+function negate(): SimpleEffectAction {
+  return new SimpleEffectAction("negate");
 }
-
 
 /**
  * @summary action
@@ -205,10 +192,9 @@ function negate():SimpleEffectAction {
  * @memberOf Actions.Effect
  * @return {Actions.Effect.SimpleEffectAction}
  */
-function redEye():SimpleEffectAction {
-  return new SimpleEffectAction('redeye');
+function redEye(): SimpleEffectAction {
+  return new SimpleEffectAction("redeye");
 }
-
 
 /**
  * @summary action
@@ -216,10 +202,9 @@ function redEye():SimpleEffectAction {
  * @memberOf Actions.Effect
  * @return {Actions.Effect.SimpleEffectAction}
  */
-function reverse():SimpleEffectAction {
-  return new SimpleEffectAction('reverse');
+function reverse(): SimpleEffectAction {
+  return new SimpleEffectAction("reverse");
 }
-
 
 /**
  * @summary action
@@ -241,10 +226,9 @@ function accelerate(speedIncreasePercent?: number): AccelerationEffectAction {
  * @param {number} fadeLength The time in ms for the fade to occur. (Server default: 2000)
  * @return {Actions.Effect.FadeInEffectAction}
  */
-function fadeIn(fadeLength?: number):FadeInEffectAction {
+function fadeIn(fadeLength?: number): FadeInEffectAction {
   return new FadeInEffectAction(fadeLength);
 }
-
 
 /**
  * @summary action
@@ -255,10 +239,9 @@ function fadeIn(fadeLength?: number):FadeInEffectAction {
  * @param {number} fadeLength The time in ms for the fade to occur. (Server default: 2000)
  * @return {Actions.Effect.FadeoutEffectAction}
  */
-function fadeOut(fadeLength?: number):FadeOutEffectAction {
+function fadeOut(fadeLength?: number): FadeOutEffectAction {
   return new FadeOutEffectAction(fadeLength);
 }
-
 
 /**
  * @summary action
@@ -270,8 +253,8 @@ function fadeOut(fadeLength?: number):FadeOutEffectAction {
  * @param {number} additionalLoops The additional number of times to play the video or animated GIF.
  * @return {Actions.Effect.LoopEffectAction}
  */
-function loop(additionalLoops?: number):LoopEffectAction {
-  return new LoopEffectAction('loop', additionalLoops);
+function loop(additionalLoops?: number): LoopEffectAction {
+  return new LoopEffectAction("loop", additionalLoops);
 }
 
 /**
@@ -284,13 +267,9 @@ function loop(additionalLoops?: number):LoopEffectAction {
  * @param {number} tolerance The tolerance used to accommodate variance in the background color. (Range: 0 to 100, Server default: 10)
  * @return {Actions.Effect.MakeTransparentEffectAction}
  */
-function makeTransparent(tolerance?: number):MakeTransparentEffectAction {
-  return new MakeTransparentEffectAction('make_transparent', tolerance);
+function makeTransparent(tolerance?: number): MakeTransparentEffectAction {
+  return new MakeTransparentEffectAction("make_transparent", tolerance);
 }
-
-
-
-
 
 /**
  * @summary action
@@ -299,10 +278,9 @@ function makeTransparent(tolerance?: number):MakeTransparentEffectAction {
  * @param {number} percentage The percent of noise to apply. (Range: 0 to 100 Server default: 0)
  * @return {Actions.Effect.EffectActionWithLevel}
  */
-function noise(percentage?: number):EffectActionWithLevel {
-  return new EffectActionWithLevel('noise', percentage);
+function noise(percentage?: number): EffectActionWithLevel {
+  return new EffectActionWithLevel("noise", percentage);
 }
-
 
 /**
  * @summary action
@@ -311,10 +289,9 @@ function noise(percentage?: number):EffectActionWithLevel {
  * @param {number} strength The strength of the vignette. (Range: 0 to 100, Server default: 20)
  * @return {Actions.Effect.EffectActionWithStrength}
  */
-function vignette(strength?: number):EffectActionWithStrength {
-  return new EffectActionWithStrength('vignette', strength);
+function vignette(strength?: number): EffectActionWithStrength {
+  return new EffectActionWithStrength("vignette", strength);
 }
-
 
 /**
  * @summary action
@@ -325,8 +302,8 @@ function vignette(strength?: number):EffectActionWithStrength {
  * @param {Qualifiers.Dither} ditherType - The dither type applied to the image
  * @return {Actions.Effect.DitherEffectAction}
  */
-function dither(ditherType?: number):DitherEffectAction {
-  return new DitherEffectAction('ordered_dither', ditherType);
+function dither(ditherType?: number): DitherEffectAction {
+  return new DitherEffectAction("ordered_dither", ditherType);
 }
 
 /**
@@ -341,12 +318,9 @@ function dither(ditherType?: number):DitherEffectAction {
  * @memberOf Actions.Effect
  * @return {Actions.Effect.VectorizeEffectAction}
  */
-function vectorize():VectorizeEffectAction {
+function vectorize(): VectorizeEffectAction {
   return new VectorizeEffectAction();
 }
-
-
-
 
 /**
  * @summary action
@@ -362,10 +336,9 @@ function vectorize():VectorizeEffectAction {
  * @memberOf Actions.Effect
  * @return {Actions.Effect.GradientFadeEffectAction}
  */
-function gradientFade():GradientFadeEffectAction {
+function gradientFade(): GradientFadeEffectAction {
   return new GradientFadeEffectAction();
 }
-
 
 /**
  * @summary action
@@ -375,7 +348,7 @@ function gradientFade():GradientFadeEffectAction {
  * @memberOf Actions.Effect
  * @return {Actions.Effect.AssistColorBlindEffectAction}
  */
-function assistColorBlind():AssistColorBlindEffectAction {
+function assistColorBlind(): AssistColorBlindEffectAction {
   return new AssistColorBlindEffectAction();
 }
 
@@ -391,18 +364,15 @@ function simulateColorBlind(): SimulateColorBlindEffectAction {
   return new SimulateColorBlindEffectAction();
 }
 
-
-
 /**
  * @summary action
  * @description Removes small motion shifts from the video. with a maximum extent of movement in the horizontal and vertical direction of 32 pixels
  * @memberOf Actions.Effect
  * @return {Actions.Effect.DeshakeEffectAction}
  */
-function deshake(pixels?: number | string):DeshakeEffectAction {
-  return new DeshakeEffectAction('deshake', pixels);
+function deshake(pixels?: number | string): DeshakeEffectAction {
+  return new DeshakeEffectAction("deshake", pixels);
 }
-
 
 /**
  * @summary action
@@ -411,8 +381,8 @@ function deshake(pixels?: number | string):DeshakeEffectAction {
  * @memberOf Actions.Effect
  * @return {Actions.Effect.SimpleEffectAction}
  */
-function transition():SimpleEffectAction {
-  return new SimpleEffectAction('transition');
+function transition(): SimpleEffectAction {
+  return new SimpleEffectAction("transition");
 }
 
 /**
@@ -425,7 +395,6 @@ function transition():SimpleEffectAction {
 function pixelate(squareSize?: number): Pixelate {
   return new Pixelate(squareSize);
 }
-
 
 /**
  * @summary action
@@ -440,7 +409,6 @@ function removeBackground(): RemoveBackgroundAction {
   return new RemoveBackgroundAction();
 }
 
-
 /**
  * @summary action
  * @description Uses the Cloudinary AI Background Removal add-on to make the background of an image transparent.</br>
@@ -454,7 +422,6 @@ function backgroundRemoval(): BackgroundRemoval {
   return new BackgroundRemoval();
 }
 
-
 /**
  * @summary action
  * @description Adds a shadow to the object in an image.
@@ -467,6 +434,17 @@ function dropShadow(): DropShadow {
   return new DropShadow();
 }
 
+/**
+ * @summary action
+ * @description Remove objects from an asset using Generative AI
+ *              {@link https://cloudinary.com/documentation/transformation_reference#e_gen_remove|Generative Remove}
+ *
+ * @memberOf Actions.Effect
+ * @return {Actions.Effect.DropShadow}
+ */
+function generativeRemove(): GenerativeRemove {
+  return new GenerativeRemove();
+}
 
 /**
  *
@@ -477,7 +455,6 @@ function dropShadow(): DropShadow {
 function theme(color: SystemColors): ThemeEffect {
   return new ThemeEffect(color);
 }
-
 
 /**
  * @description Defines effects that you can apply to transform your assets.
@@ -567,13 +544,12 @@ const Effect = {
   removeBackground,
   backgroundRemoval,
   dropShadow,
-  theme
+  generativeRemove,
+  theme,
 };
 
-
-
 export declare type EffectActions =
-  SimpleEffectAction
+  | SimpleEffectAction
   | EffectOutline
   | ShadowEffectAction
   | AssistColorBlindEffectAction
@@ -589,8 +565,8 @@ export declare type EffectActions =
   | FadeOutEffectAction
   | AccelerationEffectAction
   | BackgroundRemoval
-  | DropShadow;
-
+  | DropShadow
+  | GenerativeRemove;
 
 export {
   Effect,
@@ -628,5 +604,6 @@ export {
   removeBackground,
   backgroundRemoval,
   dropShadow,
-  theme
+  generativeRemove,
+  theme,
 };

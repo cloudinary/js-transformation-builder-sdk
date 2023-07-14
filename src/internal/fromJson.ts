@@ -1,52 +1,55 @@
-import {ResizeScaleAction} from "../actions/resize/ResizeScaleAction.js";
-import {ResizeFitAction} from "../actions/resize/ResizeFitAction.js";
-import {ResizeLimitFitAction} from "../actions/resize/ResizeLimitFitAction.js";
-import {Transformation} from "../transformation/Transformation.js";
-import {IActionModel} from "./models/IActionModel.js";
-import {Action} from "./Action.js";
-import {IErrorObject} from "./models/IErrorObject.js";
-import {createUnsupportedError} from "./utils/unsupportedError.js";
-import {IHasFromJson, ITransformationFromJson} from "./models/IHasFromJson.js";
-import {ResizeMinimumFitAction} from "../actions/resize/ResizeMinimumFitAction.js";
-import {ResizeCropAction} from "../actions/resize/ResizeCropAction.js";
-import {OpacityAdjustAction} from "../actions/adjust/OpacityAdjustAction.js";
-import {ResizeFillAction} from "../actions/resize/ResizeFillAction.js";
-import {ResizeLimitFillAction} from "../actions/resize/ResizeLimitFillAction.js";
-import {ThumbResizeAction} from "../actions/resize/ThumbnailAction.js";
-import {ResizePadAction} from "../actions/resize/ResizePadAction.js";
-import {ResizeLimitPadAction} from "../actions/resize/ResizeLimitPadAction.js";
-import {ResizeMinimumPadAction} from "../actions/resize/ResizeMinimumPadAction.js";
-import {DeliveryColorSpaceAction} from "../actions/delivery/DeliveryColorSpaceAction.js";
-import {DeliveryColorSpaceFromICCAction} from "../actions/delivery/DeliveryColorSpaceFromICCAction.js";
-import {DeliveryFormatAction} from "../actions/delivery/DeliveryFormatAction.js";
-import {DeliveryQualityAction} from "../actions/delivery/DeliveryQualityAction.js";
-import {EffectActionWithLevel} from "../actions/effect/EffectActions/EffectActionWithLevel.js";
-import {SimpleEffectAction} from "../actions/effect/EffectActions/SimpleEffectAction.js";
-import {ShadowEffectAction} from "../actions/effect/Shadow.js";
-import {ColorizeEffectAction} from "../actions/effect/Colorize.js";
-import {EffectActionWithStrength} from "../actions/effect/EffectActions/EffectActionWithStrength.js";
-import {CartoonifyEffect} from "../actions/effect/Cartoonify.js";
-import {EffectOutline} from "../actions/effect/Outline.js";
-import {BlackwhiteEffectAction} from "../actions/effect/leveled/Blackwhite.js";
-import {AccelerationEffectAction} from "../actions/effect/leveled/Accelerate.js";
-import {LoopEffectAction} from "../actions/effect/leveled/Loop.js";
-import {MakeTransparentEffectAction} from "../actions/effect/leveled/MakeTransparent.js";
-import {DitherEffectAction} from "../actions/effect/Dither.js";
-import {VectorizeEffectAction} from "../actions/effect/Vectorize.js";
-import {GradientFadeEffectAction} from "../actions/effect/GradientFade.js";
-import {AssistColorBlindEffectAction} from "../actions/effect/AssistColorBlind.js";
-import {SimulateColorBlindEffectAction} from "../actions/effect/SimulateColorBlind.js";
-import {DeshakeEffectAction} from "../actions/effect/leveled/Deshake.js";
-import {Pixelate} from "../actions/effect/pixelate/Pixelate.js";
-import {BlurAction} from "../actions/effect/blur/Blur.js";
-import {ImproveAction} from "../actions/adjust/ImproveAction.js";
-import {DeliveryDPRAction} from "../actions/delivery/DeliveryDPRAction.js";
+import { ResizeScaleAction } from "../actions/resize/ResizeScaleAction.js";
+import { ResizeFitAction } from "../actions/resize/ResizeFitAction.js";
+import { ResizeLimitFitAction } from "../actions/resize/ResizeLimitFitAction.js";
+import { Transformation } from "../transformation/Transformation.js";
+import { IActionModel } from "./models/IActionModel.js";
+import { Action } from "./Action.js";
+import { IErrorObject } from "./models/IErrorObject.js";
+import { createUnsupportedError } from "./utils/unsupportedError.js";
+import {
+  IHasFromJson,
+  ITransformationFromJson,
+} from "./models/IHasFromJson.js";
+import { ResizeMinimumFitAction } from "../actions/resize/ResizeMinimumFitAction.js";
+import { ResizeCropAction } from "../actions/resize/ResizeCropAction.js";
+import { OpacityAdjustAction } from "../actions/adjust/OpacityAdjustAction.js";
+import { ResizeFillAction } from "../actions/resize/ResizeFillAction.js";
+import { ResizeLimitFillAction } from "../actions/resize/ResizeLimitFillAction.js";
+import { ThumbResizeAction } from "../actions/resize/ThumbnailAction.js";
+import { ResizePadAction } from "../actions/resize/ResizePadAction.js";
+import { ResizeLimitPadAction } from "../actions/resize/ResizeLimitPadAction.js";
+import { ResizeMinimumPadAction } from "../actions/resize/ResizeMinimumPadAction.js";
+import { DeliveryColorSpaceAction } from "../actions/delivery/DeliveryColorSpaceAction.js";
+import { DeliveryColorSpaceFromICCAction } from "../actions/delivery/DeliveryColorSpaceFromICCAction.js";
+import { DeliveryFormatAction } from "../actions/delivery/DeliveryFormatAction.js";
+import { DeliveryQualityAction } from "../actions/delivery/DeliveryQualityAction.js";
+import { EffectActionWithLevel } from "../actions/effect/EffectActions/EffectActionWithLevel.js";
+import { SimpleEffectAction } from "../actions/effect/EffectActions/SimpleEffectAction.js";
+import { ShadowEffectAction } from "../actions/effect/Shadow.js";
+import { ColorizeEffectAction } from "../actions/effect/Colorize.js";
+import { EffectActionWithStrength } from "../actions/effect/EffectActions/EffectActionWithStrength.js";
+import { CartoonifyEffect } from "../actions/effect/Cartoonify.js";
+import { EffectOutline } from "../actions/effect/Outline.js";
+import { BlackwhiteEffectAction } from "../actions/effect/leveled/Blackwhite.js";
+import { AccelerationEffectAction } from "../actions/effect/leveled/Accelerate.js";
+import { LoopEffectAction } from "../actions/effect/leveled/Loop.js";
+import { MakeTransparentEffectAction } from "../actions/effect/leveled/MakeTransparent.js";
+import { DitherEffectAction } from "../actions/effect/Dither.js";
+import { VectorizeEffectAction } from "../actions/effect/Vectorize.js";
+import { GradientFadeEffectAction } from "../actions/effect/GradientFade.js";
+import { AssistColorBlindEffectAction } from "../actions/effect/AssistColorBlind.js";
+import { SimulateColorBlindEffectAction } from "../actions/effect/SimulateColorBlind.js";
+import { DeshakeEffectAction } from "../actions/effect/leveled/Deshake.js";
+import { Pixelate } from "../actions/effect/pixelate/Pixelate.js";
+import { BlurAction } from "../actions/effect/blur/Blur.js";
+import { ImproveAction } from "../actions/adjust/ImproveAction.js";
+import { DeliveryDPRAction } from "../actions/delivery/DeliveryDPRAction.js";
 import ConcatenateAction from "../actions/videoEdit/ConcatenateAction.js";
-import {ITransformationModel} from "./models/ITransformationModel.js";
-import {PreviewAction} from "../actions/videoEdit/PreviewAction.js";
+import { ITransformationModel } from "./models/ITransformationModel.js";
+import { PreviewAction } from "../actions/videoEdit/PreviewAction.js";
 import TrimAction from "../actions/videoEdit/TrimAction.js";
 import VolumeAction from "../actions/videoEdit/VolumeAction.js";
-import {LayerAction} from "../actions/layer/LayerAction.js";
+import { LayerAction } from "../actions/layer/LayerAction.js";
 import KeyframeIntervalsAction from "../actions/transcode/KeyframeIntervalsAction.js";
 import FPSAction from "../actions/transcode/FPSAction.js";
 import BitRateAction from "../actions/transcode/BitRateAction.js";
@@ -54,15 +57,16 @@ import AudioCodecAction from "../actions/transcode/AudioCodecAction.js";
 import AudioFrequencyAction from "../actions/transcode/AudioFrequencyAction.js";
 import StreamingProfileAction from "../actions/transcode/StreamingProfile.js";
 import ToAnimatedAction from "../actions/transcode/ToAnimatedAction.js";
-import {FadeInEffectAction} from "../actions/effect/leveled/FadeIn.js";
-import {FadeOutEffectAction} from "../actions/effect/leveled/FadeOut.js";
-import {VideoCodecAction} from "../actions/transcode/VideoCodecAction.js";
-import {ConditionalAction} from "../actions/conditional.js";
+import { FadeInEffectAction } from "../actions/effect/leveled/FadeIn.js";
+import { FadeOutEffectAction } from "../actions/effect/leveled/FadeOut.js";
+import { VideoCodecAction } from "../actions/transcode/VideoCodecAction.js";
+import { ConditionalAction } from "../actions/conditional.js";
 import RotateAction from "../actions/rotate/RotateAction.js";
-import {BackgroundRemoval} from "../actions/effect/BackgroundRemoval.js";
-import {DropShadow} from "../actions/effect/DropShadow.js";
+import { BackgroundRemoval } from "../actions/effect/BackgroundRemoval.js";
+import { DropShadow } from "../actions/effect/DropShadow.js";
 import RoundCornersAction from "../actions/roundCorners/RoundCornersAction.js";
-import {BorderAction} from "../actions/border.js";
+import { BorderAction } from "../actions/border.js";
+import { GenerativeRemove } from "../actions/effect/GenerativeRemove.js";
 
 const ActionModelMap: Record<string, IHasFromJson> = {
   scale: ResizeScaleAction,
@@ -137,6 +141,7 @@ const ActionModelMap: Record<string, IHasFromJson> = {
   dropshadow: DropShadow,
   roundCorners: RoundCornersAction,
   border: BorderAction,
+  generativeRemove: GenerativeRemove,
 };
 
 /**
@@ -146,12 +151,17 @@ const ActionModelMap: Record<string, IHasFromJson> = {
  */
 function actions(actionModels: IActionModel[]): Action[] {
   return actionModels.map((actionModel) => {
-    const actionClass = (ActionModelMap[actionModel.actionType]);
+    const actionClass = ActionModelMap[actionModel.actionType];
     if (!actionClass) {
-      throw createUnsupportedError(`unsupported action ${actionModel.actionType}`);
+      throw createUnsupportedError(
+        `unsupported action ${actionModel.actionType}`
+      );
     }
 
-    return actionClass.fromJson(actionModel, fromJson as unknown as ITransformationFromJson);
+    return actionClass.fromJson(
+      actionModel,
+      fromJson as unknown as ITransformationFromJson
+    );
   });
 }
 
@@ -159,15 +169,19 @@ function actions(actionModels: IActionModel[]): Action[] {
  * Return array of action instances represented by given action models.
  * @param transformationModel
  */
-function fromJson(transformationModel: ITransformationModel ): Transformation | IErrorObject {
+function fromJson(
+  transformationModel: ITransformationModel
+): Transformation | IErrorObject {
   try {
     // Create a new Transformation and add all actions to it
     const transformation = new Transformation();
-    actions(transformationModel.actions).forEach((action)=>transformation.addAction(action));
+    actions(transformationModel.actions).forEach((action) =>
+      transformation.addAction(action)
+    );
     return transformation;
   } catch (error) {
-    return {error};
+    return { error };
   }
 }
 
-export {fromJson};
+export { fromJson };
