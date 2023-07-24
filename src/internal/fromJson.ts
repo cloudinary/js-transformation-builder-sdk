@@ -67,7 +67,7 @@ import { DropShadow } from "../actions/effect/DropShadow.js";
 import RoundCornersAction from "../actions/roundCorners/RoundCornersAction.js";
 import { BorderAction } from "../actions/border.js";
 import { GenerativeRemove } from "../actions/effect/GenerativeRemove.js";
-import { GenerativeReplace } from "../actions/effect/GenerativeReplace";
+import { GenerativeReplace } from "../actions/effect/GenerativeReplace.js";
 
 const ActionModelMap: Record<string, IHasFromJson> = {
   scale: ResizeScaleAction,

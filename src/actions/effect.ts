@@ -28,7 +28,7 @@ import { ArtisticFilterType } from "../types/types.js";
 import { BackgroundRemoval } from "./effect/BackgroundRemoval.js";
 import { DropShadow } from "./effect/DropShadow.js";
 import { GenerativeRemove } from "./effect/GenerativeRemove.js";
-import {GenerativeReplace} from "./effect/GenerativeReplace";
+import { GenerativeReplace } from "./effect/GenerativeReplace.js";
 
 /**
  * @summary action
