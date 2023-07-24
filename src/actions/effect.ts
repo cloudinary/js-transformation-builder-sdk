@@ -28,6 +28,7 @@ import { ArtisticFilterType } from "../types/types.js";
 import { BackgroundRemoval } from "./effect/BackgroundRemoval.js";
 import { DropShadow } from "./effect/DropShadow.js";
 import { GenerativeRemove } from "./effect/GenerativeRemove.js";
+import { GenerativeReplace } from "./effect/GenerativeReplace.js";
 
 /**
  * @summary action
@@ -440,10 +441,22 @@ function dropShadow(): DropShadow {
  *              {@link https://cloudinary.com/documentation/transformation_reference#e_gen_remove|Generative Remove}
  *
  * @memberOf Actions.Effect
- * @return {Actions.Effect.DropShadow}
+ * @return {Actions.Effect.GenerativeRemove}
  */
 function generativeRemove(): GenerativeRemove {
   return new GenerativeRemove();
+}
+
+/**
+ * @summary action
+ * @description Uses generative AI to replace parts of your image with something else.
+ *              {@link https://cloudinary.com/documentation/transformation_reference#e_gen_replace|Generative Replace}
+ *
+ * @memberOf Actions.Effect
+ * @return {Actions.Effect.GenerativeReplace}
+ */
+function generativeReplace(): GenerativeReplace {
+  return new GenerativeReplace();
 }
 
 /**
@@ -465,8 +478,9 @@ function theme(color: SystemColors): ThemeEffect {
  * import {Cloudinary} from "@cloudinary/url-gen";
  * // Import everything, or just the action you need for tree-shaking purposes
  * import {Effect, sepia} from "@cloudinary/url-gen/actions/effect";
- * import {ArtisticFilter, alDente} from "../../../src/qualifiers/artisticFilter";
- * import {ShakeStrength, pixels16} from "../../../src/qualifiers/shakeStrength";
+ * import {ArtisticFilter, alDente} from "@cloudinary/url-gen/qualifiers/artisticFilter";
+ * import {ShakeStrength, pixels16} from "@cloudinary/url-gen/qualifiers/shakeStrength";
+ * import {cat, dog} from "@cloudinary/url-gen/qualifiers/ForegroundObject";
  *
  * const yourCldInstance = new Cloudinary({cloud:{cloudName:'demo'}});
  * const image = yourCldInstance.image('woman');
@@ -507,7 +521,10 @@ function theme(color: SystemColors): ThemeEffect {
  * .effect(Effect.deshake(10))
  * .effect(Effect.artisticFilter(alDente())
  * .effect(Effect.deshake().shakeStrength(pixels16()))
- * .effect(Effect.backgroundRemoval().fineEdges(true).hints([ForegroundObject.DOG, ForegroundObject.CAT])
+ * .effect(Effect.backgroundRemoval().fineEdges(true).hints(cat(), dog())
+ * .effect(Effect.generativeRemove().prompt("red car").detectMultiple())
+ * .effect(Effect.generativeRemove().region({x: 20, y: 200, width: 100, height: 100}))
+ * .effect(Effect.generativeReplace().from("ceiling").to("sunny sky").preserveGeometry(true))
  */
 const Effect = {
   pixelate: pixelate,
@@ -545,6 +562,7 @@ const Effect = {
   backgroundRemoval,
   dropShadow,
   generativeRemove,
+  generativeReplace,
   theme,
 };
 
@@ -566,7 +584,8 @@ export declare type EffectActions =
   | AccelerationEffectAction
   | BackgroundRemoval
   | DropShadow
-  | GenerativeRemove;
+  | GenerativeRemove
+  | GenerativeReplace;
 
 export {
   Effect,
@@ -605,5 +624,6 @@ export {
   backgroundRemoval,
   dropShadow,
   generativeRemove,
+  generativeReplace,
   theme,
 };

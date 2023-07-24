@@ -37,7 +37,8 @@ describe('effect.fromJson', () => {
       { actionType: 'fadeOut' },
       { actionType: 'dropshadow' },
       { actionType: 'dropshadow', azimuth: 20 },
-      { actionType: 'dropshadow', spread: 30, elevation: 20, azimuth: 60 }
+      { actionType: 'dropshadow', spread: 30, elevation: 20, azimuth: 60 },
+      { actionType: 'generativeReplace', from: 'sunny sky', to: 'dark sky', preserveGeometry: true }
     ]});
 
     expect(transformation.toString()).toStrictEqual([
@@ -76,6 +77,7 @@ describe('effect.fromJson', () => {
       'e_dropshadow',
       'e_dropshadow:azimuth_20',
       'e_dropshadow:azimuth_60;elevation_20;spread_30',
+      'e_gen_replace:from_sunny sky;to_dark sky;preserve-geometry_true',
     ].join('/'));
   });
 });

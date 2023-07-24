@@ -334,6 +334,14 @@ describe('Tests for Transformation Action -- Effect', () => {
     expect(Effect.removeBackground().screen().colorToRemove('#fff').toString()).toBe('e_bgremoval:screen:fff');
   });
 
+  it('Test generativeReplace', () => {
+    expect(Effect.generativeReplace().toString()).toBe('e_gen_replace:from_undefined;to_undefined');
+    expect(Effect.generativeReplace().from('prompt1').to('prompt2').toString()).toBe('e_gen_replace:from_prompt1;to_prompt2');
+    expect(Effect.generativeReplace().from('prompt1').to('prompt2').preserveGeometry().toString()).toBe('e_gen_replace:from_prompt1;to_prompt2;preserve-geometry_true');
+    expect(Effect.generativeReplace().from('prompt1').to('prompt2').preserveGeometry(true).toString()).toBe('e_gen_replace:from_prompt1;to_prompt2;preserve-geometry_true');
+    expect(Effect.generativeReplace().from('prompt1').to('prompt2').preserveGeometry(false).toString()).toBe('e_gen_replace:from_prompt1;to_prompt2');
+  });
+
   it('Test theme effect', () => {
     expect(Effect.theme('red').toString()).toBe('e_theme:color_red');
     expect(Effect.theme('#fff').toString()).toBe('e_theme:color_fff');
