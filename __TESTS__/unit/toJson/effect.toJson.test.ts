@@ -387,4 +387,32 @@ describe('Effect toJson()', () => {
       ]
     });
   });
+
+  it('effect.GenerativeReplace', () => {
+    const transformation = new Transformation()
+      .addAction(Effect.generativeReplace().from('ceiling').to('sunny sky').preserveGeometry())
+      .addAction(Effect.generativeReplace().from('sunny sky').to('dark sky'))
+      .addAction(Effect.generativeReplace().from('sunny sky').to('dark sky').preserveGeometry(false));
+
+    expect(transformation.toJson()).toStrictEqual({
+      actions: [
+        {
+          actionType: 'generativeReplace',
+          from: 'ceiling',
+          to: 'sunny sky',
+          preserveGeometry: true,
+        },
+        {
+          actionType: 'generativeReplace',
+          from: 'sunny sky',
+          to: 'dark sky',
+        },
+        {
+          actionType: 'generativeReplace',
+          from: 'sunny sky',
+          to: 'dark sky',
+        }
+      ]
+    });
+  });
 });

@@ -106,6 +106,12 @@ interface IGenerativeRemoveModel extends IActionModel {
   detectMultiple?: boolean;
 }
 
+interface IGenerativeReplaceModel extends IActionModel {
+  from?: string;
+  to?: string;
+  preserveGeometry?: boolean;
+}
+
 export {
   IEffectActionWithLevelModel,
   ISimpleEffectActionModel,
@@ -128,4 +134,5 @@ export {
   IBackgroundRemovalModel,
   IDropShadowModel,
   IGenerativeRemoveModel,
+  IGenerativeReplaceModel,
 };
