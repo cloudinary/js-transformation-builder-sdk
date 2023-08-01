@@ -26,9 +26,7 @@ describe("GenerativeRemove.toJson()", () => {
         Effect.generativeRemove().region(Region.rectangle(50, 60, 600, 400)),
         {
           actionType: "generativeRemove",
-          regions: [
-            { regionType: "rectangle", x: 50, y: 60, width: 600, height: 400 },
-          ],
+          regions: [{ x: 50, y: 60, width: 600, height: 400 }],
         },
       ],
       [
@@ -39,8 +37,8 @@ describe("GenerativeRemove.toJson()", () => {
         {
           actionType: "generativeRemove",
           regions: [
-            { regionType: "rectangle", x: 10, y: 20, width: 600, height: 400 },
-            { regionType: "rectangle", x: 300, y: 400, width: 50, height: 60 },
+            { x: 10, y: 20, width: 600, height: 400 },
+            { x: 300, y: 400, width: 50, height: 60 },
           ],
         },
       ],

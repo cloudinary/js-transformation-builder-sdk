@@ -15,7 +15,7 @@ describe("generativeRemove.fromJson", () => {
           actionType: "generativeRemove",
           prompts: ["dog", "cat"],
           detectMultiple: true,
-        }, // "detectMultiple" should be omitted from TX string for multiple prompts
+        },
         {
           actionType: "generativeRemove",
           regions: [{ x: 10, y: 10, width: 100, height: 100 }],

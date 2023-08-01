@@ -32,14 +32,9 @@ function ocr(): NamedRegion {
 /**
  * @summary qualifier
  * @memberOf Qualifiers.Region
- * @return {Qualifiers.Region.NamedRegion}
+ * @return {Qualifiers.Region.RectangleRegion}
  */
-function rectangle(
-  x: number,
-  y: number,
-  width: number,
-  height: number
-): NamedRegion {
+function rectangle(x: number, y: number, width: number, height: number) {
   return new RectangleRegion(x, y, width, height);
 }
 

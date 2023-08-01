@@ -1,10 +1,10 @@
-import { NamedRegion } from "./NamedRegion.js";
 import { Qualifier } from "../../internal/qualifier/Qualifier.js";
+import { Action } from "../../internal/Action.js";
 
 /**
  * @memberOf Qualifiers.Region
  */
-class RectangleRegion extends NamedRegion {
+class RectangleRegion extends Action {
   /**
    * Rectangle defines a region where action will be applied
    *
@@ -14,7 +14,7 @@ class RectangleRegion extends NamedRegion {
    * @param {number} height The height in pixels
    */
   constructor(x: number, y: number, width: number, height: number) {
-    super("rectangle");
+    super();
 
     this.addQualifier(new Qualifier("x", x));
     this.addQualifier(new Qualifier("y", y));
@@ -26,7 +26,6 @@ class RectangleRegion extends NamedRegion {
       y,
       width,
       height,
-      regionType: this.regionType,
     };
   }
 
