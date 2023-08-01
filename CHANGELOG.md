@@ -1,7 +1,7 @@
 1.5.0 / 2023-08-01
 ==================
 
-* Add support for GenerativeRemove and GenerativeReplace actions
+* Simplify API for GenerativeRemove action
 * Add a dedicated method for Generative Fill background  
 
 1.4.0 / 2023-07-24
@@ -12,7 +12,7 @@
 1.3.0 / 2023-07-18
 ==================
 
-- Add support for Generative Remove effect 
+- Add support for the Generative Remove effect 
 
 1.2.11 / 2023-07-14
 ==================
