@@ -1,3 +1,8 @@
+1.5.1 / 2023-08-01
+==================
+
+* Remove `regionType` property from RectangleRegion
+
 1.5.0 / 2023-08-01
 ==================
 
