@@ -1,6 +1,7 @@
 import { Transformation } from "../../../src";
 import { Effect } from "../../../src/actions/effect";
 import { GenerativeRemove } from "../../../src/actions/effect/GenerativeRemove";
+import { Region } from "../../../src/qualifiers/region";
 
 describe("GenerativeRemove.toJson()", () => {
   it("produces correct action JSON", () => {
@@ -18,31 +19,28 @@ describe("GenerativeRemove.toJson()", () => {
         },
       ],
       [
-        Effect.generativeRemove().prompts(["dog", "cat"]),
+        Effect.generativeRemove().prompt("dog", "cat"),
         { actionType: "generativeRemove", prompts: ["dog", "cat"] },
       ],
       [
-        Effect.generativeRemove().region({
-          x: 100,
-          y: 200,
-          width: 600,
-          height: 400,
-        }),
-        {
-          actionType: "generativeRemove",
-          regions: [{ x: 100, y: 200, width: 600, height: 400 }],
-        },
-      ],
-      [
-        Effect.generativeRemove().regions([
-          { x: 100, y: 200, width: 600, height: 400 },
-          { x: 300, y: 400, width: 50, height: 60 },
-        ]),
+        Effect.generativeRemove().region(Region.rectangle(50, 60, 600, 400)),
         {
           actionType: "generativeRemove",
           regions: [
-            { x: 100, y: 200, width: 600, height: 400 },
-            { x: 300, y: 400, width: 50, height: 60 },
+            { regionType: "rectangle", x: 50, y: 60, width: 600, height: 400 },
+          ],
+        },
+      ],
+      [
+        Effect.generativeRemove().region(
+          Region.rectangle(10, 20, 600, 400),
+          Region.rectangle(300, 400, 50, 60)
+        ),
+        {
+          actionType: "generativeRemove",
+          regions: [
+            { regionType: "rectangle", x: 10, y: 20, width: 600, height: 400 },
+            { regionType: "rectangle", x: 300, y: 400, width: 50, height: 60 },
           ],
         },
       ],

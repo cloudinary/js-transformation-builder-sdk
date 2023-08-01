@@ -1,5 +1,6 @@
-import {CustomRegion} from "./region/CustomRegion.js";
-import {NamedRegion} from "./region/NamedRegion.js";
+import { CustomRegion } from "./region/CustomRegion.js";
+import { NamedRegion } from "./region/NamedRegion.js";
+import { RectangleRegion } from "./region/RectangleRegion.js";
 
 /**
  * @summary qualifier
@@ -16,7 +17,7 @@ function custom(): CustomRegion {
  * @return {Qualifiers.Region.NamedRegion}
  */
 function faces(): NamedRegion {
-  return new NamedRegion('faces');
+  return new NamedRegion("faces");
 }
 
 /**
@@ -25,7 +26,21 @@ function faces(): NamedRegion {
  * @return {Qualifiers.Region.NamedRegion}
  */
 function ocr(): NamedRegion {
-  return new NamedRegion('ocr_text');
+  return new NamedRegion("ocr_text");
+}
+
+/**
+ * @summary qualifier
+ * @memberOf Qualifiers.Region
+ * @return {Qualifiers.Region.NamedRegion}
+ */
+function rectangle(
+  x: number,
+  y: number,
+  width: number,
+  height: number
+): NamedRegion {
+  return new RectangleRegion(x, y, width, height);
 }
 
 /**
@@ -36,5 +51,5 @@ function ocr(): NamedRegion {
  * @namespace Region
  * @memberOf Qualifiers
  */
-const Region = { ocr, faces, custom };
-export {Region, ocr, faces, custom};
+const Region = { ocr, faces, custom, rectangle };
+export { Region, ocr, faces, custom, rectangle };

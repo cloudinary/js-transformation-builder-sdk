@@ -2,13 +2,7 @@ import { Action } from "../../internal/Action.js";
 import { QualifierValue } from "../../internal/qualifier/QualifierValue.js";
 import { Qualifier } from "../../internal/qualifier/Qualifier.js";
 import { IGenerativeRemoveModel } from "../../internal/models/IEffectActionModel.js";
-
-type Region = {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-}; // Internal type for regions parameter – it's not interchangeable with CustomRegion
+import { RectangleRegion } from "../../qualifiers/region/RectangleRegion.js";
 
 /**
  * @description A class that defines how to remove objects from an asset using Generative AI
@@ -18,7 +12,7 @@ type Region = {
  */
 class GenerativeRemove extends Action {
   private _prompts: Array<string> = [];
-  private _regions: Array<Region> = [];
+  private _regions: Array<RectangleRegion> = [];
   private _detectMultiple = false;
 
   constructor() {
@@ -26,28 +20,22 @@ class GenerativeRemove extends Action {
     this._actionModel.actionType = "generativeRemove";
   }
 
-  prompt(value: string) {
-    return this.prompts([value]);
-  }
-
-  prompts(value: Array<string>) {
+  prompt(...value: string[]) {
     this._prompts = value;
 
-    if (this._prompts) {
+    if (this._prompts.length > 0) {
       this._actionModel.prompts = this._prompts;
     }
     return this;
   }
 
-  region(value: Region) {
-    return this.regions([value]);
-  }
-
-  regions(value: Array<Region>) {
+  region(...value: RectangleRegion[]) {
     this._regions = value;
 
-    if (this._regions) {
-      this._actionModel.regions = this._regions;
+    if (this._regions.length > 0) {
+      this._actionModel.regions = this._regions.map((region) =>
+        region.toJson()
+      );
     }
 
     return this;
@@ -64,68 +52,56 @@ class GenerativeRemove extends Action {
   }
 
   protected prepareQualifiers(): void {
+    const qualifierValue = new QualifierValue().setDelimiter(";");
+
     switch (true) {
-      case this._prompts.length === 1: {
-        return this.preparePromptQualifier();
+      case this._prompts.length > 0: {
+        qualifierValue.addValue(this.preparePromptValue());
+        break;
       }
-      case this._prompts.length > 1: {
-        return this.preparePromptsQualifier();
-      }
-      case this._regions.length === 1: {
-        return this.prepareRegionQualifier();
-      }
-      case this._regions.length > 1: {
-        return this.prepareRegionsQualifier();
+      case this._regions.length > 0: {
+        qualifierValue.addValue(this.prepareRegionValue());
+        break;
       }
     }
+
+    this.addQualifier(
+      new Qualifier("e", `gen_remove:${qualifierValue.toString()}`)
+    );
   }
 
-  private preparePromptQualifier() {
-    const prompt = this._prompts[0];
-
-    let str = `gen_remove:${new QualifierValue(`prompt_${prompt}`).toString()}`;
-
-    if (this._detectMultiple) {
-      str += `;${new QualifierValue(`multiple_true`).toString()}`;
-    }
-
-    this.addQualifier(new Qualifier("e", str));
-  }
-
-  private preparePromptsQualifier() {
+  private preparePromptValue() {
     const prompts = this._prompts;
+    const detectMultiple = this._detectMultiple;
 
-    const str = `gen_remove:${new QualifierValue(
-      `prompt_(${prompts.join(";")})`
-    ).toString()}`;
+    const qualifierValue = new QualifierValue().setDelimiter(";");
 
-    this.addQualifier(new Qualifier("e", str));
+    if (prompts.length === 1) {
+      qualifierValue.addValue(`prompt_${prompts[0]}`);
+
+      if (detectMultiple) {
+        qualifierValue.addValue("multiple_true");
+      }
+    } else {
+      qualifierValue.addValue(`prompt_(${prompts.join(";")})`);
+    }
+
+    return qualifierValue;
   }
 
-  private prepareRegionQualifier() {
-    const region = this.stringifyRegion(this._regions[0]);
+  private prepareRegionValue() {
+    const regions = this._regions;
+    const qualifierValue = new QualifierValue();
 
-    const str = `gen_remove:${new QualifierValue(
-      `region_${region}`
-    ).toString()}`;
+    if (regions.length === 1) {
+      const singleRegion = regions[0].toString();
+      qualifierValue.addValue(`region_${singleRegion}`);
+    } else {
+      const regionList = regions.map((region) => region.toString());
+      qualifierValue.addValue(`region_(${regionList.join(";")})`);
+    }
 
-    this.addQualifier(new Qualifier("e", str));
-  }
-
-  private prepareRegionsQualifier() {
-    const regions = this._regions.map((region) => this.stringifyRegion(region));
-
-    const str = `gen_remove:${new QualifierValue(
-      `region_(${regions.join(";")})`
-    ).toString()}`;
-
-    this.addQualifier(new Qualifier("e", str));
-  }
-
-  private stringifyRegion(region: Region) {
-    const { x, y, width, height } = region;
-
-    return `(x_${x};y_${y};w_${width};h_${height})`;
+    return qualifierValue;
   }
 
   static fromJson(actionModel: IGenerativeRemoveModel): GenerativeRemove {
@@ -133,11 +109,15 @@ class GenerativeRemove extends Action {
     const result = new this();
 
     if (regions) {
-      result.regions(regions);
+      result.region(
+        ...regions.map(
+          ({ x, y, width, height }) => new RectangleRegion(x, y, width, height)
+        )
+      );
     }
 
     if (prompts) {
-      result.prompts(prompts);
+      result.prompt(...prompts);
     }
 
     if (detectMultiple) {

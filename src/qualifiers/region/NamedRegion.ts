@@ -1,16 +1,17 @@
-import {Action} from "../../internal/Action.js";
+import { Action } from "../../internal/Action.js";
+
+type RegionType = "faces" | "ocr_text" | "named" | "rectangle";
 
 /**
  * @memberOf Qualifiers.Region
  */
 class NamedRegion extends Action {
-  public regionType: 'faces' | 'ocr_text' | 'named';
+  public regionType: RegionType;
 
-  constructor(type: 'faces' | 'ocr_text' | 'named') {
+  constructor(type: RegionType) {
     super();
     this.regionType = type;
   }
 }
 
-
-export {NamedRegion};
+export { NamedRegion, RegionType };
