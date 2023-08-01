@@ -448,8 +448,8 @@ describe('resize.toJson()', () => {
 
   it('should generate a Generative Fill background', () => {
     const transformation = new Transformation()
-      .addAction(Resize.pad(400).background('gen_fill'))
-      .addAction(Resize.pad(200).background('gen_fill:prompt_strawberry donuts'));
+      .addAction(Resize.pad(400).background(Background.generativeFill()))
+      .addAction(Resize.pad(200).background(Background.generativeFill().prompt('strawberry donuts')));
 
     const model = transformation.toJson();
 
