@@ -68,6 +68,7 @@ import RoundCornersAction from "../actions/roundCorners/RoundCornersAction.js";
 import { BorderAction } from "../actions/border.js";
 import { GenerativeRemove } from "../actions/effect/GenerativeRemove.js";
 import { GenerativeReplace } from "../actions/effect/GenerativeReplace.js";
+import { GenerativeRecolor } from "../actions/effect/GenerativeRecolor.js";
 
 const ActionModelMap: Record<string, IHasFromJson> = {
   scale: ResizeScaleAction,
@@ -144,6 +145,7 @@ const ActionModelMap: Record<string, IHasFromJson> = {
   border: BorderAction,
   generativeRemove: GenerativeRemove,
   generativeReplace: GenerativeReplace,
+  generativeRecolor: GenerativeRecolor,
 };
 
 /**

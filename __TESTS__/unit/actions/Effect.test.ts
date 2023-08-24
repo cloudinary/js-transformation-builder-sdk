@@ -342,6 +342,15 @@ describe('Tests for Transformation Action -- Effect', () => {
     expect(Effect.generativeReplace().from('prompt1').to('prompt2').preserveGeometry(false).toString()).toBe('e_gen_replace:from_prompt1;to_prompt2');
   });
 
+  it('Test generativeRecolor', () => {
+    expect(Effect.generativeRecolor().toString()).toBe('e_gen_recolor:');
+    expect(Effect.generativeRecolor().prompt('prompt1').toColor('red').toString()).toBe('e_gen_recolor:prompt_prompt1;to-color_red');
+    expect(Effect.generativeRecolor().prompt('prompt1').toColor('red').detectMultiple(true).toString()).toBe('e_gen_recolor:prompt_prompt1;to-color_red;multiple_true');
+    expect(Effect.generativeRecolor().prompt('prompt1').toColor('red').detectMultiple(false).toString()).toBe('e_gen_recolor:prompt_prompt1;to-color_red');
+    expect(Effect.generativeRecolor().prompt('prompt1', 'prompt2').toColor('red').toString()).toBe('e_gen_recolor:prompt_(prompt1;prompt2);to-color_red');
+    expect(Effect.generativeRecolor().prompt('prompt1', 'prompt2').toColor('red').detectMultiple(false).toString()).toBe('e_gen_recolor:prompt_(prompt1;prompt2);to-color_red');
+  });
+
   it('Test theme effect', () => {
     expect(Effect.theme('red').toString()).toBe('e_theme:color_red');
     expect(Effect.theme('#fff').toString()).toBe('e_theme:color_fff');

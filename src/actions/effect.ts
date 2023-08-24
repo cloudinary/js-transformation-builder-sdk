@@ -29,6 +29,7 @@ import { BackgroundRemoval } from "./effect/BackgroundRemoval.js";
 import { DropShadow } from "./effect/DropShadow.js";
 import { GenerativeRemove } from "./effect/GenerativeRemove.js";
 import { GenerativeReplace } from "./effect/GenerativeReplace.js";
+import { GenerativeRecolor } from "./effect/GenerativeRecolor.js";
 
 /**
  * @summary action
@@ -460,6 +461,18 @@ function generativeReplace(): GenerativeReplace {
 }
 
 /**
+ * @summary action
+ * @description Uses generative AI to recolor objects from your image.
+ *              {@link https://cloudinary.com/documentation/transformation_reference#e_gen_recolor|Generative Recolor}
+ *
+ * @memberOf Actions.Effect
+ * @return {Actions.Effect.GenerativeRecolor}
+ */
+function generativeRecolor(): GenerativeRecolor {
+  return new GenerativeRecolor();
+}
+
+/**
  *
  * @description Changes the main background color to the one specified, as if a 'theme change' was applied (e.g. dark mode vs light mode).
  * @param {SystemColors} color
@@ -563,6 +576,7 @@ const Effect = {
   dropShadow,
   generativeRemove,
   generativeReplace,
+  generativeRecolor,
   theme,
 };
 
@@ -585,7 +599,8 @@ export declare type EffectActions =
   | BackgroundRemoval
   | DropShadow
   | GenerativeRemove
-  | GenerativeReplace;
+  | GenerativeReplace
+  | GenerativeRecolor;
 
 export {
   Effect,
@@ -625,5 +640,6 @@ export {
   dropShadow,
   generativeRemove,
   generativeReplace,
+  generativeRecolor,
   theme,
 };
