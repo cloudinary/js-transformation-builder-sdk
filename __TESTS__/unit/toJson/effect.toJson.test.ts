@@ -415,4 +415,38 @@ describe('Effect toJson()', () => {
       ]
     });
   });
+
+  it('effect.GenerativeRecolor', () => {
+    const transformation = new Transformation()
+      .addAction(Effect.generativeRecolor().prompt('something').toColor('red').detectMultiple())
+      .addAction(Effect.generativeRecolor().prompt('something').toColor('red').detectMultiple(false))
+      .addAction(Effect.generativeRecolor().prompt('something').toColor('red'))
+      .addAction(Effect.generativeRecolor().prompt('something', 'else').toColor('red'));
+
+    expect(transformation.toJson()).toStrictEqual({
+      actions: [
+        {
+          actionType: 'generativeRecolor',
+          prompts: ['something'],
+          toColor: 'red',
+          detectMultiple: true,
+        },
+        {
+          actionType: 'generativeRecolor',
+          prompts: ['something'],
+          toColor: 'red',
+        },
+        {
+          actionType: 'generativeRecolor',
+          prompts: ['something'],
+          toColor: 'red',
+        },
+        {
+          actionType: 'generativeRecolor',
+          prompts: ['something', 'else'],
+          toColor: 'red',
+        },
+      ]
+    });
+  });
 });
