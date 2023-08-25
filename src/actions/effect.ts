@@ -464,12 +464,13 @@ function generativeReplace(): GenerativeReplace {
  * @summary action
  * @description Uses generative AI to recolor objects from your image.
  *              {@link https://cloudinary.com/documentation/transformation_reference#e_gen_recolor|Generative Recolor}
- *
+ * @param {string | string[]} prompts
+ * @param {SystemColors | string} color
  * @memberOf Actions.Effect
  * @return {Actions.Effect.GenerativeRecolor}
  */
-function generativeRecolor(): GenerativeRecolor {
-  return new GenerativeRecolor();
+function generativeRecolor(prompts: string | string[], color: SystemColors | string): GenerativeRecolor {
+  return new GenerativeRecolor(prompts, color);
 }
 
 /**

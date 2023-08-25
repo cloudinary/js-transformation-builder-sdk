@@ -418,10 +418,10 @@ describe('Effect toJson()', () => {
 
   it('effect.GenerativeRecolor', () => {
     const transformation = new Transformation()
-      .addAction(Effect.generativeRecolor().prompt('something').toColor('red').detectMultiple())
-      .addAction(Effect.generativeRecolor().prompt('something').toColor('red').detectMultiple(false))
-      .addAction(Effect.generativeRecolor().prompt('something').toColor('red'))
-      .addAction(Effect.generativeRecolor().prompt('something', 'else').toColor('red'));
+      .addAction(Effect.generativeRecolor('something', 'red').multiple())
+      .addAction(Effect.generativeRecolor('something', 'red').multiple(false))
+      .addAction(Effect.generativeRecolor('something', 'red'))
+      .addAction(Effect.generativeRecolor(['something', 'else'], 'red'));
 
     expect(transformation.toJson()).toStrictEqual({
       actions: [

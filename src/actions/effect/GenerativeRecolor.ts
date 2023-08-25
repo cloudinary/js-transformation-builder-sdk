@@ -15,35 +15,22 @@ class GenerativeRecolor extends Action {
   private _detectMultiple = false;
   private _toColor: SystemColors | string;
 
-  constructor() {
+  constructor(prompts: string | string[], color: SystemColors | string) {
     super();
+
+    this._prompts = Array.isArray(prompts) ? prompts : [prompts];
+    this._toColor = color;
+
     this._actionModel.actionType = "generativeRecolor";
+    this._actionModel.prompts = this._prompts;
+    this._actionModel.toColor = this._toColor;
   }
 
-  prompt(...value: string[]) {
-    this._prompts = value;
-
-    if (this._prompts.length > 0) {
-      this._actionModel.prompts = this._prompts;
-    }
-    return this;
-  }
-
-  detectMultiple(value = true) {
+  multiple(value = true) {
     this._detectMultiple = value;
 
     if (this._detectMultiple) {
       this._actionModel.detectMultiple = this._detectMultiple;
-    }
-
-    return this;
-  }
-
-  toColor(value: SystemColors | string) {
-    this._toColor = value;
-
-    if (this._toColor) {
-      this._actionModel.toColor = this._toColor;
     }
 
     return this;
@@ -90,18 +77,10 @@ class GenerativeRecolor extends Action {
 
   static fromJson(actionModel: IGenerativeRecolorModel): GenerativeRecolor {
     const { prompts, detectMultiple, toColor } = actionModel;
-    const result = new this();
-
-    if (prompts) {
-      result.prompt(...prompts);
-    }
+    const result = new this(prompts, toColor);
 
     if (detectMultiple) {
-      result.detectMultiple(detectMultiple);
-    }
-
-    if (toColor) {
-      result.toColor(toColor);
+      result.multiple(detectMultiple);
     }
 
     return result;
