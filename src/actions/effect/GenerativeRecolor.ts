@@ -13,9 +13,9 @@ import {SystemColors} from "../../qualifiers/color.js";
 class GenerativeRecolor extends Action {
   private _prompts: Array<string> = [];
   private _detectMultiple = false;
-  private _toColor: SystemColors | string;
+  private _toColor: SystemColors;
 
-  constructor(prompts: string | string[], color: SystemColors | string) {
+  constructor(prompts: string | string[], color: SystemColors) {
     super();
 
     this._prompts = Array.isArray(prompts) ? prompts : [prompts];
@@ -42,6 +42,10 @@ class GenerativeRecolor extends Action {
     if (this._prompts.length) {
       qualifierValue.addValue(this.preparePromptValue());
     }
+    if (this._toColor) {
+      const formattedColor = this._toColor.match(/^#/) ? this._toColor.substr(1) : this._toColor;
+      qualifierValue.addValue(`to-color_${formattedColor}`);
+    }
 
     this.addQualifier(
       new Qualifier("e", `gen_recolor:${qualifierValue.toString()}`)
@@ -51,25 +55,17 @@ class GenerativeRecolor extends Action {
   private preparePromptValue() {
     const prompts = this._prompts;
     const detectMultiple = this._detectMultiple;
-    const toColor = this._toColor;
 
     const qualifierValue = new QualifierValue().setDelimiter(";");
 
     if (prompts.length === 1) {
       qualifierValue.addValue(`prompt_${prompts[0]}`);
 
-      if (toColor) {
-        qualifierValue.addValue(`to-color_${toColor}`);
-      }
       if (detectMultiple) {
         qualifierValue.addValue("multiple_true");
       }
     } else {
       qualifierValue.addValue(`prompt_(${prompts.join(";")})`);
-
-      if (toColor) {
-        qualifierValue.addValue(`to-color_${toColor}`);
-      }
     }
 
     return qualifierValue;

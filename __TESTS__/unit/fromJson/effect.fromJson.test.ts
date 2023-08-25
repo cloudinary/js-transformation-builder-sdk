@@ -80,7 +80,7 @@ describe('effect.fromJson', () => {
       'e_dropshadow:azimuth_20',
       'e_dropshadow:azimuth_60;elevation_20;spread_30',
       'e_gen_replace:from_sunny sky;to_dark sky;preserve-geometry_true',
-      'e_gen_recolor:prompt_something;to-color_red;multiple_true',
+      'e_gen_recolor:prompt_something;multiple_true;to-color_red',
       'e_gen_recolor:prompt_(something;else);to-color_blue',
     ].join('/'));
   });

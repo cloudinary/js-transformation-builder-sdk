@@ -344,7 +344,8 @@ describe('Tests for Transformation Action -- Effect', () => {
 
   it('Test generativeRecolor', () => {
     expect(Effect.generativeRecolor('prompt1', 'red').toString()).toBe('e_gen_recolor:prompt_prompt1;to-color_red');
-    expect(Effect.generativeRecolor('prompt1', 'red').multiple(true).toString()).toBe('e_gen_recolor:prompt_prompt1;to-color_red;multiple_true');
+    expect(Effect.generativeRecolor('prompt1', '#fff').toString()).toBe('e_gen_recolor:prompt_prompt1;to-color_fff');
+    expect(Effect.generativeRecolor('prompt1', 'red').multiple(true).toString()).toBe('e_gen_recolor:prompt_prompt1;multiple_true;to-color_red');
     expect(Effect.generativeRecolor('prompt1', 'red').multiple(false).toString()).toBe('e_gen_recolor:prompt_prompt1;to-color_red');
     expect(Effect.generativeRecolor(['prompt1', 'prompt2'], 'red').toString()).toBe('e_gen_recolor:prompt_(prompt1;prompt2);to-color_red');
     expect(Effect.generativeRecolor(['prompt1', 'prompt2'], 'red').multiple(false).toString()).toBe('e_gen_recolor:prompt_(prompt1;prompt2);to-color_red');
