@@ -49,7 +49,7 @@ describe('Tests for Transformation Action -- Effect', () => {
       .effect(Effect.deshake())
       .effect(Effect.deshake(10))
       .effect(Effect.deshake().shakeStrength(ShakeStrength.pixels16()))
-
+      .effect(Effect.generativeRestore())
       .toString();
 
     const expectedToContain = [
@@ -87,7 +87,8 @@ describe('Tests for Transformation Action -- Effect', () => {
       'e_vignette:5',
       'e_deshake',
       'e_deshake:10',
-      'e_deshake:16'
+      'e_deshake:16',
+      'e_gen_restore'
     ].join('/');
 
     expect(tx).toBe(`${expectedToContain}`);
