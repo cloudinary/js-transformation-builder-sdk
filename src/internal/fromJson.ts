@@ -146,6 +146,7 @@ const ActionModelMap: Record<string, IHasFromJson> = {
   generativeRemove: GenerativeRemove,
   generativeReplace: GenerativeReplace,
   generativeRecolor: GenerativeRecolor,
+  generativeRestore: SimpleEffectAction,
 };
 
 /**

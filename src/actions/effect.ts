@@ -474,6 +474,18 @@ function generativeRecolor(prompts: string | string[], color: SystemColors): Gen
 }
 
 /**
+ * @summary action
+ * @description
+ * Uses generative AI to restore details in poor quality images
+ * or images that may have become degraded through repeated processing and compression.
+ * @memberOf Actions.Effect
+ * @return {Actions.Effect.SimpleEffectAction}
+ */
+function generativeRestore(): SimpleEffectAction {
+  return new SimpleEffectAction("gen_restore");
+}
+
+/**
  *
  * @description Changes the main background color to the one specified, as if a 'theme change' was applied (e.g. dark mode vs light mode).
  * @param {SystemColors} color
@@ -578,6 +590,7 @@ const Effect = {
   generativeRemove,
   generativeReplace,
   generativeRecolor,
+  generativeRestore,
   theme,
 };
 
@@ -642,5 +655,6 @@ export {
   generativeRemove,
   generativeReplace,
   generativeRecolor,
+  generativeRestore,
   theme,
 };

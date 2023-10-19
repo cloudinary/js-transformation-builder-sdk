@@ -449,4 +449,14 @@ describe('Effect toJson()', () => {
       ]
     });
   });
+
+  it('effect.generativeRestore', () => {
+    const transformation = new Transformation()
+      .addAction(Effect.generativeRestore());
+    expect(transformation.toJson()).toStrictEqual({
+      actions: [
+        {actionType: 'generativeRestore'}
+      ]
+    });
+  });
 });

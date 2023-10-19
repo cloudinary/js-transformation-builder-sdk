@@ -75,7 +75,8 @@ export const ACTION_TYPE_TO_EFFECT_MODE_MAP: Record<string, string> = {
   advancedRedEye: 'adv_redeye',
   oilPaint: 'oil_paint',
   unsharpMask: 'unsharp_mask',
-  makeTransparent: 'make_transparent'
+  makeTransparent: 'make_transparent',
+  generativeRestore: 'gen_restore'
 };
 
 export const ACTION_TYPE_TO_QUALITY_MODE_MAP: Record<string, string> = {
