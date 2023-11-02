@@ -390,12 +390,19 @@ describe('Effect toJson()', () => {
 
   it('effect.GenerativeReplace', () => {
     const transformation = new Transformation()
-      .addAction(Effect.generativeReplace().from('ceiling').to('sunny sky').preserveGeometry())
       .addAction(Effect.generativeReplace().from('sunny sky').to('dark sky'))
-      .addAction(Effect.generativeReplace().from('sunny sky').to('dark sky').preserveGeometry(false));
+      .addAction(Effect.generativeReplace().from('ceiling').to('sunny sky').preserveGeometry())
+      .addAction(Effect.generativeReplace().from('sunny sky').to('dark sky').preserveGeometry(false))
+      .addAction(Effect.generativeReplace().from('ceiling').to('sunny sky').detectMultiple())
+      .addAction(Effect.generativeReplace().from('ceiling').to('sunny sky').detectMultiple(false));
 
     expect(transformation.toJson()).toStrictEqual({
       actions: [
+        {
+          actionType: 'generativeReplace',
+          from: 'sunny sky',
+          to: 'dark sky',
+        },
         {
           actionType: 'generativeReplace',
           from: 'ceiling',
@@ -409,8 +416,14 @@ describe('Effect toJson()', () => {
         },
         {
           actionType: 'generativeReplace',
-          from: 'sunny sky',
-          to: 'dark sky',
+          from: 'ceiling',
+          to: 'sunny sky',
+          detectMultiple: true
+        },
+        {
+          actionType: 'generativeReplace',
+          from: 'ceiling',
+          to: 'sunny sky',
         }
       ]
     });
@@ -418,13 +431,20 @@ describe('Effect toJson()', () => {
 
   it('effect.GenerativeRecolor', () => {
     const transformation = new Transformation()
+      .addAction(Effect.generativeRecolor('something', 'red'))
       .addAction(Effect.generativeRecolor('something', 'red').multiple())
       .addAction(Effect.generativeRecolor('something', 'red').multiple(false))
-      .addAction(Effect.generativeRecolor('something', 'red'))
+      .addAction(Effect.generativeRecolor('something', 'red').detectMultiple())
+      .addAction(Effect.generativeRecolor('something', 'red').detectMultiple(false))
       .addAction(Effect.generativeRecolor(['something', 'else'], 'red'));
 
     expect(transformation.toJson()).toStrictEqual({
       actions: [
+        {
+          actionType: 'generativeRecolor',
+          prompts: ['something'],
+          toColor: 'red',
+        },
         {
           actionType: 'generativeRecolor',
           prompts: ['something'],
@@ -435,6 +455,12 @@ describe('Effect toJson()', () => {
           actionType: 'generativeRecolor',
           prompts: ['something'],
           toColor: 'red',
+        },
+        {
+          actionType: 'generativeRecolor',
+          prompts: ['something'],
+          toColor: 'red',
+          detectMultiple: true,
         },
         {
           actionType: 'generativeRecolor',
