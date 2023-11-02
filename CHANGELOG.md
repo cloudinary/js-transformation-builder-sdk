@@ -1,3 +1,11 @@
+1.8.0 / 2023-11-02
+==================
+
+- Add `decectMultiple` method to `GenerativeReplace`
+- Add `removeShadow` method to `GenerativeRemove`
+- Create `decectMultiple` alias for `GenerativeRecolor#multiple` method to be compatible with other "generative" actions
+- Fix parameters delimiter in BackgroundRemoval action that caused producing invalid URLs
+
 1.7.0 / 2023-10-19
 ==================
 
