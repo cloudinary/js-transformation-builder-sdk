@@ -39,6 +39,8 @@ describe('effect.fromJson', () => {
       { actionType: 'dropshadow', azimuth: 20 },
       { actionType: 'dropshadow', spread: 30, elevation: 20, azimuth: 60 },
       { actionType: 'generativeReplace', from: 'sunny sky', to: 'dark sky', preserveGeometry: true },
+      { actionType: 'generativeReplace', from: 'sunny sky', to: 'dark sky', detectMultiple: true },
+      { actionType: 'generativeReplace', from: 'sunny sky', to: 'dark sky', preserveGeometry: true, detectMultiple: true },
       { actionType: 'generativeRecolor', prompts: ['something'], toColor: 'red', detectMultiple: true },
       { actionType: 'generativeRecolor', prompts: ['something', 'else'], toColor: 'blue', detectMultiple: false },
       { actionType: 'generativeRestore' }
@@ -81,7 +83,9 @@ describe('effect.fromJson', () => {
       'e_dropshadow:azimuth_20',
       'e_dropshadow:azimuth_60;elevation_20;spread_30',
       'e_gen_replace:from_sunny sky;to_dark sky;preserve-geometry_true',
-      'e_gen_recolor:prompt_something;multiple_true;to-color_red',
+      'e_gen_replace:from_sunny sky;to_dark sky;multiple_true',
+      'e_gen_replace:from_sunny sky;to_dark sky;preserve-geometry_true;multiple_true',
+      'e_gen_recolor:prompt_something;to-color_red;multiple_true',
       'e_gen_recolor:prompt_(something;else);to-color_blue',
       'e_gen_restore'
     ].join('/'));

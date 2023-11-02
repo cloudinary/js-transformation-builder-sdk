@@ -14,6 +14,7 @@ class GenerativeRemove extends Action {
   private _prompts: Array<string> = [];
   private _regions: Array<RectangleRegion> = [];
   private _detectMultiple = false;
+  private _removeShadow = false;
 
   constructor() {
     super();
@@ -33,9 +34,7 @@ class GenerativeRemove extends Action {
     this._regions = value;
 
     if (this._regions.length > 0) {
-      this._actionModel.regions = this._regions.map((region) =>
-        region.toJson()
-      );
+      this._actionModel.regions = this._regions.map((region) => region.toJson());
     }
 
     return this;
@@ -46,6 +45,16 @@ class GenerativeRemove extends Action {
 
     if (this._detectMultiple) {
       this._actionModel.detectMultiple = this._detectMultiple;
+    }
+
+    return this;
+  }
+
+  removeShadow(value = true) {
+    this._removeShadow = value;
+
+    if (this._removeShadow) {
+      this._actionModel.removeShadow = this._removeShadow;
     }
 
     return this;
@@ -65,23 +74,23 @@ class GenerativeRemove extends Action {
       }
     }
 
-    this.addQualifier(
-      new Qualifier("e", `gen_remove:${qualifierValue.toString()}`)
-    );
+    if (this._detectMultiple) {
+      qualifierValue.addValue("multiple_true");
+    }
+
+    if (this._removeShadow) {
+      qualifierValue.addValue("remove-shadow_true");
+    }
+
+    this.addQualifier(new Qualifier("e", `gen_remove:${qualifierValue.toString()}`));
   }
 
   private preparePromptValue() {
     const prompts = this._prompts;
-    const detectMultiple = this._detectMultiple;
-
     const qualifierValue = new QualifierValue().setDelimiter(";");
 
     if (prompts.length === 1) {
       qualifierValue.addValue(`prompt_${prompts[0]}`);
-
-      if (detectMultiple) {
-        qualifierValue.addValue("multiple_true");
-      }
     } else {
       qualifierValue.addValue(`prompt_(${prompts.join(";")})`);
     }
@@ -105,15 +114,11 @@ class GenerativeRemove extends Action {
   }
 
   static fromJson(actionModel: IGenerativeRemoveModel): GenerativeRemove {
-    const { prompts, regions, detectMultiple } = actionModel;
+    const { prompts, regions, detectMultiple, removeShadow } = actionModel;
     const result = new this();
 
     if (regions) {
-      result.region(
-        ...regions.map(
-          ({ x, y, width, height }) => new RectangleRegion(x, y, width, height)
-        )
-      );
+      result.region(...regions.map(({ x, y, width, height }) => new RectangleRegion(x, y, width, height)));
     }
 
     if (prompts) {
@@ -122,6 +127,10 @@ class GenerativeRemove extends Action {
 
     if (detectMultiple) {
       result.detectMultiple(detectMultiple);
+    }
+
+    if (removeShadow) {
+      result.removeShadow(removeShadow);
     }
 
     return result;

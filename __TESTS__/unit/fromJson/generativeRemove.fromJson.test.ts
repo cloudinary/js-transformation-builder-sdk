@@ -5,16 +5,22 @@ describe("generativeRemove.fromJson", () => {
     const transformation = fromJson({
       actions: [
         { actionType: "generativeRemove", prompts: ["dog"] },
+        { actionType: "generativeRemove", prompts: ["dog", "cat"] },
         {
           actionType: "generativeRemove",
           prompts: ["dog"],
           detectMultiple: true,
         },
-        { actionType: "generativeRemove", prompts: ["dog", "cat"] },
         {
           actionType: "generativeRemove",
-          prompts: ["dog", "cat"],
+          prompts: ["dog"],
+          removeShadow: true,
+        },
+        {
+          actionType: "generativeRemove",
+          prompts: ["dog"],
           detectMultiple: true,
+          removeShadow: true,
         },
         {
           actionType: "generativeRemove",
@@ -32,9 +38,10 @@ describe("generativeRemove.fromJson", () => {
 
     expect(transformation.toString().split("/")).toStrictEqual([
       "e_gen_remove:prompt_dog",
+      "e_gen_remove:prompt_(dog;cat)",
       "e_gen_remove:prompt_dog;multiple_true",
-      "e_gen_remove:prompt_(dog;cat)",
-      "e_gen_remove:prompt_(dog;cat)",
+      "e_gen_remove:prompt_dog;remove-shadow_true",
+      "e_gen_remove:prompt_dog;multiple_true;remove-shadow_true",
       "e_gen_remove:region_(x_10;y_10;w_100;h_100)",
       "e_gen_remove:region_((x_10;y_10;w_100;h_100);(x_500;y_500;w_200;h_200))",
     ]);

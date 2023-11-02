@@ -1,6 +1,6 @@
 import { IActionModel } from "./IActionModel.js";
 import { ForegroundObjectValue } from "../../qualifiers/foregroundObject.js";
-import {SystemColors} from "../../qualifiers/color.js";
+import { SystemColors } from "../../qualifiers/color.js";
 
 interface IEffectActionWithLevelModel extends IActionModel {
   level?: number;
@@ -105,6 +105,7 @@ interface IGenerativeRemoveModel extends IActionModel {
   prompts?: Array<string>;
   regions?: Array<{ x: number; y: number; width: number; height: number }>;
   detectMultiple?: boolean;
+  removeShadow?: boolean;
 }
 
 interface IGenerativeRecolorModel extends IActionModel {
@@ -117,6 +118,7 @@ interface IGenerativeReplaceModel extends IActionModel {
   from?: string;
   to?: string;
   preserveGeometry?: boolean;
+  detectMultiple?: boolean;
 }
 
 export {

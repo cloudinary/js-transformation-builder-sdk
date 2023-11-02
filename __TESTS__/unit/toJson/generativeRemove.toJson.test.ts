@@ -6,10 +6,7 @@ import { Region } from "../../../src/qualifiers/region";
 describe("GenerativeRemove.toJson()", () => {
   it("produces correct action JSON", () => {
     const testCases: Array<[GenerativeRemove, unknown]> = [
-      [
-        Effect.generativeRemove().prompt("dog"),
-        { actionType: "generativeRemove", prompts: ["dog"] },
-      ],
+      [Effect.generativeRemove().prompt("dog"), { actionType: "generativeRemove", prompts: ["dog"] }],
       [
         Effect.generativeRemove().prompt("dog").detectMultiple(),
         {
@@ -19,9 +16,23 @@ describe("GenerativeRemove.toJson()", () => {
         },
       ],
       [
-        Effect.generativeRemove().prompt("dog", "cat"),
-        { actionType: "generativeRemove", prompts: ["dog", "cat"] },
+        Effect.generativeRemove().prompt("dog").removeShadow(),
+        {
+          actionType: "generativeRemove",
+          prompts: ["dog"],
+          removeShadow: true,
+        },
       ],
+      [
+        Effect.generativeRemove().prompt("dog").detectMultiple().removeShadow(),
+        {
+          actionType: "generativeRemove",
+          prompts: ["dog"],
+          detectMultiple: true,
+          removeShadow: true,
+        },
+      ],
+      [Effect.generativeRemove().prompt("dog", "cat"), { actionType: "generativeRemove", prompts: ["dog", "cat"] }],
       [
         Effect.generativeRemove().region(Region.rectangle(50, 60, 600, 400)),
         {
@@ -30,10 +41,7 @@ describe("GenerativeRemove.toJson()", () => {
         },
       ],
       [
-        Effect.generativeRemove().region(
-          Region.rectangle(10, 20, 600, 400),
-          Region.rectangle(300, 400, 50, 60)
-        ),
+        Effect.generativeRemove().region(Region.rectangle(10, 20, 600, 400), Region.rectangle(300, 400, 50, 60)),
         {
           actionType: "generativeRemove",
           regions: [

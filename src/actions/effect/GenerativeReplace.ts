@@ -12,6 +12,7 @@ class GenerativeReplace extends Action {
   private _from: string;
   private _to: string;
   private _preserveGeometry = false;
+  private _detectMultiple = false;
 
   constructor() {
     super();
@@ -42,6 +43,16 @@ class GenerativeReplace extends Action {
     return this;
   }
 
+  detectMultiple(value = true) {
+    this._detectMultiple = value;
+
+    if (this._detectMultiple) {
+      this._actionModel.detectMultiple = this._detectMultiple;
+    }
+
+    return this;
+  }
+
   protected prepareQualifiers(): void {
     let str = `gen_replace:from_${this._from};to_${this._to}`;
 
@@ -49,11 +60,15 @@ class GenerativeReplace extends Action {
       str += `;preserve-geometry_true`;
     }
 
+    if (this._detectMultiple) {
+      str += `;multiple_true`;
+    }
+
     this.addQualifier(new Qualifier("e", str));
   }
 
   static fromJson(actionModel: IGenerativeReplaceModel): GenerativeReplace {
-    const { from, to, preserveGeometry } = actionModel;
+    const { from, to, preserveGeometry, detectMultiple } = actionModel;
     const result = new this();
 
     result.from(from);
@@ -61,6 +76,10 @@ class GenerativeReplace extends Action {
 
     if (preserveGeometry) {
       result.preserveGeometry();
+    }
+
+    if (detectMultiple) {
+      result.detectMultiple();
     }
 
     return result;

@@ -2,7 +2,7 @@ import { Action } from "../../internal/Action.js";
 import { QualifierValue } from "../../internal/qualifier/QualifierValue.js";
 import { Qualifier } from "../../internal/qualifier/Qualifier.js";
 import { IGenerativeRecolorModel } from "../../internal/models/IEffectActionModel.js";
-import {SystemColors} from "../../qualifiers/color.js";
+import { SystemColors } from "../../qualifiers/color.js";
 
 /**
  * @description A class that defines how to recolor objects in an asset using Generative AI
@@ -26,7 +26,7 @@ class GenerativeRecolor extends Action {
     this._actionModel.toColor = this._toColor;
   }
 
-  multiple(value = true) {
+  detectMultiple(value = true) {
     this._detectMultiple = value;
 
     if (this._detectMultiple) {
@@ -36,15 +36,25 @@ class GenerativeRecolor extends Action {
     return this;
   }
 
+  // Alias method to be backwards compatible
+  multiple = this.detectMultiple.bind(this);
+
   protected prepareQualifiers(): void {
     const qualifierValue = new QualifierValue().setDelimiter(";");
 
     if (this._prompts.length) {
       qualifierValue.addValue(this.preparePromptValue());
     }
+
     if (this._toColor) {
-      const formattedColor = this._toColor.match(/^#/) ? this._toColor.substr(1) : this._toColor;
+      const formattedColor = this._toColor.match(/^#/)
+        ? this._toColor.substr(1)
+        : this._toColor;
       qualifierValue.addValue(`to-color_${formattedColor}`);
+    }
+
+    if (this._detectMultiple) {
+      qualifierValue.addValue("multiple_true");
     }
 
     this.addQualifier(
@@ -54,16 +64,10 @@ class GenerativeRecolor extends Action {
 
   private preparePromptValue() {
     const prompts = this._prompts;
-    const detectMultiple = this._detectMultiple;
-
     const qualifierValue = new QualifierValue().setDelimiter(";");
 
     if (prompts.length === 1) {
       qualifierValue.addValue(`prompt_${prompts[0]}`);
-
-      if (detectMultiple) {
-        qualifierValue.addValue("multiple_true");
-      }
     } else {
       qualifierValue.addValue(`prompt_(${prompts.join(";")})`);
     }
@@ -76,7 +80,7 @@ class GenerativeRecolor extends Action {
     const result = new this(prompts, toColor);
 
     if (detectMultiple) {
-      result.multiple(detectMultiple);
+      result.detectMultiple(detectMultiple);
     }
 
     return result;
