@@ -43,7 +43,8 @@ describe('effect.fromJson', () => {
       { actionType: 'generativeReplace', from: 'sunny sky', to: 'dark sky', preserveGeometry: true, detectMultiple: true },
       { actionType: 'generativeRecolor', prompts: ['something'], toColor: 'red', detectMultiple: true },
       { actionType: 'generativeRecolor', prompts: ['something', 'else'], toColor: 'blue', detectMultiple: false },
-      { actionType: 'generativeRestore' }
+      { actionType: 'generativeRestore' },
+      { actionType: 'upscale' }
     ]});
 
     expect(transformation.toString()).toStrictEqual([
@@ -87,7 +88,8 @@ describe('effect.fromJson', () => {
       'e_gen_replace:from_sunny sky;to_dark sky;preserve-geometry_true;multiple_true',
       'e_gen_recolor:prompt_something;to-color_red;multiple_true',
       'e_gen_recolor:prompt_(something;else);to-color_blue',
-      'e_gen_restore'
+      'e_gen_restore',
+      'e_upscale'
     ].join('/'));
   });
 });
