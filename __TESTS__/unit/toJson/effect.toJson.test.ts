@@ -485,4 +485,14 @@ describe('Effect toJson()', () => {
       ]
     });
   });
+
+  it('effect.upscale', () => {
+    const transformation = new Transformation()
+      .addAction(Effect.upscale());
+    expect(transformation.toJson()).toStrictEqual({
+      actions: [
+        {actionType: 'upscale'}
+      ]
+    });
+  });
 });

@@ -486,6 +486,18 @@ function generativeRestore(): SimpleEffectAction {
 }
 
 /**
+ * @summary action
+ * @description
+ * Uses AI-based prediction to add fine detail while upscaling small images.
+ * This 'super-resolution' feature scales each dimension by four, multiplying the total number of pixels by 16.
+ * @memberOf Actions.Effect
+ * @return {Actions.Effect.SimpleEffectAction}
+ */
+function upscale(): SimpleEffectAction {
+  return new SimpleEffectAction("upscale");
+}
+
+/**
  *
  * @description Changes the main background color to the one specified, as if a 'theme change' was applied (e.g. dark mode vs light mode).
  * @param {SystemColors} color
@@ -591,6 +603,7 @@ const Effect = {
   generativeReplace,
   generativeRecolor,
   generativeRestore,
+  upscale,
   theme,
 };
 
@@ -656,5 +669,6 @@ export {
   generativeReplace,
   generativeRecolor,
   generativeRestore,
+  upscale,
   theme,
 };
