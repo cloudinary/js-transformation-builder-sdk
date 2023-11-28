@@ -93,6 +93,10 @@ interface IBlurModel extends IActionModel {
   region?: { RegionType?: string };
 }
 
+interface IBlurFacesModel extends IActionModel {
+  strength?: number | string;
+}
+
 interface IFadeInEffectActionModel extends IActionModel {
   length?: number;
 }
@@ -137,6 +141,7 @@ export {
   IDeshakeEffectModel,
   IPixelateModel,
   IBlurModel,
+  IBlurFacesModel,
   IFadeInEffectActionModel,
   IFadeOutEffectActionModel,
   IAccelerateActionModel,
