@@ -1,9 +1,9 @@
-import {NamedRegion} from "../../../qualifiers/region/NamedRegion.js";
-import {Qualifier} from "../../../internal/qualifier/Qualifier.js";
-import {Action} from "../../../internal/Action.js";
-import {IBlurModel} from "../../../internal/models/IEffectActionModel.js";
-import {IActionModel} from "../../../internal/models/IActionModel.js";
-import {custom, faces} from "../../../qualifiers/region.js";
+import {NamedRegion} from "../../qualifiers/region/NamedRegion.js";
+import {Qualifier} from "../../internal/qualifier/Qualifier.js";
+import {Action} from "../../internal/Action.js";
+import {IBlurModel} from "../../internal/models/IEffectActionModel.js";
+import {IActionModel} from "../../internal/models/IActionModel.js";
+import {custom, faces} from "../../qualifiers/region.js";
 
 /**
  * @description The Action class of the blur Builder.

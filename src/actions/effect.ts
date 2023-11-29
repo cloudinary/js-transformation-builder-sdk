@@ -1,4 +1,5 @@
-import { BlurAction } from "./effect/blur/Blur.js";
+import { BlurAction } from "./effect/Blur.js";
+import { BlurFacesAction } from "./effect/BlurFaces.js";
 import { AccelerationEffectAction } from "./effect/leveled/Accelerate.js";
 import { LoopEffectAction } from "./effect/leveled/Loop.js";
 import { CartoonifyEffect } from "./effect/Cartoonify.js";
@@ -40,6 +41,16 @@ import { GenerativeRecolor } from "./effect/GenerativeRecolor.js";
  */
 function blur(blurLevel?: number): BlurAction {
   return new BlurAction(blurLevel);
+}
+
+/**
+ * @summary action
+ * @description Applies a blurring filter to the asset.
+ * @memberOf Actions.Effect
+ * @return {Actions.Effect.BlurFacesAction}
+ */
+function blurFaces(): BlurFacesAction {
+  return new BlurFacesAction();
 }
 
 /**
@@ -581,6 +592,7 @@ const Effect = {
   noise: noise,
   vignette: vignette,
   blur: blur,
+  blurFaces: blurFaces,
   grayscale: grayscale,
   sepia: sepia,
   shadow: shadow,
