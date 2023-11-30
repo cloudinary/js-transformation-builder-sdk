@@ -328,7 +328,7 @@ describe('Effect toJson()', () => {
         {
           actionType: 'pixelate',
           squareSize: 15,
-          region: {RegionType: 'faces'}
+          region: {regionType: 'faces'}
         }
       ]
     });
@@ -342,6 +342,63 @@ describe('Effect toJson()', () => {
         {
           actionType: 'blur',
           strength: 5,
+        }
+      ]
+    });
+  });
+
+  it('effect.blur – region faces', () => {
+    const transformation = new Transformation()
+      .addAction(Effect.blur().strength(2000)
+        .region(Region.faces()));
+    expect(transformation.toJson()).toStrictEqual({
+      actions: [
+        {
+          actionType: 'blur',
+          strength: 2000,
+          "region": {
+            "regionType": "faces"
+          },
+        }
+      ]
+    });
+  });
+
+  it('effect.blur – region custom', () => {
+    const transformation = new Transformation()
+      .addAction(Effect.blur().strength(1000)
+        .region(Region.custom().width(550).height(425).x(600).y(400)));
+
+    expect(transformation.toJson()).toStrictEqual({
+      actions: [
+        {
+          actionType: 'blur',
+          strength: 1000,
+          region: {
+            regionType: "custom",
+            width: 550,
+            height: 425,
+            x: 600,
+            y: 400
+          },
+        }
+      ]
+    });
+  });
+
+  it('effect.blur – region ocr_text', () => {
+    const transformation = new Transformation()
+      .addAction(Effect.blur().strength(1000)
+        .region(Region.ocr()));
+
+    expect(transformation.toJson()).toStrictEqual({
+      actions: [
+        {
+          actionType: 'blur',
+          strength: 1000,
+          "region": {
+            "regionType": "ocr_text"
+          },
         }
       ]
     });

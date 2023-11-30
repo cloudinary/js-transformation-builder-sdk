@@ -1,7 +1,7 @@
 import {fromJson} from "../../../src/internal/fromJson";
 
 describe('effect.fromJson', () => {
-  it('should generate a url with resize actions from array of models', function () {
+  it('should generate an URL with effect actions from array of models', function () {
     const transformation = fromJson({actions:[
       { actionType: 'sepia' },
       { actionType: 'boomerang' },
@@ -29,8 +29,11 @@ describe('effect.fromJson', () => {
       { actionType: 'assistColorblind', type: 'xray' },
       { actionType: 'simulateColorblind', condition: 'rod_monochromacy' },
       { actionType: 'deshake', pixels: 16 },
-      { actionType: 'pixelate', squareSize: 15, region: { RegionType: 'faces' }},
+      { actionType: 'pixelate', squareSize: 15, region: { regionType: 'faces' }},
       { actionType: 'blur', strength: 5 },
+      { actionType: 'blur', strength: 1000, region: {regionType: 'faces'} },
+      { actionType: 'blur', strength: 500, region: {regionType: 'ocr_text'} },
+      { actionType: 'blur', strength: 50, region: { regionType: "custom", width: 400, height: 300, x: 100, y: 150 } },
       { actionType: 'fadeIn', length: 13 },
       { actionType: 'fadeOut', length: 13 },
       { actionType: 'fadeIn' },
@@ -47,7 +50,7 @@ describe('effect.fromJson', () => {
       { actionType: 'upscale' }
     ]});
 
-    expect(transformation.toString()).toStrictEqual([
+    expect(transformation.toString().split('/')).toStrictEqual([
       'e_sepia',
       'e_boomerang',
       'e_grayscale',
@@ -76,6 +79,9 @@ describe('effect.fromJson', () => {
       'e_deshake:16',
       'e_pixelate_faces:15',
       'e_blur:5',
+      'e_blur_faces:1000',
+      'e_blur_region:500,g_ocr_text',
+      'e_blur_region:50,h_300,w_400,x_100,y_150',
       'e_fade:13',
       'e_fade:-13',
       'e_fade:1000',
@@ -90,6 +96,6 @@ describe('effect.fromJson', () => {
       'e_gen_recolor:prompt_(something;else);to-color_blue',
       'e_gen_restore',
       'e_upscale'
-    ].join('/'));
+    ]);
   });
 });

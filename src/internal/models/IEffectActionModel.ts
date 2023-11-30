@@ -85,12 +85,26 @@ interface IDeshakeEffectModel extends IActionModel {
 
 interface IPixelateModel extends IActionModel {
   squareSize?: number;
-  region?: { RegionType?: string };
+  region?: { regionType?: string };
 }
 
 interface IBlurModel extends IActionModel {
   strength?: number;
-  region?: { RegionType?: string };
+  region?: IRegionModel;
+}
+
+export type IRegionModel = ICustomRegionModel | IFacesRegionModel | IOcrTextRegionModel;
+
+export interface ICustomRegionModel {
+  regionType: 'custom', width?: number | string, height?: number | string, x?: number | string, y?: number | string
+}
+
+export interface IFacesRegionModel {
+  regionType: 'faces'
+}
+
+export interface IOcrTextRegionModel {
+  regionType: 'ocr_text'
 }
 
 interface IFadeInEffectActionModel extends IActionModel {

@@ -1,4 +1,4 @@
-import { BlurAction } from "./effect/blur/Blur.js";
+import { BlurAction } from "./effect/Blur.js";
 import { AccelerationEffectAction } from "./effect/leveled/Accelerate.js";
 import { LoopEffectAction } from "./effect/leveled/Loop.js";
 import { CartoonifyEffect } from "./effect/Cartoonify.js";

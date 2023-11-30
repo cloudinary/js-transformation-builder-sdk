@@ -1,9 +1,10 @@
-import {NamedRegion} from "../../../qualifiers/region/NamedRegion.js";
-import {Qualifier} from "../../../internal/qualifier/Qualifier.js";
-import {Action} from "../../../internal/Action.js";
-import {IBlurModel} from "../../../internal/models/IEffectActionModel.js";
-import {IActionModel} from "../../../internal/models/IActionModel.js";
-import {custom, faces} from "../../../qualifiers/region.js";
+import {NamedRegion} from "../../qualifiers/region/NamedRegion.js";
+import {Qualifier} from "../../internal/qualifier/Qualifier.js";
+import {Action} from "../../internal/Action.js";
+import { IBlurModel, ICustomRegionModel, IRegionModel } from "../../internal/models/IEffectActionModel.js";
+import {IActionModel} from "../../internal/models/IActionModel.js";
+import { faces, ocr } from "../../qualifiers/region.js";
+import { CustomRegion } from "../../qualifiers/region/CustomRegion.js";
 
 /**
  * @description The Action class of the blur Builder.
@@ -28,8 +29,9 @@ class BlurAction extends Action {
    * @param {NamedRegion} blurRegion
    */
   region(blurRegion: NamedRegion): this {
-    this._actionModel.region = {RegionType: blurRegion.regionType};
     this._region = blurRegion;
+    this._actionModel.region = blurRegion.toJson() as unknown as IRegionModel;
+
     return this;
   }
 
@@ -63,42 +65,47 @@ class BlurAction extends Action {
      * We're not using the full Gravity Qualifier here to prevent the code import for such a simplistic case
      */
 
-    const str = this._strength ? `:${this._strength}` : '';
+    const strength = this._strength ? `:${this._strength}` : '';
+
     if ('_region' in this) {
       const qualifiers = this._region.qualifiers;
       // Copy qualifiers from the region "action" to the blur action
       qualifiers.forEach((q) => this.addQualifier(q));
 
-      if (this._region.regionType === 'named') {
-        this.addQualifier(new Qualifier('e', `blur_region${str}`));
+      if (this._region.regionType === 'custom') {
+        this.addQualifier(new Qualifier('e', `blur_region${strength}`));
       }
 
       if (this._region.regionType === 'ocr_text') {
-        this.addQualifier(new Qualifier('e', `blur_region${str}`));
+        this.addQualifier(new Qualifier('e', `blur_region${strength}`));
         this.addQualifier(new Qualifier('g', `ocr_text`));
       }
 
       if (this._region.regionType === 'faces') {
-        this.addQualifier(new Qualifier('e', `blur_faces${str}`));
+        this.addQualifier(new Qualifier('e', `blur_faces${strength}`));
       }
     } else {
-      this.addQualifier(new Qualifier('e', `blur${str}`));
+      this.addQualifier(new Qualifier('e', `blur${strength}`));
     }
   }
   static fromJson(actionModel: IActionModel): BlurAction {
-    const {actionType, strength, region} = (actionModel as IBlurModel);
+    const {strength, region} = (actionModel as IBlurModel);
 
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
     // This allows the inheriting classes to determine the class to be created
     const result = new this(strength);
     strength && result.strength(strength);
 
-    if(region && region.RegionType === 'faces'){
+    if(region && region.regionType === 'faces'){
       result.region(faces());
     }
 
-    if(region && region.RegionType === 'custom'){
-      result.region(custom());
+    if(region && region.regionType === 'ocr_text'){
+      result.region(ocr());
+    }
+
+    if(region && region.regionType === 'custom') {
+      result.region(CustomRegion.fromJson(region));
     }
 
     return result;
