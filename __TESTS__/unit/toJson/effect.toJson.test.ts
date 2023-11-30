@@ -347,19 +347,6 @@ describe('Effect toJson()', () => {
     });
   });
 
-  it('effect.BlurFaces', () => {
-    const transformation = new Transformation()
-      .addAction(Effect.blurFaces().strength(500));
-    expect(transformation.toJson()).toStrictEqual({
-      actions: [
-        {
-          actionType: 'blurFaces',
-          strength: 500,
-        }
-      ]
-    });
-  });
-
   it('effect.FadeIn', () => {
     const transformation = new Transformation()
       .addAction(Effect.fadeIn(50));

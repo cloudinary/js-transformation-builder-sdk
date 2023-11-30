@@ -41,8 +41,7 @@ import { AssistColorBlindEffectAction } from "../actions/effect/AssistColorBlind
 import { SimulateColorBlindEffectAction } from "../actions/effect/SimulateColorBlind.js";
 import { DeshakeEffectAction } from "../actions/effect/leveled/Deshake.js";
 import { Pixelate } from "../actions/effect/pixelate/Pixelate.js";
-import { BlurAction } from "../actions/effect/Blur.js";
-import { BlurFacesAction } from "../actions/effect/BlurFaces.js";
+import { BlurAction } from "../actions/effect/blur/Blur.js";
 import { ImproveAction } from "../actions/adjust/ImproveAction.js";
 import { DeliveryDPRAction } from "../actions/delivery/DeliveryDPRAction.js";
 import ConcatenateAction from "../actions/videoEdit/ConcatenateAction.js";
@@ -114,7 +113,6 @@ const ActionModelMap: Record<string, IHasFromJson> = {
   deshake: DeshakeEffectAction,
   pixelate: Pixelate,
   blur: BlurAction,
-  blurFaces: BlurFacesAction,
   improve: ImproveAction,
   unsharpMask: EffectActionWithStrength,
   saturation: EffectActionWithLevel,
