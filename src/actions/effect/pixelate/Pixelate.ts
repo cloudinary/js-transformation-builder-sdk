@@ -29,7 +29,7 @@ class Pixelate extends Action {
    */
   region(pixelateRegion: NamedRegion): this {
     this._region = pixelateRegion;
-    this._actionModel.region = {RegionType: this._region.regionType};
+    this._actionModel.region = {regionType: this._region.regionType};
     return this;
   }
 
@@ -69,7 +69,7 @@ class Pixelate extends Action {
       // Copy qualifiers from the region "action" to the pixelate action
       qualifiers.forEach((q) => this.addQualifier(q));
 
-      if (this._region.regionType === 'named') {
+      if (this._region.regionType === 'custom') {
         this.addQualifier(new Qualifier('e', `pixelate_region${str}`));
       }
 
@@ -87,18 +87,18 @@ class Pixelate extends Action {
   }
 
   static fromJson(actionModel: IActionModel): Pixelate {
-    const {actionType, region, squareSize } = (actionModel as IPixelateModel);
+    const { region, squareSize } = actionModel as IPixelateModel;
 
     // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
     // This allows the inheriting classes to determine the class to be created
     const result = new this(squareSize);
     squareSize && result.squareSize(squareSize);
 
-    if(region && region.RegionType === 'faces'){
+    if(region && region.regionType === 'faces'){
       result.region(faces());
     }
 
-    if(region && region.RegionType === 'custom'){
+    if(region && region.regionType === 'custom'){
       result.region(custom());
     }
 

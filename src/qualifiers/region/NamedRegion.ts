@@ -1,6 +1,6 @@
 import { Action } from "../../internal/Action.js";
 
-type RegionType = "faces" | "ocr_text" | "named" | "rectangle";
+type RegionType = "faces" | "ocr_text" | "custom" ;
 
 /**
  * @memberOf Qualifiers.Region
@@ -11,6 +11,7 @@ class NamedRegion extends Action {
   constructor(type: RegionType) {
     super();
     this.regionType = type;
+    this._actionModel.regionType = type;
   }
 }
 
