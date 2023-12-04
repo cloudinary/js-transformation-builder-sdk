@@ -1,3 +1,9 @@
+1.9.0 / 2023-12-04
+==================
+
+- Add Upscale action 
+- Add model translation to the Blur action
+
 1.8.0 / 2023-11-02
 ==================
 
