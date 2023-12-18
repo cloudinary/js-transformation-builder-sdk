@@ -62,6 +62,7 @@ import {ResizeLimitFitAction} from "./resize/ResizeLimitFitAction.js";
 import {ResizeLimitFillAction} from "./resize/ResizeLimitFillAction.js";
 import {ResizeLimitPadAction} from "./resize/ResizeLimitPadAction.js";
 import {ResizeMinimumPadAction} from "./resize/ResizeMinimumPadAction.js";
+import {ResizeAdvancedAction} from "./resize/ResizeAdvancedAction.js";
 
 /**
  * @summary action
@@ -278,6 +279,20 @@ function thumbnail(width?: string|number, height?: string|number) :ThumbResizeAc
 /**
  * @summary action
  * @description
+ * Automatically determines the best crop based on the gravity and specified dimensions.
+ * @memberOf Actions.Resize
+ * @param {number|string} width The required width of a transformed asset.
+ * @param {number|string} height The required height of a transformed asset.
+ * @return {Actions.Resize.ThumbResizeAction}
+ */
+function auto(width?: number | string, height?: number | string): ResizeAdvancedAction {
+  return new ResizeAdvancedAction('auto', width, height);
+}
+
+
+/**
+ * @summary action
+ * @description
  * Resizes the asset to fill the given width and height while retaining the original aspect ratio, but only if the
  * original asset is larger than the given limit (width and height).
  *
@@ -308,7 +323,8 @@ const Resize = {
   limitFill,
   minimumFit,
   limitPad,
-  fillPad
+  fillPad,
+  auto
 };
 export {
   Resize,
@@ -325,5 +341,6 @@ export {
   limitFill,
   minimumFit,
   limitPad,
-  fillPad
+  fillPad,
+  auto
 };

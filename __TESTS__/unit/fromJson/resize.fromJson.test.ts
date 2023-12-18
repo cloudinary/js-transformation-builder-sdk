@@ -58,7 +58,8 @@ describe('resize.fromJson', () => {
         background: {
           backgroundType: 'generativeFill'
         }
-      }
+      },
+      {actionType: 'auto', dimensions: {width: 100, height: 200}, gravity: {gravityType: 'direction', compass: 'south'}},
     ]});
 
     expect(transformation.toString()).toStrictEqual([
@@ -76,7 +77,8 @@ describe('resize.fromJson', () => {
       'c_crop,g_auto:person_100:cat_avoid,w_200',
       'c_crop,g_dog:auto:bird_30:cat_avoid,w_200',
       'b_gen_fill:prompt_hello,c_pad,w_200',
-      'ar_7.0,b_gen_fill,c_mpad,w_200'
+      'ar_7.0,b_gen_fill,c_mpad,w_200',
+      'c_auto,g_south,h_200,w_100'
     ].join('/'));
   });
 
