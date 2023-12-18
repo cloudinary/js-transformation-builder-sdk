@@ -477,4 +477,25 @@ describe('resize.toJson()', () => {
       ]
     });
   });
+
+  it('auto', () => {
+    const transformation = new Transformation()
+      .addAction(Resize.auto().width(200).height(100).gravity('south'));
+    expect(transformation.toJson()).toStrictEqual({
+      actions: [
+        {
+          "actionType": "auto",
+          "dimensions": {
+            "width": 200,
+            "height": 100,
+          },
+          gravity: {
+            compass: "south",
+            gravityType: "direction"
+          }, 
+        },
+      ]
+    });
+  });
+
 });

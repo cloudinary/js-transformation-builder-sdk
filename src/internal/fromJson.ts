@@ -69,6 +69,7 @@ import { BorderAction } from "../actions/border.js";
 import { GenerativeRemove } from "../actions/effect/GenerativeRemove.js";
 import { GenerativeReplace } from "../actions/effect/GenerativeReplace.js";
 import { GenerativeRecolor } from "../actions/effect/GenerativeRecolor.js";
+import {ResizeAdvancedAction} from "../actions/resize/ResizeAdvancedAction";
 
 const ActionModelMap: Record<string, IHasFromJson> = {
   scale: ResizeScaleAction,
@@ -148,6 +149,7 @@ const ActionModelMap: Record<string, IHasFromJson> = {
   generativeRecolor: GenerativeRecolor,
   generativeRestore: SimpleEffectAction,
   upscale: SimpleEffectAction,
+  auto: ResizeAdvancedAction,
 };
 
 /**
