@@ -62,7 +62,7 @@ import {ResizeLimitFitAction} from "./resize/ResizeLimitFitAction.js";
 import {ResizeLimitFillAction} from "./resize/ResizeLimitFillAction.js";
 import {ResizeLimitPadAction} from "./resize/ResizeLimitPadAction.js";
 import {ResizeMinimumPadAction} from "./resize/ResizeMinimumPadAction.js";
-import {ResizeAdvancedAction} from "./resize/ResizeAdvancedAction";
+import {ResizeAdvancedAction} from "./resize/ResizeAdvancedAction.js";
 
 /**
  * @summary action

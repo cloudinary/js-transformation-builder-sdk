@@ -492,7 +492,7 @@ describe('resize.toJson()', () => {
           gravity: {
             compass: "south",
             gravityType: "direction"
-          }, 
+          },
         },
       ]
     });
