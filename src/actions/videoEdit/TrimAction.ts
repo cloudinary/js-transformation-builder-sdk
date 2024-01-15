@@ -39,7 +39,7 @@ class TrimAction extends Action {
    * @return {this}
    */
   startOffset(offset: string|number): this {
-    this._actionModel.startOffset = +offset;
+    this._actionModel.startOffset = getAuto(offset) || +offset;
     return this.addQualifier(new Qualifier('so', this.parseVal(offset)));
   }
 
@@ -52,7 +52,7 @@ class TrimAction extends Action {
    * @return {this}
    */
   endOffset(offset: string|number): this {
-    this._actionModel.endOffset = +offset;
+    this._actionModel.endOffset = getAuto(offset) || +offset;
     return this.addQualifier(new Qualifier('eo', this.parseVal(offset)));
   }
 
@@ -89,5 +89,11 @@ class TrimAction extends Action {
     return result;
   }
 }
+
+
+/**
+ * Helper function that either gets 'auto' or return null
+ */
+const getAuto = (value: unknown): 'auto' | null => value === 'auto' ? value : null;
 
 export default TrimAction;

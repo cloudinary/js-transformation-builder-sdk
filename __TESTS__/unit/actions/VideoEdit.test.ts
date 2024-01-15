@@ -81,6 +81,17 @@ describe('Tests for Transformation Action -- VideoEdit', () => {
     expect(tx).toBe('du_10p,eo_4p,so_3p');
   });
 
+  it('Tests an auto offset', () => {
+    const tx = new Transformation()
+      .videoEdit(
+        VideoEdit.trim()
+          .startOffset("auto")
+          .endOffset("auto")
+      ).toString();
+
+    expect(tx).toContain('eo_auto,so_auto');
+  });
+
   it('Creates a Transformation with volume string', () => {
     const tx = new Transformation()
       .videoEdit(VideoEdit.volume('5db'))
