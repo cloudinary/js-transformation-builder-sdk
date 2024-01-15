@@ -50,4 +50,21 @@ describe('videoEdit.trim toJson', () => {
       ]
     });
   });
+
+  it('videoEdit.trim with auto offsets', () => {
+    const transformation = new Transformation()
+      .videoEdit(VideoEdit.trim()
+        .startOffset("auto")
+        .endOffset("auto")
+      );
+    expect(transformation.toJson()).toStrictEqual({
+      actions: [
+        {
+          actionType: 'trimVideo',
+          startOffset: "auto",
+          endOffset: "auto",
+        }
+      ]
+    });
+  });
 });
