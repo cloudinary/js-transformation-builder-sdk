@@ -17,7 +17,7 @@ import {Timeline} from "../../../src/qualifiers/timeline";
 import {BlendMode} from "../../../src/qualifiers/blendMode";
 import {TextStyle} from "../../../src/qualifiers/textStyle";
 import {FontAntialias} from "../../../src/qualifiers/FontAntialias";
-import {Underlay} from "../../../src/actions";
+import {PSDTools, Underlay} from "../../../src/actions";
 import {UnsupportedError} from "../../../src/internal/utils/unsupportedError";
 
 describe('Overlay & Underlay toJson', () => {
@@ -269,13 +269,13 @@ describe('Overlay & Underlay toJson', () => {
     transformation.addAction(
       Overlay.source(Source.image('sample').transformation(new Transformation()
         .resize(scale(100).width(800))
-        .backgroundColor("red")
+        .psdTools(PSDTools.clip().byIndex(9))
       ))
     );
 
     expect(transformation.toJson()).toStrictEqual(
       {
-        error: new UnsupportedError('unsupported action BackgroundColor')
+        error: new UnsupportedError('unsupported action ClipAction')
       }
     );
   });
