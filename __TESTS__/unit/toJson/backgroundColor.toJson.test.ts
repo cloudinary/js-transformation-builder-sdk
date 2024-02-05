@@ -16,8 +16,8 @@ describe('BackgroundColor toJson()', () => {
       .backgroundColor('white')
       .backgroundColor('#ffffff');
     expect(transformation.toJson()).toStrictEqual({actions: [
-        { actionType: 'backgroundColor', color: 'white' },
-        { actionType: 'backgroundColor', color: '#ffffff' }
-      ]});
+      { actionType: 'backgroundColor', color: 'white' },
+      { actionType: 'backgroundColor', color: '#ffffff' }
+    ]});
   })
 });
