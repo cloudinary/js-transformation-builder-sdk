@@ -1,3 +1,8 @@
+1.10.3 / 2024-02-05
+==================
+
+- Internal improvements in backgroundColor action
+
 1.10.2 / 2024-02-05
 ==================
 
