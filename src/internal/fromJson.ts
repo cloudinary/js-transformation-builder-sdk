@@ -70,6 +70,7 @@ import { GenerativeRemove } from "../actions/effect/GenerativeRemove.js";
 import { GenerativeReplace } from "../actions/effect/GenerativeReplace.js";
 import { GenerativeRecolor } from "../actions/effect/GenerativeRecolor.js";
 import {ResizeAdvancedAction} from "../actions/resize/ResizeAdvancedAction.js";
+import {BackgroundColor} from "../actions/background/actions/BackgroundColor.js";
 
 const ActionModelMap: Record<string, IHasFromJson> = {
   scale: ResizeScaleAction,
@@ -150,6 +151,7 @@ const ActionModelMap: Record<string, IHasFromJson> = {
   generativeRestore: SimpleEffectAction,
   upscale: SimpleEffectAction,
   auto: ResizeAdvancedAction,
+  backgroundColor: BackgroundColor,
 };
 
 /**

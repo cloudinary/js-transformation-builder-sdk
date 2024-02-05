@@ -135,6 +135,10 @@ interface IGenerativeReplaceModel extends IActionModel {
   detectMultiple?: boolean;
 }
 
+interface IBackgroundColorModel extends IActionModel {
+  color?: SystemColors | string;
+}
+
 export {
   IEffectActionWithLevelModel,
   ISimpleEffectActionModel,
@@ -159,4 +163,5 @@ export {
   IGenerativeRemoveModel,
   IGenerativeReplaceModel,
   IGenerativeRecolorModel,
+  IBackgroundColorModel,
 };
