@@ -19,5 +19,5 @@ describe('BackgroundColor toJson()', () => {
       { actionType: 'backgroundColor', color: 'white' },
       { actionType: 'backgroundColor', color: '#ffffff' }
     ]});
-  })
+  });
 });
