@@ -246,7 +246,7 @@ class Transformation {
    * @return {this}
    */
   backgroundColor(color: SystemColors): this {
-    return this.addAction(new BackgroundColor(prepareColor(color)));
+    return this.addAction(new BackgroundColor(color));
   }
 
   /**
