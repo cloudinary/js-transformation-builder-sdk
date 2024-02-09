@@ -92,6 +92,22 @@ describe('resize.fromJson', () => {
     expect(transformation.toString()).toStrictEqual(fromJson(json).toString());
   });
 
+  it('Should generate BlurredBackground from model', ()=>{
+    const transformation1 = fromJson({actions: [
+      {actionType: 'pad', dimensions: {width: 100}, background: {backgroundType: 'blurred'}},
+    ]});
+    const transformation2 = fromJson({actions: [
+      {actionType: 'pad', dimensions: {width: 100}, background: {backgroundType: 'blurred', intensity: 2000}},
+    ]});
+    const transformation3 = fromJson({actions: [
+      {actionType: 'pad', dimensions: {width: 100}, background: {backgroundType: 'blurred', brightness: 500}},
+    ]});
+
+    expect(transformation1.toString()).toStrictEqual('b_blurred:100:0,c_pad,w_100');
+    expect(transformation2.toString()).toStrictEqual('b_blurred:2000:0,c_pad,w_100');
+    expect(transformation3.toString()).toStrictEqual('b_blurred:100:500,c_pad,w_100');
+  });
+
   it('Should generate AutoBackground from model', ()=>{
     const transformation = fromJson({actions: [
       {actionType: 'pad', dimensions: {width: 100}, background: {backgroundType: 'auto'}},

@@ -139,17 +139,38 @@ describe('Tests for Transformation Action -- Background', () => {
       )
       .toString();
 
-    expect(tx).toContain('b_blurred');
+    expect(tx).toContain('b_blurred,');
   });
 
-  it('Test blurred background with one qualifiers', () => {
+  it('Test blurred background with intensity qualifier only', () => {
     const tx = new Transformation()
       .resize(Resize.pad(250, 250)
-        .background(blurred().intensity(100).brightness(100))
+        .background(blurred().intensity(500))
       )
       .toString();
 
-    expect(tx).toContain('b_blurred:100:100');
+    expect(tx).toContain('b_blurred:500,');
+  });
+
+  it('Test blurred background with brightness qualifier only', () => {
+    const tx = new Transformation()
+      .resize(Resize.pad(250, 250)
+        .background(blurred().brightness(500))
+      )
+      .toString();
+
+    // default intensity = 100
+    expect(tx).toContain('b_blurred:100:500,');
+  });
+
+  it('Test blurred background with two qualifiers', () => {
+    const tx = new Transformation()
+      .resize(Resize.pad(250, 250)
+        .background(blurred().intensity(200).brightness(100))
+      )
+      .toString();
+
+    expect(tx).toContain('b_blurred:200:100,');
   });
 
   describe('Test generative fill background', () => {
