@@ -22,7 +22,7 @@ import {
 } from "../../qualifiers/background.js";
 import {BackgroundAutoPredominantQualifier} from "../../qualifiers/background/shared/auto/BackgroundAutoPredominantQualifier.js";
 import {BackgroundGenerativeFillQualifier} from "../../qualifiers/background/shared/BackgroundGenerativeFillQualifier.js";
-import {DEFAULT_BRIGHTNESS, DEFAULT_INTENSITY} from "../../qualifiers/background/shared/BlurredBackgroundAction";
+import {DEFAULT_BRIGHTNESS, DEFAULT_INTENSITY} from "../../qualifiers/background/shared/BlurredBackgroundAction.js";
 
 /**
  * Create BackgroundQualifier from IBlurredBackgroundModel
