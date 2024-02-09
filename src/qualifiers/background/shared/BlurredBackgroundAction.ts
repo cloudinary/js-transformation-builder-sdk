@@ -1,5 +1,8 @@
 import {BackgroundQualifier} from "./base/BackgroundQualifier.js";
 
+export const DEFAULT_INTENSITY = 100;
+export const DEFAULT_BRIGHTNESS = 0;
+
 /**
  * @description A class for blurred background transformations.
  * @memberOf Qualifiers.Background
@@ -34,11 +37,15 @@ class BlurredBackgroundAction extends BackgroundQualifier {
    */
   toString(): string {
     // b_blurred:{intensity}:{brightness}
-    return `
-    b_blurred
-    ${this.intensityLevel ? `:${this.intensityLevel}` : ''}
-    ${this.brightnessLevel ? `:${this.brightnessLevel}` : ''}
-    `.replace(/\s+/g, '');
+
+    const intensity = this.intensityLevel !== undefined ? `:${this.intensityLevel}` : '';
+    const brightness = this.brightnessLevel !== undefined
+      ? this.intensityLevel !== undefined
+        ? `:${this.brightnessLevel}`
+        : `:${DEFAULT_INTENSITY}:${this.brightnessLevel}`
+      : '';
+
+    return `b_blurred${intensity}${brightness}`;
   }
 }
 
