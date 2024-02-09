@@ -1,3 +1,8 @@
+1.11.0 / 2024-02-09
+==================
+
+- Fix handling of blurred background params when only brightness specified
+
 1.10.3 / 2024-02-05
 ==================
 
