@@ -37,15 +37,15 @@ class BlurredBackgroundAction extends BackgroundQualifier {
    */
   toString(): string {
     // b_blurred:{intensity}:{brightness}
-    return `
-    b_blurred
-    ${this.intensityLevel !== undefined ? `:${this.intensityLevel}` : ''}
-    ${this.brightnessLevel !== undefined 
-      ? this.intensityLevel !== undefined 
-        ? `:${this.brightnessLevel}` 
-        : `:${DEFAULT_INTENSITY}:${this.brightnessLevel}` 
-      : ''}
-    `.replace(/\s+/g, '');
+
+    const intensity = this.intensityLevel !== undefined ? `:${this.intensityLevel}` : '';
+    const brightness = this.brightnessLevel !== undefined
+      ? this.intensityLevel !== undefined
+        ? `:${this.brightnessLevel}`
+        : `:${DEFAULT_INTENSITY}:${this.brightnessLevel}`
+      : '';
+
+    return `b_blurred${intensity}${brightness}`;
   }
 }
 
