@@ -58,7 +58,8 @@ export const ACTION_TYPE_TO_CROP_MODE_MAP: Record<string, string> = {
   minimumFit: 'mfit',
   thumbnail: 'thumb',
   limitPad: 'lpad',
-  minimumPad: 'mpad'
+  minimumPad: 'mpad',
+  autoPad: 'auto_pad'
 };
 
 export const ACTION_TYPE_TO_DELIVERY_MODE_MAP: Record<string, string> = {

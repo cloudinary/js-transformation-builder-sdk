@@ -63,6 +63,7 @@ import {ResizeLimitFillAction} from "./resize/ResizeLimitFillAction.js";
 import {ResizeLimitPadAction} from "./resize/ResizeLimitPadAction.js";
 import {ResizeMinimumPadAction} from "./resize/ResizeMinimumPadAction.js";
 import {ResizeAdvancedAction} from "./resize/ResizeAdvancedAction.js";
+import {ResizeAutoPadAction} from "./resize/ResizeAutoPadAction.js";
 
 /**
  * @summary action
@@ -309,6 +310,22 @@ function limitPad(width?: string|number, height?: string|number) :ResizeLimitPad
 }
 
 
+/**
+ * @summary action
+ * @description
+ * Tries to prevent a "bad crop" by first attempting to use the auto cropping mode, but adding some padding
+ * if the algorithm determines that more of the original image needs to be included in the final image.
+ *
+ * @memberOf Actions.Resize
+ * @param {number|string} width The required width of a transformed asset.
+ * @param {number|string} height The required height of a transformed asset.
+ * @return {Actions.Resize.ResizeAutoPadAction}
+ */
+function autoPad(width?: string|number, height?: string|number): ResizeAutoPadAction {
+  return new ResizeAutoPadAction('auto_pad', width, height);
+}
+
+
 const Resize = {
   imaggaScale,
   imaggaCrop,
@@ -324,7 +341,8 @@ const Resize = {
   minimumFit,
   limitPad,
   fillPad,
-  auto
+  auto,
+  autoPad
 };
 export {
   Resize,
@@ -342,5 +360,6 @@ export {
   minimumFit,
   limitPad,
   fillPad,
-  auto
+  auto,
+  autoPad
 };

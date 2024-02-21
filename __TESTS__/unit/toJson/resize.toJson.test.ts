@@ -498,4 +498,23 @@ describe('resize.toJson()', () => {
     });
   });
 
+  it('autoPad', () => {
+    const transformation = new Transformation()
+      .addAction(Resize.autoPad().width(200).height(100).background('red'));
+    expect(transformation.toJson()).toStrictEqual({
+      actions: [
+        {
+          "actionType": "autoPad",
+          "dimensions": {
+            "width": 200,
+            "height": 100,
+          },
+          background: {
+            backgroundType: "color",
+            color: "red"
+          },
+        },
+      ]
+    });
+  });
 });
