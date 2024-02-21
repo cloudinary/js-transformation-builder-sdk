@@ -2,7 +2,7 @@ import {Transformation} from "../../../../src";
 import {Resize, autoPad} from "../../../../src/actions/resize";
 import {Background} from "../../../../src/qualifiers";
 
-describe('Tests for Transformation Action -- Resize.auto', () => {
+describe('Tests for Transformation Action -- Resize.autoPad', () => {
   it('Ensures it generates the right transformation', () => {
     const tx = new Transformation().resize(autoPad(250, 250)).toString();
     expect(tx).toContain('c_auto_pad,g_auto,h_250,w_250');
