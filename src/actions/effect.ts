@@ -508,6 +508,15 @@ function theme(color: SystemColors): ThemeEffect {
 }
 
 /**
+ *
+ * @description Uses AI to analyze an image and make adjustments to enhance the appeal of the image.
+ * @return {Actions.Effect.Enhance}
+ */
+function enhance(): SimpleEffectAction {
+  return new SimpleEffectAction("enhance");
+}
+
+/**
  * @description Defines effects that you can apply to transform your assets.
  * @memberOf Actions
  * @namespace Effect
@@ -605,6 +614,7 @@ const Effect = {
   generativeRestore,
   upscale,
   theme,
+  enhance
 };
 
 export declare type EffectActions =
@@ -671,4 +681,5 @@ export {
   generativeRestore,
   upscale,
   theme,
+  enhance,
 };

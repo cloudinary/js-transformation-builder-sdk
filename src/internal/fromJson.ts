@@ -152,6 +152,7 @@ const ActionModelMap: Record<string, IHasFromJson> = {
   upscale: SimpleEffectAction,
   auto: ResizeAdvancedAction,
   backgroundColor: BackgroundColor,
+  enhance: SimpleEffectAction,
 };
 
 /**
