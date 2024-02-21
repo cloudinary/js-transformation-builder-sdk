@@ -3,7 +3,6 @@ import {Qualifier} from "../../internal/qualifier/Qualifier.js";
 import {IActionModel} from "../../internal/models/IActionModel.js";
 import {createBackgroundModel, IBackgroundModel} from "../../internal/models/createBackgroundModel.js";
 import {createBackgroundFromModel} from "../../internal/models/createBackgroundFromModel.js";
-import {IResizeAutoPadModel} from "../../internal/models/IResizeAutoPadModel.js";
 import {ResizeSimpleAction} from "./ResizeSimpleAction.js";
 
 /**
@@ -13,8 +12,6 @@ import {ResizeSimpleAction} from "./ResizeSimpleAction.js";
  * @see Visit {@link Actions.Resize| Resize} for examples
  */
 class ResizeAutoPadAction extends ResizeSimpleAction {
-  protected _actionModel: IResizeAutoPadModel;
-
   constructor(cropType: string, cropWidth: number | string, cropHeight?: number | string) {
     super(cropType, cropWidth, cropHeight);
 
