@@ -47,7 +47,8 @@ describe('effect.fromJson', () => {
       { actionType: 'generativeRecolor', prompts: ['something'], toColor: 'red', detectMultiple: true },
       { actionType: 'generativeRecolor', prompts: ['something', 'else'], toColor: 'blue', detectMultiple: false },
       { actionType: 'generativeRestore' },
-      { actionType: 'upscale' }
+      { actionType: 'upscale' },
+      { actionType: 'enhance' }
     ]});
 
     expect(transformation.toString().split('/')).toStrictEqual([
@@ -95,7 +96,8 @@ describe('effect.fromJson', () => {
       'e_gen_recolor:prompt_something;to-color_red;multiple_true',
       'e_gen_recolor:prompt_(something;else);to-color_blue',
       'e_gen_restore',
-      'e_upscale'
+      'e_upscale',
+      'e_enhance'
     ]);
   });
 });
