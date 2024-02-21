@@ -51,6 +51,7 @@ describe('Tests for Transformation Action -- Effect', () => {
       .effect(Effect.deshake().shakeStrength(ShakeStrength.pixels16()))
       .effect(Effect.generativeRestore())
       .effect(Effect.upscale())
+      .effect(Effect.enhance())
       .toString();
 
     const expectedToContain = [
@@ -90,7 +91,8 @@ describe('Tests for Transformation Action -- Effect', () => {
       'e_deshake:10',
       'e_deshake:16',
       'e_gen_restore',
-      'e_upscale'
+      'e_upscale',
+      'e_enhance'
     ].join('/');
 
     expect(tx).toBe(`${expectedToContain}`);

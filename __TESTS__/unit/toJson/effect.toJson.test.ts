@@ -552,4 +552,14 @@ describe('Effect toJson()', () => {
       ]
     });
   });
+
+  it('effect.enhance', () => {
+    const transformation = new Transformation()
+      .addAction(Effect.enhance());
+    expect(transformation.toJson()).toStrictEqual({
+      actions: [
+        {actionType: 'enhance'}
+      ]
+    });
+  });
 });
