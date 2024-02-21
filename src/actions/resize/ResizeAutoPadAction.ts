@@ -15,7 +15,7 @@ class ResizeAutoPadAction extends ResizeSimpleAction {
   constructor(cropType: string, cropWidth: number | string, cropHeight?: number | string) {
     super(cropType, cropWidth, cropHeight);
 
-    this.addQualifier(new Qualifier('g', 'auto'))
+    this.addQualifier(new Qualifier('g', 'auto'));
   }
 
   /**
