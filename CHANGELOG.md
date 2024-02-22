@@ -1,3 +1,9 @@
+1.12.0 / 2024-02-22
+==================
+
+- Added Resize.autoPad action
+- Added Effect.enhance action
+
 1.11.0 / 2024-02-09
 ==================
 
