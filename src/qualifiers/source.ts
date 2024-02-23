@@ -4,6 +4,7 @@ import {TextStyle} from "./textStyle.js";
 import {SubtitlesSource} from "./source/sourceTypes/SubtitlesSource.js";
 import {FetchSource} from "./source/sourceTypes/FetchSource.js";
 import {TextSource} from "./source/sourceTypes/TextSource.js";
+import {AudioSource} from "./source/sourceTypes/AudioSource.js";
 
 /**
  * @description This namespace contains different sources that can be used in overlays and underlays
@@ -50,6 +51,17 @@ function video(publicID: string): VideoSource {
 
 /**
  * @summary qualifier
+ * @description Returns an instance of a AudioSource
+ * @memberOf Qualifiers.Source
+ * @param {string} publicID The publicID of the audio to be used as a layer
+ * @return {Qualifiers.Source.AudioSource}
+ */
+function audio(publicID: string): AudioSource {
+  return new AudioSource(publicID);
+}
+
+/**
+ * @summary qualifier
  * @description Returns an instance of an VideoSource
  * @memberOf Qualifiers.Source
  * @param {string} fileName The publicID of the video to be used as a layer
@@ -71,5 +83,5 @@ function fetch(remoteURL: string): FetchSource {
 }
 
 
-const Source = {image, text, video, subtitles, fetch};
-export {Source, image, text, video, subtitles, fetch};
+const Source = {image, text, video, subtitles, fetch, audio};
+export {Source, image, text, video, subtitles, fetch, audio};

@@ -9,6 +9,8 @@ import {ISourceModel} from "./ISourceModel.js";
 import {BaseSource} from "../../qualifiers/source/BaseSource.js";
 import {isITextSourceModel} from "./ITextSourceModel.js";
 import {TextSource} from "../../qualifiers/source/sourceTypes/TextSource.js";
+import {isIAudioSourceModel} from "./IAudioSourceModel.js";
+import {AudioSource} from "../../qualifiers/source/sourceTypes/AudioSource.js";
 
 /**
  * Create Source from given model json
@@ -22,6 +24,8 @@ export function createSourceFromModel (source: ISourceModel, transformationFromJ
     return ImageSource.fromJson(source, transformationFromJson);
   } else if (isIFetchSourceModel(source)){
     return FetchSource.fromJson(source, transformationFromJson);
+  } else if (isIAudioSourceModel(source)) {
+    return AudioSource.fromJson(source, transformationFromJson);
   } else {
     return VideoSource.fromJson(source as IVideoSourceModel, transformationFromJson);
   }

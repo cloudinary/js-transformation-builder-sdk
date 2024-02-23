@@ -6,6 +6,7 @@ import {ITimelinePositionModel} from "../../../src/internal/models/ITimelinePosi
 import {ITextSourceModel} from "../../../src/internal/models/ITextSourceModel";
 import {IFetchSourceModel} from "../../../src/internal/models/IFetchSourceModel";
 import {IVideoSourceModel} from "../../../src/internal/models/IVideoSourceModel";
+import {IAudioSourceModel} from "../../../src/internal/models/IAudioSourceModel";
 
 const position: IPositionModel = {
   offsetX: 1,
@@ -70,6 +71,34 @@ describe('Overlay & Underlay fromJson', () => {
 
     expect(overlayTransformation.toString()).toStrictEqual('l_video:dog.mp4/ar_7.0,c_scale,w_100/du_2,e_anti_removal:96,fl_layer_apply,fl_tiled,g_north_east,so_1,x_1,y_2');
     expect(underlayTransformation.toString()).toStrictEqual('u_video:dog.mp4/ar_7.0,c_scale,w_100/du_2,e_anti_removal:96,fl_layer_apply,fl_tiled,g_north_east,so_1,x_1,y_2');
+  });
+
+
+  it('Should generate Overlay for audio source', () => {
+    const source: IAudioSourceModel = {
+      sourceType: 'audio',
+      publicId: 'sample.mp3',
+      transformation: {
+        actions: [
+          {actionType: 'audioCodec', audioCodec: 'aac'}
+        ]
+      }
+    };
+
+    const timelinePosition: ITimelinePositionModel = {
+      startOffset: 1,
+      duration: 2
+    };
+
+    const overlayModel: IOverlayActionModel = {
+      actionType: 'overlay',
+      source,
+      timelinePosition,
+    };
+
+    const overlayTransformation = fromJson({actions: [overlayModel]});
+
+    expect(overlayTransformation.toString()).toStrictEqual('l_audio:sample.mp3/ac_aac/du_2,fl_layer_apply,so_1');
   });
 
   it('Should generate Overlay for fetch source', () => {

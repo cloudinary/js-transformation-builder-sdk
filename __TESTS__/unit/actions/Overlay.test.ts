@@ -11,6 +11,7 @@ import {Timeline} from "../../../src/qualifiers/timeline";
 import {base64Encode} from "../../../src/internal/utils/base64Encode";
 import {TextStyle} from "../../../src/qualifiers/textStyle";
 import {TextFit} from "../../../src/qualifiers/textFit";
+import {audioCodec} from "../../../src/actions/transcode";
 
 describe('Tests for overlay actions', () => {
   it('Tests Image on Image with publicID encoding', () => {
@@ -195,6 +196,24 @@ describe('Tests for overlay actions', () => {
     );
 
     expect(tx.toString()).toBe('l_video:sample/c_pad,w_100/du_20,fl_layer_apply,g_face,so_10');
+  });
+
+  it('Audio on Video', () => {
+    const tx = new Transformation();
+
+    tx.overlay(Overlay.source(Source.audio("sample")));
+
+    expect(tx.toString()).toBe('l_audio:sample/fl_layer_apply');
+  });
+
+  it('Audio on Video with timeline', () => {
+    const tx = new Transformation();
+
+    tx.overlay(Overlay.source(Source.audio("sample").transformation(new Transformation().transcode(audioCodec("ogg"))))
+      .timeline(Timeline.position().startOffset(10).duration(20))
+    );
+
+    expect(tx.toString()).toBe('l_audio:sample/ac_ogg/du_20,fl_layer_apply,so_10');
   });
 
   it('Tests a fetchSource without format', () => {
