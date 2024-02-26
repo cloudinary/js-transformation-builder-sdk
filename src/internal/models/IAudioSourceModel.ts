@@ -1,8 +1,10 @@
 import {ISourceModel} from "./ISourceModel.js";
+import {ITransformationModel} from "./ITransformationModel.js";
 
 export interface IAudioSourceModel extends ISourceModel {
   sourceType: 'audio';
   publicId: string;
+  transformation?: ITransformationModel;
 }
 
 /**
