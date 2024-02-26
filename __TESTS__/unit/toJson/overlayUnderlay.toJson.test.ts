@@ -19,6 +19,7 @@ import {TextStyle} from "../../../src/qualifiers/textStyle";
 import {FontAntialias} from "../../../src/qualifiers/FontAntialias";
 import {PSDTools, Underlay} from "../../../src/actions";
 import {UnsupportedError} from "../../../src/internal/utils/unsupportedError";
+import {audioCodec} from "../../../src/actions/transcode";
 
 describe('Overlay & Underlay toJson', () => {
   it('Should generate Overlay model for image source', () => {
@@ -82,6 +83,35 @@ describe('Overlay & Underlay toJson', () => {
             tiled: true,
             allowOverflow: true,
             gravity: {gravityType: 'direction', compass: 'north_east'}
+          },
+          timelinePosition: {
+            startOffset: '1',
+            duration: '2'
+          }
+        }
+      ]
+    });
+  });
+
+  it('Should generate Overlay model for audio source', () => {
+    const transformation = new Transformation();
+    transformation.addAction(
+      Overlay.source(Source.audio('sample.mp3').transformation(new Transformation().transcode(audioCodec("aac"))))
+        .timeline(Timeline.position().startOffset(1).duration(2))
+    );
+
+    expect(transformation.toJson()).toStrictEqual({
+      actions: [
+        {
+          actionType: 'overlay',
+          source: {
+            sourceType: 'audio',
+            publicId: 'sample.mp3',
+            transformation: {
+              actions: [
+                {actionType: 'audioCodec', audioCodec: "aac"}
+              ]
+            }
           },
           timelinePosition: {
             startOffset: '1',
