@@ -14,4 +14,16 @@ describe('Rotate toJson()', () => {
       ]
     });
   });
+  it('rotateByMode', () => {
+    const transformation = new Transformation()
+      .addAction(Rotate.mode('hflip'));
+    expect(transformation.toJson()).toStrictEqual({
+      actions: [
+        {
+          actionType: 'rotateByMode',
+          mode: 'hflip'
+        }
+      ]
+    });
+  });
 });

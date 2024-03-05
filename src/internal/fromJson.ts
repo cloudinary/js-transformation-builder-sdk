@@ -142,6 +142,7 @@ const ActionModelMap: Record<string, IHasFromJson> = {
   videoCodec: VideoCodecAction,
   ifCondition: ConditionalAction,
   rotateByAngle: RotateAction,
+  rotateByMode: RotateAction,
   backgroundRemoval: BackgroundRemoval,
   dropshadow: DropShadow,
   roundCorners: RoundCornersAction,
