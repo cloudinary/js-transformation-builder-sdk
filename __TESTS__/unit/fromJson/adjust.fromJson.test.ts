@@ -5,6 +5,7 @@ describe('adjust.fromJson', () => {
     const transformation = fromJson({actions:[
       { actionType: 'improve', mode: 'outdoor', blend: 30},
       { actionType: 'unsharpMask', strength: 50},
+      { actionType: 'sharpen', strength: 50},
       { actionType: 'saturation', level: 40},
       {actionType: 'contrast', level: 40},
       {actionType: 'brightness', level: 30},
@@ -15,6 +16,7 @@ describe('adjust.fromJson', () => {
     expect(transformation.toString()).toStrictEqual([
       'e_improve:outdoor:30',
       'e_unsharp_mask:50',
+      'e_sharpen:50',
       'e_saturation:40',
       'e_contrast:40',
       'e_brightness:30',

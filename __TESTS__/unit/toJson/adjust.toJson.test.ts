@@ -79,4 +79,15 @@ describe('Adjust toJson()', () => {
       }
     ]});
   });
+
+  it('adjust.sharpen', () => {
+    const transformation = new Transformation()
+      .addAction(Adjust.sharpen(45));
+    expect(transformation.toJson()).toStrictEqual({actions:[
+      {
+        actionType: 'sharpen',
+        level: 45
+      }
+    ]});
+  });
 });
