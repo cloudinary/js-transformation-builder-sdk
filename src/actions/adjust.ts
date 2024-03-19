@@ -89,7 +89,7 @@ function red(level?:number): EffectActionWithLevel {
  * @return {Actions.Effect.EffectActionWithStrength}
  */
 function sharpen(strength?:number):EffectActionWithStrength {
-  return new EffectActionWithStrength('sharpen', strength)
+  return new EffectActionWithStrength('sharpen', strength);
 }
 
 /**
