@@ -22,4 +22,4 @@ export function actionToJson(): IActionToJson {
   return {error: createUnsupportedError(`unsupported action ${this.constructor.name}`)};
 }
 
-// test
+// test2
