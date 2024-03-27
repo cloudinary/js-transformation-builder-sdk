@@ -20,7 +20,7 @@ class FlagQualifier extends Qualifier {
   }
 
   toString(): string {
-    return super.toString().replace(/\./, '%2E');
+    return super.toString().replace(/\./g, '%2E');
   }
 
   getFlagValue(): string{
