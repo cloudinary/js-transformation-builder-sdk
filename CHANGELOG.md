@@ -1,3 +1,8 @@
+1.14.0 / 2024-07-08
+==================
+
+- Support for Generative Background Replace action
+
 1.13.3 / 2024-03-27
 ==================
 
