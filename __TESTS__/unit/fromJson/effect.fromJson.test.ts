@@ -48,7 +48,9 @@ describe('effect.fromJson', () => {
       { actionType: 'generativeRecolor', prompts: ['something', 'else'], toColor: 'blue', detectMultiple: false },
       { actionType: 'generativeRestore' },
       { actionType: 'upscale' },
-      { actionType: 'enhance' }
+      { actionType: 'enhance' },
+      { actionType: 'generativeBackgroundReplace', prompt: 'dog' },
+      { actionType: 'generativeBackgroundReplace'},
     ]});
 
     expect(transformation.toString().split('/')).toStrictEqual([
@@ -97,7 +99,9 @@ describe('effect.fromJson', () => {
       'e_gen_recolor:prompt_(something;else);to-color_blue',
       'e_gen_restore',
       'e_upscale',
-      'e_enhance'
+      'e_enhance',
+      'e_gen_background_replace:prompt_dog',
+      'e_gen_background_replace'
     ]);
   });
 });

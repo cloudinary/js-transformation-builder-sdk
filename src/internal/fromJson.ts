@@ -69,9 +69,10 @@ import { BorderAction } from "../actions/border.js";
 import { GenerativeRemove } from "../actions/effect/GenerativeRemove.js";
 import { GenerativeReplace } from "../actions/effect/GenerativeReplace.js";
 import { GenerativeRecolor } from "../actions/effect/GenerativeRecolor.js";
-import {ResizeAdvancedAction} from "../actions/resize/ResizeAdvancedAction.js";
-import {BackgroundColor} from "../actions/background/actions/BackgroundColor.js";
-import {ResizeAutoPadAction} from "../actions/resize/ResizeAutoPadAction.js";
+import { ResizeAdvancedAction } from "../actions/resize/ResizeAdvancedAction.js";
+import { BackgroundColor } from "../actions/background/actions/BackgroundColor.js";
+import { ResizeAutoPadAction } from "../actions/resize/ResizeAutoPadAction.js";
+import { GenerativeBackgroundReplace } from "actions/effect/GenerativeBackgroundReplace.js";
 
 const ActionModelMap: Record<string, IHasFromJson> = {
   scale: ResizeScaleAction,
@@ -149,6 +150,7 @@ const ActionModelMap: Record<string, IHasFromJson> = {
   border: BorderAction,
   generativeRemove: GenerativeRemove,
   generativeReplace: GenerativeReplace,
+  generativeBackgroundReplace: GenerativeBackgroundReplace,
   generativeRecolor: GenerativeRecolor,
   generativeRestore: SimpleEffectAction,
   upscale: SimpleEffectAction,

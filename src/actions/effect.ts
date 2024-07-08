@@ -30,6 +30,7 @@ import { DropShadow } from "./effect/DropShadow.js";
 import { GenerativeRemove } from "./effect/GenerativeRemove.js";
 import { GenerativeReplace } from "./effect/GenerativeReplace.js";
 import { GenerativeRecolor } from "./effect/GenerativeRecolor.js";
+import { GenerativeBackgroundReplace } from "./effect/GenerativeBackgroundReplace.js";
 
 /**
  * @summary action
@@ -462,6 +463,18 @@ function generativeReplace(): GenerativeReplace {
 
 /**
  * @summary action
+ * @description Uses generative AI to replace background of your image with something else.
+ *              {@link https://cloudinary.com/documentation/transformation_reference#e_gen_background_replace|Generative Background Replace}
+ *
+ * @memberOf Actions.Effect
+ * @return {Actions.Effect.GenerativeBackgroundReplace}
+ */
+function generativeBackgroundReplace(): GenerativeBackgroundReplace {
+  return new GenerativeBackgroundReplace();
+}
+
+/**
+ * @summary action
  * @description Uses generative AI to recolor objects from your image.
  *              {@link https://cloudinary.com/documentation/transformation_reference#e_gen_recolor|Generative Recolor}
  * @param {string | string[]} prompts
@@ -610,6 +623,7 @@ const Effect = {
   dropShadow,
   generativeRemove,
   generativeReplace,
+  generativeBackgroundReplace,
   generativeRecolor,
   generativeRestore,
   upscale,
@@ -637,6 +651,7 @@ export declare type EffectActions =
   | DropShadow
   | GenerativeRemove
   | GenerativeReplace
+  | GenerativeBackgroundReplace
   | GenerativeRecolor;
 
 export {
@@ -677,6 +692,7 @@ export {
   dropShadow,
   generativeRemove,
   generativeReplace,
+  generativeBackgroundReplace,
   generativeRecolor,
   generativeRestore,
   upscale,
