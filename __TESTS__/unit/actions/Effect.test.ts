@@ -52,6 +52,8 @@ describe('Tests for Transformation Action -- Effect', () => {
       .effect(Effect.generativeRestore())
       .effect(Effect.upscale())
       .effect(Effect.enhance())
+      .effect(Effect.generativeBackgroundReplace().prompt("dog"))
+      .effect(Effect.generativeBackgroundReplace())
       .toString();
 
     const expectedToContain = [
@@ -92,7 +94,9 @@ describe('Tests for Transformation Action -- Effect', () => {
       'e_deshake:16',
       'e_gen_restore',
       'e_upscale',
-      'e_enhance'
+      'e_enhance',
+      'e_gen_background_replace:prompt_dog',
+      'e_gen_background_replace'
     ].join('/');
 
     expect(tx).toBe(`${expectedToContain}`);

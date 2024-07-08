@@ -486,6 +486,24 @@ describe('Effect toJson()', () => {
     });
   });
 
+  it('effect.GenerativeBackgroundReplace', () => {
+    const transformation = new Transformation()
+      .addAction(Effect.generativeBackgroundReplace().prompt('dog'))
+      .addAction(Effect.generativeBackgroundReplace());
+
+    expect(transformation.toJson()).toStrictEqual({
+      actions: [
+        {
+          actionType: 'generativeBackgroundReplace',
+          prompt: 'dog',
+        },
+        {
+          actionType: 'generativeBackgroundReplace',
+        },
+      ]
+    });
+  });
+
   it('effect.GenerativeRecolor', () => {
     const transformation = new Transformation()
       .addAction(Effect.generativeRecolor('something', 'red'))
