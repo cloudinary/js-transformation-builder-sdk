@@ -72,7 +72,7 @@ import { GenerativeRecolor } from "../actions/effect/GenerativeRecolor.js";
 import { ResizeAdvancedAction } from "../actions/resize/ResizeAdvancedAction.js";
 import { BackgroundColor } from "../actions/background/actions/BackgroundColor.js";
 import { ResizeAutoPadAction } from "../actions/resize/ResizeAutoPadAction.js";
-import { GenerativeBackgroundReplace } from "actions/effect/GenerativeBackgroundReplace.js";
+import { GenerativeBackgroundReplace } from "../actions/effect/GenerativeBackgroundReplace.js";
 
 const ActionModelMap: Record<string, IHasFromJson> = {
   scale: ResizeScaleAction,
