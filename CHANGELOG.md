@@ -1,3 +1,8 @@
+1.14.1 / 2024-07-08
+==================
+
+- Fixed import of GenerativeBackgroundReplace
+
 1.14.0 / 2024-07-08
 ==================
 
