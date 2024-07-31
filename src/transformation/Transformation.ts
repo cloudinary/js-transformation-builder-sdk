@@ -97,7 +97,7 @@ class Transformation {
    * @param {AnimatedAction} animatedAction
    * @return {this}
    */
-  animated(animatedAction: AnimatedAction): this {
+  animated(animatedAction: AnimatedAction | string): this {
     return this.addAction(animatedAction);
   }
 
@@ -106,7 +106,7 @@ class Transformation {
    * @param {Border} borderAction
    * @return {this}
    */
-  border(borderAction: BorderAction): this {
+  border(borderAction: BorderAction | string): this {
     return this.addAction(borderAction);
   }
 
@@ -116,7 +116,7 @@ class Transformation {
    * @param {IReshape} reshapeAction
    * @return {this}
    */
-  reshape(reshapeAction: IReshape): this {
+  reshape(reshapeAction: IReshape | string): this {
     return this.addAction(reshapeAction);
   }
 
@@ -125,7 +125,7 @@ class Transformation {
    * @param {ResizeSimpleAction} resizeAction
    * @return {this}
    */
-  resize(resizeAction: ResizeSimpleAction): this {
+  resize(resizeAction: ResizeSimpleAction | string): this {
     return this.addAction(resizeAction);
   }
 
@@ -154,7 +154,7 @@ class Transformation {
    * @param roundCornersAction
    * @return {this}
    */
-  roundCorners(roundCornersAction: RoundCornersAction): this {
+  roundCorners(roundCornersAction: RoundCornersAction | string): this {
     return this.addAction(roundCornersAction);
   }
 
@@ -163,7 +163,7 @@ class Transformation {
    * @param {LayerAction} overlayAction
    * @return {this}
    */
-  overlay(overlayAction: LayerAction): this {
+  overlay(overlayAction: LayerAction | string): this {
     return this.addAction(overlayAction);
   }
 
@@ -172,8 +172,10 @@ class Transformation {
    * @param {LayerAction} underlayAction
    * @return {this}
    */
-  underlay(underlayAction: LayerAction): this {
-    underlayAction.setLayerType('u');
+  underlay(underlayAction: LayerAction | string): this {
+    if(underlayAction instanceof LayerAction) {
+      underlayAction.setLayerType('u');
+    }
     return this.addAction(underlayAction);
   }
 
@@ -182,7 +184,7 @@ class Transformation {
    * @param {VariableAction} variableAction
    * @return {this}
    */
-  addVariable(variableAction: VariableAction): this {
+  addVariable(variableAction: VariableAction | string): this {
     return this.addAction(variableAction);
   }
 
@@ -191,7 +193,7 @@ class Transformation {
    * @param {ConditionalAction} conditionAction
    * @return {this}
    */
-  conditional(conditionAction: ConditionalAction): this {
+  conditional(conditionAction: ConditionalAction | string): this {
     return this.addAction(conditionAction);
   }
 
@@ -200,7 +202,7 @@ class Transformation {
    * @param {SimpleEffectAction} effectAction
    * @return {this}
    */
-  effect(effectAction: EffectActions): this {
+  effect(effectAction: EffectActions | string): this {
     return this.addAction(effectAction);
   }
 
@@ -209,7 +211,7 @@ class Transformation {
    * @param action
    * @return {this}
    */
-  adjust(action: IAdjustAction): this {
+  adjust(action: IAdjustAction | string): this {
     return this.addAction(action);
   }
 
@@ -218,7 +220,7 @@ class Transformation {
    * @param {RotateAction} rotateAction
    * @return {this}
    */
-  rotate(rotateAction: RotateAction): this {
+  rotate(rotateAction: RotateAction | string): this {
     return this.addAction(rotateAction);
   }
 
@@ -227,7 +229,7 @@ class Transformation {
    * @param {NamedTransformation} namedTransformation
    * @return {this}
    */
-  namedTransformation(namedTransformation: NamedTransformationAction): this {
+  namedTransformation(namedTransformation: NamedTransformationAction | string): this {
     return this.addAction(namedTransformation);
   }
 
@@ -236,7 +238,7 @@ class Transformation {
    * @param deliveryAction
    * @return {this}
    */
-  delivery(deliveryAction: IDeliveryAction): this {
+  delivery(deliveryAction: IDeliveryAction | string): this {
     return this.addAction(deliveryAction);
   }
 
@@ -254,7 +256,7 @@ class Transformation {
    * @param action
    * @return {this}
    */
-  psdTools(action: SmartObjectAction | ClipAction | GetLayerAction): this {
+  psdTools(action: SmartObjectAction | ClipAction | GetLayerAction | string): this {
     return this.addAction(action);
   }
 
@@ -263,7 +265,7 @@ class Transformation {
    * @param action
    * @return {this}
    */
-  extract(action: ExtractAction): this {
+  extract(action: ExtractAction | string): this {
     return this.addAction(action);
   }
 
@@ -288,7 +290,7 @@ class Transformation {
    * @description Inject a custom function into the image transformation pipeline.
    * @return {this}
    */
-  customFunction(customFunction: CustomFunctionAction): this {
+  customFunction(customFunction: CustomFunctionAction | string): this {
     return this.addAction(customFunction);
   }
 
@@ -297,7 +299,7 @@ class Transformation {
    * @param {Action} action
    * @return {this}
    */
-  transcode(action: ITranscodeAction): this {
+  transcode(action: ITranscodeAction | string): this {
     return this.addAction(action);
   }
 
@@ -307,7 +309,7 @@ class Transformation {
    * @param {videoEditType} action
    * @return {this}
    */
-  videoEdit(action: videoEditType): this {
+  videoEdit(action: videoEditType | string): this {
     return this.addAction(action);
   }
 
