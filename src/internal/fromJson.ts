@@ -73,6 +73,7 @@ import { ResizeAdvancedAction } from "../actions/resize/ResizeAdvancedAction.js"
 import { BackgroundColor } from "../actions/background/actions/BackgroundColor.js";
 import { ResizeAutoPadAction } from "../actions/resize/ResizeAutoPadAction.js";
 import { GenerativeBackgroundReplace } from "../actions/effect/GenerativeBackgroundReplace.js";
+import { Extract } from "../actions/effect/Extract.js";
 
 const ActionModelMap: Record<string, IHasFromJson> = {
   scale: ResizeScaleAction,
@@ -158,7 +159,8 @@ const ActionModelMap: Record<string, IHasFromJson> = {
   backgroundColor: BackgroundColor,
   autoPad: ResizeAutoPadAction,
   enhance: SimpleEffectAction,
-  sharpen: EffectActionWithStrength
+  sharpen: EffectActionWithStrength,
+  extract: Extract
 };
 
 /**

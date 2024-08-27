@@ -31,6 +31,7 @@ import { GenerativeRemove } from "./effect/GenerativeRemove.js";
 import { GenerativeReplace } from "./effect/GenerativeReplace.js";
 import { GenerativeRecolor } from "./effect/GenerativeRecolor.js";
 import { GenerativeBackgroundReplace } from "./effect/GenerativeBackgroundReplace.js";
+import { Extract } from "./effect/Extract.js";
 
 /**
  * @summary action
@@ -475,6 +476,18 @@ function generativeBackgroundReplace(): GenerativeBackgroundReplace {
 
 /**
  * @summary action
+ * @description Extracts an area or multiple areas of an image, described in natural language.
+ *              {@link https://cloudinary.com/documentation/transformation_reference#e_extract|Extract}
+ *
+ * @memberOf Actions.Effect
+ * @return {Actions.Effect.Extract}
+ */
+function extract(prompts: string | string[]): Extract {
+  return new Extract(prompts);
+}
+
+/**
+ * @summary action
  * @description Uses generative AI to recolor objects from your image.
  *              {@link https://cloudinary.com/documentation/transformation_reference#e_gen_recolor|Generative Recolor}
  * @param {string | string[]} prompts
@@ -628,7 +641,8 @@ const Effect = {
   generativeRestore,
   upscale,
   theme,
-  enhance
+  enhance,
+  extract
 };
 
 export declare type EffectActions =
@@ -652,7 +666,8 @@ export declare type EffectActions =
   | GenerativeRemove
   | GenerativeReplace
   | GenerativeBackgroundReplace
-  | GenerativeRecolor;
+  | GenerativeRecolor
+  | Extract;
 
 export {
   Effect,
@@ -698,4 +713,5 @@ export {
   upscale,
   theme,
   enhance,
+  extract
 };
