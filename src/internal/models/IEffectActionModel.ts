@@ -1,6 +1,7 @@
 import { IActionModel } from "./IActionModel.js";
 import { ForegroundObjectValue } from "../../qualifiers/foregroundObject.js";
 import { SystemColors } from "../../qualifiers/color.js";
+import { ExtractModeType } from "types/types.js";
 
 interface IEffectActionWithLevelModel extends IActionModel {
   level?: number;
@@ -143,6 +144,14 @@ interface IBackgroundColorModel extends IActionModel {
   color?: SystemColors | string;
 }
 
+
+interface IExtractModel extends IActionModel {
+  prompts: Array<string>;
+  detectMultiple?: boolean;
+  mode?: ExtractModeType;
+  invert?: boolean;
+}
+
 export {
   IEffectActionWithLevelModel,
   ISimpleEffectActionModel,
@@ -169,4 +178,5 @@ export {
   IGenerativeRecolorModel,
   IGenerativeBackgroundReplaceModel,
   IBackgroundColorModel,
+  IExtractModel
 };

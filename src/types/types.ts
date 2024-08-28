@@ -386,6 +386,10 @@ export type OutlineModeType =
   "inner_fill"|
   "fill";
 
+export type ExtractModeType =
+  "content"|
+  "mask";
+
 export type ProgressiveType =
   "semi"|
   "none"|
