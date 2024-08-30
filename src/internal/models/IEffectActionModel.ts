@@ -1,7 +1,7 @@
-import { IActionModel } from "./IActionModel.js";
-import { ForegroundObjectValue } from "../../qualifiers/foregroundObject.js";
 import { SystemColors } from "../../qualifiers/color.js";
-import { ExtractModeType } from "types/types.js";
+import { ForegroundObjectValue } from "../../qualifiers/foregroundObject.js";
+import { ExtractModeType } from "../../types/types.js";
+import { IActionModel } from "./IActionModel.js";
 
 interface IEffectActionWithLevelModel extends IActionModel {
   level?: number;
@@ -153,30 +153,8 @@ interface IExtractModel extends IActionModel {
 }
 
 export {
-  IEffectActionWithLevelModel,
-  ISimpleEffectActionModel,
-  IShadowEffectActionModel,
-  IColorizeModel,
-  ICartoonifyEffectModel,
-  IEffectOutlineModel,
-  IMakeTransparentEffectModel,
-  IDitherModel,
-  IVectorizeEffectModel,
-  IGradientFadeEffecModel,
-  IAssistColorBlindEffectModel,
-  ISimulateColorBlindEffectModel,
-  IDeshakeEffectModel,
-  IPixelateModel,
-  IBlurModel,
-  IFadeInEffectActionModel,
-  IFadeOutEffectActionModel,
-  IAccelerateActionModel,
-  IBackgroundRemovalModel,
-  IDropShadowModel,
-  IGenerativeRemoveModel,
-  IGenerativeReplaceModel,
-  IGenerativeRecolorModel,
-  IGenerativeBackgroundReplaceModel,
-  IBackgroundColorModel,
-  IExtractModel
+  IAccelerateActionModel, IAssistColorBlindEffectModel, IBackgroundColorModel, IBackgroundRemovalModel, IBlurModel, ICartoonifyEffectModel, IColorizeModel, IDeshakeEffectModel, IDitherModel, IDropShadowModel, IEffectActionWithLevelModel, IEffectOutlineModel, IExtractModel, IFadeInEffectActionModel,
+  IFadeOutEffectActionModel, IGenerativeBackgroundReplaceModel, IGenerativeRecolorModel, IGenerativeRemoveModel,
+  IGenerativeReplaceModel, IGradientFadeEffecModel, IMakeTransparentEffectModel, IPixelateModel, IShadowEffectActionModel, ISimpleEffectActionModel, ISimulateColorBlindEffectModel, IVectorizeEffectModel
 };
+
