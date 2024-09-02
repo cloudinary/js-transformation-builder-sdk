@@ -1,7 +1,7 @@
 import { IActionModel } from "./IActionModel.js";
 import { ForegroundObjectValue } from "../../qualifiers/foregroundObject.js";
 import { SystemColors } from "../../qualifiers/color.js";
-import { ExtractModeType } from "types/types.js";
+import { ExtractModeType } from "../../types/types.js";
 
 interface IEffectActionWithLevelModel extends IActionModel {
   level?: number;
