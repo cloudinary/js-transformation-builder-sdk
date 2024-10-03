@@ -26,8 +26,9 @@ class AutoFocus extends QualifierValue {
    * @param {Qualifiers.FocusOn} obj The object to focus on.
    * @param {number} weight
    */
-  static focusOn(obj: FocusOnValue, weight?: number): AutoFocus {
-    return new AutoFocus(obj, weight);
+  static focusOn(obj: FocusOnValue | string, weight?: number): AutoFocus {
+    const focusOn = obj instanceof FocusOnValue ? obj : new FocusOnValue(obj);
+    return new AutoFocus(focusOn, weight);
   }
 
   constructor(focusOn: FocusOnValue, weight?: number | string) {
