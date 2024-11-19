@@ -21,7 +21,7 @@ class BackgroundGenerativeFillQualifier extends BackgroundQualifier {
   }
 
   getPrompt(): string | undefined {
-    return this._prompt;
+    return this._prompt ? decodeURIComponent(this._prompt) : this._prompt;
   }
 
   getBackgroundType(): 'generativeFill' {
