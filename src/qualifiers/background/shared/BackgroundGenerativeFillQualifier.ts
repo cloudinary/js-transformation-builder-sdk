@@ -1,3 +1,4 @@
+import {encodePromptComponent} from "../../../internal/utils/encodePromptComponents.js";
 import {BackgroundQualifier} from "./base/BackgroundQualifier.js";
 
 /**
@@ -15,7 +16,7 @@ class BackgroundGenerativeFillQualifier extends BackgroundQualifier {
   }
 
   prompt(prompt: string): BackgroundGenerativeFillQualifier {
-    this._prompt = prompt;
+    this._prompt = prompt ? encodePromptComponent(prompt) : prompt;
     return this;
   }
 

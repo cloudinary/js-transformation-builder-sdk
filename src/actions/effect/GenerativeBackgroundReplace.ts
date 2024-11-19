@@ -1,6 +1,7 @@
 import { Action } from "../../internal/Action.js";
 import { Qualifier } from "../../internal/qualifier/Qualifier.js";
 import { IGenerativeBackgroundReplaceModel } from "../../internal/models/IEffectActionModel.js";
+import { encodePromptComponent } from "../../internal/utils/encodePromptComponents.js";
 
 /**
  * @description Uses generative AI to replace background of your image with something else.
@@ -17,7 +18,7 @@ class GenerativeBackgroundReplace extends Action {
   }
 
   prompt(value: string): GenerativeBackgroundReplace {
-    this._prompt = value;
+    this._prompt = value ? encodePromptComponent(value) : value;
     this._actionModel.prompt = value;
 
     return this;
@@ -28,7 +29,10 @@ class GenerativeBackgroundReplace extends Action {
       this.addQualifier(new Qualifier("e", "gen_background_replace"));
     } else {
       this.addQualifier(
-        new Qualifier("e", `gen_background_replace:prompt_${this._prompt}`)
+        new Qualifier(
+          "e",
+          `gen_background_replace:prompt_${this._prompt}`
+        )
       );
     }
   }
