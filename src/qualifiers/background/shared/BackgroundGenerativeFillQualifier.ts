@@ -1,3 +1,4 @@
+import {encodePromptComponent} from "../../../internal/utils/encodePromptComponents.js";
 import {BackgroundQualifier} from "./base/BackgroundQualifier.js";
 
 /**
@@ -15,7 +16,7 @@ class BackgroundGenerativeFillQualifier extends BackgroundQualifier {
   }
 
   prompt(prompt: string): BackgroundGenerativeFillQualifier {
-    this._prompt = prompt;
+    this._prompt = decodeURIComponent(prompt);
     return this;
   }
 
@@ -32,7 +33,7 @@ class BackgroundGenerativeFillQualifier extends BackgroundQualifier {
    * Override the toString() function to explicitly stringify the qualifier.
    */
   toString(): string {
-    return `b_gen_fill${this._prompt ? `:prompt_${this._prompt}` : ''}`;
+    return `b_gen_fill${this._prompt ? `:prompt_${encodePromptComponent(this._prompt)}` : ''}`;
   }
 }
 

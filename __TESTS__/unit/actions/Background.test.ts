@@ -192,5 +192,14 @@ describe('Tests for Transformation Action -- Background', () => {
 
       expect(tx).toContain('b_gen_fill:prompt_turtles in the sea');
     });
+    it('with prompt with special characters', () => {
+      const tx = new Transformation()
+        .resize(Resize.pad(250, 250)
+          .background(Background.generativeFill().prompt("turtles, in the (sea)"))
+        )
+        .toString();
+
+      expect(tx).toContain('b_gen_fill:prompt_turtles%2C in the %28sea%29');
+    });
   });
 });

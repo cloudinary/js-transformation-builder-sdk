@@ -489,6 +489,7 @@ describe('Effect toJson()', () => {
   it('effect.GenerativeBackgroundReplace', () => {
     const transformation = new Transformation()
       .addAction(Effect.generativeBackgroundReplace().prompt('dog'))
+      .addAction(Effect.generativeBackgroundReplace().prompt('test%2C test %28test%21%40%23%3F%29'))
       .addAction(Effect.generativeBackgroundReplace());
 
     expect(transformation.toJson()).toStrictEqual({
@@ -496,6 +497,10 @@ describe('Effect toJson()', () => {
         {
           actionType: 'generativeBackgroundReplace',
           prompt: 'dog',
+        },
+        {
+          actionType: 'generativeBackgroundReplace',
+          prompt: 'test, test (test!@#?)',
         },
         {
           actionType: 'generativeBackgroundReplace',
