@@ -18,7 +18,7 @@ class GenerativeBackgroundReplace extends Action {
   }
 
   prompt(value: string): GenerativeBackgroundReplace {
-    this._prompt = value ? encodePromptComponent(value) : value;
+    this._prompt = value;
     this._actionModel.prompt = decodeURIComponent(value);
 
     return this;
@@ -31,7 +31,7 @@ class GenerativeBackgroundReplace extends Action {
       this.addQualifier(
         new Qualifier(
           "e",
-          `gen_background_replace:prompt_${this._prompt}`
+          `gen_background_replace:prompt_${encodePromptComponent(this._prompt)}`
         )
       );
     }
