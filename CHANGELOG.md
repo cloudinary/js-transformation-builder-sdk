@@ -1,3 +1,8 @@
+1.16.0 / 2024-11-25
+==================
+
+- Escaping special characters for generative fill and generative background replace transformations
+
 1.15.2 / 2024-10-03
 ==================
 
