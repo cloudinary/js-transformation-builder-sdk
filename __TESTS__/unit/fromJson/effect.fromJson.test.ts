@@ -51,12 +51,14 @@ describe('effect.fromJson', () => {
       { actionType: 'enhance' },
       { actionType: 'generativeBackgroundReplace', prompt: 'dog' },
       { actionType: 'generativeBackgroundReplace', prompt: 'dog, dog (dog)' },
+      { actionType: 'generativeBackgroundReplace', prompt: '!@#$%^&*()_+{}|":?><' },
       { actionType: 'generativeBackgroundReplace'},
       { actionType: 'extract', 'prompts': 'blue sky' },
       { actionType: 'extract', 'prompts': ['blue sky', 'yellow sun'], detectMultiple: true },
       { actionType: 'extract', 'prompts': ['green grass'], mode: 'mask', invert: true },
       { actionType: 'extract', 'prompts': ['yellow sun', 'green grass'], mode: 'content' },
       { actionType: 'pad', 'dimensions': { width: 100, height: 200 }, 'background': { backgroundType: 'generativeFill', prompt: 'some; test (123!)'} },
+      { actionType: 'pad', 'dimensions': { width: 140, height: 240 }, 'background': { backgroundType: 'generativeFill', prompt: 'some%test ? (123/)'} },
     ]});
 
     expect(transformation.toString().split('/')).toStrictEqual([
@@ -108,12 +110,14 @@ describe('effect.fromJson', () => {
       'e_enhance',
       'e_gen_background_replace:prompt_dog',
       'e_gen_background_replace:prompt_dog%2C dog %28dog%29',
+      'e_gen_background_replace:prompt_%21%40%23%24%25%5E%26%2A%28%29%5F%2B%7B%7D%7C%22%3A%3F%3E%3C',
       'e_gen_background_replace',
       'e_extract:prompt_blue sky',
       'e_extract:prompt_(blue sky;yellow sun);multiple_true',
       'e_extract:prompt_green grass;mode_mask;invert_true',
       'e_extract:prompt_(yellow sun;green grass);mode_content',
       'b_gen_fill:prompt_some%3B test %28123%21%29,c_pad,h_200,w_100',
+      'b_gen_fill:prompt_some%25test %3F %28123%2F%29,c_pad,h_240,w_140',
     ]);
   });
 });
