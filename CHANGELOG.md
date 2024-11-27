@@ -1,3 +1,8 @@
+1.16.1 / 2024-11-27
+==================
+
+- Handle proper escaping for percentage char (generative fill, generative background replace transformations)
+
 1.16.0 / 2024-11-25
 ==================
 
