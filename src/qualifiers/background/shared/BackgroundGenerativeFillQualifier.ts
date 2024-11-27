@@ -16,7 +16,12 @@ class BackgroundGenerativeFillQualifier extends BackgroundQualifier {
   }
 
   prompt(prompt: string): BackgroundGenerativeFillQualifier {
-    this._prompt = decodeURIComponent(prompt);
+    try {
+      this._prompt = decodeURIComponent(prompt);
+    } catch {
+      this._prompt = prompt;
+    }
+
     return this;
   }
 

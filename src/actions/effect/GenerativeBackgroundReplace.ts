@@ -18,9 +18,13 @@ class GenerativeBackgroundReplace extends Action {
   }
 
   prompt(value: string): GenerativeBackgroundReplace {
+    try {
+      this._actionModel.prompt = decodeURIComponent(value);
+    } catch {
+      this._actionModel.prompt = value;
+    }
+  
     this._prompt = value;
-    this._actionModel.prompt = decodeURIComponent(value);
-
     return this;
   }
 
