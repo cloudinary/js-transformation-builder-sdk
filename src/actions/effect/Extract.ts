@@ -15,6 +15,7 @@ class Extract extends Action {
   private _detectMultiple = false;
   private _mode: ExtractModeType;
   private _invert = false;
+  private _preserveAlpha = false;
 
   constructor(prompts: string | string[]) {
     super();
@@ -41,11 +42,21 @@ class Extract extends Action {
     return this;
   }
 
-  invert(value = false) {
+  invert(value = true) {
     this._invert = value;
 
     if (this._invert) {
       this._actionModel.invert = this._invert;
+    }
+
+    return this;
+  }
+
+  preserveAlpha(value = true) {
+    this._preserveAlpha = value;
+
+    if (this._preserveAlpha) {
+      this._actionModel.preserveAlpha = this._preserveAlpha;
     }
 
     return this;
@@ -70,6 +81,10 @@ class Extract extends Action {
       qualifierValue.addValue("invert_true");
     }
 
+    if (this._preserveAlpha) {
+      qualifierValue.addValue("preserve-alpha_true");
+    }
+
     this.addQualifier(
       new Qualifier("e", `extract:${qualifierValue.toString()}`)
     );
@@ -89,7 +104,7 @@ class Extract extends Action {
   }
 
   static fromJson(actionModel: IExtractModel): Extract {
-    const { prompts, detectMultiple, mode, invert } = actionModel;
+    const { prompts, detectMultiple, mode, invert, preserveAlpha } = actionModel;
     const result = new this(prompts);
 
     if (detectMultiple) {
@@ -102,6 +117,10 @@ class Extract extends Action {
 
     if (invert) {
       result.invert(invert);
+    }
+
+    if (preserveAlpha) {
+      result.preserveAlpha(preserveAlpha);
     }
 
     return result;
