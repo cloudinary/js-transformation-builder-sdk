@@ -1,3 +1,8 @@
+1.17.0 / 2025-05-21
+==================
+
+* Add support for `preserve-alpha` attribute in `e_extract` action
+
 1.16.1 / 2024-11-27
 ==================
 
