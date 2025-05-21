@@ -150,6 +150,7 @@ interface IExtractModel extends IActionModel {
   detectMultiple?: boolean;
   mode?: ExtractModeType;
   invert?: boolean;
+  preserveAlpha?: boolean;
 }
 
 export {
