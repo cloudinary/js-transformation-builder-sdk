@@ -2,6 +2,7 @@ import { IActionModel } from "internal/models/IActionModel.js";
 import {Action} from "../../internal/Action.js";
 import {SystemColors} from "../../qualifiers/color.js";
 import { IImageTrimActionModel } from "internal/models/IImageTrimActionModel.js";
+import { IActionToJson } from "internal/models/actionToJson.js";
 
 /**
  * @description Removes the edges of the image based on the color of the corner pixels.
@@ -28,6 +29,14 @@ class TrimAction extends Action {
   colorOverride(color: SystemColors | string): this {
     this._color = color;
     return this;
+  }
+
+  toJson() {
+    return () => ({
+      ...super.toJson(),
+      colorSimilarity: this._tolerance,
+      colorOverride: this._color
+    });
   }
 
   static fromJson(actionModel: IActionModel): TrimAction {
