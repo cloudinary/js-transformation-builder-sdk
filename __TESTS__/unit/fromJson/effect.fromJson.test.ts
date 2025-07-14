@@ -55,6 +55,7 @@ describe('effect.fromJson', () => {
       { actionType: 'generativeBackgroundReplace'},
       { actionType: 'pad', 'dimensions': { width: 100, height: 200 }, 'background': { backgroundType: 'generativeFill', prompt: 'some; test (123!)'} },
       { actionType: 'pad', 'dimensions': { width: 140, height: 240 }, 'background': { backgroundType: 'generativeFill', prompt: 'some%test ? (123/)'} },
+      { actionType: 'trim', colorSimilarity: 50, colorOverride: 'yellow' }
     ]});
 
     expect(transformation.toString().split('/')).toStrictEqual([
@@ -110,6 +111,7 @@ describe('effect.fromJson', () => {
       'e_gen_background_replace',
       'b_gen_fill:prompt_some%3B test %28123%21%29,c_pad,h_200,w_100',
       'b_gen_fill:prompt_some%25test %3F %28123%2F%29,c_pad,h_240,w_140',
+      'e_trim:50:yellow',
     ]);
   });
 });
