@@ -1,3 +1,8 @@
+1.18.0 / 2025-07-15
+==================
+
+* Add toJson/fromJson support to Image Trim action (internal)
+
 1.17.0 / 2025-05-21
 ==================
 
