@@ -32,6 +32,7 @@ import { GenerativeReplace } from "./effect/GenerativeReplace.js";
 import { GenerativeRecolor } from "./effect/GenerativeRecolor.js";
 import { GenerativeBackgroundReplace } from "./effect/GenerativeBackgroundReplace.js";
 import { Extract } from "./effect/Extract.js";
+import { TrimAction } from "./reshape/TrimAction.js";
 
 /**
  * @summary action
@@ -543,6 +544,26 @@ function enhance(): SimpleEffectAction {
 }
 
 /**
+ * @summary action
+ * @description Removes the edges of the image based on the color of the corner pixels.
+ * Specify a color other than the color of the corner pixels using the colorOverride() method
+ * @memberOf Actions.Effect
+ * @param {number} colorSimilarity The tolerance level for color similarity.
+ * @param {SystemColors | string} colorOverride Overrides the corner pixels color with the specified color.
+ * @return {Actions.Effect.TrimAction}
+ */
+function trim(colorSimilarity?: number, colorOverride?: SystemColors | string): TrimAction {
+  const trimAction = new TrimAction();
+  if (colorSimilarity) {
+    trimAction.colorSimilarity(colorSimilarity);
+  }
+  if (colorOverride) {
+    trimAction.colorOverride(colorOverride);
+  }
+  return trimAction;
+}
+
+/**
  * @description Defines effects that you can apply to transform your assets.
  * @memberOf Actions
  * @namespace Effect
@@ -598,6 +619,7 @@ function enhance(): SimpleEffectAction {
  * .effect(Effect.generativeRemove().prompt("red car").detectMultiple())
  * .effect(Effect.generativeRemove().region({x: 20, y: 200, width: 100, height: 100}))
  * .effect(Effect.generativeReplace().from("ceiling").to("sunny sky").preserveGeometry(true))
+ * .effect(Effect.trim(50, 'yellow'))
  */
 const Effect = {
   pixelate: pixelate,
@@ -642,7 +664,8 @@ const Effect = {
   upscale,
   theme,
   enhance,
-  extract
+  extract,
+  trim
 };
 
 export declare type EffectActions =
@@ -667,7 +690,8 @@ export declare type EffectActions =
   | GenerativeReplace
   | GenerativeBackgroundReplace
   | GenerativeRecolor
-  | Extract;
+  | Extract
+  | TrimAction
 
 export {
   Effect,
@@ -713,5 +737,6 @@ export {
   upscale,
   theme,
   enhance,
-  extract
+  extract,
+  trim
 };

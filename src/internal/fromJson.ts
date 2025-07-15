@@ -48,6 +48,7 @@ import ConcatenateAction from "../actions/videoEdit/ConcatenateAction.js";
 import { ITransformationModel } from "./models/ITransformationModel.js";
 import { PreviewAction } from "../actions/videoEdit/PreviewAction.js";
 import TrimAction from "../actions/videoEdit/TrimAction.js";
+import { TrimAction as ImageTrimAction } from "../actions/reshape/TrimAction.js";
 import VolumeAction from "../actions/videoEdit/VolumeAction.js";
 import { LayerAction } from "../actions/layer/LayerAction.js";
 import KeyframeIntervalsAction from "../actions/transcode/KeyframeIntervalsAction.js";
@@ -128,6 +129,7 @@ const ActionModelMap: Record<string, IHasFromJson> = {
   concatenate: ConcatenateAction,
   preview: PreviewAction,
   trimVideo: TrimAction,
+  trim: ImageTrimAction,
   volume: VolumeAction,
   overlay: LayerAction,
   opacity: OpacityAdjustAction,

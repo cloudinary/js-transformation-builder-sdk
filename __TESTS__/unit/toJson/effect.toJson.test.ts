@@ -590,4 +590,19 @@ describe('Effect toJson()', () => {
       ]
     });
   });
+
+  it('effect.trim', () => {
+    const transformation = new Transformation()
+      .addAction(Effect.trim(50, 'yellow'));
+    expect(transformation.toJson()).toStrictEqual({
+      actions: [
+        {
+          actionType: 'trim',
+          colorSimilarity: 50,
+          colorOverride: 'yellow',
+        }
+      ]
+    });
+  });
 });
+
