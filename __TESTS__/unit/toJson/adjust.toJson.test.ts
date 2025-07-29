@@ -47,6 +47,18 @@ describe('Adjust toJson()', () => {
     ]});
   });
 
+  it('adjust.contrast with functionType', () => {
+    const transformation = new Transformation()
+      .addAction(Adjust.contrast().level(150).functionType('linear'));
+    expect(transformation.toJson()).toStrictEqual({actions:[
+      {
+        actionType: 'contrast',
+        level: 150,
+        functionType: 'linear'
+      }
+    ]});
+  });
+
   it('adjust.brightness', () => {
     const transformation = new Transformation()
       .addAction(Adjust.brightness().level(40));
@@ -54,6 +66,17 @@ describe('Adjust toJson()', () => {
       {
         actionType: 'brightness',
         level: 40
+      }
+    ]});
+  });
+
+  it('adjust.vibrance', () => {
+    const transformation = new Transformation()
+      .addAction(Adjust.vibrance().strength(50));
+    expect(transformation.toJson()).toStrictEqual({actions:[
+      {
+        actionType: 'vibrance',
+        strength: 50
       }
     ]});
   });

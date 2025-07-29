@@ -5,4 +5,9 @@ interface ImproveActionModel extends IActionModel {
   blend?: number;
 }
 
-export {ImproveActionModel};
+interface ContrastActionModel extends IActionModel {
+  level?: number;
+  functionType?: string;
+}
+
+export {ImproveActionModel, ContrastActionModel};
