@@ -206,4 +206,16 @@ describe('Tests for Transformation Action -- Adjust', () => {
     expect(Adjust.tint(tintVal).toString()).toBe(`e_tint:${tintVal}`);
   });
 
+  it('Tests for Adjust.contrast with functionType', () => {
+    // Test sigmoidal (default) function - no functionType specified
+    expect(Adjust.contrast(-70).toString()).toBe('e_contrast:-70');
+    expect(Adjust.contrast().level(-70).toString()).toBe('e_contrast:-70');
+    
+    // Test linear function
+    expect(Adjust.contrast(150).functionType('linear').toString()).toBe('e_contrast:level_150;type_linear');
+    expect(Adjust.contrast().level(150).functionType('linear').toString()).toBe('e_contrast:level_150;type_linear');
+    
+    // Test sigmoidal function explicitly
+    expect(Adjust.contrast(50).functionType('sigmoidal').toString()).toBe('e_contrast:level_50;type_sigmoidal');
+  });
 });

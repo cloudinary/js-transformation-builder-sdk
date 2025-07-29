@@ -4,6 +4,7 @@ import {OpacityAdjustAction} from "./adjust/OpacityAdjustAction.js";
 import {By3dLutAction} from "./adjust/By3dLutAction.js";
 import {ImproveAction} from "./adjust/ImproveAction.js";
 import {ReplaceColorAction} from "./adjust/ReplaceColorAction.js";
+import {ContrastAction} from "./adjust/ContrastAction.js";
 import {EffectActionWithLevel} from "./effect/EffectActions/EffectActionWithLevel.js";
 import {EffectActionWithStrength} from "./effect/EffectActions/EffectActionWithStrength.js";
 import {EffectActionWithBlend} from "./effect/EffectActions/EffectActionWithBlend.js";
@@ -25,6 +26,7 @@ export type IAdjustAction = FillLightAction
   | By3dLutAction
   | ImproveAction
   | ReplaceColorAction
+  | ContrastAction
   | EffectActionWithLevel
   | EffectActionWithStrength
   | EffectActionWithBlend
@@ -107,11 +109,13 @@ function saturation(level?:number):EffectActionWithLevel {
  * @summary action
  * @memberOf Actions.Adjust
  * @description Adjusts the image or video contrast.
- * @param {number} level The level of contrast. (Range: -100 to 100, Server default: 0)
- * @return {Actions.Effect.EffectActionWithLevel}
+ * @param {number} level The level of contrast. 
+ *                       Range (sigmoidal): -100 to 100. Default: 0.
+ *                       Range (linear): 1 to 200. Default: 100.
+ * @return {Actions.Adjust.ContrastAction}
  */
-function contrast(level?:number):EffectActionWithLevel {
-  return new EffectActionWithLevel('contrast', level);
+function contrast(level?:number):ContrastAction {
+  return new ContrastAction(level);
 }
 
 /**

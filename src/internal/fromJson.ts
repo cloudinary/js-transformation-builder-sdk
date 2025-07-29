@@ -13,6 +13,7 @@ import {
 import { ResizeMinimumFitAction } from "../actions/resize/ResizeMinimumFitAction.js";
 import { ResizeCropAction } from "../actions/resize/ResizeCropAction.js";
 import { OpacityAdjustAction } from "../actions/adjust/OpacityAdjustAction.js";
+import { ContrastAction } from "../actions/adjust/ContrastAction.js";
 import { ResizeFillAction } from "../actions/resize/ResizeFillAction.js";
 import { ResizeLimitFillAction } from "../actions/resize/ResizeLimitFillAction.js";
 import { ThumbResizeAction } from "../actions/resize/ThumbnailAction.js";
@@ -124,7 +125,7 @@ const ActionModelMap: Record<string, IHasFromJson> = {
   vibrance: EffectActionWithStrength,
   saturation: EffectActionWithLevel,
   dpr: DeliveryDPRAction,
-  contrast: EffectActionWithLevel,
+  contrast: ContrastAction,
   brightness: EffectActionWithLevel,
   gamma: EffectActionWithLevel,
   concatenate: ConcatenateAction,
@@ -163,7 +164,7 @@ const ActionModelMap: Record<string, IHasFromJson> = {
   autoPad: ResizeAutoPadAction,
   enhance: SimpleEffectAction,
   sharpen: EffectActionWithStrength,
-  extract: Extract
+  extract: Extract,
 };
 
 /**
