@@ -121,6 +121,7 @@ const ActionModelMap: Record<string, IHasFromJson> = {
   blur: BlurAction,
   improve: ImproveAction,
   unsharpMask: EffectActionWithStrength,
+  vibrance: EffectActionWithStrength,
   saturation: EffectActionWithLevel,
   dpr: DeliveryDPRAction,
   contrast: EffectActionWithLevel,
