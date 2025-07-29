@@ -165,7 +165,6 @@ const ActionModelMap: Record<string, IHasFromJson> = {
   enhance: SimpleEffectAction,
   sharpen: EffectActionWithStrength,
   extract: Extract,
-  vibrance: EffectActionWithStrength,
 };
 
 /**

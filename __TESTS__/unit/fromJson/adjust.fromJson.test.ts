@@ -19,7 +19,6 @@ describe('adjust.fromJson', () => {
       'e_improve:outdoor:30',
       'e_unsharp_mask:50',
       'e_sharpen:50',
-      'e_vibrance:80',
       'e_saturation:40',
       'e_contrast:40',
       'e_contrast:level_150;type_linear',
