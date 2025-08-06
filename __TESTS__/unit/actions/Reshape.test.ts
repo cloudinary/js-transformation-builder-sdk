@@ -82,25 +82,25 @@ describe('Tests for Transformation Action -- Cutter', () => {
 
   it('Displaces an image with x and y coordinates', () => {
     const tx = new Transformation()
-      .reshape(Reshape.displace().x(100).y(50))
+      .reshape(Reshape.displace('radialize').x(100).y(50))
       .toString();
 
-    expect(tx).toBe('e_displace,x_100,y_50');
+    expect(tx).toBe('l_radialize/e_displace,fl_layer_apply,x_100,y_50');
   });
 
   it('Displaces an image with only x coordinate', () => {
     const tx = new Transformation()
-      .reshape(Reshape.displace().x(200))
+      .reshape(Reshape.displace('gradient').x(200))
       .toString();
 
-    expect(tx).toBe('e_displace,x_200');
+    expect(tx).toBe('l_gradient/e_displace,fl_layer_apply,x_200');
   });
 
   it('Displaces an image with only y coordinate', () => {
     const tx = new Transformation()
-      .reshape(Reshape.displace().y(75))
+      .reshape(Reshape.displace('pattern').y(75))
       .toString();
 
-    expect(tx).toBe('e_displace,y_75');
+    expect(tx).toBe('l_pattern/e_displace,fl_layer_apply,y_75');
   });
 });

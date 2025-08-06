@@ -135,6 +135,7 @@ function shear(x: stringOrNumber, y: stringOrNumber): ShearAction {
 /**
  * @summary action
  * @description Displaces the pixels in an image according to the color channels of the pixels in another specified image.
+ * @param {string} source The source image name for displacement
  * @memberOf Actions.Reshape
  * @return {Actions.Reshape.DisplaceAction}
  * @example
@@ -147,12 +148,12 @@ function shear(x: stringOrNumber, y: stringOrNumber): ShearAction {
  * import {displace} from '@cloudinary/url-gen/actions/reshape';
  *
  * img.reshape(
- *    displace().x(100).y(50)
+ *    displace('radialize').x(100).y(50)
  * )
  * img.toString()
  */
-function displace(): DisplaceAction {
-  return new DisplaceAction();
+function displace(source: string): DisplaceAction {
+  return new DisplaceAction(source);
 }
 
 /**

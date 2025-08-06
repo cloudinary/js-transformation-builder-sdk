@@ -77,21 +77,33 @@ describe('reshape.fromJson', () => {
       [
         {
           actionType: 'displace',
+          source: {
+            sourceType: 'image',
+            publicId: 'radialize'
+          },
           x: 100,
           y: 50
         },
         {
           actionType: 'displace',
+          source: {
+            sourceType: 'image',
+            publicId: 'gradient'
+          },
           x: 200
         },
         {
           actionType: 'displace',
+          source: {
+            sourceType: 'image',
+            publicId: 'pattern'
+          },
           y: 75
         }
       ]}
     );
     expect(transformation.toString()).toStrictEqual(
-      'e_displace,x_100,y_50/e_displace,x_200/e_displace,y_75'
+      'l_radialize/e_displace,fl_layer_apply,x_100,y_50/l_gradient/e_displace,fl_layer_apply,x_200/l_pattern/e_displace,fl_layer_apply,y_75'
     );
   });
 
@@ -113,13 +125,17 @@ describe('reshape.fromJson', () => {
         },
         {
           actionType: 'displace',
+          source: {
+            sourceType: 'image',
+            publicId: 'radialize'
+          },
           x: 50,
           y: 25
         }
       ]}
     );
     expect(transformation.toString()).toStrictEqual(
-      'e_distort:100:100:100:200:200:200:200:100/e_shear:100:200/e_distort:arc:180/e_displace,x_50,y_25'
+      'e_distort:100:100:100:200:200:200:200:100/e_shear:100:200/e_distort:arc:180/l_radialize/e_displace,fl_layer_apply,x_50,y_25'
     );
   });
 }); 
