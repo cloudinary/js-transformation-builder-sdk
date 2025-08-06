@@ -3,12 +3,13 @@ import {ImageSource} from "../qualifiers/source/sourceTypes/ImageSource.js";
 import {DistortArcAction} from "./reshape/DistortArc.js";
 import {ShearAction} from "./reshape/Shear.js";
 import {DistortAction, IDistortCoordinates} from "./reshape/Distort.js";
+import {DisplaceAction} from "./reshape/Displace.js";
 import {TrimAction} from "./reshape/TrimAction.js";
 import {TextSource} from "../qualifiers/source/sourceTypes/TextSource.js";
 import {FetchSource} from "../qualifiers/source/sourceTypes/FetchSource.js";
 import {stringOrNumber} from "../types/types.js";
 
-type IReshape = CutByImage | DistortArcAction;
+type IReshape = CutByImage | DistortArcAction | DistortAction | ShearAction | DisplaceAction | TrimAction;
 
 /**
  * @summary action
@@ -133,6 +134,29 @@ function shear(x: stringOrNumber, y: stringOrNumber): ShearAction {
 
 /**
  * @summary action
+ * @description Displaces the pixels in an image according to the color channels of the pixels in another specified image.
+ * @memberOf Actions.Reshape
+ * @return {Actions.Reshape.DisplaceAction}
+ * @example
+ * <caption> <h4>Displacing an image</h4> </caption>
+ * import {Cloudinary, Transformation} from "@cloudinary/url-gen";
+ *
+ * const yourCldInstance = new Cloudinary({cloud:{cloudName:'demo'}});
+ * const img = yourCldInstance.image('woman');
+ *
+ * import {displace} from '@cloudinary/url-gen/actions/reshape';
+ *
+ * img.reshape(
+ *    displace().x(100).y(50)
+ * )
+ * img.toString()
+ */
+function displace(): DisplaceAction {
+  return new DisplaceAction();
+}
+
+/**
+ * @summary action
  * @description Removes the edges of the image based on the color of the corner pixels.
  * Specify a color other than the color of the corner pixels using the colorOverride() method
  * @memberOf Actions.Reshape
@@ -155,5 +179,5 @@ function trim(): TrimAction {
   return new TrimAction();
 }
 
-const Reshape = {cutByImage, distortArc, distort, shear, trim};
-export {cutByImage, Reshape, IReshape, distortArc, distort, shear, trim};
+const Reshape = {cutByImage, distortArc, distort, shear, displace, trim};
+export {cutByImage, Reshape, IReshape, distortArc, distort, shear, displace, trim};

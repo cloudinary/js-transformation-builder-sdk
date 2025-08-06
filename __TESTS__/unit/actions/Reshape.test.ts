@@ -79,4 +79,28 @@ describe('Tests for Transformation Action -- Cutter', () => {
 
     expect(tx).toBe('e_trim:15:blue');
   });
+
+  it('Displaces an image with x and y coordinates', () => {
+    const tx = new Transformation()
+      .reshape(Reshape.displace().x(100).y(50))
+      .toString();
+
+    expect(tx).toBe('e_displace,x_100,y_50');
+  });
+
+  it('Displaces an image with only x coordinate', () => {
+    const tx = new Transformation()
+      .reshape(Reshape.displace().x(200))
+      .toString();
+
+    expect(tx).toBe('e_displace,x_200');
+  });
+
+  it('Displaces an image with only y coordinate', () => {
+    const tx = new Transformation()
+      .reshape(Reshape.displace().y(75))
+      .toString();
+
+    expect(tx).toBe('e_displace,y_75');
+  });
 });
