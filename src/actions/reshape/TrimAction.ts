@@ -1,8 +1,8 @@
-import { IActionModel } from "internal/models/IActionModel.js";
-import {Action} from "../../internal/Action.js";
-import {SystemColors} from "../../qualifiers/color.js";
-import { IImageTrimActionModel } from "internal/models/IImageTrimActionModel.js";
-import { ITrimActionModel } from "internal/models/ITrimActionModel.js";
+import { IActionModel } from "../../internal/models/IActionModel.js";
+import { Action } from "../../internal/Action.js";
+import { SystemColors } from "../../qualifiers/color.js";
+import { IImageTrimActionModel } from "../../internal/models/IImageTrimActionModel.js";
+import { ITrimActionModel } from "../../internal/models/ITrimActionModel.js";
 
 /**
  * @description Removes the edges of the image based on the color of the corner pixels.
