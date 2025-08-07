@@ -3,7 +3,8 @@ import {IActionModel} from "../../internal/models/IActionModel.js";
 import {IDisplaceActionModel} from "../../internal/models/IDisplaceActionModel.js";
 import {ISourceModel} from "../../internal/models/ISourceModel.js";
 import {BaseSource} from "../../qualifiers/source/BaseSource.js";
-import {FlagQualifier} from "../../qualifiers/flag/FlagQualifier.js";
+import {createSourceFromModel} from "../../internal/models/createSourceFromModel.js";
+import {ITransformationFromJson} from "../../internal/models/IHasFromJson.js";
 
 /**
  * @description Displaces the pixels in an image according to the color channels of the pixels in another specified image.
@@ -48,10 +49,9 @@ class DisplaceAction extends Action {
     return this;
   }
 
-  static fromJson(actionModel: IActionModel): DisplaceAction {
+  static fromJson(actionModel: IActionModel, transformationFromJson?: ITransformationFromJson): DisplaceAction {
     const {source, x, y} = (actionModel as IDisplaceActionModel);
-    // TODO: Use createSourceFromModel when available
-    const sourceInstance = new (require('../../qualifiers/source/sourceTypes/ImageSource.js').ImageSource)(source.publicId);
+    const sourceInstance = createSourceFromModel(source, transformationFromJson);
     const result = new DisplaceAction(sourceInstance);
 
     if (x !== undefined) {
