@@ -7,11 +7,17 @@ describe('reshape.fromJson', () => {
       [
         {
           actionType: 'distort',
-          coordinates: [100, 100, 100, 200, 200, 200, 200, 100]
+          topLeft: { x: 100, y: 100 },
+          topRight: { x: 100, y: 200 },
+          bottomRight: { x: 200, y: 200 },
+          bottomLeft: { x: 200, y: 100 }
         },
         {
           actionType: 'distort',
-          coordinates: [1, 2, 3, 4, 5, 6, 7, 8]
+          topLeft: { x: 1, y: 2 },
+          topRight: { x: 3, y: 4 },
+          bottomRight: { x: 5, y: 6 },
+          bottomLeft: { x: 7, y: 8 }
         }
       ]}
     );
@@ -25,13 +31,13 @@ describe('reshape.fromJson', () => {
       [
         {
           actionType: 'shear',
-          x: 100,
-          y: 200
+          skewX: 100,
+          skewY: 200
         },
         {
           actionType: 'shear',
-          x: 50,
-          y: 75
+          skewX: 50,
+          skewY: 75
         }
       ]}
     );
@@ -45,8 +51,8 @@ describe('reshape.fromJson', () => {
       [
         {
           actionType: 'shear',
-          x: '100',
-          y: '200'
+          skewX: '100',
+          skewY: '200'
         }
       ]}
     );
@@ -113,12 +119,15 @@ describe('reshape.fromJson', () => {
       [
         {
           actionType: 'distort',
-          coordinates: [100, 100, 100, 200, 200, 200, 200, 100]
+          topLeft: { x: 100, y: 100 },
+          topRight: { x: 100, y: 200 },
+          bottomRight: { x: 200, y: 200 },
+          bottomLeft: { x: 200, y: 100 }
         },
         {
           actionType: 'shear',
-          x: 100,
-          y: 200
+          skewX: 100,
+          skewY: 200
         },
         {
           actionType: 'distortArc',
