@@ -1,3 +1,10 @@
+1.21.0 / 2025-08-07
+==================
+
+- Add Displace action
+- Fix Trim action imports
+- Add internal utilities for Distort and Shear actions
+
 1.20.0 / 2025-07-29
 ==================
 
