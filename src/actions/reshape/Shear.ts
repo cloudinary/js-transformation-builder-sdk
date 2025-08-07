@@ -18,8 +18,8 @@ class ShearAction extends Action {
     super();
     this._actionModel = {
       actionType: 'shear',
-      x: x,
-      y: y
+      skewX: x,
+      skewY: y
     };
     this.skewX(x);
     this.skewY(y);
@@ -29,7 +29,7 @@ class ShearAction extends Action {
    */
   skewX(x: stringOrNumber): this {
     this._x = x;
-    this._actionModel.x = x;
+    this._actionModel.skewX = x;
     return this;
   }
 
@@ -38,13 +38,13 @@ class ShearAction extends Action {
    */
   skewY(y: stringOrNumber): this {
     this._y = y;
-    this._actionModel.y = y;
+    this._actionModel.skewY = y;
     return this;
   }
 
   static fromJson(actionModel: IActionModel): ShearAction {
-    const {x, y} = (actionModel as IShearActionModel);
-    return new ShearAction(x, y);
+    const {skewX, skewY} = (actionModel as IShearActionModel);
+    return new ShearAction(skewX, skewY);
   }
 
   toString(): string {

@@ -1,5 +1,14 @@
 import {IActionModel} from "./IActionModel.js";
 
+interface ICoordinates {
+  x: number;
+  y: number;
+}
+
 export interface IDistortActionModel extends IActionModel {
-  coordinates: [number, number, number, number, number, number, number, number];
+  actionType: "distort";
+  topLeft: ICoordinates;
+  topRight: ICoordinates;
+  bottomRight: ICoordinates;
+  bottomLeft: ICoordinates;
 } 
