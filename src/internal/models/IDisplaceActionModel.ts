@@ -1,15 +1,9 @@
 import {IActionModel} from "./IActionModel.js";
-
-interface IImageSource {
-  sourceType: "image";
-  publicId: string;
-  format?: string;
-  transformation?: any; // TODO: add proper transformation type
-}
+import {ISourceModel} from "./ISourceModel.js";
 
 export interface IDisplaceActionModel extends IActionModel {
   actionType: "displace";
-  source: IImageSource;
+  source: ISourceModel;
   x?: string | number;
   y?: string | number;
 } 

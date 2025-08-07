@@ -1,5 +1,6 @@
 import {Transformation} from "../../../src";
 import {Reshape} from "../../../src/actions/reshape";
+import {image} from "../../../src/qualifiers/source";
 
 describe('Reshape toJson()', () => {
   it('should generate correct JSON for distort actions', () => {
@@ -63,9 +64,9 @@ describe('Reshape toJson()', () => {
 
   it('should generate correct JSON for displace actions', () => {
     const transformation = new Transformation()
-      .addAction(Reshape.displace('radialize').x(100).y(50))
-      .addAction(Reshape.displace('gradient').x(200))
-      .addAction(Reshape.displace('pattern').y(75));
+      .addAction(Reshape.displace(image('radialize')).x(100).y(50))
+      .addAction(Reshape.displace(image('gradient')).x(200))
+      .addAction(Reshape.displace(image('pattern')).y(75));
 
     expect(transformation.toJson()).toStrictEqual({
       actions: [
@@ -103,7 +104,7 @@ describe('Reshape toJson()', () => {
       .addAction(Reshape.distort([100, 100, 100, 200, 200, 200, 200, 100]))
       .addAction(Reshape.shear(100, 200))
       .addAction(Reshape.distortArc(180))
-      .addAction(Reshape.displace('radialize').x(50).y(25));
+      .addAction(Reshape.displace(image('radialize')).x(50).y(25));
 
     expect(transformation.toJson()).toStrictEqual({
       actions: [

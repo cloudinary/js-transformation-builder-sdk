@@ -1,4 +1,5 @@
 import {fromJson} from "../../../src/internal/fromJson";
+import {image} from "../../../src/qualifiers/source";
 
 describe('reshape.fromJson', () => {
   it('should generate a url with distort from array of models', function () {

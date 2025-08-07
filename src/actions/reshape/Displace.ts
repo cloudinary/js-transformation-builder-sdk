@@ -1,7 +1,9 @@
 import {Action} from "../../internal/Action.js";
-import {Qualifier} from "../../internal/qualifier/Qualifier.js";
 import {IActionModel} from "../../internal/models/IActionModel.js";
 import {IDisplaceActionModel} from "../../internal/models/IDisplaceActionModel.js";
+import {ISourceModel} from "../../internal/models/ISourceModel.js";
+import {BaseSource} from "../../qualifiers/source/BaseSource.js";
+import {FlagQualifier} from "../../qualifiers/flag/FlagQualifier.js";
 
 /**
  * @description Displaces the pixels in an image according to the color channels of the pixels in another specified image.
@@ -13,17 +15,14 @@ class DisplaceAction extends Action {
   protected _actionModel: IDisplaceActionModel;
   private _x?: string | number;
   private _y?: string | number;
-  private _source: string;
+  private source: BaseSource;
 
-  constructor(source: string) {
+  constructor(source: BaseSource) {
     super();
-    this._source = source;
+    this.source = source;
     this._actionModel = {
       actionType: 'displace',
-      source: {
-        sourceType: 'image',
-        publicId: source
-      }
+      source: source.toJson() as ISourceModel
     };
   }
 
@@ -51,9 +50,16 @@ class DisplaceAction extends Action {
 
   static fromJson(actionModel: IActionModel): DisplaceAction {
     const {source, x, y} = (actionModel as IDisplaceActionModel);
-    const result = new DisplaceAction(source.publicId);
-    if (x !== undefined) result.x(x);
-    if (y !== undefined) result.y(y);
+    // TODO: Use createSourceFromModel when available
+    const sourceInstance = new (require('../../qualifiers/source/sourceTypes/ImageSource.js').ImageSource)(source.publicId);
+    const result = new DisplaceAction(sourceInstance);
+
+    if (x !== undefined) {
+      result.x(x);
+    }
+    if (y !== undefined) {
+      result.y(y);
+    }
     return result;
   }
 
@@ -65,7 +71,11 @@ class DisplaceAction extends Action {
       this._y !== undefined ? `y_${this._y}` : null
     ].filter((a) => a).join(',');
 
-    return `l_${this._source}/${displaceParams}`;
+    return [
+      this.source.getOpenSourceString('l'),
+      this.source.getTransformation() && this.source.getTransformation().toString(),
+      displaceParams
+    ].filter((a) => a).join('/');
   }
 }
 

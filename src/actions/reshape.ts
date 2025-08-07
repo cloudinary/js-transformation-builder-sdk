@@ -7,6 +7,7 @@ import {DisplaceAction} from "./reshape/Displace.js";
 import {TrimAction} from "./reshape/TrimAction.js";
 import {TextSource} from "../qualifiers/source/sourceTypes/TextSource.js";
 import {FetchSource} from "../qualifiers/source/sourceTypes/FetchSource.js";
+import {BaseSource} from "../qualifiers/source/BaseSource.js";
 import {stringOrNumber} from "../types/types.js";
 
 type IReshape = CutByImage | DistortArcAction | DistortAction | ShearAction | DisplaceAction | TrimAction;
@@ -135,7 +136,7 @@ function shear(x: stringOrNumber, y: stringOrNumber): ShearAction {
 /**
  * @summary action
  * @description Displaces the pixels in an image according to the color channels of the pixels in another specified image.
- * @param {string} source The source image name for displacement
+ * @param {BaseSource} source The source for displacement
  * @memberOf Actions.Reshape
  * @return {Actions.Reshape.DisplaceAction}
  * @example
@@ -146,13 +147,14 @@ function shear(x: stringOrNumber, y: stringOrNumber): ShearAction {
  * const img = yourCldInstance.image('woman');
  *
  * import {displace} from '@cloudinary/url-gen/actions/reshape';
+ * import {image} from '@cloudinary/url-gen/qualifiers/source';
  *
  * img.reshape(
- *    displace('radialize').x(100).y(50)
+ *    displace(image('radialize')).x(100).y(50)
  * )
  * img.toString()
  */
-function displace(source: string): DisplaceAction {
+function displace(source: BaseSource): DisplaceAction {
   return new DisplaceAction(source);
 }
 
