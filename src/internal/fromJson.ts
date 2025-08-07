@@ -76,6 +76,10 @@ import { BackgroundColor } from "../actions/background/actions/BackgroundColor.j
 import { ResizeAutoPadAction } from "../actions/resize/ResizeAutoPadAction.js";
 import { GenerativeBackgroundReplace } from "../actions/effect/GenerativeBackgroundReplace.js";
 import { Extract } from "../actions/effect/Extract.js";
+import { DistortAction } from "../actions/reshape/Distort.js";
+import { ShearAction } from "../actions/reshape/Shear.js";
+import { DistortArcAction } from "../actions/reshape/DistortArc.js";
+import { DisplaceAction } from "../actions/reshape/Displace.js";
 
 const ActionModelMap: Record<string, IHasFromJson> = {
   scale: ResizeScaleAction,
@@ -165,6 +169,10 @@ const ActionModelMap: Record<string, IHasFromJson> = {
   enhance: SimpleEffectAction,
   sharpen: EffectActionWithStrength,
   extract: Extract,
+  distort: DistortAction,
+  distortArc: DistortArcAction,
+  displace: DisplaceAction,
+  shear: ShearAction,
 };
 
 /**

@@ -1,5 +1,7 @@
 import {Action} from "../../internal/Action.js";
 import {Qualifier} from "../../internal/qualifier/Qualifier.js";
+import {IActionModel} from "../../internal/models/IActionModel.js";
+import {IDistortActionModel} from "../../internal/models/IDistortActionModel.js";
 
 
 export type IDistortCoordinates = [number, number, number, number, number, number, number, number];
@@ -16,10 +18,20 @@ export type IDistortCoordinates = [number, number, number, number, number, numbe
  * @see Visit {@link Actions.Reshape| Reshape} for examples
  */
 class DistortAction extends Action {
+  protected _actionModel: IDistortActionModel;
+
   constructor(coordinates: IDistortCoordinates) {
     super();
-
+    this._actionModel = {
+      actionType: 'distort',
+      coordinates: coordinates
+    };
     this.addQualifier(new Qualifier('e', `distort:${coordinates.join(':')}`));
+  }
+
+  static fromJson(actionModel: IActionModel): DistortAction {
+    const {coordinates} = (actionModel as IDistortActionModel);
+    return new DistortAction(coordinates);
   }
 }
 

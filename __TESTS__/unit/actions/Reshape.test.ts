@@ -6,9 +6,6 @@ import {Gravity} from "../../../src/qualifiers/gravity";
 import {Compass} from "../../../src/qualifiers/compass";
 import {Transformation} from "../../../src";
 
-
-
-
 describe('Tests for Transformation Action -- Cutter', () => {
   it('Creates a reshape.cutByImage (cutter)overlay', () => {
     const tx = new Transformation()
@@ -78,5 +75,29 @@ describe('Tests for Transformation Action -- Cutter', () => {
       .toString();
 
     expect(tx).toBe('e_trim:15:blue');
+  });
+
+  it('Displaces an image with x and y coordinates', () => {
+    const tx = new Transformation()
+      .reshape(Reshape.displace(image('radialize')).x(100).y(50))
+      .toString();
+
+    expect(tx).toBe('l_radialize/e_displace,fl_layer_apply,x_100,y_50');
+  });
+
+  it('Displaces an image with only x coordinate', () => {
+    const tx = new Transformation()
+      .reshape(Reshape.displace(image('gradient')).x(200))
+      .toString();
+
+    expect(tx).toBe('l_gradient/e_displace,fl_layer_apply,x_200');
+  });
+
+  it('Displaces an image with only y coordinate', () => {
+    const tx = new Transformation()
+      .reshape(Reshape.displace(image('pattern')).y(75))
+      .toString();
+
+    expect(tx).toBe('l_pattern/e_displace,fl_layer_apply,y_75');
   });
 });
