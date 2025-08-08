@@ -1,5 +1,4 @@
-import {fromJson} from "../../../src/internal/fromJson";
-import {image} from "../../../src/qualifiers/source";
+import {fromJson} from "../../../src/internal/fromJson"; 
 
 describe('reshape.fromJson', () => {
   it('should generate a url with distort from array of models', function () {
@@ -36,13 +35,13 @@ describe('reshape.fromJson', () => {
         },
         {
           actionType: 'shear',
-          skewX: 50,
+          skewX: 0,
           skewY: 75
         }
       ]}
     );
     expect(transformation.toString()).toStrictEqual(
-      'e_shear:100:200/e_shear:50:75'
+      'e_shear:100:200/e_shear:0:75'
     );
   });
 
