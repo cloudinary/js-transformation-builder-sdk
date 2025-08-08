@@ -100,4 +100,14 @@ describe('Tests for Transformation Action -- Cutter', () => {
 
     expect(tx).toBe('l_pattern/e_displace,fl_layer_apply,y_75');
   });
+
+  it('Displaces an image with position qualifier', () => {
+    const tx = new Transformation()
+      .reshape(Reshape.displace(image('radialize')).position(new Position().offsetX(100).offsetY(50)))
+      .toString();
+
+    expect(tx).toBe('l_radialize/e_displace,fl_layer_apply,x_100,y_50');
+  });
+
+
 });

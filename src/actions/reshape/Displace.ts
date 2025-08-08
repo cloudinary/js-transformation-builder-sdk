@@ -5,6 +5,7 @@ import {ISourceModel} from "../../internal/models/ISourceModel.js";
 import {BaseSource} from "../../qualifiers/source/BaseSource.js";
 import {createSourceFromModel} from "../../internal/models/createSourceFromModel.js";
 import {ITransformationFromJson} from "../../internal/models/IHasFromJson.js";
+import {Position} from "../../qualifiers/position.js";
 
 /**
  * @description Displaces the pixels in an image according to the color channels of the pixels in another specified image.
@@ -16,7 +17,7 @@ class DisplaceAction extends Action {
   protected _actionModel: IDisplaceActionModel;
   private _x?: string | number;
   private _y?: string | number;
-  private source: BaseSource;
+  private source: BaseSource; 
 
   constructor(source: BaseSource) {
     super();
@@ -49,6 +50,26 @@ class DisplaceAction extends Action {
     return this;
   }
 
+  /**
+   * @description Sets the position using Position qualifier (alternative to x/y methods).
+   * @param {Position} position The position qualifier
+   * @return {this}
+   */
+  position(position: Position): this { 
+    // Extract x and y from position and set them in the model
+    const positionJson = position.toJson() as any;
+    if (positionJson.offsetX !== undefined) {
+      this._x = positionJson.offsetX;
+      this._actionModel.x = positionJson.offsetX;
+    }
+    if (positionJson.offsetY !== undefined) {
+      this._y = positionJson.offsetY;
+      this._actionModel.y = positionJson.offsetY;
+    }
+    
+    return this;
+  }
+
   static fromJson(actionModel: IActionModel, transformationFromJson?: ITransformationFromJson): DisplaceAction {
     const {source, x, y} = (actionModel as IDisplaceActionModel);
     const sourceInstance = createSourceFromModel(source, transformationFromJson);
@@ -66,16 +87,23 @@ class DisplaceAction extends Action {
   toString(): string {
     const displaceParams = [
       'e_displace',
-      'fl_layer_apply',
-      this._x !== undefined ? `x_${this._x}` : null,
-      this._y !== undefined ? `y_${this._y}` : null
-    ].filter((a) => a).join(',');
+      'fl_layer_apply'
+    ];
+ 
+    if (this._x !== undefined) {
+      displaceParams.push(`x_${this._x}`);
+    }
+    if (this._y !== undefined) {
+      displaceParams.push(`y_${this._y}`);
+    } 
 
-    return [
+    const layerParts = [
       this.source.getOpenSourceString('l'),
       this.source.getTransformation() && this.source.getTransformation().toString(),
-      displaceParams
-    ].filter((a) => a).join('/');
+      displaceParams.join(',')
+    ].filter((a) => a);
+
+    return layerParts.join('/');
   }
 }
 
