@@ -1,3 +1,8 @@
+1.21.2 / 2025-08-11
+==================
+
+- [Internal] Fix fromJson translation of Shear and Displace action
+
 1.21.1 / 2025-08-07
 ==================
 
