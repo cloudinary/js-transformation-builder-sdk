@@ -3,8 +3,6 @@ import {Qualifier} from "../../internal/qualifier/Qualifier.js";
 import {AnimatedFormatQualifierValue} from "../../qualifiers/animatedFormat/AnimatedFormatQualifierValue.js";
 import {animatedWebP} from "../../qualifiers/flag.js";
 import {animated} from "../../qualifiers/flag.js";
-import {IToAnimatedActionModel} from "../../internal/models/ITranscodeActionModel.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
 
 /**
  * @extends SDK.Action
@@ -15,7 +13,6 @@ import {IActionModel} from "../../internal/models/IActionModel.js";
  * @see Visit {@link Actions.Transcode|Transcode} for an example
  */
 class ToAnimatedAction extends Action {
-  protected _actionModel : IToAnimatedActionModel = {actionType: 'toAnimated'};
   constructor(animatedFormat: AnimatedFormatQualifierValue | string = '') {
     super();
     if (animatedFormat.toString() === 'webp'){
@@ -25,7 +22,6 @@ class ToAnimatedAction extends Action {
     if (animatedFormat) {
       this.addQualifier(new Qualifier('f', animatedFormat));
     }
-    this._actionModel.animatedFormat = animatedFormat as string;
   }
 
   /**
@@ -34,7 +30,6 @@ class ToAnimatedAction extends Action {
    */
   delay(delayValue: number): this {
     this.addQualifier(new Qualifier('dl', delayValue));
-    this._actionModel.delay = delayValue;
     return this;
   }
 
@@ -45,19 +40,7 @@ class ToAnimatedAction extends Action {
    */
   sampling(sampling: string|number): this {
     this.addQualifier(new Qualifier('vs', sampling));
-    this._actionModel.sampling = sampling;
     return this;
-  }
-
-  static fromJson(actionModel: IActionModel): ToAnimatedAction {
-    const {animatedFormat, sampling, delay} = (actionModel as IToAnimatedActionModel);
-    // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
-    // This allows the inheriting classes to determine the class to be created
-    const result = new this(animatedFormat);
-    sampling && result.sampling(sampling);
-    delay && result.delay(delay);
-
-    return result;
   }
 }
 export default ToAnimatedAction;

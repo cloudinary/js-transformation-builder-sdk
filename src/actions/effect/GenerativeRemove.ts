@@ -1,7 +1,6 @@
 import { Action } from "../../internal/Action.js";
 import { QualifierValue } from "../../internal/qualifier/QualifierValue.js";
 import { Qualifier } from "../../internal/qualifier/Qualifier.js";
-import { IGenerativeRemoveModel } from "../../internal/models/IEffectActionModel.js";
 import { RectangleRegion } from "../../qualifiers/region/RectangleRegion.js";
 
 /**
@@ -18,45 +17,25 @@ class GenerativeRemove extends Action {
 
   constructor() {
     super();
-    this._actionModel.actionType = "generativeRemove";
   }
 
   prompt(...value: string[]) {
     this._prompts = value;
-
-    if (this._prompts.length > 0) {
-      this._actionModel.prompts = this._prompts;
-    }
     return this;
   }
 
   region(...value: RectangleRegion[]) {
     this._regions = value;
-
-    if (this._regions.length > 0) {
-      this._actionModel.regions = this._regions.map((region) => region.toJson());
-    }
-
     return this;
   }
 
   detectMultiple(value = true) {
     this._detectMultiple = value;
-
-    if (this._detectMultiple) {
-      this._actionModel.detectMultiple = this._detectMultiple;
-    }
-
     return this;
   }
 
   removeShadow(value = true) {
     this._removeShadow = value;
-
-    if (this._removeShadow) {
-      this._actionModel.removeShadow = this._removeShadow;
-    }
-
     return this;
   }
 
@@ -111,29 +90,6 @@ class GenerativeRemove extends Action {
     }
 
     return qualifierValue;
-  }
-
-  static fromJson(actionModel: IGenerativeRemoveModel): GenerativeRemove {
-    const { prompts, regions, detectMultiple, removeShadow } = actionModel;
-    const result = new this();
-
-    if (regions) {
-      result.region(...regions.map(({ x, y, width, height }) => new RectangleRegion(x, y, width, height)));
-    }
-
-    if (prompts) {
-      result.prompt(...prompts);
-    }
-
-    if (detectMultiple) {
-      result.detectMultiple(detectMultiple);
-    }
-
-    if (removeShadow) {
-      result.removeShadow(removeShadow);
-    }
-
-    return result;
   }
 }
 

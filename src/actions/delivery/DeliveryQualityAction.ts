@@ -1,13 +1,6 @@
 import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
 import {Qualifier} from "../../internal/qualifier/Qualifier.js";
 import {DeliveryAction} from "./DeliveryAction.js";
-import {IDeliveryQualityModel} from "../../internal/models/IDeliveryActionModel.js";
-import {
-  CHROMA_VALUE_TO_CHROMA_MODEL_ENUM,
-  CHROMA_MODEL_ENUM_TO_CHROMA_VALUE,
-  ACTION_TYPE_TO_QUALITY_MODE_MAP
-} from "../../internal/internalConstants.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
 
 
 /**
@@ -23,7 +16,8 @@ class DeliveryQualityAction extends DeliveryAction {
    * @param {Qualifiers.Quality} qualityValue a Quality value
    */
   constructor(qualityValue: string | number) {
-    super( 'q', qualityValue.toString(), 'level');
+    super( 'q', qualityValue.toString());
+    this.qualityValue = qualityValue;
   }
 
   /**
@@ -32,8 +26,7 @@ class DeliveryQualityAction extends DeliveryAction {
    * @param {420 | 444 | number} type The chroma sub sampling type
    */
   chromaSubSampling(type: 420 | 444 | number): this {
-    this._actionModel.chromaSubSampling = CHROMA_VALUE_TO_CHROMA_MODEL_ENUM[type];
-    const qualityWithSubSampling = new QualifierValue([this._actionModel.level, type]);
+    const qualityWithSubSampling = new QualifierValue([this.qualityValue, type]);
     qualityWithSubSampling.setDelimiter(':');
     // We either have chroma or quantization, but not both
     return this.addQualifier(new Qualifier('q', qualityWithSubSampling));
@@ -44,27 +37,10 @@ class DeliveryQualityAction extends DeliveryAction {
    * @param {number} val
    */
   quantization(val:number): this {
-    this._actionModel.quantization = val;
-    const qualityWithQuantization = new QualifierValue([this._actionModel.level, `qmax_${val}`]).setDelimiter(':');
+    const qualityWithQuantization = new QualifierValue([this.qualityValue, `qmax_${val}`]).setDelimiter(':');
 
     // We either have chroma or quantization, but not both
     return this.addQualifier(new Qualifier('q', qualityWithQuantization));
-  }
-
-  static fromJson(actionModel: IActionModel): DeliveryQualityAction {
-    const {level, chromaSubSampling, quantization} = (actionModel as IDeliveryQualityModel);
-    const levelType = ACTION_TYPE_TO_QUALITY_MODE_MAP[level] || level;
-    const result = new this(levelType);
-
-    if (chromaSubSampling){
-      //Turn strings like 'CHROMA_420' to 420
-      const chromaValue = CHROMA_MODEL_ENUM_TO_CHROMA_VALUE[chromaSubSampling.toUpperCase()];
-      chromaValue && result.chromaSubSampling(+chromaValue);
-    }
-
-    quantization && result.quantization(quantization);
-
-    return result;
   }
 }
 

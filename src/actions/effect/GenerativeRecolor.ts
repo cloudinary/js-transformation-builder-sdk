@@ -1,7 +1,6 @@
 import { Action } from "../../internal/Action.js";
 import { QualifierValue } from "../../internal/qualifier/QualifierValue.js";
 import { Qualifier } from "../../internal/qualifier/Qualifier.js";
-import { IGenerativeRecolorModel } from "../../internal/models/IEffectActionModel.js";
 import { SystemColors } from "../../qualifiers/color.js";
 
 /**
@@ -17,22 +16,12 @@ class GenerativeRecolor extends Action {
 
   constructor(prompts: string | string[], color: SystemColors) {
     super();
-
     this._prompts = Array.isArray(prompts) ? prompts : [prompts];
     this._toColor = color;
-
-    this._actionModel.actionType = "generativeRecolor";
-    this._actionModel.prompts = this._prompts;
-    this._actionModel.toColor = this._toColor;
   }
 
   detectMultiple(value = true) {
     this._detectMultiple = value;
-
-    if (this._detectMultiple) {
-      this._actionModel.detectMultiple = this._detectMultiple;
-    }
-
     return this;
   }
 
@@ -73,17 +62,6 @@ class GenerativeRecolor extends Action {
     }
 
     return qualifierValue;
-  }
-
-  static fromJson(actionModel: IGenerativeRecolorModel): GenerativeRecolor {
-    const { prompts, detectMultiple, toColor } = actionModel;
-    const result = new this(prompts, toColor);
-
-    if (detectMultiple) {
-      result.detectMultiple(detectMultiple);
-    }
-
-    return result;
   }
 }
 

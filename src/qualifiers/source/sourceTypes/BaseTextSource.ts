@@ -5,7 +5,6 @@ import {serializeCloudinaryCharacters} from "../../../internal/utils/serializeCl
 import {Action} from "../../../internal/Action.js";
 import {Qualifier} from "../../../internal/qualifier/Qualifier.js";
 import {prepareColor} from "../../../internal/utils/prepareColor.js";
-import {IBaseTextSourceModel} from "../../../internal/models/ITextSourceModel.js";
 import {TextFitQualifier} from "../../textFit.js";
 
 /**
@@ -19,19 +18,12 @@ class BaseTextSource extends BaseSource {
   protected _textColor: SystemColors
   protected _backgroundColor: SystemColors
   protected type = 'text';
-  protected _qualifierModel: Partial<IBaseTextSourceModel>;
   protected _textFit: TextFitQualifier;
 
   constructor(text: string, textStyle?: TextStyle | string) {
     super();
     this.text = text;
     this._textStyle = textStyle;
-
-    this._qualifierModel.sourceType = 'text';
-    this._qualifierModel.text = text;
-    if (textStyle instanceof TextStyle){
-      this._qualifierModel.textStyle = textStyle.toJson();
-    }
   }
 
   encodeText(text:string): string {
@@ -40,15 +32,11 @@ class BaseTextSource extends BaseSource {
 
   textColor(color:SystemColors): this {
     this._textColor = color;
-    this._qualifierModel.textColor = color;
-
     return this;
   }
 
   backgroundColor(bgColor:SystemColors): this {
     this._backgroundColor = bgColor;
-    this._qualifierModel.backgroundColor = bgColor;
-
     return this;
   }
 

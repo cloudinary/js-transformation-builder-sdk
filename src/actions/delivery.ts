@@ -110,7 +110,7 @@ function quality(qualityType:QualityTypes | string | number) :DeliveryQualityAct
  * );
  */
 function density(value:number) :DeliveryAction {
-  return new DeliveryAction('dn', value, 'density');
+  return new DeliveryAction('dn', value);
 }
 
 /**
@@ -130,7 +130,7 @@ function density(value:number) :DeliveryAction {
  * );
  */
 function defaultImage(publicIdWithExtension:string) :DeliveryAction {
-  return new DeliveryAction('d', publicIdWithExtension, 'defaultImage');
+  return new DeliveryAction('d', publicIdWithExtension);
 }
 
 /**

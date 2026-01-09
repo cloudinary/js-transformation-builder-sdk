@@ -12,7 +12,6 @@ import {ClipAction} from "../actions/psdTools/ClipAction.js";
 import {GetLayerAction} from "../actions/psdTools/GetLayerAction.js";
 import {IReshape} from "../actions/reshape.js";
 import {SystemColors} from "../qualifiers/color.js";
-import {prepareColor} from "../internal/utils/prepareColor.js";
 import {ExtractAction} from "../actions/extract.js";
 import {BorderAction} from "../actions/border.js";
 import {FlagQualifier} from "../qualifiers/flag/FlagQualifier.js";
@@ -24,9 +23,6 @@ import {IDeliveryAction} from "../actions/delivery.js";
 import {ITranscodeAction} from "../actions/transcode.js";
 import {AnimatedAction} from "../actions/animated.js";
 import RoundCornersAction from "../actions/roundCorners/RoundCornersAction.js";
-import {IActionModel} from "../internal/models/IActionModel.js";
-import {IErrorObject, isErrorObject} from "../internal/models/IErrorObject.js";
-import {ITransformationModel} from "../internal/models/ITransformationModel.js";
 import {DeliveryFormatAction} from "../actions/delivery/DeliveryFormatAction.js";
 
 /**
@@ -309,21 +305,6 @@ class Transformation {
    */
   videoEdit(action: videoEditType): this {
     return this.addAction(action);
-  }
-
-  toJson(): ITransformationModel | IErrorObject {
-    const actions: IActionModel[] = [];
-
-    for (const action of this.actions) {
-      const json = action.toJson();
-      if (isErrorObject(json)) {
-        // Fail early and return an IErrorObject
-        return json;
-      }
-      actions.push(json as IActionModel);
-    }
-
-    return {actions};
   }
 }
 

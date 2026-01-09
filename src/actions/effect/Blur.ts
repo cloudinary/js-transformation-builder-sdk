@@ -1,10 +1,6 @@
 import {NamedRegion} from "../../qualifiers/region/NamedRegion.js";
 import {Qualifier} from "../../internal/qualifier/Qualifier.js";
 import {Action} from "../../internal/Action.js";
-import { IBlurModel, ICustomRegionModel, IRegionModel } from "../../internal/models/IEffectActionModel.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
-import { faces, ocr } from "../../qualifiers/region.js";
-import { CustomRegion } from "../../qualifiers/region/CustomRegion.js";
 
 /**
  * @description The Action class of the blur Builder.
@@ -15,13 +11,10 @@ import { CustomRegion } from "../../qualifiers/region/CustomRegion.js";
 class BlurAction extends Action {
   private _region?: NamedRegion;
   private _strength: number | string;
-  protected _actionModel: IBlurModel = {};
 
   constructor(strength: number | string) {
     super();
     this._strength = strength;
-    this._actionModel.actionType = 'blur';
-    this._actionModel.strength = strength as number;
   }
 
   /**
@@ -30,8 +23,6 @@ class BlurAction extends Action {
    */
   region(blurRegion: NamedRegion): this {
     this._region = blurRegion;
-    this._actionModel.region = blurRegion.toJson() as unknown as IRegionModel;
-
     return this;
   }
 
@@ -41,7 +32,6 @@ class BlurAction extends Action {
    */
   strength(strength: number | string): this {
     this._strength = strength;
-    this._actionModel.strength = strength as number;
     return this;
   }
 
@@ -87,28 +77,6 @@ class BlurAction extends Action {
     } else {
       this.addQualifier(new Qualifier('e', `blur${strength}`));
     }
-  }
-  static fromJson(actionModel: IActionModel): BlurAction {
-    const {strength, region} = (actionModel as IBlurModel);
-
-    // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
-    // This allows the inheriting classes to determine the class to be created
-    const result = new this(strength);
-    strength && result.strength(strength);
-
-    if(region && region.regionType === 'faces'){
-      result.region(faces());
-    }
-
-    if(region && region.regionType === 'ocr_text'){
-      result.region(ocr());
-    }
-
-    if(region && region.regionType === 'custom') {
-      result.region(CustomRegion.fromJson(region));
-    }
-
-    return result;
   }
 }
 

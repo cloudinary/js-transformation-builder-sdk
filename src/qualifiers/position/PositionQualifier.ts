@@ -4,8 +4,6 @@ import {FocusOnGravity} from "../gravity/focusOnGravity/FocusOnGravity.js";
 import {Qualifier} from "../../internal/qualifier/Qualifier.js";
 import {tiled} from "../flag.js";
 import {noOverflow} from "../flag.js";
-import {IPositionModel} from "../../internal/models/IPositionModel.js";
-import {createGravityModel} from "../../internal/models/createGravityModel.js";
 
 /**
  * @description
@@ -18,17 +16,12 @@ import {createGravityModel} from "../../internal/models/createGravityModel.js";
  * @extends {SDK.Actions}
  */
 class PositionQualifier extends Action {
-  _actionModel: IPositionModel;
-
   constructor() {
     super();
-    this._actionModel = {};
   }
 
   gravity(gravityQualifier: CompassGravity | FocusOnGravity): this {
     this.addQualifier(gravityQualifier);
-    this._actionModel.gravity = createGravityModel(gravityQualifier);
-
     return this;
   }
 
@@ -38,8 +31,6 @@ class PositionQualifier extends Action {
    */
   tiled(): this {
     this.addFlag(tiled());
-    this._actionModel.tiled = true;
-
     return this;
   }
 
@@ -52,9 +43,6 @@ class PositionQualifier extends Action {
     if (bool === false) {
       this.addFlag(noOverflow());
     }
-
-    this._actionModel.allowOverflow = bool;
-
     return this;
   }
 
@@ -65,8 +53,6 @@ class PositionQualifier extends Action {
    */
   offsetX(offsetX:number | string): this{
     this.addQualifier(new Qualifier('x', offsetX));
-    this._actionModel.offsetX = offsetX;
-
     return this;
   }
 
@@ -77,8 +63,6 @@ class PositionQualifier extends Action {
    */
   offsetY(offsetY:number | string): this{
     this.addQualifier(new Qualifier('y', offsetY));
-    this._actionModel.offsetY = offsetY;
-
     return this;
   }
 }

@@ -1,6 +1,5 @@
 import { Action } from "../../internal/Action.js";
 import { Qualifier } from "../../internal/qualifier/Qualifier.js";
-import { IExtractModel } from "../../internal/models/IEffectActionModel.js";
 import { ExtractModeType } from "../../types/types.js";
 import { QualifierValue } from "../../internal/qualifier/QualifierValue.js";
 
@@ -19,46 +18,26 @@ class Extract extends Action {
 
   constructor(prompts: string | string[]) {
     super();
-    this._actionModel.actionType = "extract";
-
     this._prompts = Array.isArray(prompts) ? prompts : [prompts];
-    this._actionModel.prompts = this._prompts;
   }
 
   detectMultiple(value = false) {
     this._detectMultiple = value;
-
-    if (this._detectMultiple) {
-      this._actionModel.detectMultiple = this._detectMultiple;
-    }
-
     return this;
   }
 
   mode(mode?: ExtractModeType) {
     this._mode = mode;
-    this._actionModel.mode = this._mode;
-
     return this;
   }
 
   invert(value = true) {
     this._invert = value;
-
-    if (this._invert) {
-      this._actionModel.invert = this._invert;
-    }
-
     return this;
   }
 
   preserveAlpha(value = true) {
     this._preserveAlpha = value;
-
-    if (this._preserveAlpha) {
-      this._actionModel.preserveAlpha = this._preserveAlpha;
-    }
-
     return this;
   }
 
@@ -101,29 +80,6 @@ class Extract extends Action {
     }
 
     return qualifierValue;
-  }
-
-  static fromJson(actionModel: IExtractModel): Extract {
-    const { prompts, detectMultiple, mode, invert, preserveAlpha } = actionModel;
-    const result = new this(prompts);
-
-    if (detectMultiple) {
-      result.detectMultiple(detectMultiple);
-    }
-
-    if (mode) {
-      result.mode(mode);
-    }
-
-    if (invert) {
-      result.invert(invert);
-    }
-
-    if (preserveAlpha) {
-      result.preserveAlpha(preserveAlpha);
-    }
-
-    return result;
   }
 }
 
