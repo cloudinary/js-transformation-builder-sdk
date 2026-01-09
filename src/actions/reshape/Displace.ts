@@ -1,10 +1,5 @@
 import {Action} from "../../internal/Action.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
-import {IDisplaceActionModel} from "../../internal/models/IDisplaceActionModel.js";
-import {ISourceModel} from "../../internal/models/ISourceModel.js";
 import {BaseSource} from "../../qualifiers/source/BaseSource.js";
-import {createSourceFromModel} from "../../internal/models/createSourceFromModel.js";
-import {ITransformationFromJson} from "../../internal/models/IHasFromJson.js";
 import {Position} from "../../qualifiers/position.js";
 
 /**
@@ -14,7 +9,6 @@ import {Position} from "../../qualifiers/position.js";
  * @see Visit {@link Actions.Reshape| Reshape} for examples
  */
 class DisplaceAction extends Action {
-  protected _actionModel: IDisplaceActionModel;
   private _x?: string | number;
   private _y?: string | number;
   private source: BaseSource; 
@@ -22,10 +16,6 @@ class DisplaceAction extends Action {
   constructor(source: BaseSource) {
     super();
     this.source = source;
-    this._actionModel = {
-      actionType: 'displace',
-      source: source.toJson() as ISourceModel
-    };
   }
 
   /**
@@ -35,7 +25,6 @@ class DisplaceAction extends Action {
    */
   x(x: string | number): this {
     this._x = x;
-    this._actionModel.x = x;
     return this;
   }
 
@@ -46,7 +35,6 @@ class DisplaceAction extends Action {
    */
   y(y: string | number): this {
     this._y = y;
-    this._actionModel.y = y;
     return this;
   }
 
@@ -56,32 +44,19 @@ class DisplaceAction extends Action {
    * @return {this}
    */
   position(position: Position): this { 
-    // Extract x and y from position and set them in the model
-    const positionJson = position.toJson() as any;
-    if (positionJson.offsetX !== undefined) {
-      this._x = positionJson.offsetX;
-      this._actionModel.x = positionJson.offsetX;
+    // Extract x and y from position's qualifiers
+    const positionStr = position.toString();
+    const xMatch = positionStr.match(/x_(-?\d+)/);
+    const yMatch = positionStr.match(/y_(-?\d+)/);
+    
+    if (xMatch) {
+      this._x = parseInt(xMatch[1], 10);
     }
-    if (positionJson.offsetY !== undefined) {
-      this._y = positionJson.offsetY;
-      this._actionModel.y = positionJson.offsetY;
+    if (yMatch) {
+      this._y = parseInt(yMatch[1], 10);
     }
     
     return this;
-  }
-
-  static fromJson(actionModel: IActionModel, transformationFromJson?: ITransformationFromJson): DisplaceAction {
-    const {source, x, y} = (actionModel as IDisplaceActionModel);
-    const sourceInstance = createSourceFromModel(source, transformationFromJson);
-    const result = new DisplaceAction(sourceInstance);
-
-    if (x !== undefined) {
-      result.x(x);
-    }
-    if (y !== undefined) {
-      result.y(y);
-    }
-    return result;
   }
 
   toString(): string {

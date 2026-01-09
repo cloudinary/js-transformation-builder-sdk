@@ -1,6 +1,4 @@
 import {BaseSource} from "../BaseSource.js";
-import {IAudioSourceModel} from "../../../internal/models/IAudioSourceModel.js";
-import {ITransformationFromJson} from "../../../internal/models/IHasFromJson.js";
 
 /**
  * @memberOf Qualifiers.Source
@@ -8,14 +6,11 @@ import {ITransformationFromJson} from "../../../internal/models/IHasFromJson.js"
  * @description Defines how to manipulate a Subtitles layer
  */
 class AudioSource extends BaseSource {
-  protected _qualifierModel: IAudioSourceModel;
+  private _publicId: string;
 
   constructor(publicId: string) {
     super();
-    this._qualifierModel = {
-      sourceType: 'audio',
-      publicId
-    };
+    this._publicId = publicId;
   }
 
   /**
@@ -25,23 +20,9 @@ class AudioSource extends BaseSource {
    * @returns {string}
    */
   getOpenSourceString(layerType: 'u' | 'l'): string {
-    const encodedPublicID = this.encodeAssetPublicID(this._qualifierModel.publicId);
+    const encodedPublicID = this.encodeAssetPublicID(this._publicId);
 
     return `${layerType}_audio:${encodedPublicID}`;
-  }
-
-  static fromJson(qualifierModel: IAudioSourceModel, transformationFromJson: ITransformationFromJson): AudioSource {
-    const {publicId, transformation} = qualifierModel;
-
-    // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [qualifierModel])
-    // This allows the inheriting classes to determine the class to be created
-    // @ts-ignore
-    const result = new this(publicId);
-    if (transformation) {
-      result.transformation(transformationFromJson(transformation));
-    }
-
-    return result;
   }
 }
 

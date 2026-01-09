@@ -1,8 +1,5 @@
 import {BaseSource} from "../BaseSource.js";
 import {FormatQualifier} from "../../format/FormatQualifier.js";
-import {IImageSourceModel} from "../../../internal/models/IImageSourceModel.js";
-import {IQualifierToJson} from "../../../internal/models/qualifierToJson.js";
-import {ITransformationFromJson} from "../../../internal/models/IHasFromJson.js";
 
 /**
  * @memberOf Qualifiers.Source
@@ -27,10 +24,6 @@ class ImageSource extends BaseSource {
   constructor(publicID: string) {
     super();
     this._publicID = publicID;
-    this._qualifierModel = {
-      publicId: publicID,
-      sourceType: 'image'
-    };
   }
 
   /**
@@ -58,29 +51,6 @@ class ImageSource extends BaseSource {
   format(format: FormatQualifier): this {
     this._format = format;
     return this;
-  }
-
-  toJson(): IQualifierToJson{
-    const result = super.toJson() as unknown as IImageSourceModel;
-    if (result.publicId && this._format){
-      result.publicId = `${result.publicId}.${this._format.toString()}`;
-    }
-
-    return result as unknown as IQualifierToJson;
-  }
-
-  static fromJson(qualifierModel: IImageSourceModel, transformationFromJson: ITransformationFromJson): ImageSource {
-    const {publicId, transformation} = qualifierModel;
-
-    // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [qualifierModel])
-    // This allows the inheriting classes to determine the class to be created
-    // @ts-ignore
-    const result = new this(publicId);
-    if (transformation) {
-      result.transformation(transformationFromJson(transformation));
-    }
-
-    return result;
   }
 }
 

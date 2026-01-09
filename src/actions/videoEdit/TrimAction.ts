@@ -1,7 +1,5 @@
 import {Action} from "../../internal/Action.js";
 import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {ITrimActionModel} from "../../internal/models/ITrimActionModel.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
 
 /**
  * @description Class for shortening a video to the specified range.
@@ -10,13 +8,8 @@ import {IActionModel} from "../../internal/models/IActionModel.js";
  * @see Visit {@link Actions.VideoEdit|VideoEdit} for an example
  */
 class TrimAction extends Action {
-  protected _actionModel: ITrimActionModel;
-
   constructor() {
     super();
-    this._actionModel = {
-      actionType: 'trimVideo'
-    };
   }
 
   /**
@@ -39,7 +32,6 @@ class TrimAction extends Action {
    * @return {this}
    */
   startOffset(offset: string|number): this {
-    this._actionModel.startOffset = getAuto(offset) || +offset;
     return this.addQualifier(new Qualifier('so', this.parseVal(offset)));
   }
 
@@ -52,7 +44,6 @@ class TrimAction extends Action {
    * @return {this}
    */
   endOffset(offset: string|number): this {
-    this._actionModel.endOffset = getAuto(offset) || +offset;
     return this.addQualifier(new Qualifier('eo', this.parseVal(offset)));
   }
 
@@ -65,35 +56,8 @@ class TrimAction extends Action {
    * @return {this}
    */
   duration(duration: string|number): this {
-    this._actionModel.duration = duration;
     return this.addQualifier(new Qualifier('du', this.parseVal(duration)));
   }
-
-  static fromJson(actionModel: IActionModel): TrimAction {
-    const {duration, startOffset, endOffset} = (actionModel as ITrimActionModel);
-    // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
-    // This allows the inheriting classes to determine the class to be created
-    const result = new this();
-    if (duration != null){
-      result.duration(duration);
-    }
-
-    if (startOffset != null){
-      result.startOffset(startOffset);
-    }
-
-    if (endOffset != null){
-      result.endOffset(endOffset);
-    }
-
-    return result;
-  }
 }
-
-
-/**
- * Helper function that either gets 'auto' or return null
- */
-const getAuto = (value: unknown): 'auto' | null => value === 'auto' ? value : null;
 
 export default TrimAction;

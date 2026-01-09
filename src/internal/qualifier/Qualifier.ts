@@ -1,17 +1,15 @@
 import {QualifierValue} from './QualifierValue.js';
-import {QualifierModel} from '../models/QualifierModel.js';
 
 /**
  * @summary SDK
  * @memberOf SDK
  */
-class Qualifier extends QualifierModel{
+class Qualifier {
   key: string;
   qualifierValue: QualifierValue;
   delimiter = '_'; // {key}{delimiter}{qualifierValue}
 
   constructor(key: string, qualifierValue?: QualifierValue | QualifierValue[] | number | string | (string | number)[]) {
-    super();
     this.key = key;
     if (qualifierValue instanceof QualifierValue) {
       this.qualifierValue = qualifierValue;

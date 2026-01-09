@@ -11,7 +11,6 @@ class NamedRegion extends Action {
   constructor(type: RegionType) {
     super();
     this.regionType = type;
-    this._actionModel.regionType = type;
   }
 }
 

@@ -5,6 +5,11 @@ import { Action } from "../../internal/Action.js";
  * @memberOf Qualifiers.Region
  */
 class RectangleRegion extends Action {
+  private _x: number;
+  private _y: number;
+  private _width: number;
+  private _height: number;
+
   /**
    * Rectangle defines a region where action will be applied
    *
@@ -16,23 +21,19 @@ class RectangleRegion extends Action {
   constructor(x: number, y: number, width: number, height: number) {
     super();
 
+    this._x = x;
+    this._y = y;
+    this._width = width;
+    this._height = height;
+
     this.addQualifier(new Qualifier("x", x));
     this.addQualifier(new Qualifier("y", y));
     this.addQualifier(new Qualifier("w", width));
     this.addQualifier(new Qualifier("h", height));
-
-    this._actionModel = {
-      x,
-      y,
-      width,
-      height,
-    };
   }
 
   toString(): string {
-    const { x, y, width, height } = this._actionModel;
-
-    return `(x_${x};y_${y};w_${width};h_${height})`;
+    return `(x_${this._x};y_${this._y};w_${this._width};h_${this._height})`;
   }
 }
 

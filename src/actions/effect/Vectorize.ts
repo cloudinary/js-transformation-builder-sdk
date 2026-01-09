@@ -1,8 +1,6 @@
 import {Action} from "../../internal/Action.js";
 import {Qualifier} from "../../internal/qualifier/Qualifier.js";
 import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
-import {IVectorizeEffectModel} from "../../internal/models/IEffectActionModel.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
 
 /**
  * @description Vectorizes the image.
@@ -16,10 +14,9 @@ class VectorizeEffectAction extends Action {
   private _despeckleLevel: number | string;
   private _cornersLevel: number | string;
   private _paths: number | string;
-  protected _actionModel: IVectorizeEffectModel = {};
+
   constructor() {
     super();
-    this._actionModel.actionType = 'vectorize';
   }
 
   /**
@@ -28,7 +25,6 @@ class VectorizeEffectAction extends Action {
    * @return {this}
    */
   numOfColors(num: number | string): this {
-    this._actionModel.numOfColors = num as number;
     this._numOfColors = num;
     return this;
   }
@@ -39,7 +35,6 @@ class VectorizeEffectAction extends Action {
    * @return {this}
    */
   detailsLevel(num: number | string): this {
-    this._actionModel.detailLevel = num as number;
     this._detailsLevel = num;
     return this;
   }
@@ -50,7 +45,6 @@ class VectorizeEffectAction extends Action {
    * @return {this}
    */
   despeckleLevel(num: number | string):this {
-    this._actionModel.despeckleLevel = num as number;
     this._despeckleLevel = num;
     return this;
   }
@@ -61,7 +55,6 @@ class VectorizeEffectAction extends Action {
    * @return {this}
    */
   cornersLevel(num: number | string): this {
-    this._actionModel.cornersLevel = num as number;
     this._cornersLevel = num;
     return this;
   }
@@ -72,7 +65,6 @@ class VectorizeEffectAction extends Action {
    * @return {this}
    */
   paths(num: number):this {
-    this._actionModel.paths = num;
     this._paths = num;
     return this;
   }
@@ -101,22 +93,6 @@ class VectorizeEffectAction extends Action {
 
     this.addQualifier(new Qualifier('e', str));
   }
-
-  static fromJson(actionModel: IActionModel): VectorizeEffectAction {
-    const {actionType, paths, cornersLevel, despeckleLevel, detailLevel, numOfColors} = (actionModel as IVectorizeEffectModel);
-
-    // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
-    // This allows the inheriting classes to determine the class to be created
-    const result = new this();
-    paths && result.paths(paths);
-    cornersLevel && result.cornersLevel(cornersLevel);
-    despeckleLevel && result.despeckleLevel(despeckleLevel);
-    detailLevel && result.detailsLevel(detailLevel);
-    numOfColors && result.numOfColors(numOfColors);
-
-    return result;
-  }
-
 }
 
 

@@ -3,11 +3,6 @@ import {Transformation} from "../../transformation/Transformation.js";
 import {VideoSource} from "../../qualifiers/source/sourceTypes/VideoSource.js";
 import {ImageSource} from "../../qualifiers/source/sourceTypes/ImageSource.js";
 import {FetchSource} from "../../qualifiers/source/sourceTypes/FetchSource.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
-import {IConcatenateActionModel} from "../../internal/models/IConcatenateActionModel.js";
-import {ITransformationFromJson} from "../../internal/models/IHasFromJson.js";
-import {IVideoSourceModel} from "../../internal/models/IVideoSourceModel.js";
-import {createSourceFromModel} from "../../internal/models/createSourceFromModel.js";
 
 /**
  * @description Class for Concatenating another video.
@@ -22,7 +17,6 @@ class ConcatenateAction extends Action {
   private _prepend: boolean;
   private _duration: number;
   private _transition: VideoSource;
-  protected _actionModel: IConcatenateActionModel;
 
   /**
    *
@@ -31,11 +25,6 @@ class ConcatenateAction extends Action {
    */
   constructor(source: VideoSource | ImageSource | FetchSource) {
     super();
-    this._actionModel = {
-      actionType: 'concatenate',
-      source: source.toJson() as IVideoSourceModel
-    };
-
     this.concatSource = source;
   }
 
@@ -45,7 +34,6 @@ class ConcatenateAction extends Action {
    * @return {this}
    */
   transition(source: VideoSource): this {
-    this._actionModel.transition = source.toJson() as IVideoSourceModel;
     this._transition = source;
     return this;
   }
@@ -55,7 +43,6 @@ class ConcatenateAction extends Action {
    * @return {this}
    */
   prepend(): this {
-    this._actionModel.prepend = true;
     this._prepend = true;
     return this;
   }
@@ -66,7 +53,6 @@ class ConcatenateAction extends Action {
    * @return {this}
    */
   duration(sec: number): this {
-    this._actionModel.duration = sec;
     this._duration = sec;
     return this;
   }
@@ -137,28 +123,6 @@ class ConcatenateAction extends Action {
       concatSourceTx.toString(),
       close
     ].filter((a) => a).join('/');
-  }
-
-  static fromJson(actionModel: IActionModel, transformationFromJson: ITransformationFromJson): ConcatenateAction {
-    const {source, transition, prepend, duration} = (actionModel as IConcatenateActionModel);
-    const sourceInstance = createSourceFromModel(source, transformationFromJson) as ImageSource;
-
-    // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
-    // This allows the inheriting classes to determine the class to be created
-    const result = new this(sourceInstance);
-    if (transition){
-      result.transition(VideoSource.fromJson(transition, transformationFromJson));
-    }
-
-    if (prepend){
-      result.prepend();
-    }
-
-    if (duration){
-      result.duration(duration);
-    }
-
-    return result;
   }
 }
 

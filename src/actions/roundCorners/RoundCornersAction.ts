@@ -1,8 +1,8 @@
 import {Action} from "../../internal/Action.js";
 import {Qualifier} from "../../internal/qualifier/Qualifier.js";
 import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
-import {IRoundCornersActionModel, CornerRadiusValueType} from "../../internal/models/IRoundCornersActionModel.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
+
+type CornerRadiusValueType = 'max' | [number?, number?, number?, number?];
 
 /**
  * @description A class to round one or more corners of an image or video.
@@ -11,12 +11,10 @@ import {IActionModel} from "../../internal/models/IActionModel.js";
  * @see Visit {@link Actions.RoundCorners|RoundCorners} for an example
  */
 class RoundCornersAction extends Action {
-  protected _actionModel: IRoundCornersActionModel = {};
   private _radius: CornerRadiusValueType;
 
   constructor() {
     super();
-    this._actionModel.actionType = 'roundCorners';
   }
 
   /**
@@ -37,7 +35,6 @@ class RoundCornersAction extends Action {
 
     const definedRadiuses = ([a, b, c, d].filter((r) => r !== undefined) as [number?, number?, number?, number?]);
     this._radius = definedRadiuses;
-    this._actionModel.radius = definedRadiuses;
 
     this.addQualifier(new Qualifier('r').addValue(qualifierValue));
     return this;
@@ -48,29 +45,11 @@ class RoundCornersAction extends Action {
    */
   max(): this {
     this._radius = 'max';
-    this._actionModel.radius = 'max';
-
     return this.addQualifier(new Qualifier('r', 'max'));
   }
 
   getRadius(): CornerRadiusValueType {
     return this._radius;
-  }
-
-  static fromJson(actionModel: IActionModel): RoundCornersAction {
-    const { radius } = (actionModel as IRoundCornersActionModel);
-
-    // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
-    // This allows the inheriting classes to determine the class to be created
-    const result = new this();
-    if (Array.isArray(radius)) {
-      result.radius(radius[0], radius[1], radius[2], radius[3]);
-    }
-    if (radius === 'max') {
-      result.max();
-    }
-
-    return result;
   }
 }
 

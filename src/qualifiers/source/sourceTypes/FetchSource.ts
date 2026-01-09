@@ -1,8 +1,6 @@
 import {BaseSource} from "../BaseSource.js";
 import {FormatQualifier} from "../../format/FormatQualifier.js";
 import {base64Encode} from "../../../internal/utils/base64Encode.js";
-import {ITransformationFromJson} from "../../../internal/models/IHasFromJson.js";
-import {IFetchSourceModel} from "../../../internal/models/IFetchSourceModel.js";
 
 /**
  * @memberOf Qualifiers.Source
@@ -14,7 +12,7 @@ import {IFetchSourceModel} from "../../../internal/models/IFetchSourceModel.js";
  *     This class is used as a Qualifier for the asset.overlay() and asset.underlay() methods.</br>
  *     You can find regular images and videos transformations below:
  *   </div>
-  *   <ul>
+ *   <ul>
  *     <li>{@link SDK.ImageTransformation| Image Transformations}</li>
  *     <li>{@link SDK.VideoTransformation| Video Transformations}</li>
  *   </ul>
@@ -28,11 +26,6 @@ class FetchSource extends BaseSource {
 
   constructor(remoteURL: string) {
     super();
-    this._qualifierModel = {
-      sourceType: 'fetch',
-      url: remoteURL
-    };
-
     this._remoteURL = remoteURL;
   }
 
@@ -57,26 +50,8 @@ class FetchSource extends BaseSource {
    * @returns {this}
    */
   format(format: FormatQualifier): this {
-    this._qualifierModel.format = format.toString();
     this._format = format;
     return this;
-  }
-
-  static fromJson(qualifierModel: IFetchSourceModel, transformationFromJson: ITransformationFromJson): FetchSource {
-    const {url, transformation, format} = qualifierModel;
-
-    // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [qualifierModel])
-    // This allows the inheriting classes to determine the class to be created
-    const result = new this(url);
-    if (transformation) {
-      result.transformation(transformationFromJson(transformation));
-    }
-
-    if (format){
-      result.format(new FormatQualifier(format));
-    }
-
-    return result;
   }
 }
 

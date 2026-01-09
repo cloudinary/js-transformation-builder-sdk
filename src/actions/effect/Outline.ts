@@ -4,8 +4,6 @@ import {Qualifier} from "../../internal/qualifier/Qualifier.js";
 import {prepareColor} from "../../internal/utils/prepareColor.js";
 import {SystemColors} from "../../qualifiers/color.js";
 import {OutlineModeType} from "../../types/types.js";
-import {IEffectOutlineModel} from "../../internal/models/IEffectActionModel.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
 
 /**
  * @description Adds an outline to a transparent image. For examples, see the Image Transformations guide.
@@ -17,12 +15,6 @@ class EffectOutline extends Action {
   private _mode: string;
   private _width: number | string;
   private _blurLevel : number | string;
-  protected _actionModel: IEffectOutlineModel = {};
-
-  constructor() {
-    super();
-    this._actionModel.actionType = 'outline';
-  }
 
   /**
    * @description
@@ -32,7 +24,6 @@ class EffectOutline extends Action {
    * @return {this}
    */
   mode(mode?: OutlineModeType|string): this{
-    this._actionModel.mode = mode;
     this._mode = mode;
     return this;
   }
@@ -43,7 +34,6 @@ class EffectOutline extends Action {
    * @return {this}
    */
   width(width?:number | string): this {
-    this._actionModel.width = width as number;
     this._width = width;
     return this;
   }
@@ -56,7 +46,6 @@ class EffectOutline extends Action {
    * @return {this}
    */
   blurLevel(lvl?: number | string): this {
-    this._actionModel.blurLevel = lvl as number;
     this._blurLevel = lvl;
     return this;
   }
@@ -66,7 +55,6 @@ class EffectOutline extends Action {
    * @return {this}
    */
   color(color:SystemColors): this {
-    this._actionModel.color = color;
     return this.addQualifier(new Qualifier('co', prepareColor(color)));
   }
 
@@ -75,20 +63,6 @@ class EffectOutline extends Action {
       'e',
       new QualifierValue(['outline', this._mode, this._width, this._blurLevel]).setDelimiter(':'))
     );
-  }
-
-  static fromJson(actionModel: IActionModel): EffectOutline {
-    const {actionType, mode, color, blurLevel, width} = (actionModel as IEffectOutlineModel);
-
-    // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
-    // This allows the inheriting classes to determine the class to be created
-    const result = new this();
-    mode && result.mode(mode);
-    color && result.color(color);
-    blurLevel && result.blurLevel(blurLevel);
-    width && result.width(width);
-
-    return result;
   }
 }
 

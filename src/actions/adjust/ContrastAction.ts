@@ -1,8 +1,6 @@
 import {Action} from "../../internal/Action.js";
 import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
 import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {ContrastActionModel} from "../../internal/models/IAdjustActionModel.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
 
 /**
  * @description Adjusts the contrast of the image.
@@ -12,7 +10,6 @@ import {IActionModel} from "../../internal/models/IActionModel.js";
 class ContrastAction extends Action {
   private levelValue: number;
   private functionTypeValue: string;
-  protected _actionModel: ContrastActionModel = {actionType: 'contrast'};
 
   constructor(level?: number) {
     super();
@@ -29,7 +26,6 @@ class ContrastAction extends Action {
    */
   level(level: number): this {
     this.levelValue = level;
-    this._actionModel.level = level;
     return this;
   }
 
@@ -40,7 +36,6 @@ class ContrastAction extends Action {
    */
   functionType(functionType: 'sigmoidal' | 'linear' | string): this {
     this.functionTypeValue = functionType;
-    this._actionModel.functionType = functionType;
     return this;
   }
 
@@ -64,20 +59,6 @@ class ContrastAction extends Action {
     const qualifierValue = new QualifierValue(qualifierValueStr);
     this.addQualifier(new Qualifier('e', qualifierValue));
     return this;
-  }
-
-  static fromJson(actionModel: IActionModel): ContrastAction {
-    const {level, functionType} = (actionModel as ContrastActionModel);
-
-    // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
-    // This allows the inheriting classes to determine the class to be created
-    const result = new this(level);
-    
-    if (functionType) {
-      result.functionType(functionType);
-    }
-
-    return result;
   }
 }
 

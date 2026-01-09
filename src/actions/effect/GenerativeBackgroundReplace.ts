@@ -1,6 +1,5 @@
 import { Action } from "../../internal/Action.js";
 import { Qualifier } from "../../internal/qualifier/Qualifier.js";
-import { IGenerativeBackgroundReplaceModel } from "../../internal/models/IEffectActionModel.js";
 import { encodePromptComponent } from "../../internal/utils/encodePromptComponents.js";
 
 /**
@@ -14,16 +13,9 @@ class GenerativeBackgroundReplace extends Action {
 
   constructor() {
     super();
-    this._actionModel.actionType = "generativeBackgroundReplace";
   }
 
   prompt(value: string): GenerativeBackgroundReplace {
-    try {
-      this._actionModel.prompt = decodeURIComponent(value);
-    } catch {
-      this._actionModel.prompt = value;
-    }
-  
     this._prompt = value;
     return this;
   }
@@ -39,15 +31,6 @@ class GenerativeBackgroundReplace extends Action {
         )
       );
     }
-  }
-
-  static fromJson(
-    actionModel: IGenerativeBackgroundReplaceModel
-  ): GenerativeBackgroundReplace {
-    const { prompt } = actionModel;
-    const result = new this();
-
-    return result.prompt(prompt);
   }
 }
 

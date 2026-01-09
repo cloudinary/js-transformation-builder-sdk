@@ -7,17 +7,6 @@ import {Position} from "../../qualifiers/position.js";
 import {BaseSource} from "../../qualifiers/source/BaseSource.js";
 import {BlendModeType} from "../../types/types.js";
 import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
-import {IOverlayActionModel} from "../../internal/models/IOverlayActionModel.js";
-import {createSourceFromModel} from "../../internal/models/createSourceFromModel.js";
-import {ImageSource} from "../../qualifiers/source/sourceTypes/ImageSource.js";
-import {ITransformationFromJson} from "../../internal/models/IHasFromJson.js";
-import {createPositionFromModel} from "../../internal/models/createPositionFromModel.js";
-import {createTimelinePositionFromModel} from "../../internal/models/createTimelinePositionFromModel.js";
-import {ISourceModel} from "../../internal/models/ISourceModel.js";
-import {ITimelinePositionModel} from "../../internal/models/ITimelinePositionModel.js";
-import {IPositionModel} from "../../internal/models/IPositionModel.js";
-import {ACTION_TYPE_TO_BLEND_MODE_MAP} from "../../internal/internalConstants.js";
 
 
 /**
@@ -32,7 +21,6 @@ class LayerAction extends Action {
   private _position:PositionQualifier;
   private _blendMode: BlendModeQualifier | BlendModeType;
   private _timelinePosition: TimelinePosition;
-  protected _actionModel: IOverlayActionModel;
   layerType: 'u' | 'l';
 
   /**
@@ -42,11 +30,6 @@ class LayerAction extends Action {
   constructor(layerSource: BaseSource) {
     super();
     this.source = layerSource;
-
-    this._actionModel = {
-      actionType: 'overlay',
-      source: layerSource.toJson() as ISourceModel
-    };
   }
 
   /**
@@ -56,8 +39,6 @@ class LayerAction extends Action {
    */
   setLayerType(type: 'u' | 'l'): this {
     this.layerType = type;
-    this._actionModel.actionType = type === 'u' ? 'underlay' : 'overlay';
-
     return this;
   }
 
@@ -68,8 +49,6 @@ class LayerAction extends Action {
    */
   timeline(timelinePosition: TimelinePosition): this {
     this._timelinePosition = timelinePosition;
-    this._actionModel.timelinePosition = timelinePosition.toJson() as unknown as ITimelinePositionModel;
-
     return this;
   }
 
@@ -80,8 +59,6 @@ class LayerAction extends Action {
    */
   position(position: Position): this {
     this._position = position;
-    this._actionModel.position = position.toJson() as unknown as IPositionModel;
-
     return this;
   }
 
@@ -92,13 +69,6 @@ class LayerAction extends Action {
    */
   blendMode(blendMode: BlendModeType|BlendModeQualifier): this {
     this._blendMode = blendMode;
-
-    const [mode, level] = `${blendMode}`.replace('e_', '').split(":");
-    if (mode === 'anti_removal') {
-      this._actionModel.blendMode = level ? {blendModeType: 'antiRemoval', level: level} : {blendModeType: 'antiRemoval'};
-    }else {
-      this._actionModel.blendMode = {blendModeType: mode};
-    }
     return this;
   }
 
@@ -156,36 +126,6 @@ class LayerAction extends Action {
       this.source.getTransformation() && this.source.getTransformation().toString(),
       this.closeLayer()
     ].filter((a) => a).join('/');
-  }
-
-  static fromJson(actionModel: IActionModel, transformationFromJson: ITransformationFromJson): LayerAction {
-    const {source, actionType, position, timelinePosition, blendMode} = (actionModel as IOverlayActionModel);
-    const sourceInstance = createSourceFromModel(source, transformationFromJson) as ImageSource;
-
-    // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
-    // This allows the inheriting classes to determine the class to be created
-    const result = new this(sourceInstance);
-    const layerType = actionType === 'overlay' ? 'l' : 'u';
-    result.setLayerType(layerType);
-
-    if (position) {
-      result.position(createPositionFromModel(position));
-    }
-
-    if (timelinePosition) {
-      result.timeline(createTimelinePositionFromModel(timelinePosition));
-    }
-
-    if (blendMode) {
-      const blendModeType = ACTION_TYPE_TO_BLEND_MODE_MAP[blendMode.blendModeType] || blendMode.blendModeType;
-      if(blendMode?.level) {
-        result.blendMode(new BlendModeQualifier(blendModeType, blendMode.level as number));
-      }else{
-        result.blendMode(new BlendModeQualifier(blendModeType));
-      }
-    }
-
-    return result;
   }
 }
 

@@ -1,8 +1,6 @@
 import {Action} from "../../internal/Action.js";
 import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
 import {Qualifier} from "../../internal/qualifier/Qualifier.js";
-import {IDropShadowModel} from "../../internal/models/IEffectActionModel.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
 
 /**
  * @description Adds a shadow to the object in an image.
@@ -14,12 +12,6 @@ class DropShadow extends Action {
   private _azimuth: number;
   private _elevation: number;
   private _spread : number;
-  protected _actionModel: IDropShadowModel = {};
-
-  constructor() {
-    super();
-    this._actionModel.actionType = 'dropshadow';
-  }
 
   /**
    * @description
@@ -28,7 +20,6 @@ class DropShadow extends Action {
    * @return {this}
    */
   azimuth(azimuth?: number): this{
-    this._actionModel.azimuth = azimuth;
     this._azimuth = azimuth;
     return this;
   }
@@ -40,7 +31,6 @@ class DropShadow extends Action {
    * @return {this}
    */
   elevation(elevation?: number): this {
-    this._actionModel.elevation = elevation;
     this._elevation = elevation;
     return this;
   }
@@ -52,7 +42,6 @@ class DropShadow extends Action {
    * @return {this}
    */
   spread(spread?: number): this {
-    this._actionModel.spread = spread;
     this._spread = spread;
     return this;
   }
@@ -66,19 +55,6 @@ class DropShadow extends Action {
       'e',
       new QualifierValue(['dropshadow', paramString]).setDelimiter(':'))
     );
-  }
-
-  static fromJson(actionModel: IActionModel): DropShadow {
-    const {azimuth, elevation, spread} = (actionModel as IDropShadowModel);
-
-    // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
-    // This allows the inheriting classes to determine the class to be created
-    const result = new this();
-    azimuth && result.azimuth(azimuth);
-    elevation && result.elevation(elevation);
-    spread && result.spread(spread);
-
-    return result;
   }
 }
 

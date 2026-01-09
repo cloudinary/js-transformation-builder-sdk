@@ -1,6 +1,4 @@
 import {BaseSource} from "../BaseSource.js";
-import {IVideoSourceModel} from "../../../internal/models/IVideoSourceModel.js";
-import {ITransformationFromJson} from "../../../internal/models/IHasFromJson.js";
 
 /**
  * @memberOf Qualifiers.Source
@@ -24,10 +22,6 @@ class VideoSource extends BaseSource {
   constructor(publicID: string) {
     super();
     this._publicID = publicID;
-    this._qualifierModel = {
-      publicId: publicID,
-      sourceType: 'video'
-    };
   }
 
   /**
@@ -40,20 +34,6 @@ class VideoSource extends BaseSource {
     const encodedPublicID = this.encodeAssetPublicID(this._publicID);
 
     return `${layerType}_video:${encodedPublicID}`;
-  }
-
-  static fromJson(qualifierModel: IVideoSourceModel, transformationFromJson: ITransformationFromJson): VideoSource {
-    const {publicId, transformation} = qualifierModel;
-
-    // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [qualifierModel])
-    // This allows the inheriting classes to determine the class to be created
-    // @ts-ignore
-    const result = new this(publicId);
-    if (transformation) {
-      result.transformation(transformationFromJson(transformation));
-    }
-
-    return result;
   }
 }
 

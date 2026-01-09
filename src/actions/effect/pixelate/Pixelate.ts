@@ -1,9 +1,6 @@
 import {NamedRegion} from "../../../qualifiers/region/NamedRegion.js";
 import {Qualifier} from "../../../internal/qualifier/Qualifier.js";
 import {Action} from "../../../internal/Action.js";
-import {IPixelateModel} from "../../../internal/models/IEffectActionModel.js";
-import {IActionModel} from "../../../internal/models/IActionModel.js";
-import {custom, faces} from "../../../qualifiers/region.js";
 
 /**
  * @description The Action class of the pixelate Builder
@@ -14,13 +11,10 @@ import {custom, faces} from "../../../qualifiers/region.js";
 class Pixelate extends Action {
   private _region?: NamedRegion;
   private _squareSize: number | string;
-  protected _actionModel: IPixelateModel = {};
 
   constructor(squareSize: number | string) {
     super();
     this._squareSize = squareSize;
-    this._actionModel.actionType = 'pixelate';
-    this._actionModel.squareSize = squareSize as number;
   }
 
   /**
@@ -29,7 +23,6 @@ class Pixelate extends Action {
    */
   region(pixelateRegion: NamedRegion): this {
     this._region = pixelateRegion;
-    this._actionModel.region = {regionType: this._region.regionType};
     return this;
   }
 
@@ -39,7 +32,6 @@ class Pixelate extends Action {
    */
   squareSize(squareSize: number | string): this {
     this._squareSize = squareSize;
-    this._actionModel.squareSize = squareSize as number;
     return this;
   }
 
@@ -84,25 +76,6 @@ class Pixelate extends Action {
     } else {
       this.addQualifier(new Qualifier('e', `pixelate${str}`));
     }
-  }
-
-  static fromJson(actionModel: IActionModel): Pixelate {
-    const { region, squareSize } = actionModel as IPixelateModel;
-
-    // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
-    // This allows the inheriting classes to determine the class to be created
-    const result = new this(squareSize);
-    squareSize && result.squareSize(squareSize);
-
-    if(region && region.regionType === 'faces'){
-      result.region(faces());
-    }
-
-    if(region && region.regionType === 'custom'){
-      result.region(custom());
-    }
-
-    return result;
   }
 }
 

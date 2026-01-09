@@ -1,8 +1,6 @@
 import {Qualifier} from "../../internal/qualifier/Qualifier.js";
 import {QualifierValue} from "../../internal/qualifier/QualifierValue.js";
 import {Action} from "../../internal/Action.js";
-import {ICartoonifyEffectModel} from "../../internal/models/IEffectActionModel.js";
-import {IActionModel} from "../../internal/models/IActionModel.js";
 
 /**
  * @description Applies a cartoon effect to an image.
@@ -11,16 +9,15 @@ import {IActionModel} from "../../internal/models/IActionModel.js";
  * @see Visit {@link Actions.Effect|Effect} for an example
  */
 class CartoonifyEffect extends Action {
-  protected _actionModel: ICartoonifyEffectModel = {};
   private colorReduction: number | string;
   private cartoonifyStrength: number;
   private effectName: string;
+
   constructor(effectName:string, strength:number) {
     // We don't pass level in the constructor, we'll build it in the prepareParam
     super();
     this.cartoonifyStrength = strength;
     this.effectName = effectName;
-    this._actionModel.actionType = effectName;
   }
 
   /**
@@ -30,7 +27,6 @@ class CartoonifyEffect extends Action {
    */
   lineStrength(lineStrength: number): this {
     this.cartoonifyStrength = lineStrength;
-    this._actionModel.lineStrength = lineStrength;
     return this;
   }
 
@@ -39,7 +35,6 @@ class CartoonifyEffect extends Action {
    * @return {this}
    */
   blackwhite(): this {
-    this._actionModel.blackAndWhite = true;
     this.colorReduction = 'bw';
     return this;
   }
@@ -52,7 +47,6 @@ class CartoonifyEffect extends Action {
    * @return {this}
    */
   colorReductionLevel(level: number): this {
-    this._actionModel.colorReductionLevel = level;
     this.colorReduction = level;
     return this;
   }
@@ -60,19 +54,6 @@ class CartoonifyEffect extends Action {
   protected prepareQualifiers(): void {
     this.addQualifier(new Qualifier('e', new QualifierValue([this.effectName, this.cartoonifyStrength, this.colorReduction])));
     return;
-  }
-
-  static fromJson(actionModel: IActionModel): CartoonifyEffect {
-    const {actionType, lineStrength, blackAndWhite, colorReductionLevel} = (actionModel as ICartoonifyEffectModel);
-
-    // We are using this() to allow inheriting classes to use super.fromJson.apply(this, [actionModel])
-    // This allows the inheriting classes to determine the class to be created
-    const result = new this(actionType, lineStrength);
-    blackAndWhite && result.blackwhite();
-    colorReductionLevel && result.colorReductionLevel(colorReductionLevel);
-    lineStrength && result.lineStrength(lineStrength);
-
-    return result;
   }
 }
 
